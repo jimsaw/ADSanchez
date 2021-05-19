@@ -1,0 +1,11 @@
+.example-card{
+    margin: 1rem;
+}
+
+.mat-card-title {
+    margin-left: -16px;
+}
+
+.row{
+    gap: 20px;
+}
