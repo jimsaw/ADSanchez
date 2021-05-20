@@ -11,17 +11,20 @@ import { MaterialModule } from './modules/material/material.module';
 import { CoreModule } from './modules/core/core.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { AppLayoutComponent } from './layouts/applayout/applayout.component';
-import { LogInComponent } from './modules/auth/components/login/log-in.component';
 import { FormsModule } from '@angular/forms';
+import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    LogInComponent
+    AuthenticationLayoutComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     AppRoutingModule,
     AuthModule,

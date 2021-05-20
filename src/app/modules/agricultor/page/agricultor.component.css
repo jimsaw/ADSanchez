@@ -7,5 +7,13 @@
 }
 
 .row{
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+mat-card-actions{
+    margin-left: 1rem;
+    margin-bottom: 0.7rem!important;
+    padding-top: 0;
 }

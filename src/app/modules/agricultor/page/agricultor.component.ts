@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+import { AgricultorService } from '../../core/services/agricultor/agricultor.service';
 
 @Component({
   selector: 'app-agricultor',
@@ -13,66 +15,106 @@ export class AgricultorComponent implements OnInit {
   estadoCivil;
   eduacion;
   discapacidad;
+  dataAgricultor;
 
-  constructor(private formBuilder: FormBuilder) { }
+  agricultorForm = new FormGroup({
+    codigoAgricultor: new FormControl(''),
+    cedula: new FormControl(''),
+    nombreAgricultor: new FormControl(''),
+    fechaNac: new FormControl(''),
+    genero: new FormControl(''),
+    estadoCiv: new FormControl(''),
+    nivEduc: new FormControl(''),
+    celular1: new FormControl(''),
+    celular2: new FormControl(''),
+    telefono: new FormControl(''),
+    isDiscapac: new FormControl(''),
+    tecnico: new FormControl(''),
+    fechaVisita: new FormControl('')
+  });
+
+  constructor(private formBuilder: FormBuilder,
+    private agricultorService: AgricultorService) { }
 
   ngOnInit() {
-    this.generos = ['Masculino', 'Femenino'];
-    this.estadoCivil = ['Soltero', 'Unión Libre', 'Separado/a', 'Casado/a', 'Divorciado/a', 'Viudo/a'];
-    this.eduacion = ['Analfabeto', 'Primaria', 'Secundaria', 'Superior'];
-    this.discapacidad = ['Si', 'No'];
-    this.registerForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      // validates date format yyyy-mm-dd
-      dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
-    }, {
-      validator: this.MustMatch('password', 'confirmPassword')
-    });
+    this.generos = environment.agricultorGenero;
+    this.estadoCivil = environment.agricultorEstadoCivil;
+    this.eduacion = environment.agricultorEducacion;
+    this.discapacidad = environment.agricultorDiscapacidad;
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
 
   onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    this.dataAgricultor = this.keyConverter(this.agricultorForm.value);
+    //console.log(this.dataAgricultor);
+    this.agricultorService.createAgricultor(this.dataAgricultor);
   }
 
-  onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
+  reset() {
+    this.agricultorForm.reset();
   }
 
-  MustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
-
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-        // return if another validator has already found an error on the matchingControl
-        return;
-      }
-
-      // set error on matchingControl if validation fails
-      if (control.value !== matchingControl.value) {
-        matchingControl.setErrors({ mustMatch: true });
-      } else {
-        matchingControl.setErrors(null);
+  keyConverter(data) {
+    let result = {};
+    for (var val in data) {
+      switch (val) {
+        case "codigoAgricultor": {
+          result["COD"] = data[val];
+          break;
+        }
+        case "cedula": {
+          result["CI"] = data[val];
+          break;
+        }
+        case "nombreAgricultor": {
+          result["NOMBRE"] = data[val];
+          break;
+        }
+        case "fechaNac": {
+          result["SE02_FECHNAC"] = data[val];
+          break;
+        }
+        case "genero": {
+          result["SE01_GÉNERO"] = data[val];
+          break;
+        }
+        case "estadoCiv": {
+          result["SE04_ESTCIV"] = data[val];
+          break;
+        }
+        case "nivEduc": {
+          result["SE05_NIVEDUC"] = data[val];
+          break;
+        }
+        case "celular1": {
+          result["SE06_CEL1"] = data[val];
+          break;
+        }
+        case "celular2": {
+          result["SE07_CEL2"] = data[val];
+          break;
+        }
+        case "telefono": {
+          result["SE08_TLFNO"] = data[val];
+          break;
+        }
+        case "isDiscapac": {
+          result["SE09_DISC"] = data[val];
+          break;
+        }
+        case "tecnico": {
+          result["TECNICO"] = data[val];
+          break;
+        }
+        case "fechaVisita": {
+          result["F_VISITALB"] = data[val];
+          break;
+        }
+        default: {
+          break;
+        }
       }
     }
+    return result;
   }
 
 }
