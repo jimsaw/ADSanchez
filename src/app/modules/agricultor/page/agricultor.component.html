@@ -3,86 +3,94 @@
       <mat-card-title>Datos Personales</mat-card-title>
       <mat-card-subtitle>Agricultor</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-            <form [formGroup]="agricultorForm">
-                <div class="row">
-                    <mat-form-field appearance="outline" >
-                        <mat-label>Código de Agricultor</mat-label>
-                        <input matInput placeholder="Ex. 5555" formControlName="codigoAgricultor" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
+    <form [formGroup]="agricultorForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <div class="row">
+                <mat-form-field appearance="outline" >
+                    <mat-label>Código de Agricultor</mat-label>
+                    <input matInput placeholder="Ex. 5555" formControlName="codigo" name="someUnusualName" autocomplete="off">
+                    <mat-error *ngIf="agricultorForm.get('codigo').invalid">{{getErrorMessage(agricultorForm.get('codigo'))}}</mat-error>
+                </mat-form-field>
+               
+                <mat-form-field appearance="outline" >
                     <mat-label>Cédula de Identidad</mat-label>
                     <input matInput placeholder="Ex. 0945785861" formControlName="cedula" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
+                    <mat-error *ngIf="agricultorForm.get('cedula').invalid">{{getErrorMessage(agricultorForm.get('cedula'))}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
                     <mat-label>Nombre del Agricultor</mat-label>
-                    <input matInput placeholder="Ex. Jorge Almeida" formControlName="nombreAgricultor" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                    <mat-label>Fecha de Nacimiento</mat-label>
-                    <input readonly matInput [matDatepicker]="picker" formControlName="fechaNac" name="someUnusualName" autocomplete="off">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                        <mat-label>Género</mat-label>
-                        <mat-select formControlName="genero" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let genero of generos" [value]="genero">
-                            {{genero}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                    <mat-label>Estado Civil</mat-label>
-                    <mat-select formControlName="estadoCiv" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let estado of estadoCivil" [value]="estado">
-                        {{estado}}
+                    <input matInput placeholder="Ex. Jorge Almeida" formControlName="nombre" name="someUnusualName" autocomplete="off">
+                    <mat-error *ngIf="agricultorForm.get('nombre').invalid">{{getErrorMessage(agricultorForm.get('nombre'))}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input readonly matInput [matDatepicker]="picker" formControlName="fechaNacimiento" name="someUnusualName" autocomplete="off" [max]=maxDate18Years>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Género</mat-label>
+                    <mat-select formControlName="genero" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let genero of generos" [value]="genero">
+                        {{genero}}
                         </mat-option>
                     </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                    <mat-label>Nivel de Eduación</mat-label>
-                    <mat-select formControlName="nivEduc" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let edu of eduacion" [value]="edu">
-                        {{edu}}
-                        </mat-option>
-                    </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                <mat-label>Estado Civil</mat-label>
+                <mat-select formControlName="estadoCivil" name="someUnusualName" autocomplete="off">
+                    <mat-option *ngFor="let estado of estadoCivil" [value]="estado">
+                    {{estado}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                <mat-label>Nivel de Eduación</mat-label>
+                <mat-select formControlName="nivelEducacion" name="someUnusualName" autocomplete="off">
+                    <mat-option *ngFor="let edu of eduacion" [value]="edu">
+                    {{edu}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
                     <mat-label>Celular 1</mat-label>
                     <input matInput placeholder="Ex. 0945316795" formControlName="celular1" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                        <mat-label>Celular 2</mat-label>
-                        <input matInput placeholder="Ex. 0976128964" formControlName="celular2" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
+                    <mat-error *ngIf="agricultorForm.get('celular1').invalid">{{getErrorMessage(agricultorForm.get('celular1'))}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Celular 2</mat-label>
+                    <input matInput placeholder="Ex. 0976128964" formControlName="celular2" name="someUnusualName" autocomplete="off">
+                    <mat-error *ngIf="agricultorForm.get('celular2').invalid">{{getErrorMessage(agricultorForm.get('celular2'))}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
                     <mat-label>Teléfono Convencional</mat-label>
-                    <input matInput placeholder="Ex. 1-555777" formControlName="telefono" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                    <mat-label>Presenta Discapacidad</mat-label>
-                    <mat-select formControlName="isDiscapac" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let dis of discapacidad" [value]="dis">
-                            {{dis}}
-                        </mat-option>
-                    </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                        <mat-label>Técnico</mat-label>
-                        <input matInput placeholder="Ex. Carlos Macias" formControlName="tecnico" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" >
-                        <mat-label>Fecha de Visita</mat-label>
-                        <input readonly matInput [matDatepicker]="picker2" formControlName="fechaVisita" name="someUnusualName" autocomplete="off">
-                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field>
-                </div>
-            </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmit()">Guardar</button>
-      <button mat-button (click)="reset()">Resetear</button>
-    </mat-card-actions>
+                    <input matInput placeholder="Ex. 1555777" formControlName="telefono" name="someUnusualName" autocomplete="off">
+                    <mat-error *ngIf="agricultorForm.get('telefono').invalid">{{getErrorMessage(agricultorForm.get('telefono'))}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                <mat-label>Presenta Discapacidad</mat-label>
+                <mat-select formControlName="isDiscapacitado" name="someUnusualName" autocomplete="off">
+                    <mat-option *ngFor="let dis of discapacidad" [value]="dis">
+                        {{dis}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Técnico</mat-label>
+                    <input matInput placeholder="Ex. Carlos Macias" formControlName="tecnico" name="someUnusualName" autocomplete="off">
+                    <mat-error *ngIf="agricultorForm.get('tecnico').invalid">{{getErrorMessage(agricultorForm.get('tecnico'))}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Fecha de Visita</mat-label>
+                    <input readonly matInput [min]="minDate" [matDatepicker]="picker2" formControlName="fechaVisita" name="someUnusualName" autocomplete="off">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!agricultorForm.valid">Guardar</button>
+            <button mat-button  type="reset">Resetear</button>
+        </mat-card-actions>
+    </form>
 </mat-card>

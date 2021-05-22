@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from './layouts/applayout/applayout.component';
+import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { AgricultorComponent } from './modules/agricultor/page/agricultor.component';
 import { AuthModule } from './modules/auth/auth.module';
@@ -35,6 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    component: AuthenticationLayoutComponent,
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
   { path: "**", redirectTo: 'auth' }

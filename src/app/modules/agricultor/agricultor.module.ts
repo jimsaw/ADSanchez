@@ -5,6 +5,7 @@ import { AgricultorRoutingModule } from './agricultor-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { AgricultorComponent } from './page/agricultor.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AgricultorComponent } from './page/agricultor.component';
     AgricultorRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
 })
 export class AgricultorModule { }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Agricultor } from 'src/app/interfaces/agricultor';
+import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { environment } from 'src/environments/environment';
 import { AgricultorService } from '../../core/services/agricultor/agricultor.service';
+import { KeymapperService } from '../../core/services/keymapper/keymapper.service';
 
 @Component({
   selector: 'app-agricultor',
@@ -9,112 +12,174 @@ import { AgricultorService } from '../../core/services/agricultor/agricultor.ser
   styleUrls: ['./agricultor.component.css']
 })
 export class AgricultorComponent implements OnInit {
-  registerForm: FormGroup;
-  submitted = false;
   generos;
   estadoCivil;
   eduacion;
   discapacidad;
-  dataAgricultor;
+  minDate = new Date();
+  maxDate18Years;
 
   agricultorForm = new FormGroup({
-    codigoAgricultor: new FormControl(''),
-    cedula: new FormControl(''),
-    nombreAgricultor: new FormControl(''),
-    fechaNac: new FormControl(''),
-    genero: new FormControl(''),
-    estadoCiv: new FormControl(''),
-    nivEduc: new FormControl(''),
-    celular1: new FormControl(''),
-    celular2: new FormControl(''),
-    telefono: new FormControl(''),
-    isDiscapac: new FormControl(''),
-    tecnico: new FormControl(''),
-    fechaVisita: new FormControl('')
+    codigo: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(5)]),
+    cedula: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]),
+    nombre: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("^[a-zA-Z ]*$")]),
+    fechaNacimiento: new FormControl('', Validators.required),
+    genero: new FormControl('', Validators.required),
+    estadoCivil: new FormControl('', Validators.required),
+    nivelEducacion: new FormControl('', Validators.required),
+    celular1: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]),
+    celular2: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]),
+    telefono: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(7), Validators.maxLength(7)]),
+    isDiscapacitado: new FormControl('', Validators.required),
+    tecnico: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("^[a-zA-Z ]*$")]),
+    fechaVisita: new FormControl('', Validators.required)
   });
 
   constructor(private formBuilder: FormBuilder,
-    private agricultorService: AgricultorService) { }
+    private agricultorService: AgricultorService,
+    private keymapperService: KeymapperService) { }
 
   ngOnInit() {
-    this.generos = environment.agricultorGenero;
-    this.estadoCivil = environment.agricultorEstadoCivil;
-    this.eduacion = environment.agricultorEducacion;
-    this.discapacidad = environment.agricultorDiscapacidad;
+    this.generos = environment.constantes.agricultor.genero;
+    this.estadoCivil = environment.constantes.agricultor.estadoCivil;
+    this.eduacion = environment.constantes.agricultor.educacion;
+    this.discapacidad = environment.constantes.agricultor.discapacidad;
+    this.maxDate18Years = this.getMaxDate18YearsFromNow();
+
+    let formularioLineaBase: FormularioLineaBase = {
+      secciones: {
+        informacionFinca: {
+          preguntas: {
+            provincia: {
+              respuesta: 'test'
+            },
+            canton: {
+              respuesta: 'test'
+            },
+            parroquia: {
+              respuesta: 'test'
+            },
+            recinto: {
+              respuesta: 'test'
+            },
+            nombreFinca: {
+              respuesta: 'test'
+            },
+            descripcionLlegarFinca: {
+              respuesta: 'test'
+            }
+          }
+        },
+        hectareaje: {
+          preguntas: {
+            dimensionTotalFinca: {
+              respuesta: 'test'
+            },
+            terreno: {
+              respuesta: 'test'
+            },
+            cultivoCacao: {
+              respuesta: 'test',
+              preguntas: {
+                maiz: {
+                  respuesta: 'test'
+                },
+                naranja: {
+                  respuesta: 'test'
+                },
+                platano: {
+                  respuesta: 'test'
+                },
+                mani: {
+                  respuesta: 'test'
+                },
+                otros: {
+                  respuesta: 'test',
+                  preguntas: {
+                    otrosEspecifique: {
+                      respuesta: 'test'
+                    }
+                  }
+                }
+              }
+            },
+            areaNetaCacao: {
+              respuesta: 'test'
+            },
+            distanciaPlantas: {
+              respuesta: 'test'
+            },
+            plantasXHectareas: {
+              respuesta: 'test'
+            },
+            tipoUbicacionZona: {
+              respuesta: 'test'
+            }
+          }
+        },
+        cacaoCNN: {
+          preguntas: {
+            areaTotalCNN: {
+              respuesta: 'test'
+            },
+            areaProduccion: {
+              respuesta: 'test'
+            },
+            edadCacaoProductivo: {
+              respuesta: 'test'
+            },
+            areaRecienSembrada: {
+              respuesta: 'test'
+            },
+            edadCacaoReciente: {
+              respuesta: 'test'
+            },
+            produccionAnioAnterior: {
+              respuesta: 'test'
+            },
+            precioPromedio: {
+              respuesta: 'test'
+            }
+          }
+        }
+      }
+    }
+    //El keyMapper se llama dentro de la funcion create
+    //servicio create
+    let result = this.keymapperService.keyMapper(formularioLineaBase, environment.mappers.formularioLineaBaseMapper);
+    //se hace el add del objeto dentro de la coleccion
   }
 
   onSubmit() {
-    this.dataAgricultor = this.keyConverter(this.agricultorForm.value);
-    //console.log(this.dataAgricultor);
-    this.agricultorService.createAgricultor(this.dataAgricultor);
+    //let result = this.keymapperService.keyMapper(this.agricultorForm.value, environment.mappers.agricultorMapper);
+    let agricultor: Agricultor = {
+      ...this.agricultorForm.value
+    }
+    this.agricultorService.create(agricultor);
   }
 
   reset() {
     this.agricultorForm.reset();
   }
 
-  keyConverter(data) {
-    let result = {};
-    for (var val in data) {
-      switch (val) {
-        case "codigoAgricultor": {
-          result["COD"] = data[val];
-          break;
-        }
-        case "cedula": {
-          result["CI"] = data[val];
-          break;
-        }
-        case "nombreAgricultor": {
-          result["NOMBRE"] = data[val];
-          break;
-        }
-        case "fechaNac": {
-          result["SE02_FECHNAC"] = data[val];
-          break;
-        }
-        case "genero": {
-          result["SE01_GÉNERO"] = data[val];
-          break;
-        }
-        case "estadoCiv": {
-          result["SE04_ESTCIV"] = data[val];
-          break;
-        }
-        case "nivEduc": {
-          result["SE05_NIVEDUC"] = data[val];
-          break;
-        }
-        case "celular1": {
-          result["SE06_CEL1"] = data[val];
-          break;
-        }
-        case "celular2": {
-          result["SE07_CEL2"] = data[val];
-          break;
-        }
-        case "telefono": {
-          result["SE08_TLFNO"] = data[val];
-          break;
-        }
-        case "isDiscapac": {
-          result["SE09_DISC"] = data[val];
-          break;
-        }
-        case "tecnico": {
-          result["TECNICO"] = data[val];
-          break;
-        }
-        case "fechaVisita": {
-          result["F_VISITALB"] = data[val];
-          break;
-        }
-        default: {
-          break;
-        }
+  getErrorMessage(formulario) {
+    if (formulario.hasError('required')) {
+      return 'Debe ingresar un valor';
+    } if (formulario.hasError('pattern')) {
+      if (formulario.errors.pattern.requiredPattern == '^[a-zA-Z ]*$') {
+        return 'Ingrese caracteres';
+      } if (formulario.errors.pattern.requiredPattern == '^[0-9]*$') {
+        return 'Ingrese numeros';
       }
+    } if (!formulario.hasError('minLength')) {
+      return 'Ingresar un valor de longitud aceptable';
     }
-    return result;
+  }
+
+  getMaxDate18YearsFromNow() {
+    let today = new Date();
+    today.setMonth(today.getMonth() - 216);
+    return today;
   }
 
 }

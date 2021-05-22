@@ -16,7 +16,6 @@ import { AuthenticationLayoutComponent } from './layouts/authentication-layout/a
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 
-
 @NgModule({
   declarations: [
     AppComponent,
