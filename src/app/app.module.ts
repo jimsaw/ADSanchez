@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AngularFireModule } from '@angular/fire';
     CoreModule,
     SharedModule,
     FormsModule,
+    ToastrModule.forRoot()
   ],
   exports: [MaterialModule,
     AuthModule,

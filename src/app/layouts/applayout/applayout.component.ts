@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/modules/core/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -14,7 +16,9 @@ export class AppLayoutComponent implements OnInit {
     togglenavbar = false;
 
     @ViewChild('sidenav') public sidenav: MatSidenav;
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router,
+        public authService: AuthService,
+        private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -26,5 +30,11 @@ export class AppLayoutComponent implements OnInit {
         if (this.togglenavbar) {
             this.sidenav.toggle();
         }
+    }
+
+    logout() {
+        this.toastr.info('Sesion cerrada correctamente', '¡Hasta Luego!');
+        this.authService.logOut();
+        this.router.navigate(['']);
     }
 }

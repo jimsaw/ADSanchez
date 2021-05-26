@@ -46,7 +46,7 @@ export class AgricultorComponent implements OnInit {
     this.discapacidad = environment.constantes.agricultor.discapacidad;
     this.maxDate18Years = this.getMaxDate18YearsFromNow();
 
-    let formularioLineaBase: FormularioLineaBase = {
+    /*let formularioLineaBase: FormularioLineaBase = {
       secciones: {
         informacionFinca: {
           preguntas: {
@@ -143,10 +143,10 @@ export class AgricultorComponent implements OnInit {
           }
         }
       }
-    }
+    }*/
     //El keyMapper se llama dentro de la funcion create
     //servicio create
-    let result = this.keymapperService.keyMapper(formularioLineaBase, environment.mappers.formularioLineaBaseMapper);
+    //let result = this.keymapperService.keyMapper(formularioLineaBase, environment.mappers.formularioLineaBaseMapper);
     //se hace el add del objeto dentro de la coleccion
   }
 

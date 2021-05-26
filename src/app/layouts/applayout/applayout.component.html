@@ -14,9 +14,14 @@
     <mat-sidenav #sidenav mode="over">
       <mat-nav-list *ngFor="let sidebarnavItem of sideMenuItems">
 
-        <a mat-list-item [routerLink]="sidebarnavItem.routerLink">
-            <span id="icono" class="material-icons">{{sidebarnavItem.icon}}</span>
-            {{sidebarnavItem.title}} 
+        <a mat-list-item (click)="logout()" *ngIf="sidebarnavItem.title === 'Log out'">
+          <span id="icono" class="material-icons">{{sidebarnavItem.icon}}</span>
+          {{sidebarnavItem.title}} 
+        </a>
+
+        <a mat-list-item [routerLink]="sidebarnavItem.routerLink" *ngIf="sidebarnavItem.title !== 'Log out'">
+          <span id="icono" class="material-icons">{{sidebarnavItem.icon}}</span>
+          {{sidebarnavItem.title}} 
         </a>
   
       </mat-nav-list>

@@ -1,9 +1,9 @@
-<div class="login-wrapper">
+<div class="register-wrapper">
 
     <mat-card class="box">
       <div class="contenedor">
         <mat-card-header>
-          <mat-card-title>Sign in</mat-card-title>
+          <mat-card-title>Sign Up</mat-card-title>
         </mat-card-header>
     
         <form class="example-form" [formGroup]="operadorForm" (ngSubmit)="onSubmit()">
@@ -12,7 +12,7 @@
               <input matInput placeholder="Email" formControlName="username" name="someUnusualName" autocomplete="off">
               <mat-error *ngIf="operadorForm.get('username').invalid">{{getErrorMessage(operadorForm.get('username'))}}</mat-error>
             </mat-form-field>
-    
+            
             <mat-form-field class="example-full-width">
               <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" name="someUnusualName" autocomplete="new-password">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -20,10 +20,20 @@
               </button>
               <mat-error *ngIf="operadorForm.get('password').invalid">{{getErrorMessage(operadorForm.get('password'))}}</mat-error>
             </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput [type]="hide ? 'password' : 'text'" placeholder="Confirm Password" formControlName="password2" name="someUnusualName" autocomplete="new-password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="operadorForm.get('password2').invalid">{{getErrorMessage(operadorForm.get('password2'))}}</mat-error>
+              <mat-error *ngIf="operadorForm.invalid">Contraseña no coinciden</mat-error>
+            </mat-form-field>
+
           </mat-card-content>
           <mat-card-actions style="display: contents;">
-            <button type="submit" mat-raised-button color="primary" class="btn-block">Sign in</button>
-            <button type="button" [routerLink]="['/auth/register']" mat-raised-button color="basic">Sign Up</button>
+            <button type="submit" mat-raised-button color="primary" class="btn-block" [disabled]="!operadorForm.valid">Sign Up</button>
+            <button type="button" [routerLink]="['']" routerLinkActive="router-link-active"  mat-raised-button color="basic" class="btn-block">Back</button>
           </mat-card-actions>
         </form>
       </div>
