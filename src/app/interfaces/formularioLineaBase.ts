@@ -1,4 +1,10 @@
 export interface FormularioLineaBase {
+    fechaVisita: {
+        respuesta: string
+    },
+    tecnico: {
+        respuesta: string
+    }
     secciones: {
         informacionFinca: {
             preguntas: {
@@ -33,7 +39,7 @@ export interface FormularioLineaBase {
                 cultivoCacao: {
                     respuesta: string,
                     preguntas: {
-                        maiz: {
+                        maiz: {                             //PONER EN UNA SOLA VARIABLE DE SELECCION
                             respuesta: string
                         },
                         naranja: {

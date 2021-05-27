@@ -516,7 +516,7 @@ export const formularioLineaBaseMapper = {
         pregunta: '¿CUANTAS?'
     },
     periodoFertilizacion: {
-        codigo: 'LAB01_F',  //CODIGO GENERAL
+        codigo: 'LAB01_F',
         pregunta: 'FERTILIZA'
     },
     periodoPoda: {
@@ -612,7 +612,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'RECIBE BENEFICIOS O PROYECTOS DE DESARROLLO DE LA MISMA'
     },
     tiposBeneficios: {
-        codigo: '', //DEFINIR CODIGO GENERAL
+        codigo: 'ASO05_TIPBENEF',
         pregunta: 'QUÉ TIPO DE BENEFICIOS'
     },
     ayudaOtraInstitucion: {
@@ -672,7 +672,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'EL PRODUCTOR CONTAMINA ECOSISTEMAS ACUATICOS O TERRESTRES'
     },
     ubicacionDesechosAguasNegras: {
-        codigo: '',     //DEFINIR CODIGO GENERAL
+        codigo: 'HDE08_UBIDES',
         pregunta: '¿DÓNDE SE VIERTEN LAS AGUAS NEGRAS Y LOS DESECHOS LIQUIDOS?'
     },
     tieneArbolesSombrio: {
