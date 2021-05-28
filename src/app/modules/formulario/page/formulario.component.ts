@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormularioService } from '../../core/services/formulario/formulario.service';
 
 @Component({
   selector: 'app-formulario',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private formularioService: FormularioService
+  ) { }
 
   ngOnInit(): void {
   }
