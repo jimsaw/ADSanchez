@@ -1,6 +1,7 @@
 import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { of, pipe } from 'rxjs';
+import { formularioLineaBaseMapper } from 'src/environments/mappers/formularioLineaBase';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,22 @@ export class KeymapperService {
     console.log(result);
     console.log(Object.keys(result).length);
     return result;
+  }
+
+  public getQuestionCode(question: string): string {
+    const code = formularioLineaBaseMapper[question]["codigo"]
+    if (code === "") {
+      return "NO CODE";
+    }
+    return code;
+  }
+
+  public getQuestionDescription(question: string): string {
+    const  text = formularioLineaBaseMapper[question]["pregunta"];
+    if (text === "") {
+      return "NO TEXT";
+    }
+    return text;
   }
 
 }
