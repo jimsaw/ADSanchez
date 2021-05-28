@@ -376,6 +376,106 @@ export interface FormularioLineaBase {
                     }
                 }
             }
+        },
+        condicionesLaborales: {
+            preguntas: {
+                discriminacion: {
+                    respuesta: string
+                },
+                explotacion: {
+                    respuesta: string
+                },
+                trabajoInfantil: {
+                    respuesta: string
+                },
+                documentosSoporte: {
+                    respuesta: string
+                },
+                montoAcuerdoContratoAgricola: {
+                    respuesta: string
+                }
+            }
+        },
+        conservacionAguaManjeoDesechos: {
+            preguntas: {
+                fincaConRiego: {
+                    respuesta: string
+                },
+                disenioRiego: {
+                    respuesta: string,
+                    preguntas: {
+                        hectareasDisenioRiego: {
+                            respuesta: string
+                        }
+                    }
+                },
+                permisoExtraerAguaRiego: {
+                    respuesta: string
+                },
+                analisisAguaRiego: {
+                    respuesta: string
+                },
+                presentaAnexos: {
+                    respuesta: string
+                },
+                utilizaFiltroEcologico: {
+                    respuesta: string,
+                    preguntas: {
+                        razonUsoFiltroEcologico: {
+                            respuesta: string
+                        }
+                    }
+                },
+                areaDeschPlasticos: {
+                    respuesta: string
+                },
+                fincaLibrePlasticos: {
+                    respuesta: string
+                },
+                clasificaBasuraDomestica: {
+                    respuesta: string
+                },
+                criterioClasificaBasuraDomestica: {
+                    respuesta: string
+                },
+                practicaReciclajeCompostaje: {
+                    respuesta: string
+                },
+                tratamientoBasura: {
+                    respuesta: string
+                },
+                conocimientoAreaRecepcioEnvasesProductosQuimicos: {
+                    respuesta: string,
+                    preguntas: {
+                        usoServicioAreaRecepcioEnvasesProductosQuimicos: {
+                            respuesta: string
+                        },
+                        frecuenciaUsoServicioAreaRecepcioEnvasesProductosQuimicos: {
+                            respuesta: string
+                        },
+                        almacenaSeguridadEnvasesPrevioTraslado: {
+                            respuesta: string,
+                            preguntas: {
+                                lugarAlmacena: {
+                                    respuesta: string
+                                }
+                            }
+                        }
+                    }
+                },
+                tratamientoAguasNegras: {
+                    respuesta: string
+                },
+                tipoExtraccion: {
+                    respuesta: string
+                },
+                infraestructuraRiego: {
+                    respuesta: string
+                },
+                impactoRiego: {
+                    respuesta: string
+                }
+            }
         }
     }
 }

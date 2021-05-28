@@ -370,5 +370,117 @@ export const formularioVerificacion = {
     frecuenciaRecibeBono: {
         codigo: 'CM12_FBON19',
         pregunta: '¿CON QUÉ FRECUENCIA?'
+    },
+    discriminacion: {
+        codigo: 'LBS07_DISCR',
+        pregunta: 'DISCRIMINACIÓN'
+    },
+    explotacion: {
+        codigo: 'LBS08_EXPL',
+        pregunta: 'EXPLOTACIÓN'
+    },
+    trabajoInfantil: {
+        codigo: 'LBS09_TRAINF',
+        pregunta: 'TRABAJO INFANTIL'
+    },
+    documentosSoporte: {
+        codigo: 'LBS10_DOCM',
+        pregunta: 'DOCUMENTOS DE SOPORTE'
+    },
+    montoAcuerdoContratoAgricola: {
+        codigo: 'LBS11_CONTRA',
+        pregunta: 'MONTO DE ACUERDO AL CONTRATO AGRÍCOLA'
+    },
+    fincaConRiego: {
+        codigo: 'HDE01_RIEG',
+        pregunta: 'FINCA CUENTA CON RIEGO'
+    },
+    disenioRiego: {
+        codigo: 'HDE02_DISRIEG',
+        pregunta: 'DISEÑO DEL RIEGO',
+    },
+    hectareasDisenioRiego: {
+        codigo: 'HDE31_HECTRIEG',
+        pregunta: 'HECTÁREAS CON RIEGO'
+    },
+    permisoExtraerAguaRiego: {
+        codigo: 'HDE03_PERM',
+        pregunta: 'PERMISO DE EXTRAER AGUA PARA RIEGO'
+    },
+    analisisAguaRiego: {
+        codigo: 'HDE04_ANAG',
+        pregunta: 'REALIZA ANÁLISIS DE AGUA DE RIEGO'
+    },
+    presentaAnexos: {
+        codigo: 'HDE05_ANEX',
+        pregunta: 'PRESENTA ANEXOS'
+    },
+    utilizaFiltroEcologico: {
+        codigo: 'HDE08_FILT',
+        pregunta: 'UTILIZA FILTRO ECOLÓGICO',
+    },
+    razonUsoFiltroEcologico: {
+        codigo: 'HDE09_PFILT',
+        pregunta: 'PARA QUÉ LO UTILIZA'
+    },
+    areaDeschPlasticos: {
+        codigo: 'HDE10_ADES',
+        pregunta: 'CUENTA CON ÁREA  DESECH. PLÁSTICOS'
+    },
+    fincaLibrePlasticos: {
+        codigo: 'HDE11_LIBP',
+        pregunta: 'FINCA ESTÁ LIBRE DE PLÁCTICOS'
+    },
+    clasificaBasuraDomestica: {
+        codigo: 'HDE16_BDOM',
+        pregunta: 'CLASIFICA BASURA DOMÉSTICA'
+    },
+    criterioClasificaBasuraDomestica: {
+        codigo: 'HDE17_CRITCLASFBAS',
+        pregunta: 'CUÁL ES EL CRITERIO'
+    },
+    practicaReciclajeCompostaje: {
+        codigo: 'HDE20_RECI',
+        pregunta: 'PRACTICA RECICLAJE O COMPOSTAJE'
+    },
+    tratamientoBasura: {
+        codigo: 'HDE21_TRATB',
+        pregunta: 'CUÁL ES EL TRATAMIENTO DE LA BASURA'
+    },
+    conocimientoAreaRecepcioEnvasesProductosQuimicos: {
+        codigo: 'HDE22_RECP',
+        pregunta: '¿SABE USTED QUE LA EMPRESA CUENTA CON UN ÁREA DE RECEPCIÓN DE ENVASES DE PRODUCTOS QUÍMICOS VACÍOS?',
+    },
+    usoServicioAreaRecepcioEnvasesProductosQuimicos: {
+        codigo: 'HDE23_SERV',
+        pregunta: 'HA HECHO USO DE ESTE SERVICIO'
+    },
+    frecuenciaUsoServicioAreaRecepcioEnvasesProductosQuimicos: {
+        codigo: 'HDE24_FREQ',
+        pregunta: 'FRECUENCIA'
+    },
+    almacenaSeguridadEnvasesPrevioTraslado: {
+        codigo: 'HDE25_ALMC',
+        pregunta: 'ALMACENA CON SEGURIDAD LOS ENVASES PREVIO AL TRASLADO DE DESTINO',
+    },
+    lugarAlmacena: {
+        codigo: 'HDE26_LALM',
+        pregunta: 'CUÁL ES EL LUGAR DE ALMACENAMIENTO'
+    },
+    tratamientoAguasNegras: {
+        codigo: 'HDE27_AGNEG',
+        pregunta: 'TRATAMIENTO AGUA NEGRA'
+    },
+    tipoExtraccion: {
+        codigo: 'HDE28_RIEGP',
+        pregunta: 'TIPO EXTRACCIÓN'
+    },
+    infraestructuraRiego: {
+        codigo: 'HDE29_HARIEG',
+        pregunta: 'INFRAESTRUCTURA DEL RIEGO'
+    },
+    impactoRiego: {
+        codigo: 'HDE30_IMPR',
+        pregunta: 'IMPACTO DEL RIEGO'
     }
 }
