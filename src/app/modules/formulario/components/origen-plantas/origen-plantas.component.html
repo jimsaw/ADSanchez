@@ -1,0 +1,30 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="origenPlantas">
+            <mat-form-field appearance="outline" >
+                <mat-label>Nombre del Vivero</mat-label>
+                <input matInput formControlName="nombreVivero" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Ubicacion del Vivero</mat-label>
+                <input matInput formControlName="ubicacionVivero" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Encargado Propagacion</mat-label>
+                <input matInput formControlName="encargadoPropagacion" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tipo de Conocimiento</mat-label>
+                <input matInput formControlName="tipoConocimiento" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Entidad que Donó</mat-label>
+                <input matInput formControlName="entidadDonacion" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cantidad de Plantas Recibidas</mat-label>
+                <input matInput formControlName="cantidadPlantasRecibidas" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

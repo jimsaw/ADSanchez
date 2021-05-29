@@ -1,0 +1,30 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="venta">
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Almacena el cacao despues del secado?</mat-label>
+                <input matInput formControlName="almacenaCacaoDespSecado" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Por cuanto tiempo</mat-label>
+                <input matInput formControlName="tiempoAlmacenadoCacao" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Propiedad del transporte</mat-label>
+                <input matInput formControlName="propiedadTransporte" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tipo de transporte</mat-label>
+                <input matInput formControlName="tipoTransporte" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Registro costos, gastos y acticidades finca</mat-label>
+                <input matInput formControlName="registroFinancieroFinca" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tipo de Registros Financieros</mat-label>
+                <input matInput formControlName="tipoRegistrosFinancierosFinca" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

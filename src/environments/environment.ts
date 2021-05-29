@@ -7,13 +7,15 @@ import { agricultor } from "./config/constantes/agricultoresConstantes";
 import { menuItems } from "./config/menuItems";
 import { agricultorMapper } from "./mappers/agricultor";
 import { formularioLineaBaseMapper } from "./mappers/formularioLineaBase";
+import { formularioLineaBase } from "./config/constantes/formularioLineaBase";
 
 export const environment = {
   production: false,
   menuItems: menuItems,
   firebase,
   constantes: {
-    agricultor
+    agricultor,
+    formularioLineaBase
   },
   mappers: {
     agricultorMapper,

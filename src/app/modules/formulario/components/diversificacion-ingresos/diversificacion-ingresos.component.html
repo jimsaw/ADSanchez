@@ -1,0 +1,34 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="diversificacionIngresos">
+            <mat-form-field appearance="outline" >
+                <mat-label>Huertos organicos</mat-label>
+                <input matInput formControlName="huertosOrganicos" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Desarrollo de viveros</mat-label>
+                <input matInput formControlName="desarrolloViveros" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Desarrollo y venta de fertilizantes</mat-label>
+                <input matInput formControlName="desarrolloVentaFertilizantes" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Rehabilitacion de finca</mat-label>
+                <input matInput formControlName="rehabilitacionFinca" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Brigada de podadores</mat-label>
+                <input matInput formControlName="brigadaPodadores" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cuenta con experiencia en poda</mat-label>
+                <input matInput formControlName="contarExperienciaPoda" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Años de experiencia en poda</mat-label>
+                <input matInput formControlName="aniosExperiencia" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

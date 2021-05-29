@@ -1,0 +1,14 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="incrementarProductividad">
+            <mat-form-field appearance="outline" >
+                <mat-label>Recibir Plantas de Cacao Nacional</mat-label>
+                <input matInput formControlName="recibirPlantasCacaoNacional" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Aprender Elab Productos Nacionales</mat-label>
+                <input matInput formControlName="aprenderElabProductosNaturales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

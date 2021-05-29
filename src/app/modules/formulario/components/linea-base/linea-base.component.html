@@ -1,0 +1,206 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>FORMULARIO LINEA BASE</mat-card-title>
+      <mat-card-subtitle>AGRICULTOR</mat-card-subtitle>
+    </mat-card-header>
+    <form [formGroup]="lineaBaseForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" >
+            <mat-label>Agricultor</mat-label>
+            <input matInput formControlName="agricultor" name="someUnusualName" autocomplete="off">
+        </mat-form-field>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    INFORMACIÓN DE LA FINCA
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-informacion-finca [parentForm]="lineaBaseForm"></app-informacion-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    HECTAREAJE
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-hectareaje [parentForm]="lineaBaseForm"></app-hectareaje>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    CACAO CCN
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-cacao-cnn [parentForm]="lineaBaseForm"></app-cacao-cnn>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    CACAO NACIONAL
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-cacao-nacional [parentForm]="lineaBaseForm"></app-cacao-nacional>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    CACAO NACIONAL - NUEVOS CLONES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-cacao-nacional-nuevos-clones [parentForm]="lineaBaseForm"></app-cacao-nacional-nuevos-clones>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    ORIGEN DE LAS PLANTAS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-origen-plantas [parentForm]="lineaBaseForm"></app-origen-plantas>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    IMFORMACIÓN DE LA FAMILIA
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-informacion-familia [parentForm]="lineaBaseForm"></app-informacion-familia>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    PRÁCTICAS AGRÍCOLAS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-practicas-agricolas [parentForm]="lineaBaseForm"></app-practicas-agricolas>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    SALUD Y SEGURIDAD OCUPACIONAL
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-salud-seguridad-ocupacional [parentForm]="lineaBaseForm"></app-salud-seguridad-ocupacional>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    COSECHA
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-cosecha [parentForm]="lineaBaseForm"></app-cosecha>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    VENTA
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-venta [parentForm]="lineaBaseForm"></app-venta>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    NIVEL DE ASOCIATIVIDAD
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-nivel-asociatividad [parentForm]="lineaBaseForm"></app-nivel-asociatividad>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    CONDICIONES LABORALES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-condiciones-laborales [parentForm]="lineaBaseForm"></app-condiciones-laborales>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    SERVICIOS BÁSICOS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-servicios-basicos [parentForm]="lineaBaseForm"></app-servicios-basicos>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    CONSERVACIÓN DE RECURSOS Y MANEJO DE DESECHOS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-conservacion-recursos-manejo-desechos [parentForm]="lineaBaseForm"></app-conservacion-recursos-manejo-desechos>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    INCREMENTAR PRODUCTIVIDAD
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-incrementar-productividad [parentForm]="lineaBaseForm"></app-incrementar-productividad>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    MEJORAR LA CALIDAD DEL CACAO
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-mejorar-calidad-cacao [parentForm]="lineaBaseForm"></app-mejorar-calidad-cacao>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    DIVERSIFICACIÓN DE INGRESOS
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-diversificacion-ingresos [parentForm]="lineaBaseForm"></app-diversificacion-ingresos>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    PREGUNTAS ADICIONALES
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-preguntas-adicionales [parentForm]="lineaBaseForm"></app-preguntas-adicionales>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!lineaBaseForm.valid">Guardar</button>
+            <button mat-button  type="reset">Resetear</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

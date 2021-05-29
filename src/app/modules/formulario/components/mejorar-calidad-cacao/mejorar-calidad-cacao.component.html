@@ -1,0 +1,26 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="mejorarCalidadCacao">
+            <mat-form-field appearance="outline" >
+                <mat-label>Bandejas o cajones de Fermentacion</mat-label>
+                <input matInput formControlName="bandejasCajonesFermentacion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Dispuesto hacerlo por su cuenta</mat-label>
+                <input matInput formControlName="dispuestoHacerloPropiaCuenta" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tendales elevados por caña</mat-label>
+                <input matInput formControlName="tendalesElevadosCania" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Secadoras comunitarias</mat-label>
+                <input matInput formControlName="secadorasComunitarias" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cuenta con agrupacion de vecinos</mat-label>
+                <input matInput formControlName="contarAgrupacionParaProyecto" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

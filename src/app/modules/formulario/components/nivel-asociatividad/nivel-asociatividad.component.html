@@ -1,0 +1,38 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="nivelAsociatividad">
+            <mat-form-field appearance="outline" >
+                <mat-label>Pertenece a Alguna Asociacion:</mat-label>
+                <input matInput formControlName="perteneceAsocProgrCertif" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Nombre Asociacion</mat-label>
+                <input matInput formControlName="nombreAsociacion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cantidad de Miembros</mat-label>
+                <input matInput formControlName="cantidadMiembros" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Recibe beneficios?</mat-label>
+                <input matInput formControlName="recibeBeneficios" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Que tipo de beneficio?</mat-label>
+                <input matInput formControlName="tiposBeneficios" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Recibe ayuda de otra institucion?</mat-label>
+                <input matInput formControlName="ayudaOtraInstitucion" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Nombre Institucion</mat-label>
+                <input matInput formControlName="nombreOtraInstitucion" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tipo de ayuda</mat-label>
+                <input matInput formControlName="tipoAyuda" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

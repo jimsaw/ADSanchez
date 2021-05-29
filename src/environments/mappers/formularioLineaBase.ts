@@ -35,25 +35,9 @@ export const formularioLineaBaseMapper = {
         codigo: 'FIN09_CULT',
         pregunta: 'EL CULTIVO DE CACAO ES',
     },
-    maiz: {
-        codigo: 'FIN10_MAIZ',
-        pregunta: 'MAIZ'
-    },
-    naranja: {
-        codigo: 'FIN11_NAR',
-        pregunta: 'NARANJA'
-    },
-    platano: {
-        codigo: 'FIN12_PLAT',
-        pregunta: 'PLATANO'
-    },
-    mani: {
-        codigo: 'FIN14_MANI',
-        pregunta: 'MANI'
-    },
-    otros: {
-        codigo: 'FIN13_OTRO',
-        pregunta: 'OTROS'
+    asociadoConTiene: {
+        codigo: 'FIN10_ASOCCOTIEN',
+        pregunta: 'ESTÁ ASOCIADO CON / TIENE'
     },
     otrosEspecifique: {
         codigo: 'FIN13_OTRO',
@@ -183,33 +167,9 @@ export const formularioLineaBaseMapper = {
         codigo: 'CAC16_NCUSO',
         pregunta: 'USO ANTERIOR DEL AREA NUEVA'
     },
-    variedad103: {
-        codigo: 'CAC17_NC103',
-        pregunta: 'VARIEDAD 103'
-    },
-    variedad96: {
-        codigo: 'CAC18_NC96',
-        pregunta: 'VARIEDAD 96'
-    },
-    variedad95: {
-        codigo: 'CAC19_NC95',
-        pregunta: 'VARIEDAD 95'
-    },
-    variedad800: {
-        codigo: 'CAC50_NC800',
-        pregunta: 'VARIEDAD 800'
-    },
-    variedad801: {
-        codigo: 'CAC51_NC801',
-        pregunta: 'VARIEDAD 801'
-    },
-    variedadNoSabe: {
-        codigo: 'CAC21_NCNS',
-        pregunta: 'VARIEDAD NO SABE'
-    },
-    variedadOtros: {
-        codigo: 'CAC20_NCOTR',
-        pregunta: 'VARIEDAD OTROS'
+    tipoVariedad: {
+        codigo: 'CAC17_TIPVARI',
+        pregunta: 'TIPO VARIEDAD'
     },
     especifiqueOtros: {
         codigo: 'CAC51_NC801',
@@ -451,37 +411,13 @@ export const formularioLineaBaseMapper = {
         codigo: 'FER18_CAPF',
         pregunta: '¿LE INTERERESARÍA ELABORAR FERTILIZANTES NATURALES / ORGÁNICOS?'
     },
-    cochinilla: {
-        codigo: 'MIPE09_PCO',
-        pregunta: 'COCHINILLA'
+    plagasAfectanCultivo: {
+        codigo: 'MIPE09_PLAG',
+        pregunta: 'PLAGAS QUE AFECTAN GENERALMENTE EN EL CULTIVO'
     },
-    xileborus: {
-        codigo: 'MIPE10_PXI',
-        pregunta: 'XILEBORUS'
-    },
-    trips: {
-        codigo: 'MIPE11_PTR',
-        pregunta: 'TRIPS'
-    },
-    chinchorro: {
-        codigo: 'MIPE12_PCH',
-        pregunta: 'CHINCHORRO'
-    },
-    hormiga: {
-        codigo: 'MIPE13_PHO',
-        pregunta: 'HORMIGA'
-    },
-    orozco: {
-        codigo: 'MIPE24_ORO',
-        pregunta: 'OROZCO'
-    },
-    otrosPlagas: {
-        codigo: 'MIPE14_POTR',
-        pregunta: 'OTROS'
-    },
-    phytophtora: {
-        codigo: 'MIPE15_EPH',
-        pregunta: 'PHYTOPHTORA'
+    enfermedadesAfectanCultivo: {
+        codigo: 'MIPE15_ENFERM',
+        pregunta: 'ENFERMEDADES QUE AFECTAN GENERALMENTE EN EL CULTIVO'
     },
     escobabruja: {
         codigo: 'MIPE16_ESC',

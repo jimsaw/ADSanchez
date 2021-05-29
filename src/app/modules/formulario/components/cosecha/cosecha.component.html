@@ -1,0 +1,22 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="cosecha">
+            <mat-form-field appearance="outline" >
+                <mat-label>Sus tumbas las realiza:</mat-label>
+                <input matInput formControlName="periodoCadaTumba" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Latas de cacao fresco por tumba</mat-label>
+                <input matInput formControlName="latasCacaoXTumba" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Escurrido y Secado CCN51</mat-label>
+                <input matInput formControlName="realizaEscurridoSecadoCCN51" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Cuantos dias fermenta el cacao?</mat-label>
+                <input matInput formControlName="diasFermentadoCacao" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

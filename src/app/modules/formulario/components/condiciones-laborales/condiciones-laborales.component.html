@@ -1,0 +1,34 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="condicionesLaborales">
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Contrata trabajadores?</mat-label>
+                <input matInput formControlName="contrataTrabajadores" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cantidad de trabajadores</mat-label>
+                <input matInput formControlName="cantidadTrabajadores" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿A partir de que cantidad de area contrata?</mat-label>
+                <input matInput formControlName="areaInicialContrato" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Los trabajadores que contrata son</mat-label>
+                <input matInput formControlName="tipoContratoTrabajo" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Contrata menores de edad?</mat-label>
+                <input matInput formControlName="contrataMenoresEdad" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Posee permiso</mat-label>
+                <input matInput formControlName="poseePermiso" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cumple con la base del contrato agricola</mat-label>
+                <input matInput formControlName="baseContratoAgricola" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

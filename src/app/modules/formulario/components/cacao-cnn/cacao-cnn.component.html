@@ -1,0 +1,34 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="cacaoCNN">
+            <mat-form-field appearance="outline" >
+                <mat-label>Area Total de CNN</mat-label>
+                <input matInput formControlName="areaTotalCNN" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Area en Produccion</mat-label>
+                <input matInput formControlName="areaProduccion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Edad Cacao Productivo</mat-label>
+                <input matInput formControlName="edadCacaoProductivo" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Area Recien Sembrada</mat-label>
+                <input matInput formControlName="areaRecienSembrada" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Edad Cacao Reciente</mat-label>
+                <input matInput formControlName="edadCacaoReciente" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Produccion Año Anterior</mat-label>
+                <input matInput formControlName="produccionAnioAnteriorCacaoCNN" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Precio Promedio Cacao</mat-label>
+                <input matInput formControlName="precioPromedio" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

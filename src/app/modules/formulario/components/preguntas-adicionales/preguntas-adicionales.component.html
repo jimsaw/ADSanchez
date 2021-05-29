@@ -1,0 +1,22 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="preguntasAdicionales">
+            <mat-form-field appearance="outline" >
+                <mat-label>Tiene area libre para sembrar</mat-label>
+                <input matInput formControlName="tieneAreaLibreParaSembrar" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Area libre para sembrar</mat-label>
+                <input matInput formControlName="areaLibre" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Necesita rehab./reinjerto</mat-label>
+                <input matInput formControlName="necesitaRehaReinjerto" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Cuanto necesita rehab./reinjerto</mat-label>
+                <input matInput formControlName="cantidad" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

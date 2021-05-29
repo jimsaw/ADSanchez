@@ -1,0 +1,34 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="conservacionRecursosManejoDesechos">
+            <mat-form-field appearance="outline" >
+                <mat-label>Conocimiento sobre el manejo de desechos</mat-label>
+                <input matInput formControlName="conociminetoManejoDesechos" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Productor contamina ecosistemas acuaticos o terrestres</mat-label>
+                <input matInput formControlName="productoContaminaEcosistema" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Ubicacion de desechos de desechos/aguas negras</mat-label>
+                <input matInput formControlName="ubicacionDesechosAguasNegras" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Tiene arboles de sombrio?</mat-label>
+                <input matInput formControlName="tieneArbolesSombrio" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Destina espacio para cultivar vegetales u hortalizas?</mat-label>
+                <input matInput formControlName="cultivaVegetalesHortalizasFrutas" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Compra estos productos en mercados locales?</mat-label>
+                <input matInput formControlName="compraPorductosMercadoLocales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Valor promedio gastado en estos productos</mat-label>
+                <input matInput formControlName="valorPromedioGastado" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

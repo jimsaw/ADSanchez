@@ -1,0 +1,26 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="saludSeguridadOcupacional">
+            <mat-form-field appearance="outline" >
+                <mat-label>Accidentes Laborales Ultimo Año en Finca</mat-label>
+                <input matInput formControlName="accidentesLaboralesUltimoAnio" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Tipo Accidente</mat-label>
+                <input matInput formControlName="tipoAccidente" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Episodio de Intoxicacion Presente</mat-label>
+                <input matInput formControlName="periodoIntoxicacionPresente" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Que Producto?</mat-label>
+                <input matInput formControlName="producto" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Hay un centro de salud cercano?</mat-label>
+                <input matInput formControlName="centroSaludCercano" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

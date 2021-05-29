@@ -1,0 +1,38 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="cacaoNacionalNuevosClones">
+            <mat-form-field appearance="outline" >
+                <mat-label>Uso Anterior del Area Nueva</mat-label>
+                <input matInput formControlName="usoAnteriorAreaNueva" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Que Variedad Tiene</mat-label>
+                <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Especifique</mat-label>
+                <input matInput formControlName="especifiqueOtros" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Las Variedades Sembradas muestran ser:</mat-label>
+                <input matInput formControlName="variedadesSembradasCalificacion" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Plantulas Adaptacion Condiciones Edafoclimaticas</mat-label>
+                <input matInput formControlName="plantulasCondicionesEdafoclimaticas" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Plantulas Rendimiento</mat-label>
+                <input matInput formControlName="plantulasRendimiento" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Plantulas Vigor de la Planta</mat-label>
+                <input matInput formControlName="plantulasVigorPlanta" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Plantulas Resistencia a Enfermedades</mat-label>
+                <input matInput formControlName="plantulasResistenciaEnfermedades" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

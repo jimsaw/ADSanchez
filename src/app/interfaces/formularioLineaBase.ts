@@ -39,19 +39,7 @@ export interface FormularioLineaBase {
                 cultivoCacao: {
                     respuesta: string,
                     preguntas: {
-                        maiz: {                             //PONER EN UNA SOLA VARIABLE DE SELECCION
-                            respuesta: string
-                        },
-                        naranja: {
-                            respuesta: string
-                        },
-                        platano: {
-                            respuesta: string
-                        },
-                        mani: {
-                            respuesta: string
-                        },
-                        otros: {
+                        asociadoConTiene: {
                             respuesta: string,
                             preguntas: {
                                 otrosEspecifique: {
@@ -166,25 +154,7 @@ export interface FormularioLineaBase {
                 usoAnteriorAreaNueva: {
                     respuesta: string
                 },
-                variedad103: {
-                    respuesta: string
-                },
-                variedad96: {
-                    respuesta: string
-                },
-                variedad95: {
-                    respuesta: string
-                },
-                variedad800: {
-                    respuesta: string
-                },
-                variedad801: {
-                    respuesta: string
-                },
-                variedadNoSabe: {
-                    respuesta: string
-                },
-                variedadOtros: {
+                tipoVariedad: {
                     respuesta: string,
                     preguntas: {
                         especifiqueOtros: string
@@ -381,42 +351,12 @@ export interface FormularioLineaBase {
                 interesElaborarFertilizanteNaturalOrganico: {
                     respuesta: string
                 },
-                cochinilla: {
+                plagasAfectanCultivo: {
                     respuesta: string
                 },
-                xileborus: {
+                enfermedadesAfectanCultivo: {
                     respuesta: string
-                },
-                trips: {
-                    respuesta: string
-                },
-                chinchorro: {
-                    respuesta: string
-                },
-                hormiga: {
-                    respuesta: string
-                },
-                orozco: {
-                    respuesta: string
-                },
-                otrosPlagas: {
-                    respuesta: string
-                },
-                phytophtora: {
-                    respuesta: string
-                },
-                escobabruja: {
-                    respuesta: string
-                },
-                monilla: {
-                    respuesta: string
-                },
-                malDeMachete: {
-                    respuesta: string
-                },
-                otrosEnfermedades: {
-                    respuesta: string
-                },
+                }
                 productoParaPlagas: {
                     respuesta: string
                 },

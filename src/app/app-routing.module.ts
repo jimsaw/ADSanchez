@@ -10,22 +10,22 @@ const routes: Routes = [
   {
     path: 'inicio',
     component: AppLayoutComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     data: { navbar: true },
     children: [
       {
         path: 'formularios',
-        canActivate: [AuthGuard],
+        //: [AuthGuard],
         loadChildren: () => import('./modules/formulario/formulario.module').then(m => m.FormularioModule)
       },
       {
         path: 'agricultores',
-        canActivate: [AuthGuard],
+        //canActivate: [AuthGuard],
         loadChildren: () => import('./modules/agricultor/agricultor.module').then(m => m.AgricultorModule)
       },
       {
         path: 'registroTecnicos',
-        canActivate: [AuthGuard],
+        //canActivate: [AuthGuard],
         component: BlankComponent
       },
       {

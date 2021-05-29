@@ -1,0 +1,54 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="practicasAgricolas">
+            <mat-form-field appearance="outline" >
+                <mat-label>Interesado en elaborar fertilizantes Organicos/Naturales</mat-label>
+                <input matInput formControlName="interesElaborarFertilizanteNaturalOrganico" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Plagas que Afectan el Cultivo</mat-label>
+                <input matInput formControlName="plagasAfectanCultivo" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Enfermedades que Afectan al Cultivo</mat-label>
+                <input matInput formControlName="enfermedadesAfectanCultivo" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Producto Natural/Quimico para Plagas</mat-label>
+                <input matInput formControlName="productoParaPlagas" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Producto Natural/Quimico para Enfermedades</mat-label>
+                <input matInput formControlName="productoParaEnfermedades" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Lleva registro por Perdida de Mazorca Anual por Monilla</mat-label>
+                <input matInput formControlName="llevaRegistroPerdidasMazorcasXMonilla" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Cuantas?</mat-label>
+                <input matInput formControlName="cantidadPerdidaMazorcas" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Periodo Fertilizacion</mat-label>
+                <input matInput formControlName="periodoFertilizacion" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Periodo Poda</mat-label>
+                <input matInput formControlName="periodoPoda" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Periodo Control Maleza</mat-label>
+                <input matInput formControlName="periodoControlMaleza" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Periodo MIPE</mat-label>
+                <input matInput formControlName="periodoMIPE" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Periodo Cosecha</mat-label>
+                <input matInput formControlName="periodoCosecha" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

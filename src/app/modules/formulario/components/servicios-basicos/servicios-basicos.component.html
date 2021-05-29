@@ -1,0 +1,14 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="serviciosBasicos">
+            <mat-form-field appearance="outline" >
+                <mat-label>Cuenta con energia electrica</mat-label>
+                <input matInput formControlName="energiaElectrica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>El agua para el consumo familiar es:</mat-label>
+                <input matInput formControlName="tipoAguaConsumoFamiliar" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>
