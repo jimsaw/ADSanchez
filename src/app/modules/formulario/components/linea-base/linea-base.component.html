@@ -6,7 +6,11 @@
     <form [formGroup]="lineaBaseForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" >
             <mat-label>Agricultor</mat-label>
-            <input matInput formControlName="agricultor" name="someUnusualName" autocomplete="off">
+            <mat-select formControlName="agricultor" name="someUnusualName" autocomplete="off">
+                <mat-option *ngFor="let value of listaAgricultores" [value]="value.id">
+                {{value.nombre}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
         <mat-accordion>
             <mat-expansion-panel hideToggle>

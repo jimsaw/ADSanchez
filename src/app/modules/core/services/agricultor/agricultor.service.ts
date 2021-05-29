@@ -19,6 +19,17 @@ export class AgricultorService {
     return this.firestore.collection('agricultores').add(mappedAgricultor);
   }
 
-
-
+  public getAll() {
+    let docRef = this.firestore.collection('agricultores').get();
+    let result = [];
+    docRef.subscribe((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        //console.log(doc.data()['NOMBRE']);
+        let nombre = doc.data()['NOMBRE']
+        result.push({ id: doc.id, nombre: nombre });
+      });
+    });
+    return result;
+  }
 }
+

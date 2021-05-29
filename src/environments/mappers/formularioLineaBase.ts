@@ -599,7 +599,7 @@ export const formularioLineaBaseMapper = {
         codigo: 'SBA02_CAG',
         pregunta: 'EL AGUA PARA CONSUMO FAMILIAR Y PREPARACION DE ALIMENTO ES'
     },
-    conociminetoManejoDesechos: {
+    conocimientoManejoDesechos: {
         codigo: 'HDE06_MDE',
         pregunta: '¿TIENE UD. CONOCIMIENTO SOBRE EL MANEJO DE DESECHOS?'
     },
@@ -619,7 +619,7 @@ export const formularioLineaBaseMapper = {
         codigo: 'BIO13_OCUL',
         pregunta: 'ADICIONAL AL CACAO, ¿DESTINA UD. ESPACIO PARA CULTIVO DE VEGETALES, HORTALIZAS Y FRUTAS DE AUTOCONSUMO?'
     },
-    compraPorductosMercadoLocales: {
+    compraProductosMercadoLocales: {
         codigo: 'BIO14_MERC',
         pregunta: 'COMPRA UD. ESTOS PRODUCTOS EN MERCADO LOCALES'
     },

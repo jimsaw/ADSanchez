@@ -4,7 +4,7 @@ export interface FormularioLineaBase {
     },
     tecnico: {
         respuesta: string
-    }
+    },
     secciones: {
         informacionFinca: {
             preguntas: {
@@ -157,7 +157,9 @@ export interface FormularioLineaBase {
                 tipoVariedad: {
                     respuesta: string,
                     preguntas: {
-                        especifiqueOtros: string
+                        especifiqueOtros: {
+                            respuesta: string
+                        }
                     }
                 },
                 variedadesSembradasCalificacion: {
@@ -356,7 +358,7 @@ export interface FormularioLineaBase {
                 },
                 enfermedadesAfectanCultivo: {
                     respuesta: string
-                }
+                },
                 productoParaPlagas: {
                     respuesta: string
                 },
@@ -522,9 +524,9 @@ export interface FormularioLineaBase {
                 }
             }
         },
-        conservacionRecurosManejoDesechos: {
+        conservacionRecursosManejoDesechos: {
             preguntas: {
-                conociminetoManejoDesechos: {
+                conocimientoManejoDesechos: {
                     respuesta: string
                 },
                 productoContaminaEcosistema: {
@@ -541,7 +543,7 @@ export interface FormularioLineaBase {
                 cultivaVegetalesHortalizasFrutas: {
                     respuesta: string
                 },
-                compraPorductosMercadoLocales: {
+                compraProductosMercadoLocales: {
                     respuesta: string,
                     preguntas: {
                         valorPromedioGastado: {
