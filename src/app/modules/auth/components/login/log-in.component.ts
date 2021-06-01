@@ -23,22 +23,26 @@ export class LogInComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    const hasUser$ = this.authService.hasUser();
+    if (hasUser$) {
+      this.router.navigate(['inicio']);
+    }
   }
 
   goToPage(pageName: string) {
     this.router.navigate([`${pageName}`]);
   }
 
-  async onSubmit() {
-    await this.authService.signIn(this.operadorForm.value.username, this.operadorForm.value.password);
-    if (this.authService.isLoggedIn) {
-      this.isSignedIn = true;
-      this.toastr.success('Ingreso de sesion exitoso', '¡Bienvenido!');
-      this.router.navigate(['inicio']);
-    } else {
-      this.isSignedIn = false;
-      this.toastr.error(this.authService.errorMessage, '¡Error!');
-    }
+  onSubmit() {
+    this.authService.signIn(this.operadorForm.value.username, this.operadorForm.value.password)
+      .then(() => {
+        this.isSignedIn = true;
+        this.toastr.success('Ingreso de sesion exitoso', '¡Bienvenido!');
+        this.router.navigate(['inicio']);
+      }).catch((error) => {
+        this.isSignedIn = false;
+        this.toastr.error(error, '¡Error!');
+      });
   }
 
   getErrorMessage(formulario) {

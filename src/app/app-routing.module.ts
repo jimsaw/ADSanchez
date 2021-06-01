@@ -4,34 +4,33 @@ import { AppLayoutComponent } from './layouts/applayout/applayout.component';
 import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { AuthGuard } from './modules/core/guards/auth/auth.guard';
+import { PageNotFoundComponent } from './modules/shared/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
   {
     path: 'inicio',
     component: AppLayoutComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: { navbar: true },
     children: [
       {
         path: 'formularios',
-        //: [AuthGuard],
         loadChildren: () => import('./modules/formulario/formulario.module').then(m => m.FormularioModule)
       },
       {
         path: 'agricultores',
-        //canActivate: [AuthGuard],
         loadChildren: () => import('./modules/agricultor/agricultor.module').then(m => m.AgricultorModule)
       },
       {
         path: 'registroTecnicos',
-        //canActivate: [AuthGuard],
         component: BlankComponent
       },
       {
         path: 'logout',
         component: BlankComponent
-      }
+      },
+      { path: "**", redirectTo: '**' }
     ]
   },
   {
@@ -39,7 +38,9 @@ const routes: Routes = [
     component: AuthenticationLayoutComponent,
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
-  { path: "**", redirectTo: 'auth' }
+  { path: "**",
+    component: PageNotFoundComponent,
+  }
 
 ];
 

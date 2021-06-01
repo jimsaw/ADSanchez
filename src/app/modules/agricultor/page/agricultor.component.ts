@@ -4,6 +4,7 @@ import { Agricultor } from 'src/app/interfaces/agricultor';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { environment } from 'src/environments/environment';
 import { AgricultorService } from '../../core/services/agricultor/agricultor.service';
+import { AuthService } from '../../core/services/auth/auth.service';
 import { KeymapperService } from '../../core/services/keymapper/keymapper.service';
 
 @Component({
