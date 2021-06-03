@@ -156,7 +156,7 @@ export class AgricultorComponent implements OnInit {
     let agricultor: Agricultor = {
       ...this.agricultorForm.value
     }
-    this.agricultorService.create(agricultor);
+    this.agricultorService.setAgricultor(agricultor);
   }
 
   reset() {

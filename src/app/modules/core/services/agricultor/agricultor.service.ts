@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Agricultor } from 'src/app/interfaces/agricultor';
 import { environment } from 'src/environments/environment';
 import { KeymapperService } from '../keymapper/keymapper.service';
@@ -14,9 +16,17 @@ export class AgricultorService {
     private keymapperService: KeymapperService
   ) { }
 
-  public create(agricultor: Agricultor): Promise<any> {
-    let mappedAgricultor = this.keymapperService.keyMapper(agricultor, environment.mappers.agricultorMapper);
-    return this.firestore.collection('agricultores').add(mappedAgricultor);
+  public setAgricultor(agricultor: Agricultor): Promise<void> {
+    if (agricultor.id === '' || agricultor.id === undefined) {
+      agricultor.id = this.firestore.createId();
+    }
+    const mappedAgricultor = this.keymapperService.keyMapper(agricultor, environment.mappers.agricultorMapper);
+    console.log("SET AGRICULTOR");
+    console.log(agricultor);
+    return this.firestore
+      .collection("agricultores")
+      .doc(mappedAgricultor["id"])
+      .set(mappedAgricultor);
   }
 
   public getAll() {
@@ -31,5 +41,72 @@ export class AgricultorService {
     });
     return result;
   }
+
+  private firebaseCode(value: string): string {
+    return this.keymapperService.getAgricultorFirebaseCode(value);
+  }
+
+  public toMap(agricultor: Agricultor): any {
+    return {
+      id: agricultor.id,
+      codigo: agricultor.codigo,
+      cedula: agricultor.cedula,
+      nombre: agricultor.nombre,
+      fechaNacimiento: agricultor.fechaNacimiento.toString(),
+      genero: agricultor.genero,
+      estadoCivil: agricultor.estadoCivil,
+      nivelEducacion: agricultor.nivelEducacion,
+      celulares: agricultor.celulares,
+      telefono: agricultor.telefono,
+      isDiscapacitado: agricultor.isDiscapacitado,
+      tecnico: agricultor.tecnico,
+      fechaVisita: agricultor.fechaVisita.toString(),
+    }
+  }
+
+  private fromMap(data: any): Agricultor {
+    return {
+      id: data["id"],
+      codigo: data[this.firebaseCode("codigo")],
+      cedula: data[this.firebaseCode("cedula")],
+      nombre: data[this.firebaseCode("nombre")],
+      fechaNacimiento: new Date(data[this.firebaseCode("fechaNacimiento")]),
+      genero: data[this.firebaseCode("genero")],
+      estadoCivil: data[this.firebaseCode("estadoCivil")],
+      nivelEducacion: data[this.firebaseCode("nivelEducacion")],
+      celulares: data[this.firebaseCode("celulares")],
+      telefono: data[this.firebaseCode("telefono")],
+      isDiscapacitado: data[this.firebaseCode("isDiscapacitado")],
+      tecnico: data[this.firebaseCode("tecnico")],
+      fechaVisita: new Date(data[this.firebaseCode("fechaVisita")])
+    }
+  }
+
+  public getAgricultores(): Observable<Agricultor[]> {
+    return this.firestore.collection('agricultores').snapshotChanges().pipe(
+      map(agricultores => {
+        return agricultores.map((agricultor) => this.fromMap(agricultor.payload.doc.data()))
+      })
+    );
+  }
+
+  deleteAgricultor(agricultor: Agricultor): Promise<void> {
+    return new Promise<void>(async (resolve, reject) => {
+      try {
+        await this.firestore.firestore.runTransaction(async transaction => {
+          const collRef = this.firestore.firestore.collection("agricultores");
+          const docRef = collRef.doc(agricultor.id);
+          console.log(agricultor.id);
+          transaction.delete(docRef);
+          return Promise.resolve();
+        });
+        resolve();
+      } catch (e) {
+        console.log(e);
+        reject();
+      }
+    });
+  }
+
 }
 

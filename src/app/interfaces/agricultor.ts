@@ -1,13 +1,13 @@
 export interface Agricultor {
-    codigo: string;
+    id: string,
+    codigo: string,
     cedula: string,
     nombre: string,
     fechaNacimiento: Date,
     genero: string,
     estadoCivil: string,
     nivelEducacion: string,
-    celular1: string,
-    celular2: string,
+    celulares: string[],
     telefono: string,
     isDiscapacitado: string,
     tecnico: string,

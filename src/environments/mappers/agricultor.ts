@@ -27,13 +27,9 @@ export const agricultorMapper = {
         codigo: 'SE05_NIVEDUC',
         pregunta: 'NIVEL DE EDUCACION'
     },
-    celular1: {
-        codigo: 'SE06_CEL1',
-        pregunta: 'CELULAR 1'
-    },
-    celular2: {
-        codigo: 'SE07_CEL2',
-        pregunta: 'CELULAR 2'
+    celulares: {
+        codigo: 'SE06_CEL',
+        pregunta: 'CELULARES'
     },
     telefono: {
         codigo: 'SE08_TLFNO',

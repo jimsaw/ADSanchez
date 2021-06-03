@@ -1,0 +1,17 @@
+<div class="table-container">
+  <app-material-table
+    [isLoading]="isTableLoading"
+    [elementData]="agricultoresStringMap"
+    [columnsInfo]="columnsInfo"
+    (rowClicked)="onRecordSelected($event)"
+    (rowTrashcanClicked)="onTrashCanClicked($event)"
+  >
+  </app-material-table>
+  <div class="button-container">
+    <button mat-fab color="accent" (click)="editAgricultorDialog.openDialog()" aria-label="Añadir cuenta">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>
+
+<app-edit-agricultor-dialog  [agricultor]="selectedAgricultor"></app-edit-agricultor-dialog>
