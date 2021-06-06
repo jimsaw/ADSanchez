@@ -16,13 +16,11 @@ export class AgricultorService {
     private keymapperService: KeymapperService
   ) { }
 
-  public setAgricultor(agricultor: Agricultor): Promise<void> {
+  setAgricultor(agricultor: Agricultor): Promise<void> {
     if (agricultor.id === '' || agricultor.id === undefined) {
       agricultor.id = this.firestore.createId();
     }
     const mappedAgricultor = this.keymapperService.keyMapper(agricultor, environment.mappers.agricultorMapper);
-    console.log("SET AGRICULTOR");
-    console.log(agricultor);
     return this.firestore
       .collection("agricultores")
       .doc(mappedAgricultor["id"])
@@ -82,28 +80,29 @@ export class AgricultorService {
     }
   }
 
-  public getAgricultores(): Observable<Agricultor[]> {
+  getAgricultores(): Observable<Agricultor[]> {
     return this.firestore.collection('agricultores').snapshotChanges().pipe(
       map(agricultores => {
-        return agricultores.map((agricultor) => this.fromMap(agricultor.payload.doc.data()))
+        return agricultores.map((agricultor) => {
+          return this.fromMap(agricultor.payload.doc.data());
+        });
       })
     );
   }
 
-  deleteAgricultor(agricultor: Agricultor): Promise<void> {
-    return new Promise<void>(async (resolve, reject) => {
+  deleteAgricultor(agricultor: Agricultor): Promise<string> {
+    return new Promise<string>(async (resolve, reject) => {
       try {
         await this.firestore.firestore.runTransaction(async transaction => {
           const collRef = this.firestore.firestore.collection("agricultores");
           const docRef = collRef.doc(agricultor.id);
-          console.log(agricultor.id);
           transaction.delete(docRef);
           return Promise.resolve();
         });
-        resolve();
+        resolve("Agricultor eliminado correctamente");
       } catch (e) {
         console.log(e);
-        reject();
+        reject("Ha ocurrido un error");
       }
     });
   }

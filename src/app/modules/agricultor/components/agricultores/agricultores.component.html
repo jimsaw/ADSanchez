@@ -1,9 +1,9 @@
 <div class="table-container">
   <app-material-table
     [isLoading]="isTableLoading"
-    [elementData]="agricultoresStringMap"
+    [elementData]="agricultores"
     [columnsInfo]="columnsInfo"
-    (rowClicked)="onRecordSelected($event)"
+    (rowClicked)="onAgricultorSelected($event)"
     (rowTrashcanClicked)="onTrashCanClicked($event)"
   >
   </app-material-table>

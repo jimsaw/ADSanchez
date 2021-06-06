@@ -125,9 +125,9 @@ export class EditAgricultorBodyComponent implements OnInit {
       ...this.form.value,
     }
     if (this.agricultor) {
-      agricultor.celulares = this.toStringArray(agricultor.celulares);
       agricultor.id = this.agricultor.id;
     }
+    agricultor.celulares = this.toStringArray(agricultor.celulares);
     this.agricultorService.setAgricultor(agricultor)
       .then(() => {
         console.log("Guardado con éxito");
