@@ -4,7 +4,7 @@ import { AppLayoutComponent } from './layouts/applayout/applayout.component';
 import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { AuthGuard } from './modules/core/guards/auth/auth.guard';
-import { PageNotFoundComponent } from './modules/shared/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },

@@ -22,7 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    AuthenticationLayoutComponent
+    AuthenticationLayoutComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -39,13 +39,15 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ToastrModule.forRoot()
   ],
-  exports: [MaterialModule,
+  exports: [
+    MaterialModule,
     AuthModule,
     FormularioModule,
     AgricultorModule,
     MaterialModule,
     SharedModule,
-    FormsModule],
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

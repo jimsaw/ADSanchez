@@ -6,9 +6,7 @@ import { AgricultorService } from 'src/app/modules/core/services/agricultor/agri
 import { KeymapperService } from 'src/app/modules/core/services/keymapper/keymapper.service';
 import { environment } from 'src/environments/environment';
 import { EditAgricultorDialogComponent } from '../edit-agricultor-dialog/edit-agricultor-dialog.component';
-// import {default as _rollupMoment} from 'moment';
-// import * as _moment from 'moment';
-// const moment = _rollupMoment || _moment;
+
 
 @Component({
   selector: 'app-edit-agricultor-body',
@@ -128,7 +126,7 @@ export class EditAgricultorBodyComponent implements OnInit {
       agricultor.id = this.agricultor.id;
     }
     agricultor.celulares = this.toStringArray(agricultor.celulares);
-    this.agricultorService.setAgricultor(agricultor)
+    this.agricultorService.set(agricultor)
       .then(() => {
         console.log("Guardado con éxito");
         this.dialogRef.close();

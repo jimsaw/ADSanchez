@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MaterialTableComponent } from './material-table/material-table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { DataTableComponent } from './data-table/data-table.component';
 
 
 
 @NgModule({
   declarations: [
-    PageNotFoundComponent,
-    MaterialTableComponent
+    MaterialTableComponent,
+    DataTableComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     NgxDatatableModule,
   ],
   exports: [
-    MaterialTableComponent
+    MaterialTableComponent,
+    DataTableComponent
   ]
 })
 export class SharedModule { }

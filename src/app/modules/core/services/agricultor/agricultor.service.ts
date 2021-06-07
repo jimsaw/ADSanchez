@@ -3,36 +3,66 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Agricultor } from 'src/app/interfaces/agricultor';
+import { Database } from 'src/app/interfaces/database';
 import { environment } from 'src/environments/environment';
 import { KeymapperService } from '../keymapper/keymapper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AgricultorService {
+export class AgricultorService implements Database<Agricultor> {
 
   constructor(
-    private firestore: AngularFirestore,
+    private firebase: AngularFirestore,
     private keymapperService: KeymapperService
   ) { }
 
-  setAgricultor(agricultor: Agricultor): Promise<void> {
+
+  list(): Observable<Agricultor[]> {
+    return this.firebase.collection('agricultores').snapshotChanges().pipe(
+      map(agricultores => {
+        return agricultores.map((agricultor) => {
+          return this.fromMap(agricultor.payload.doc.data());
+        });
+      })
+    );
+  }
+
+
+  set(agricultor: Agricultor): Promise<void> {
     if (agricultor.id === '' || agricultor.id === undefined) {
-      agricultor.id = this.firestore.createId();
+      agricultor.id = this.firebase.createId();
     }
     const mappedAgricultor = this.keymapperService.keyMapper(agricultor, environment.mappers.agricultorMapper);
-    return this.firestore
+    return this.firebase
       .collection("agricultores")
       .doc(mappedAgricultor["id"])
       .set(mappedAgricultor);
   }
 
+
+  delete(agricultor: Agricultor): Promise<string> {
+    return new Promise<string>(async (resolve, reject) => {
+      try {
+        await this.firebase.firestore.runTransaction(async transaction => {
+          const collRef = this.firebase.firestore.collection("agricultores");
+          const docRef = collRef.doc(agricultor.id);
+          transaction.delete(docRef);
+          return Promise.resolve();
+        });
+        resolve("Agricultor eliminado correctamente");
+      } catch (e) {
+        console.log(e);
+        reject("Ha ocurrido un error");
+      }
+    });
+  }
+
   public getAll() {
-    let docRef = this.firestore.collection('agricultores').get();
+    let docRef = this.firebase.collection('agricultores').get();
     let result = [];
     docRef.subscribe((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        //console.log(doc.data()['NOMBRE']);
         let nombre = doc.data()['NOMBRE']
         result.push({ id: doc.id, nombre: nombre });
       });
@@ -44,13 +74,14 @@ export class AgricultorService {
     return this.keymapperService.getAgricultorFirebaseCode(value);
   }
 
+  /*
   public toMap(agricultor: Agricultor): any {
     return {
       id: agricultor.id,
       codigo: agricultor.codigo,
       cedula: agricultor.cedula,
       nombre: agricultor.nombre,
-      fechaNacimiento: agricultor.fechaNacimiento.toString(),
+      fechaNacimiento: agricultor.fechaNacimiento.toDateString(),
       genero: agricultor.genero,
       estadoCivil: agricultor.estadoCivil,
       nivelEducacion: agricultor.nivelEducacion,
@@ -58,9 +89,10 @@ export class AgricultorService {
       telefono: agricultor.telefono,
       isDiscapacitado: agricultor.isDiscapacitado,
       tecnico: agricultor.tecnico,
-      fechaVisita: agricultor.fechaVisita.toString(),
+      fechaVisita: agricultor.fechaVisita.toDateString(),
     }
   }
+  */
 
   private fromMap(data: any): Agricultor {
     return {
@@ -78,33 +110,6 @@ export class AgricultorService {
       tecnico: data[this.firebaseCode("tecnico")],
       fechaVisita: new Date(data[this.firebaseCode("fechaVisita")])
     }
-  }
-
-  getAgricultores(): Observable<Agricultor[]> {
-    return this.firestore.collection('agricultores').snapshotChanges().pipe(
-      map(agricultores => {
-        return agricultores.map((agricultor) => {
-          return this.fromMap(agricultor.payload.doc.data());
-        });
-      })
-    );
-  }
-
-  deleteAgricultor(agricultor: Agricultor): Promise<string> {
-    return new Promise<string>(async (resolve, reject) => {
-      try {
-        await this.firestore.firestore.runTransaction(async transaction => {
-          const collRef = this.firestore.firestore.collection("agricultores");
-          const docRef = collRef.doc(agricultor.id);
-          transaction.delete(docRef);
-          return Promise.resolve();
-        });
-        resolve("Agricultor eliminado correctamente");
-      } catch (e) {
-        console.log(e);
-        reject("Ha ocurrido un error");
-      }
-    });
   }
 
 }
