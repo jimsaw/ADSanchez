@@ -1,0 +1,15 @@
+<div class="table-container">
+  <app-material-table
+    [isLoading]="isTableLoading"
+    [elementData]="data"
+    [columnsInfo]="columnsInfo"
+    (rowClicked)="onItemSelected($event)"
+    (rowTrashcanClicked)="onTrashCanClicked($event)"
+  >
+  </app-material-table>
+  <div class="button-container">
+    <button mat-fab color="accent" (click)="onAddClicked()" aria-label="Añadir">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

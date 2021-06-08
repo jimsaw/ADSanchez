@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormulariosComponent } from './components/formularios/formularios.component';
 import { LineaBaseComponent } from './components/linea-base/linea-base.component';
 import { VerificacionComponent } from './components/verificacion/verificacion.component';
-import { FormularioComponent } from './page/formulario.component';
 
 const routes: Routes = [
   {
@@ -10,6 +10,10 @@ const routes: Routes = [
     children: [
       {
         path: 'lineaBase',
+        component: FormulariosComponent,
+      },
+      {
+        path: 'lineaBase/create',
         component: LineaBaseComponent
       },
       {

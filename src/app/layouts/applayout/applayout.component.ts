@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/modules/core/services/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
+
 @Component({
     selector: 'app-blank-layout',
     templateUrl: './applayout.component.html',
@@ -33,8 +34,11 @@ export class AppLayoutComponent implements OnInit {
     }
 
     logout() {
-        this.toastr.info('Sesion cerrada correctamente', '¡Hasta Luego!');
-        this.authService.logOut();
-        this.router.navigate(['']);
+        this.authService.logOut()
+            .then(() => {
+                this.toastr.info('Sesion cerrada correctamente', '¡Hasta Luego!');
+                this.router.navigate([''])
+            });
+        ;
     }
 }

@@ -1,4 +1,6 @@
-export interface FormularioLineaBase {
+import { Formulario } from "./formulario";
+
+export interface FormularioLineaBase extends Formulario {
     fechaVisita: {
         respuesta: string
     },

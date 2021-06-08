@@ -26,15 +26,19 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    const hasUser$ = this.authService.hasUser();
+    if (hasUser$) {
+      this.router.navigate(['inicio']);
+    }
   }
 
   async onSubmit() {
-    await this.authService.signUp(this.operadorForm.value.username, this.operadorForm.value.password);
-    if (this.authService.isLoggedIn) {
-      this.isSignedIn = true;
-      this.toastr.success('Registro de cuenta exitosa', '¡Completado!');
-      this.router.navigate(['']);
-    }
+    this.authService.signUp(this.operadorForm.value.username, this.operadorForm.value.password)
+      .then(() => {
+        this.isSignedIn = true;
+        this.toastr.success('Registro de cuenta exitosa', '¡Completado!');
+        this.router.navigate(['']);
+      }).catch((error) => console.log(error));
   }
 
   getErrorMessage(formulario) {

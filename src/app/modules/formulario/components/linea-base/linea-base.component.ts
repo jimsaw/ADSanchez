@@ -1,6 +1,8 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Agricultor } from 'src/app/interfaces/agricultor';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
 import { FormularioService } from 'src/app/modules/core/services/formulario/formulario.service';
@@ -11,14 +13,16 @@ import { FormularioService } from 'src/app/modules/core/services/formulario/form
   styleUrls: ['./linea-base.component.css']
 })
 export class LineaBaseComponent implements OnInit {
-  public lineaBaseForm: FormGroup;
-  agricultor;
-  listaAgricultores;
+  lineaBaseForm: FormGroup;
+  agricultor: Agricultor;
+  listaAgricultores: Agricultor[];
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private formularioService: FormularioService,
     private agricultorService: AgricultorService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService
+  ) {
     this.lineaBaseForm = this.formBuilder.group({
       agricultor: new FormControl(''),
       informacionFinca: this.formBuilder.group({
@@ -880,12 +884,26 @@ export class LineaBaseComponent implements OnInit {
       }
     }
     console.log(formularioLineaBaseParam);
-    this.formularioService.saveFormularioLineaBase(this.agricultor, formularioLineaBaseParam, String(new Date))
+    /*
+    this.formularioService.saveFormularioLineaBase(this.agricultor.id, formularioLineaBaseParam, String(new Date))
       .then(value => {
         this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
         this.lineaBaseForm.reset();
       }).catch((message) => {
         this.toastr.error(message, '¡Error!');
+      });
+      */
+    this.formularioService.saveFormInCollection(
+      this.agricultor.id,
+      this.agricultor.nombre,
+      formularioLineaBaseParam,
+      new Date().toLocaleDateString()
+    ).then(value => {
+        this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
+        this.lineaBaseForm.reset();
+      }).catch((e) => {
+        console.log(e);
+        this.toastr.error(e, '¡Error!');
       });
   }
 

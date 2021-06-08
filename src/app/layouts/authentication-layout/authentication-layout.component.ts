@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-authentication-layout',
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationLayoutComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
   }

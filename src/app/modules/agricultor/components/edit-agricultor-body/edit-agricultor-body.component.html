@@ -1,0 +1,137 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>DATOS PERSONALES</mat-card-title>
+      <mat-card-subtitle>AGRICULTOR</mat-card-subtitle>
+    </mat-card-header>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+            <div class="columns m-0">
+                <div class="column is-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Código</mat-label>
+                        <input matInput placeholder="Ex. 55555" formControlName="codigo" name="someUnusualName" autocomplete="off">
+                        <mat-error *ngIf="form.get('codigo').invalid">{{getErrorMessage(form.get('codigo'))}}</mat-error>
+                    </mat-form-field> 
+                </div>
+                <div class="column is-4 is-offset-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Fecha de Nacimiento</mat-label>
+                        <input readonly matInput [matDatepicker]="picker" formControlName="fechaNacimiento" name="someUnusualName" autocomplete="off" [max]=maxDate18Years>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="columns m-0">
+                <div class="column is-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Cédula de Identidad</mat-label>
+                        <input matInput placeholder="Ex. 0945785861" formControlName="cedula" name="someUnusualName" autocomplete="off">
+                        <mat-error *ngIf="form.get('cedula').invalid">{{getErrorMessage(form.get('cedula'))}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="column is-8">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Nombre del Agricultor</mat-label>
+                        <input matInput placeholder="Ex. Jorge Almeida" formControlName="nombre" name="someUnusualName" autocomplete="off">
+                        <mat-error *ngIf="form.get('nombre').invalid">{{getErrorMessage(form.get('nombre'))}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="columns m-0">
+                <div class="column is-4 is-offset-2">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Género</mat-label>
+                        <mat-select formControlName="genero" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let genero of generos" [value]="genero">
+                            {{genero}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="column is-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Presenta Discapacidad</mat-label>
+                        <mat-select formControlName="isDiscapacitado" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let dis of discapacidad" [value]="dis">
+                                {{dis}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="columns m-0">
+                <div class="column is-4 is-offset-2">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Estado Civil</mat-label>
+                        <mat-select formControlName="estadoCivil" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let estado of estadosCiviles" [value]="estado">
+                            {{estado}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="column is-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Nivel de Eduación</mat-label>
+                        <mat-select formControlName="nivelEducacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let edu of educacion" [value]="edu">
+                            {{edu}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <h3 class="mat-h3 mat-subheading-2" >Contacto</h3>
+            <div class="columns m-0">
+                <div class="column is-4 is-offset-1">
+                    <div formArrayName="celulares" class="columns m-0" *ngFor="let celular of getFormArray('celulares').controls; let i = index">
+                        <div [formGroupName]="i">
+                            <mat-form-field appearance="outline" class="full-width">
+                                <mat-label>Celular {{ i + 1 }}</mat-label>
+                                <input matInput placeholder="Ex. 0945316795" formControlName="celular" name="someUnusualName" autocomplete="off">
+                                <mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <button id="delete" *ngIf="getFormArray('celulares').length >= 1" (click)="deleteCelular(i)" mat-flat-button>
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" (click)="addCelular()" mat-flat-button>
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="column is-4 is-offset-1">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Teléfono Convencional</mat-label>
+                        <input matInput placeholder="Ex. 1555777" formControlName="telefono" name="someUnusualName" autocomplete="off">
+                        <mat-error *ngIf="form.get('telefono').invalid">{{getErrorMessage(form.get('telefono'))}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="columns m-0">
+                <div class="column is-8">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Técnico</mat-label>
+                        <input matInput placeholder="Ex. Carlos Macias" formControlName="tecnico" name="someUnusualName" autocomplete="off">
+                        <mat-error *ngIf="form.get('tecnico').invalid">{{getErrorMessage(form.get('tecnico'))}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="column is-4">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label>Fecha de Visita</mat-label>
+                        <input readonly matInput [min]="minDate" [matDatepicker]="picker2" formControlName="fechaVisita" name="someUnusualName" autocomplete="off">
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Guardar</button>
+            <button mat-button  type="reset">Resetear</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

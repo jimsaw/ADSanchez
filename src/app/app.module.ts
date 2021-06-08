@@ -15,16 +15,18 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationLayoutComponent } from './layouts/authentication-layout/authentication-layout.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    AuthenticationLayoutComponent
+    AuthenticationLayoutComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,
@@ -37,13 +39,15 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     ToastrModule.forRoot()
   ],
-  exports: [MaterialModule,
+  exports: [
+    MaterialModule,
     AuthModule,
     FormularioModule,
     AgricultorModule,
     MaterialModule,
     SharedModule,
-    FormsModule],
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

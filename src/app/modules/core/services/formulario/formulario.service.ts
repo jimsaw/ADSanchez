@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
 import { rejects } from 'assert';
-import { Agricultor } from 'src/app/interfaces/agricultor';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Database } from 'src/app/interfaces/database';
+import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { KeymapperService } from '../keymapper/keymapper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FormularioService {
+export abstract class FormularioService implements Database<Formulario> {
 
   constructor(
-    private db: AngularFirestore,
-    private keyMapper: KeymapperService
+    private firebaseObj: AngularFirestore,
+    private keyMapperObj: KeymapperService
   ) { }
 
+  abstract list(): Observable<Formulario[]>;
+
+  abstract set(item: Formulario): Promise<void>;
+
+  abstract delete(item: Formulario): Promise<string>;
 
   writeQuestion(question: string, lastObject: any, lastCollectionRef: CollectionReference, transaction: any) {
     for (let response of Object.keys(lastObject[question])) {
       if (response === "respuesta") {
-        transaction.set(lastCollectionRef.doc(this.keyMapper.getQuestionCode(question)), {
-          id: this.keyMapper.getQuestionCode(question),
-          pregunta: this.keyMapper.getQuestionDescription(question),
+        transaction.set(lastCollectionRef.doc(question), {
+          id: question,
+          pregunta: this.keyMapperObj.getQuestionDescription(question),
           respuesta: lastObject[question][response]
         })
       } else if (response === "preguntas") {
@@ -34,16 +42,16 @@ export class FormularioService {
     }
   }
 
-  saveFormularioLineaBase(agriculorId: string, formularioLineaBase: FormularioLineaBase, date: string) {
-    return new Promise((resolve, reject) => {
-      const agricultorDocRef = this.db.firestore.collection("agricultores").doc(agriculorId);
-      this.db.firestore.runTransaction((transaction) => {
+  saveFormularioLineaBase(agriculorId: string, formularioLineaBase: FormularioLineaBase, date: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const agricultorDocRef = this.firebaseObj.firestore.collection("agricultores").doc(agriculorId);
+      this.firebaseObj.firestore.runTransaction((transaction) => {
         return transaction.get(agricultorDocRef).then((agricultorDoc) => {
           if (!agricultorDoc.exists) {
             reject("ERROR: DOCUMENT DOESN'T EXIST");
           }
           const formularioCollRef = agricultorDocRef.collection("formulariosDeLineaBase");
-          const formularioId = this.db.createId();
+          const formularioId = this.firebaseObj.createId();
           const formularioDocRef = formularioCollRef.doc(formularioId);
           transaction.set(formularioDocRef, {id: formularioId, fecha: date});
           const seccionesCollRef = formularioDocRef.collection("secciones");
@@ -59,6 +67,43 @@ export class FormularioService {
         resolve("OK");
       }).catch((error) => {
         reject(error);
+      });
+    });
+  }
+
+  saveFormInCollection(
+    agricultorId: string,
+    agricultorName: string,
+    formularioLineaBase: FormularioLineaBase,
+    date: String
+  ): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const collRef = this.firebaseObj.firestore.collection("formulariosLineaBase");
+      this.firebaseObj.firestore.runTransaction((transaction) => {
+        return new Promise((resolve, reject) => {
+          const formularioId = this.firebaseObj.createId();
+          const docRef = collRef.doc(formularioId);
+          transaction.set(docRef, {
+            id: formularioId,
+            agricultorId: agricultorId,
+            agricultor: agricultorName,
+            fecha: date
+          });
+          const seccionesCollRef = docRef.collection("secciones");
+          for (let section of Object.keys(formularioLineaBase["secciones"])) {
+            transaction.set(seccionesCollRef.doc(section), {id: section});
+            const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
+            for (let question of Object.keys(formularioLineaBase["secciones"][section]["preguntas"])) {
+              this.writeQuestion(question, formularioLineaBase["secciones"][section]["preguntas"], questionsRef, transaction);
+            }
+          }
+          resolve("OK");
+        });
+      }).then(() => {
+        resolve("COLLECION GUARDADA");
+      }).catch((e) => {
+        console.log(e);
+        reject(e);
       });
     });
   }

@@ -2,6 +2,7 @@ import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { of, pipe } from 'rxjs';
 import { formularioLineaBaseMapper } from 'src/environments/mappers/formularioLineaBase';
+import { agricultorMapper } from 'src/environments/mappers/agricultor';
 
 @Injectable({
   providedIn: 'root'
@@ -39,11 +40,23 @@ export class KeymapperService {
       result = new Object;
       Object.keys(dataMapper).forEach(function (value) {
         result[dataMapper[value].codigo] = dataInterface[value];
+        if(value === "fechaNacimiento" || value === "fechaVisita") {
+          result[dataMapper[value].codigo] = dataInterface[value].toISOString();
+        }
       });
     }
+    result["id"] = dataInterface["id"];
     console.log(result);
     console.log(Object.keys(result).length);
     return result;
+  }
+
+  public getAgricultorFirebaseCode(value: string) {
+    const code = agricultorMapper[value]["codigo"];
+    if (code === "") {
+      return "NO CODE";
+    }
+    return code;
   }
 
   public getQuestionCode(question: string): string {
