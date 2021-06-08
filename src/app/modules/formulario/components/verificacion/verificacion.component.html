@@ -1,1 +1,249 @@
-<p>verificacion works!</p>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>FORMULARIO VERIFICACION</mat-card-title>
+        <mat-card-subtitle>AGRICULTOR</mat-card-subtitle>
+    </mat-card-header>
+    <form [formGroup]="verificacionForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Agricultor</mat-label>
+            <mat-select formControlName="agricultor" name="someUnusualName" autocomplete="off">
+                <mat-option *ngFor="let value of listaAgricultores" [value]="value.id">
+                    {{value.nombre}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        DATOS DE LA FINCA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        INJERTACION
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-injertacion [parentForm]="verificacionForm"></app-injertacion>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        MANEJO DE SUELO
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-manejo-suelo [parentForm]="verificacionForm"></app-manejo-suelo>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        FERTILIZACION
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        BODEGA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        CONTROL DE MALEZAS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        PODA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        MIPE
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        SALUD Y SEGURIDAD OCUPACIONAL
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        REGISTROS DEL PRODUCTOR
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        COSECHA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        FERMENTACION
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        SECADO
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        VENTA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        CONDICIONES LABORALES
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        CONSERVACION DE AGUA Y MANEJO DE DESECHOS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        CONSERVACION DE SUELOS Y BIODIVERSIDAD
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        PROTECCION DE AREAS RIBEREÑAS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        PROTECCIÓN DE ÁREAS DE ALTO VALOR DE CONSERVACIÓN
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        DIVERSIFICACIÓN DE INGRESOS
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        CAPACITACIONES Y BENEFICIOS DEL PROGRAMA
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                CAPACITACION
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion>
+                    <mat-expansion-panel hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                INCENTIVOS
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <app-datos-finca [parentForm]="verificacionForm"></app-datos-finca>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!verificacionForm.valid">Guardar</button>
+            <button mat-button type="reset">Resetear</button>
+        </mat-card-actions>
+    </form>
+</mat-card>

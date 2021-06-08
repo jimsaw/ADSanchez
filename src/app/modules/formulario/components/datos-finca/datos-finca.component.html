@@ -1,0 +1,31 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="datosFinca">
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Ha incrementado hectareaje en su finca?</mat-label>
+                <input matInput formControlName="incrementoHectareajeFinca" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Cuanto?</mat-label>
+                <input matInput formControlName="cantidadAumento" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Mes</mat-label>
+                <input matInput formControlName="mesIncrementoHectareaje" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>Motivo Area Nueva</mat-label>
+                <input matInput formControlName="motivoAreaNueva" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Cual es el uso del area nueva?</mat-label>
+                <input matInput formControlName="usoAreaNueva" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" >
+                <mat-label>¿Incrementó fuera del tamaño de la finca?</mat-label>
+                <input matInput formControlName="incrementoFueraTamanioFinca" name="someUnusualName" autocomplete="off" >
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>
+

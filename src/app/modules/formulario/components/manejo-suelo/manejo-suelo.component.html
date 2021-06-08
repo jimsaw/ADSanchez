@@ -1,0 +1,38 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="manejoSuelo">
+            <mat-form-field appearance="outline">
+                <mat-label>Tipo de suelo:</mat-label>
+                <input matInput formControlName="tipoSuelo:" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿Ha recibido capacitación en la toma de muestras de suelo?</mat-label>
+                <input matInput formControlName="capacitacionTomaMuestrasSuelo" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿Ha realizado análisis de suelo?</mat-label>
+                <input matInput formControlName="analisisSuelo" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PH del suelo</mat-label>
+                <input matInput formControlName="sueloPH" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿Suelos muestran niveles altos de acidez?</mat-label>
+                <input matInput formControlName="suelosNivelesAltosAcidez" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿Ha corregido PH del suelo en finca?</mat-label>
+                <input matInput formControlName="corregidoPHSueloFinca" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿Comó ha corregido PH del suelo?</mat-label>
+                <input matInput formControlName="maneraCorregidoPHSuelo" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Tipo producto</mat-label>
+                <input matInput formControlName="tipoProducto" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

@@ -7,26 +7,6 @@ export const formularioVerificacion = {
         codigo: 'TECNICO',
         pregunta: 'TECNICO'
     },
-    estadoCivil: {
-        codigo: 'SE04_ESTCIV',
-        pregunta: 'ESTADO CIVIL'
-    },
-    nivelEduacion: {
-        codigo: 'SE05_NIVEDUC',
-        pregunta: 'NIVEL DE EDUCACION'
-    },
-    celular1: {
-        codigo: 'SE06_CEL1',
-        pregunta: 'CELULAR 1'
-    },
-    celular2: {
-        codigo: 'SE07_CEL2',
-        pregunta: 'CELULAR 2'
-    },
-    hijosAsistenUnidadEucativa: {
-        codigo: 'FA41_ESCL',
-        pregunta: 'NIÑOS EN EDAD ESCOLAR ESTÁN ASISTIENDO A LAS RESPECTIVAS UNIDADES EDUCATIVAS'
-    },
     incrementoHectareajeFinca: {
         codigo: 'FIN19_INCHA',
         pregunta: 'HA INCREMENTADO HECTAREAJE EN SU FINCA',
@@ -482,5 +462,621 @@ export const formularioVerificacion = {
     impactoRiego: {
         codigo: 'HDE30_IMPR',
         pregunta: 'IMPACTO DEL RIEGO'
+    },
+    practicasConservacionSuelos: {
+        codigo: 'BIO01_SUEL',
+        pregunta: 'PRODUCTOR UTILIZA PRÁCTICAS DE CONSERVACIÓN DE SUELOS'
+    },
+    practicaDeforestacion: {
+        codigo: 'BIO12_DEF',
+        pregunta: 'OBSERVA QUE PRODUCTOR PRACTIQUE DEFORESTACIÓN'
+    },
+    plantadoArbolesSombrioRecient: {
+        codigo: 'BIO16_ARBREC',
+        pregunta: 'HA PLANTADO ÁRBOLES DE SOMBRÍO RECIENTEMENTE',
+    },
+    cuantosArbolesSombrio: {
+        codigo: 'BIO17_NARBREC',
+        pregunta: '¿CUÁNTOS?'
+    },
+    promedioArbolesXHectarea: {
+        codigo: 'BIO18_NARBH',
+        pregunta: 'PROMEDIO DE ÁRBOLES POR HECTÁREA'
+    },
+    reforestadoOrillas: {
+        codigo: 'BIO19_RORIL',
+        pregunta: '¿HA REFORESTADO LAS ORILLAS?'
+    },
+    promedioArbolXHectarea12MAltura: {
+        codigo: 'BIO04_MTR',
+        pregunta: 'PROMEDIO DE ÁRBOLES X HA. QUE SUPERAN LOS 12 METROS DE ALTURA'
+    },
+    especiesDiferentesArbolesXHectarea: {
+        codigo: 'BIO06_ESPAR',
+        pregunta: 'ESPECIES DIFERENTES DE ÁRBOLES QUE EXISTEN X HA'
+    },
+    especiesArbolesEnCultivo: {
+        codigo: 'BIO07_ESPECIE',
+        pregunta: '¿QUÉ ESPECIES DE ÁRBOLES PRESENTA EL CULTIVO?',
+    },
+    especifiqueOtrosEspeciesArboles: {
+        codigo: 'BIO11_OTR',
+        pregunta: 'ESPECIFIQUE OTRAS'
+    },
+    poseeFuenteHidrica: {
+        codigo: 'RIB01_FHID',
+        pregunta: 'POSEE ALGUNA FUENTE HÍDRICA'
+    },
+    nombreFuenteHidrica: {
+        codigo: 'RIB02_NOMBFUENTHIDR',
+        pregunta: 'NOMBRE FUENTE HIDRICA'
+    },
+    especifiqueOtros: {
+        codigo: 'RIB06_OTR',
+        pregunta: 'ESPECIFIQUE OTROS'
+    },
+    consideradaFuenteHidrica: {
+        codigo: 'RIB07_CFHI',
+        pregunta: 'CÓMO SON CONSIDERADAS LAS FUENTES HÍDRICAS'
+    },
+    tipoFuenteHidrica: {
+        codigo: 'RIB08_TIPFUENTHIDR',
+        pregunta: 'TIPO FUENTE HIDRICA'
+    },
+    poseeNacientes: {
+        codigo: 'RIB14_NAC',
+        pregunta: 'SU FINCA POSEE NACIENTES'
+    },
+    cuantasNacientes: {
+        codigo: 'RIB15_NNAC',
+        pregunta: 'CUÁNTAS NACIENTES'
+    },
+    brindaProteccionFuenteHidrica: {
+        codigo: 'RIB16_PROFH',
+        pregunta: 'SE BRINDA PROTECCIÓN A FUENTES HÍDRICAS',
+    },
+    comoBrindaProtFuentHidr: {
+        codigo: 'RIB17_CPRO',
+        pregunta: 'CÓMO (ZONA AMORTIGU.)'
+    },
+    distanciaRequerida: {
+        codigo: 'RIB18_DISTR',
+        pregunta: 'SE CUMPLE CON LAS DISTANCIAS REQUERIDAS'
+    },
+    sueloPresentaProblemaErosion: {
+        codigo: 'RIB19_EROS',
+        pregunta: 'SU SUELO PRESENTA PROBLEMAS DE EROSIÓN'
+    },
+    tipoProblemaErosion: {
+        codigo: 'RIB20_PERO',
+        pregunta: 'TIPO DE PROBLEMA DE EROSIÓN QUE PRESENTA'
+    },
+    necesitaImplementarPracticasMejoraSuelo: {
+        codigo: 'RIB21_MEJS',
+        pregunta: 'SE NECESITA IMPLEMENTAR PRÁCTICAS DE MEJORA DE SUELOS'
+    },
+    comoQuePracticas: {
+        codigo: 'RIB22_COM',
+        pregunta: 'CÓMO PRACTICAS'
+    },
+    gradoPresentanPendientes: {
+        codigo: 'RIB23_GRAD',
+        pregunta: 'GRADO QUE PRESENTAN LAS PENDIENTES'
+    },
+    cuentaConAreaForestales: {
+        codigo: 'RIB24_AFOR',
+        pregunta: 'CUENTA CON ÁREAS FORESTALES'
+    },
+    tipoAreaForestal: {
+        codigo: 'RIB25_TAFOR',
+        pregunta: 'TIPO AREA FORESTAL'
+    },
+    realizaPlanesCorteExtraccionMadera: {
+        codigo: 'RIB26_CORT',
+        pregunta: 'REALIZA PLANES DE CORTE PARA EXTRACCIÓN DE MADERA'
+    },
+    presentaAnexosAreasAltoValor: {
+        codigo: 'RIB27_ANEX',
+        pregunta: 'PRESENTA ANEXOS'
+    },
+    realizaPlanesReforestacion: {
+        codigo: 'RIB28_REFOR',
+        pregunta: 'REALIZA PLANES DE REFORESTACIÓN'
+    },
+    conoceEspeciePeligroExtincionEnFinca: {
+        codigo: 'RIB29_PEXT',
+        pregunta: 'CONOCE ALGUNA ESPECIE EN PELIGRO DE EXTINCIÓN, RARA O AMENAZADA EN SU FINCA'
+    },
+    cualesEspeciesPeligroExtincion: {
+        codigo: 'RIB30_ESPC',
+        pregunta: 'CUALES ESPECIES EN PELIGRO DE EXTINCION'
+    },
+    fincaConsideradaAltoValor: {
+        codigo: 'RIB31_ALTV',
+        pregunta: 'LA FINCA ES CONSIDERADA DE ALTO VALOR'
+    },
+    tipoAltoValor: {
+        codigo: 'RIB32_AVTIPO',
+        pregunta: 'TIPO DE FINCA DE ALTO VALOR'
+    },
+    usoCultivoDiferenteCacao: {
+        codigo: 'FIN15_OBJC',
+        pregunta: 'UD DESTINA LOS CULTIVOS DIFERENTES AL CACAO A'
+    },
+    otraActividadDentroFincaConIngreso: {
+        codigo: 'FIN32_ONF',
+        pregunta: 'REALIZA OTRA ACTIVIDAD DENTRO DE LA FINCA QUE GENERE INGRESOS',
+    },
+    actividadDentroFincaConIngreso: {
+        codigo: 'FIN33_ACTIVONF',
+        pregunta: 'ACTIVIDAD DENTRO FINCA CON INGRESO'
+    },
+    huertosOrganicosEnFinca: {
+        codigo: 'BEN45_HUEROR',
+        pregunta: 'HA IMPLEMENTADO HUERTOS ORGÁNICOS DENTRO DE SU FINCA'
+    },
+    otraActividadFueraFincaConIngreso: {
+        codigo: 'FIN30_OFF',
+        pregunta: 'REALIZA ACTIVIDAD ADICIONAL FUERA DE FINCA QUE GENERE INGRESOS',
+    },
+    actividadFueraFincaConIngreso: {
+        codigo: 'FIN34_ACTIVFUERAF',
+        pregunta: 'ACTIVIDAD FUERA FINCA CON INGRESO'
+    },
+    utilidadCacaoFinoAromaSostenibilidadTrazabilidad: {
+        codigo: 'CAP06_M1UTI',
+        pregunta: 'UTILIDAD CACAO FINO DE AROMA, SOSTENIBILIDAD Y TRAZABILIDAD'
+    },
+    aplicaCacaoFinoAromaSostenibilidadTrazabilidad: {
+        codigo: 'CAP07_M1APL',
+        pregunta: 'APLICA CACAO FINO DE AROMA, SOSTENIBILIDAD Y TRAZABILIDAD'
+    },
+    utilidadBuenasPracticasAgricolas: {
+        codigo: 'CAP10_M2UTI',
+        pregunta: 'UTILIDAD BUENAS PRÁCTICAS AGRÍCOLAS'
+    },
+    aplicaBuenasPracticasAgricolas: {
+        codigo: 'CAP11_M2APL',
+        pregunta: 'APLICA BUENAS PRÁCTICAS AGRÍCOLAS'
+    },
+    utilidadParametrosCalidad: {
+        codigo: 'CAP14_M3UTIL',
+        pregunta: 'UTILIDAD PARÁMETROS DE CALIDAD'
+    },
+    aplicaParametrosCalidad: {
+        codigo: 'CAP15_M3APL',
+        pregunta: 'APLICA PARÁMETROS DE CALIDAD'
+    },
+    utilidadBuenasPracticasSociales: {
+        codigo: 'CAP18_M4UTIL',
+        pregunta: 'UTILIDAD BUENAS PRÁCTICAS SOCIALES'
+    },
+    aplicaBuenasPracticasSociales: {
+        codigo: 'CAP19_M4APL',
+        pregunta: 'APLICA BUENAS PRÁCTICAS SOCIALES'
+    },
+    utilidadBuenasPracticasAmbientales: {
+        codigo: 'CAP22_M5UTIL',
+        pregunta: 'UTILIDAD BUENAS PRÁCTICAS AMBIENTALES'
+    },
+    aplicaBuenasPracticasAmbientales: {
+        codigo: 'CAP23_M5APL',
+        pregunta: 'APLICA BUENAS PRÁCTICAS AMBIENTALES'
+    },
+    utilidadElaboracionProductosOrganicos: {
+        codigo: 'CAP26_T1UTIL',
+        pregunta: 'UTILIDAD ELABORACIÓN DE PRODUCTOS ORGÁNICOS'
+    },
+    aplicaElaboracionProductosOrganicos: {
+        codigo: 'CAP27_T1APL',
+        pregunta: 'APLICA ELABORACIÓN DE PRODUCTOS ORGÁNICOS'
+    },
+    utilidadReproduccionVegetativa: {
+        codigo: 'CAP30_T2UTIL',
+        pregunta: 'UTILIDAD REPRODUCCIÓN VEGETATIVA'
+    },
+    aplicaReproduccionVegetativa: {
+        codigo: 'CAP31_T2APL',
+        pregunta: 'APLICA REPRODUCCIÓN VEGETATIVA'
+    },
+    utilidadPoda: {
+        codigo: 'CAP34_T3UTIL',
+        pregunta: 'UTILIDAD PODA'
+    },
+    aplicaPoda: {
+        codigo: 'CAP35_T3APL',
+        pregunta: 'APLICA PODA'
+    },
+    utilidadApicultura: {
+        codigo: 'CAP38_T4UTIL',
+        pregunta: 'UTILIDAD APICULTURA'
+    },
+    aplicaApicultura: {
+        codigo: 'CAP39_T4APL',
+        pregunta: 'APLICA APICULTURA'
+    },
+    utilidadPorcicultura: {
+        codigo: 'CAP42_T5UTIL',
+        pregunta: 'UTILIDAD PORCICULTURA'
+    },
+    aplicaPorcicultura: {
+        codigo: 'CAP43_T5APL',
+        pregunta: 'APLICA PORCICULTURA'
+    },
+    utilidadPiscicultura: {
+        codigo: 'CAP46_T6UTIL',
+        pregunta: 'UTILIDAD PISCICULTURA'
+    },
+    aplicaPiscicultura: {
+        codigo: 'CAP47_T6APL',
+        pregunta: 'APLICA PISCICULTURA'
+    },
+    utilidadRiego: {
+        codigo: 'CAP50_T7UTIL',
+        pregunta: 'UTILIDAD REIGO'
+    },
+    aplicaRiego: {
+        codigo: 'CAP51_T7APL',
+        pregunta: 'APLICA RIEGO'
+    },
+    utilidadAgroforesteriaDinamica: {
+        codigo: 'CAP69_SAFU',
+        pregunta: 'UTILIDAD AGROFORESTERÍA DINÁMICA'
+    },
+    aplicaAgroforesteriaDinamica: {
+        codigo: 'CAP70_SAFA',
+        pregunta: 'APLICA AGROFORESTERÍA DINÁMICA'
+    },
+    temasAdicionalesGustariaAprender: {
+        codigo: 'CAP58_PROXC',
+        pregunta: 'QUÉ TEMAS ADICIONALES LE GUSTARÍA APRENDER EN PRÓXIMAS CAPACITACIONES'
+    },
+    necesidadesDetectadasFinca: {
+        codigo: 'BEN46_ONEC',
+        pregunta: 'OTRAS NECESIDADES DETECTADAS EN LA FINCA'
+    },
+    estadoPlantasFrutales: {
+        codigo: 'INC01-PLANTFRUT',
+        pregunta: 'ESTADO PLANTAS FRUTALES'
+    },
+    estadoPlantasForestales: {
+        codigo: 'INC02-PLANTFOREST',
+        pregunta: 'ESTADO PLANTAS FORESTALES'
+    },
+    estadoOtrosAmbiental: {
+        codigo: 'INC03-OTROSAMBIENT',
+        pregunta: 'ESTADO OTROS AMBIENTAL'
+    },
+    necesitaPlantasFrutales: {
+        codigo: 'INC04-PLANTFRUT',
+        pregunta: 'NECESITA PLANTAS FRUTALES'
+    },
+    necesitaPlantasForestales: {
+        codigo: 'INC05-PLANTFOREST',
+        pregunta: 'NECESITA PLANTAS FORESTALES'
+    },
+    necesitaOtrosAmbiental: {
+        codigo: 'INC06-OTROSAMBIENT',
+        pregunta: 'NECESITA OTROS AMBIENTAL'
+    },
+    estadoFertilizanteEdafico: {
+        codigo: 'INC07-FERTEDAF',
+        pregunta: 'ESTADO FERTILIZANTE EDAFICO'
+    },
+    estadoFertilizanteFoliar: {
+        codigo: 'INC08-FERTFOLR',
+        pregunta: 'ESTADO FERTILIZANTE FOLIAR'
+    },
+    necesitaFertilizanteEdafico: {
+        codigo: 'INC09-FERTEDAF',
+        pregunta: 'NECESITA FERTILIZANTE EDAFICO'
+    },
+    necesitaFertilizanteFoliar: {
+        codigo: 'INC10-FERTFOLR',
+        pregunta: 'NECESITA FERTILIZANTE FOLIAR'
+    },
+    estadoMotoguadania: {
+        codigo: 'INC11-MOTOGUAD',
+        pregunta: 'ESTADO MOTO GUADAÑA'
+    },
+    estadoMotosierra: {
+        codigo: 'INC12-MOTOSIE',
+        pregunta: 'ESTADO MOTOSIERRA'
+    },
+    estadoPodadoraDeAltura: {
+        codigo: 'INC13-PODADALTU',
+        pregunta: 'ESTADO PODADORA DE ALTURA'
+    },
+    estadoBombaRiego: {
+        codigo: 'INC14-BOMBRIEGO',
+        pregunta: 'ESTADO BOMBA RIEGO'
+    },
+    estadoBombaAMotor: {
+        codigo: 'INC15-BOMBMOT',
+        pregunta: 'ESTADO BOMBA A MOTOR'
+    },
+    estadoOtrosMaquinariaAgricola: {
+        codigo: 'INC16-OTROSMAQAGRI',
+        pregunta: 'ESTADO OTROS MAQUINARIA AGRICOLA'
+    },
+    necesitaMotoguadania: {
+        codigo: 'INC17-MOTOGUAD',
+        pregunta: 'NECESITA MOTO GUADAÑA'
+    },
+    necesitaMotosierra: {
+        codigo: 'INC18-MOTOSIE',
+        pregunta: 'NECESITA MOTO SIERRA'
+    },
+    necesitaPodadoraDeAltura: {
+        codigo: 'INC19-PODADALTU',
+        pregunta: 'NECESITA PODADORA DE ALTURA'
+    },
+    necesitaBombaRiego: {
+        codigo: 'INC20-BOMBRIEGO',
+        pregunta: 'NECESITA BOMBA DE RIEGO'
+    },
+    necesitaBombaAMotor: {
+        codigo: 'INC21-BOMBMOT',
+        pregunta: 'NECESITA BOMBA A MOTOR'
+    },
+    necesitaOtros: {
+        codigo: 'INC22-OTROSMAQAGRI',
+        pregunta: 'NECESITA OTROS MAQUINARIA AGRICOLA'
+    },
+    estadoTijeras: {
+        codigo: 'INC23-TIJERAS',
+        pregunta: 'ESTADO TIJERAS'
+    },
+    estadoSerruchos: {
+        codigo: 'INC24-SERRUCH',
+        pregunta: 'ESTADO SERRUCHOS'
+    },
+    estadoMachetes: {
+        codigo: 'INC25-MACHET',
+        pregunta: 'ESTADO MACHETES'
+    },
+    estadoBaldes: {
+        codigo: 'INC26-BALD',
+        pregunta: 'ESTADO BALDES'
+    },
+    estadoTanques: {
+        codigo: 'INC27-TANQ',
+        pregunta: 'ESTADO TANQUES'
+    },
+    estadoPalas: {
+        codigo: 'INC28-PAL',
+        pregunta: 'ESTADO PALAS'
+    },
+    estadoEPP: {
+        codigo: 'INC29-EPP',
+        pregunta: 'ESTADO EPP'
+    },
+    estadoKitPoda: {
+        codigo: 'INC29-KITPOD',
+        pregunta: 'ESTADO KIT PODA'
+    },
+    estadoKitVivero: {
+        codigo: 'INC30-KITVIVER',
+        pregunta: 'ESTADO KIT VIVERO'
+    },
+    estadoOtrosHerramientas: {
+        codigo: 'INC31-OTRHERRA',
+        pregunta: 'ESTADO OTROS HERRAMIENTAS'
+    },
+    necesitaTijeras: {
+        codigo: 'INC32-TIJER',
+        pregunta: 'NECESITA TIJERAS'
+    },
+    necesitaSerruchos: {
+        codigo: 'INC33-SERRUC',
+        pregunta: 'NECESITA SERRUCHOS'
+    },
+    necesitaMachetes: {
+        codigo: 'INC34-MACHET',
+        pregunta: 'NECESITA MACHETES'
+    },
+    necesitaBaldes: {
+        codigo: 'INC35-BALD',
+        pregunta: 'NECESITA BALDES'
+    },
+    necesitaTanques: {
+        codigo: 'INC36-TANQ',
+        pregunta: 'NECESITA TANQUES'
+    },
+    necesitaPalas: {
+        codigo: 'INC37-PAL',
+        pregunta: 'NECESITA PALAS'
+    },
+    necesitaEPP: {
+        codigo: 'INC38-EPP',
+        pregunta: 'NECESITA EPP'
+    },
+    necesitaKitPoda: {
+        codigo: 'INC39-KITPOD',
+        pregunta: 'NECESITA KIT DE PODA'
+    },
+    necesitaKitVivero: {
+        codigo: 'INC40-KITVIV',
+        pregunta: 'NECESITA KIT DE VIVERO'
+    },
+    necesitaOtrosHerramientas: {
+        codigo: 'INC41-OTRHERR',
+        pregunta: 'NECESITA OTRAS HERRAMIENTAS'
+    },
+    necesitaPlantasCacao800801: {
+        codigo: 'INC42-PLANTCAC800801',
+        pregunta: 'NECESITA PLANTAS CACAO 800-801'
+    },
+    necesitaComboApicola: {
+        codigo: 'INC43-COMBAPIC',
+        pregunta: 'NECESITA COMBO APICOLA'
+    },
+    necesitaPiesCriasInsumos: {
+        codigo: 'INC44-PIEINSU',
+        pregunta: 'NECESITA PIES DE CRIAS E INSUMOS'
+    },
+    necesitaPecesInsumos: {
+        codigo: 'INC45-PECINSUM',
+        pregunta: 'NECESITA PECES E INSUMOS'
+    },
+    necesitaRiego: {
+        codigo: 'INC46-RIEG',
+        pregunta: 'NECESITA REIGO'
+    },
+    necesitaOtrosProyectosInversion: {
+        codigo: 'INC47-OTRPROYINV',
+        pregunta: 'NECESITA OTROS PROYECTOS INVERSION'
+    },
+    disponibilidadInvertirPlantasCacao800801: {
+        codigo: 'INC48-PLANTCAC800801',
+        pregunta: 'DISPONIBILIDAD A INVERTIR EN PLANTAS DE CACAO 800-801'
+    },
+    disponibilidadInvertirComboApicola: {
+        codigo: 'INC49-COMBAPIC',
+        pregunta: 'DISPONIBILIDAD A INVERTIR EN COMBO APICOLA'
+    },
+    disponibilidadInvertirPiesCriasInsumos: {
+        codigo: 'INC50-PIECRIASINSU',
+        pregunta: 'DISPONIBILIDAD A INVERTIR EN PIES DE CRIAS E INSUMOS'
+    },
+    disponibilidadInvertirPecesInsumos: {
+        codigo: 'INC51-PECINSU',
+        pregunta: 'DISPONIBILIDAD A INVERTIR EN PECES E INSUMOS'
+    },
+    disponibilidadInvertirRiego: {
+        codigo: 'INC52-RIEG',
+        pregunta: 'DISPONIBILIDAD A INVERTIR EN RIEGO'
+    },
+    disponibilidadInvertirOtros: {
+        codigo: 'INC53-OTROSPROYINV',
+        pregunta: 'DISPONIBILIDAD A INVERTIR EN OTROS PROYECTOS DE INVERSION'
+    },
+    condAdecuadasPlantasCacao800801: {
+        codigo: 'INC54-PLANTCAC800801',
+        pregunta: 'CONDICIONES ADECUADAS DE PLANTAS DE CACAO 800-801'
+    },
+    condAdecuadasComboApicola: {
+        codigo: 'INC55-COMBBAPIC',
+        pregunta: 'CONDICIONES ADECUADAS DE COMBO APICOLA'
+    },
+    condAdecuadasPiesCriasInsumos: {
+        codigo: 'INC56-PIECRIAINSUM',
+        pregunta: 'CONDICIONES ADECUADAS DE PIES DE CRIAS E INSUMOS'
+    },
+    condAdecuadasPecesInsumos: {
+        codigo: 'INC57-PECINSUM',
+        pregunta: 'CONDICIONES ADECUADAS DE PECES E INSUMOS'
+    },
+    condAdecuadasRiego: {
+        codigo: 'INC58-REIG',
+        pregunta: 'CONDICIONES ADECUADAS DE RIEGO'
+    },
+    condAdecuadasOtros: {
+        codigo: 'INC59-OTROPROYINV',
+        pregunta: 'CONDICIONES ADECUADAS DE OTROS PROYECTOS DE INVERSION'
+    },
+    condEconomicasPlantasCacao800801: {
+        codigo: 'INC60-PLANTCAC800801',
+        pregunta: 'CONDICIONES ECONOMICAS DE PLANTAS DE CACAO 800-801'
+    },
+    condEconomicasComboApicola: {
+        codigo: 'INC61-COMBAPIC',
+        pregunta: 'CONDICIONES ECONOMICAS DE COMBO APICOLA'
+    },
+    condEconomicasPiesCriasInsumos: {
+        codigo: 'INC62-PIECRIAINSUM',
+        pregunta: 'CONDICIONES ECONOMICAS DE PIES DE CRIAS E INSUMO'
+    },
+    condEconomicasPecesInsumos: {
+        codigo: 'INC63-PECINSUM',
+        pregunta: 'CONDICIONES ECONOMICAS DE PECES E INSUMOS'
+    },
+    condEconomicasRiego: {
+        codigo: 'INC64-RIEGO',
+        pregunta: 'CONDICIONES ECONOMICAS DE RIEGO'
+    },
+    condEconomicasOtros: {
+        codigo: 'INC65-OTROPROYINV',
+        pregunta: 'CONDICIONES ECONOMICAS DE OTROS PROYECTOS DE INVERSION'
+    },
+    necesitaCajonFermentacion: {
+        codigo: 'INC66-CAJFERMT',
+        pregunta: 'NECESITA CAJON FERMENTACION'
+    },
+    necesitaMarquesinas: {
+        codigo: 'INC67-MARQUE',
+        pregunta: 'NECESITA MARQUESINAS'
+    },
+    necesitaTendales: {
+        codigo: 'INC68-TEND',
+        pregunta: 'NECESITA TENDALES'
+    },
+    necesitaSecadoras: {
+        codigo: 'INC69-SECAD',
+        pregunta: 'NECESITA SECADORAS'
+    },
+    necesitaOtrosCalidadPostCosecha: {
+        codigo: 'INC70-OTROCALPOSCOSE',
+        pregunta: 'NECESITA OTROS CALIDAD DE POST COSECHA'
+    },
+    disponibilidadInvertirCajonFermentacion: {
+        codigo: 'INC71-CAJFERMT',
+        pregunta: 'DISPONIBILIDAD A INVERTIR CAJON FERMENTACION'
+    },
+    disponibilidadInvertirMarquesinas: {
+        codigo: 'INC72-CAJFERMT',
+        pregunta: 'DISPONIBILIDAD A INVERTIR MARQUESINAS'
+    },
+    disponibilidadInvertirTendales: {
+        codigo: 'INC73-CAJFERMT',
+        pregunta: 'DISPONIBILIDAD A INVERTIR TENDALES'
+    },
+    disponibilidadInvertirSecadoras: {
+        codigo: 'INC74-CAJFERMT',
+        pregunta: 'DISPONIBILIDAD A INVERTIR SECADORAS'
+    },
+    disponibilidadInvertirOtrosCalidadPostCosecha: {
+        codigo: 'INC75-CAJFERMT',
+        pregunta: 'DISPONIBILIDAD A INVERTIR OTROS CALIDAD DE POST COSECHA'
+    },
+    condAdecuadasFermentacion: {
+        codigo: 'INC76-CAJFER',
+        pregunta: 'CONDICIONES ADECUADAS CAJON FERMENTACION'
+    },
+    condAdecuadasMarquesinas: {
+        codigo: 'INC77-MARQUE',
+        pregunta: 'CONDICIONES ADECUADAS MARQUESINAS'
+    },
+    condAdecuadasTendales: {
+        codigo: 'INC78-TENDA',
+        pregunta: 'CONDICIONES ADECUADAS TENDALES'
+    },
+    condAdecuadasSecadoras: {
+        codigo: 'INC79-SECAD',
+        pregunta: 'CONDICIONES ADECUADAS SECADORAS'
+    },
+    condAdecuadasOtrosCalidadPostCosecha: {
+        codigo: 'INC80-OTROSCALPOSTCOSECH',
+        pregunta: 'CONDICIONES ADECUADAS OTROS CALDIAD POST COSECHA'
+    },
+    condEconomicasFermentacion: {
+        codigo: 'INC81-FERMENT',
+        pregunta: 'CONDICIONES ECONOMICAS CAJON FERMENTACION'
+    },
+    condEconomicasMarquesinas: {
+        codigo: 'INC82-MARQUE',
+        pregunta: 'CONDICIONES ECONOMICAS MARQUESINAS'
+    },
+    condEconomicasTendales: {
+        codigo: 'INC83-TENDA',
+        pregunta: 'CONDICIONES ECONOMICAS TENDALES'
+    },
+    condEconomicasSecadoras: {
+        codigo: 'INC84-SECADOR',
+        pregunta: 'CONDICIONES ECONOMICAS SECADORAS'
+    },
+    condEconomicasOtrosCalidadPostCosecha: {
+        codigo: 'INC85-OTROCALPOSTCOSECH',
+        pregunta: 'CONDICIONES ECONOMICAS OTROS CALIDAD POST COSECHA'
     }
 }

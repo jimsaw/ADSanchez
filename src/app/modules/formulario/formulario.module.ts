@@ -26,9 +26,12 @@ import { IncrementarProductividadComponent } from './components/incrementar-prod
 import { MejorarCalidadCacaoComponent } from './components/mejorar-calidad-cacao/mejorar-calidad-cacao.component';
 import { DiversificacionIngresosComponent } from './components/diversificacion-ingresos/diversificacion-ingresos.component';
 import { PreguntasAdicionalesComponent } from './components/preguntas-adicionales/preguntas-adicionales.component';
+import { DatosFincaComponent } from './components/datos-finca/datos-finca.component';
+import { InjertacionComponent } from './components/injertacion/injertacion.component';
+import { ManejoSueloComponent } from './components/manejo-suelo/manejo-suelo.component';
 
 @NgModule({
-  declarations: [FormularioComponent, LineaBaseComponent, VerificacionComponent, InformacionFincaComponent, HectareajeComponent, CacaoCNNComponent, CacaoNacionalComponent, CacaoNacionalNuevosClonesComponent, OrigenPlantasComponent, InformacionFamiliaComponent, PracticasAgricolasComponent, SaludSeguridadOcupacionalComponent, CosechaComponent, VentaComponent, NivelAsociatividadComponent, CondicionesLaboralesComponent, ServiciosBasicosComponent, ConservacionRecursosManejoDesechosComponent, IncrementarProductividadComponent, MejorarCalidadCacaoComponent, DiversificacionIngresosComponent, PreguntasAdicionalesComponent],
+  declarations: [FormularioComponent, LineaBaseComponent, VerificacionComponent, InformacionFincaComponent, HectareajeComponent, CacaoCNNComponent, CacaoNacionalComponent, CacaoNacionalNuevosClonesComponent, OrigenPlantasComponent, InformacionFamiliaComponent, PracticasAgricolasComponent, SaludSeguridadOcupacionalComponent, CosechaComponent, VentaComponent, NivelAsociatividadComponent, CondicionesLaboralesComponent, ServiciosBasicosComponent, ConservacionRecursosManejoDesechosComponent, IncrementarProductividadComponent, MejorarCalidadCacaoComponent, DiversificacionIngresosComponent, PreguntasAdicionalesComponent, DatosFincaComponent, InjertacionComponent, ManejoSueloComponent],
   imports: [
     CommonModule,
     FormularioRoutingModule,
