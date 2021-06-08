@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgricultorModule } from './modules/agricultor/agricultor.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { FormularioModule } from './modules/formulario/formulario.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module';
 import { CoreModule } from './modules/core/core.module';
@@ -17,12 +16,14 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ToastrModule } from 'ngx-toastr';
+import { FormularioLineaBaseModule } from './modules/formulario-linea-base/formulario-linea-base.module';
+import { FormularioVerificacionModule } from './modules/formulario-verificacion/formulario-verificacion.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    AuthenticationLayoutComponent,
+    AuthenticationLayoutComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -30,8 +31,9 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    FormularioModule,
     AgricultorModule,
+    FormularioLineaBaseModule,
+    FormularioVerificacionModule,
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
@@ -42,7 +44,6 @@ import { ToastrModule } from 'ngx-toastr';
   exports: [
     MaterialModule,
     AuthModule,
-    FormularioModule,
     AgricultorModule,
     MaterialModule,
     SharedModule,

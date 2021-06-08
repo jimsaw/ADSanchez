@@ -49,7 +49,7 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
   }
 
   onAddClicked(): void {
-    this.router.navigate(['inicio', 'formularios', 'lineaBase', 'create']);
+    this.router.navigate(['inicio', 'formulariosLineaBase', 'create']);
   }
 
 }

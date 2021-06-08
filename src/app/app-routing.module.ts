@@ -15,8 +15,12 @@ const routes: Routes = [
     data: { navbar: true },
     children: [
       {
-        path: 'formularios',
-        loadChildren: () => import('./modules/formulario/formulario.module').then(m => m.FormularioModule)
+        path: 'formulariosLineaBase',
+        loadChildren: () => import('./modules/formulario-linea-base/formulario-linea-base.module').then(m => m.FormularioLineaBaseModule)
+      },
+      {
+        path: 'formulariosVerificacion',
+        loadChildren: () => import('./modules/formulario-verificacion/formulario-verificacion.module').then(m => m.FormularioVerificacionModule)
       },
       {
         path: 'agricultores',

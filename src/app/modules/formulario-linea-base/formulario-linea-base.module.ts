@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FormularioRoutingModule } from './formulario-routing.module';
-import { LineaBaseComponent } from './components/linea-base/linea-base.component';
-import { VerificacionComponent } from './components/verificacion/verificacion.component';
+import { FormularioLineaBaseRoutingModule } from './formulario-linea-base-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { LineaBaseComponent } from './components/linea-base/linea-base.component';
 import { InformacionFincaComponent } from './components/sections/informacion-finca/informacion-finca.component';
 import { HectareajeComponent } from './components/sections/hectareaje/hectareaje.component';
 import { CacaoCNNComponent } from './components/sections/cacao-cnn/cacao-cnn.component';
@@ -25,16 +24,13 @@ import { IncrementarProductividadComponent } from './components/sections/increme
 import { MejorarCalidadCacaoComponent } from './components/sections/mejorar-calidad-cacao/mejorar-calidad-cacao.component';
 import { DiversificacionIngresosComponent } from './components/sections/diversificacion-ingresos/diversificacion-ingresos.component';
 import { PreguntasAdicionalesComponent } from './components/sections/preguntas-adicionales/preguntas-adicionales.component';
-import { SharedModule } from '../shared/shared.module';
 import { FormulariosComponent } from './components/formularios/formularios.component';
-import { DatosFincaComponent } from './components/datos-finca/datos-finca.component';
-import { InjertacionComponent } from './components/injertacion/injertacion.component';
-import { ManejoSueloComponent } from './components/manejo-suelo/manejo-suelo.component';
+
+
 
 @NgModule({
   declarations: [
     LineaBaseComponent,
-    VerificacionComponent,
     InformacionFincaComponent,
     HectareajeComponent,
     CacaoCNNComponent,
@@ -55,17 +51,14 @@ import { ManejoSueloComponent } from './components/manejo-suelo/manejo-suelo.com
     DiversificacionIngresosComponent,
     PreguntasAdicionalesComponent,
     FormulariosComponent,
-    DatosFincaComponent,
-    InjertacionComponent,
-    ManejoSueloComponent
   ],
   imports: [
     CommonModule,
-    FormularioRoutingModule,
+    FormularioLineaBaseRoutingModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule
   ]
 })
-export class FormularioModule { }
+export class FormularioLineaBaseModule { }
