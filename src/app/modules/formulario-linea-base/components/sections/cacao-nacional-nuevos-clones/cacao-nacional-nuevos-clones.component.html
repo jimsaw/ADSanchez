@@ -1,10 +1,30 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="cacaoNacionalNuevosClones">
-            <mat-form-field appearance="outline" >
-                <mat-label>Uso Anterior del Area Nueva</mat-label>
-                <input matInput formControlName="usoAnteriorAreaNueva" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div id="contenido" formGroupName="cacaoNacionalNuevosClones">
+            <div class="columns-flex">
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>Uso Anterior del Area Nueva</mat-label>
+                    <mat-select formControlName="usoAnteriorAreaNueva" [(ngModel)]="selectedUso" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let uso of usosAnteriores" [value]="uso">{{uso}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2">
+                    <mat-label>Especifique:</mat-label>
+                    <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>Que Variedad Tiene</mat-label>
+                    <mat-select formControlName="tipoVariedad" [(ngModel)]="tipoVariedad" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let uso of usosAnteriores" [value]="uso">{{uso}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2">
+                    <mat-label>Especifique:</mat-label>
+                    <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+            </div>
             <mat-form-field appearance="outline" >
                 <mat-label>Que Variedad Tiene</mat-label>
                 <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">

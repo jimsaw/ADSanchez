@@ -25,7 +25,6 @@ export class EditAgricultorBodyComponent implements OnInit {
   maxDate18Years: Date;
 
   form = new FormGroup({
-    codigo: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(5)]),
     cedula: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(10), Validators.maxLength(10)]),
     nombre: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("^[a-zA-Z ]*$")]),
     fechaNacimiento: new FormControl('', Validators.required),
@@ -72,7 +71,6 @@ export class EditAgricultorBodyComponent implements OnInit {
 
   setFormDefaultValues(): void {
     if (!this.isRecordEmpty()) {
-      this.getFormItem('codigo').setValue(this.agricultor.codigo);
       this.getFormItem('cedula').setValue(this.agricultor.cedula);
       this.getFormItem('nombre').setValue(this.agricultor.nombre);
       this.getFormItem('fechaNacimiento').setValue(this.agricultor.fechaNacimiento);
