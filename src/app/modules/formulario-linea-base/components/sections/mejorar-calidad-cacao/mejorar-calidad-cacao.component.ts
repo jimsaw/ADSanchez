@@ -10,6 +10,18 @@ export class MejorarCalidadCacaoComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  proyectos: string[] = [
+    "BANDEJAS O CAJONES DE FERMENTACION",
+    "TENDALES ELEVADOS DE CAÑA",
+    "SECADORAS COMUNITARIAS"
+  ];
+
+  dispuesto: string;
+  hayAgrupacion: string;
+  opciones: string[] = [
+    "SI", "NO"
+  ]
+
   constructor() { }
 
   ngOnInit(): void {

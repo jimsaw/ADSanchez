@@ -1,22 +1,32 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="cosecha">
-            <mat-form-field appearance="outline" >
-                <mat-label>Sus tumbas las realiza:</mat-label>
-                <input matInput formControlName="periodoCadaTumba" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Latas de cacao fresco por tumba</mat-label>
-                <input matInput formControlName="latasCacaoXTumba" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Escurrido y Secado CCN51</mat-label>
-                <input matInput formControlName="realizaEscurridoSecadoCCN51" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Cuantos dias fermenta el cacao?</mat-label>
-                <input matInput formControlName="diasFermentadoCacao" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
+        <div id="contenido" formGroupName="cosecha">
+            <div class="columns flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Sus tumbas las realiza:</mat-label>
+                    <mat-select formControlName="periodoCadaTumba" [(ngModel)]="periodoTumba" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let periodo of periodosTumba" [value]="periodo">{{periodo}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Latas de cacao fresco cosechadas por tumba</mat-label>
+                    <input matInput formControlName="latasCacaoXTumba" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>¿Realiza Escurrido y Presecado para el CCN51?</mat-label>
+                    <mat-select formControlName="realizaEscurridoSecadoCCN51" [(ngModel)]="hayEscurrido" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>¿Cuántos dias fermenta el cacao?</mat-label>
+                    <input matInput formControlName="diasFermentadoCacao" name="someUnusualName" autocomplete="off" >
+                </mat-form-field>
+            </div>
         </div>
     </mat-card-content>
 </form>

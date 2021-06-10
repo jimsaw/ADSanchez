@@ -10,6 +10,10 @@ export class PreguntasAdicionalesComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  hayAreaLibre: string;
+  necesitaRehab: string;
+  opciones: string[] = ["SI", "NO"];
+
   constructor() { }
 
   ngOnInit(): void {

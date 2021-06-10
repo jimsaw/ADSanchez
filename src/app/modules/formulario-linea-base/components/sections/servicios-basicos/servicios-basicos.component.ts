@@ -10,6 +10,12 @@ export class ServiciosBasicosComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  agua: string;
+  tiposAgua: string[] = ["POTABLE", "ENTUBADA", "POZO", "VERTIENTE NAT", "LLUVIA", "ESTERO", "RIO", "OTRO"];
+
+  hayEnergia: string;
+  opciones: string[] = ["SI", "NO"];
+
   constructor() { }
 
   ngOnInit(): void {

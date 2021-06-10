@@ -10,6 +10,16 @@ export class ConservacionRecursosManejoDesechosComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  tieneConocimiento: string;
+  hayContaminacion: string;
+  hayArboles: string;
+  hayEspacio: string;
+  compraProductos: string;
+  opciones: string[] = ["SI", "NO"];
+
+  lugarDesecho: string;
+  lugaresDesecho: string[] = ["SERVICIO HIGIÉNICO", "POZO SÉPTICO", "LETRINA", "NINGUNO"];
+
   constructor() { }
 
   ngOnInit(): void {

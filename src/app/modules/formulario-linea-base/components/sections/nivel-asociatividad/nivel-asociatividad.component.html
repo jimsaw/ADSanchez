@@ -1,38 +1,64 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="nivelAsociatividad">
-            <mat-form-field appearance="outline" >
-                <mat-label>Pertenece a Alguna Asociacion:</mat-label>
-                <input matInput formControlName="perteneceAsocProgrCertif" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Nombre Asociacion</mat-label>
-                <input matInput formControlName="nombreAsociacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Cantidad de Miembros</mat-label>
-                <input matInput formControlName="cantidadMiembros" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Recibe beneficios?</mat-label>
-                <input matInput formControlName="recibeBeneficios" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Que tipo de beneficio?</mat-label>
-                <input matInput formControlName="tiposBeneficios" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Recibe ayuda de otra institucion?</mat-label>
-                <input matInput formControlName="ayudaOtraInstitucion" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Nombre Institucion</mat-label>
-                <input matInput formControlName="nombreOtraInstitucion" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Tipo de ayuda</mat-label>
-                <input matInput formControlName="tipoAyuda" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
+        <div id="contenido" formGroupName="nivelAsociatividad">
+            <div class="columns-flex">
+                <mat-form-field class="column-item-full" appearance="outline" >
+                    <mat-label>Pertenece a una Organización/Programa/Certificación de Cacao</mat-label>
+                    <mat-select formControlName="perteneceAsocProgrCertif" [(ngModel)]="hayAsociacion" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="hayAsociacion === 'SI'">
+                <div class="columns-flex">
+                    <mat-form-field class="column-item-6" appearance="outline" >
+                        <mat-label>Nombre de Organización/Programa/Certificación</mat-label>
+                        <input matInput formControlName="nombreAsociacion" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field class="column-item-3" appearance="outline" >
+                        <mat-label>Cantidad de Miembros</mat-label>
+                        <input matInput formControlName="cantidadMiembros" name="someUnusualName" autocomplete="off" >
+                    </mat-form-field>
+                </div>
+                <div class="columns-flex">
+                    <mat-form-field class="column-item-3" appearance="outline" >
+                        <mat-label>¿Recibe beneficios?</mat-label>
+                        <mat-select formControlName="recibeBeneficios" [(ngModel)]="hayBeneficios" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div *ngIf="hayBeneficios === 'SI'" class="columns-flex">
+                    <mat-form-field class="column-item-3" appearance="outline" >
+                        <mat-label>¿Que tipo de beneficios?</mat-label>
+                        <mat-select formControlName="tiposBeneficios" [(ngModel)]="beneficio" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let ben of tiposBeneficio" [value]="ben">{{ben}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="beneficio === 'OTRO'" class="column-item-6">
+                        <mat-label>Especifique:</mat-label>
+                        <input matInput formControlName="tiposBeneficios" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>¿Recibe ayuda de otra institucion?</mat-label>
+                    <mat-select formControlName="ayudaOtraInstitucion" [(ngModel)]="recibeAyuda" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="recibeAyuda === 'SI'" class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Nombre Institucion</mat-label>
+                    <input matInput formControlName="nombreOtraInstitucion" name="someUnusualName" autocomplete="off" >
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Tipo de ayuda</mat-label>
+                    <input matInput formControlName="tipoAyuda" name="someUnusualName" autocomplete="off" >
+                </mat-form-field>
+            </div>
         </div>
     </mat-card-content>
 </form>

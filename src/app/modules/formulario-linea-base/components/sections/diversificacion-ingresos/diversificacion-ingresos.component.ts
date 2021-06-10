@@ -10,6 +10,19 @@ export class DiversificacionIngresosComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  proyectos: string[] = [
+    "HUERTOS ORGANICOS",
+    "DESARROLLO DE VIVEROS",
+    "DESARROLLO Y VENTA DE FERTILIZANTES",
+    "REHABILITACIÓN DE FINCA",
+    "BRIGADA DE PODADORES"
+  ];
+
+  tieneExperiencia: string;
+  opciones: string[] = [
+    "SI", "NO"
+  ]
+
   constructor() { }
 
   ngOnInit(): void {

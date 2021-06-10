@@ -1,26 +1,44 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="mejorarCalidadCacao">
-            <mat-form-field appearance="outline" >
-                <mat-label>Bandejas o cajones de Fermentacion</mat-label>
-                <input matInput formControlName="bandejasCajonesFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Dispuesto hacerlo por su cuenta</mat-label>
-                <input matInput formControlName="dispuestoHacerloPropiaCuenta" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Tendales elevados por caña</mat-label>
-                <input matInput formControlName="tendalesElevadosCania" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Secadoras comunitarias</mat-label>
-                <input matInput formControlName="secadorasComunitarias" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Cuenta con agrupacion de vecinos</mat-label>
-                <input matInput formControlName="contarAgrupacionParaProyecto" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div id="contenido" formGroupName="mejorarCalidadCacao">
+            <div class="columns-flex">
+                <ul class="column-item-full">
+                    <li *ngFor="let proyecto of proyectos; index as i">
+                      <mat-checkbox formControlName="variedadesSembradasCalificacion">
+                        {{proyecto}}
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+            </div>
+            <mat-divider [inset]="true" class="space-down"></mat-divider>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>¿Está dispuesto a hacerlo por su cuenta?</mat-label>
+                    <mat-select formControlName="dispuestoHacerloPropiaCuenta" [(ngModel)]="dispuesto" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>¿Cuenta con agrupacion de vecinos para trabajar en el proyecto?</mat-label>
+                    <mat-select formControlName="contarAgrupacionParaProyecto" [(ngModel)]="hayAgrupacion" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <!-- div>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Bandejas o cajones de Fermentacion</mat-label>
+                    <input matInput formControlName="bandejasCajonesFermentacion" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Tendales elevados por caña</mat-label>
+                    <input matInput formControlName="tendalesElevadosCania" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+                <mat-form-field appearance="outline" >
+                    <mat-label>Secadoras comunitarias</mat-label>
+                    <input matInput formControlName="secadorasComunitarias" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+            </div -->
         </div>
     </mat-card-content>
 </form>
