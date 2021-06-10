@@ -10,49 +10,61 @@
                 </mat-form-field>
                 <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2">
                     <mat-label>Especifique:</mat-label>
-                    <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="usoAnteriorAreaNueva" name="someUnusualName" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
                 <mat-form-field class="column-item-3" appearance="outline">
                     <mat-label>Que Variedad Tiene</mat-label>
                     <mat-select formControlName="tipoVariedad" [(ngModel)]="tipoVariedad" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let uso of usosAnteriores" [value]="uso">{{uso}}</mat-option>
+                        <mat-option *ngFor="let variedad of variedades" [value]="variedad">{{variedad}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2">
+                <mat-form-field *ngIf="tipoVariedad === 'OTRO'" class="column-item-2">
                     <mat-label>Especifique:</mat-label>
                     <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
                 </mat-form-field>
             </div>
-            <mat-form-field appearance="outline" >
-                <mat-label>Que Variedad Tiene</mat-label>
-                <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Especifique</mat-label>
-                <input matInput formControlName="especifiqueOtros" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Las Variedades Sembradas muestran ser:</mat-label>
-                <input matInput formControlName="variedadesSembradasCalificacion" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Plantulas Adaptacion Condiciones Edafoclimaticas</mat-label>
-                <input matInput formControlName="plantulasCondicionesEdafoclimaticas" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Plantulas Rendimiento</mat-label>
-                <input matInput formControlName="plantulasRendimiento" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Plantulas Vigor de la Planta</mat-label>
-                <input matInput formControlName="plantulasVigorPlanta" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Plantulas Resistencia a Enfermedades</mat-label>
-                <input matInput formControlName="plantulasResistenciaEnfermedades" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
+            <div class="columns-flex">
+                <ul class="column-item-full">
+                    <h1>Las variedades sembradas muestran ser:</h1>
+                    <li style="display: inline;" *ngFor="let variedad of variedadesSembradasClas; index as i">
+                      <mat-checkbox formControlName="variedadesSembradasCalificacion" (change)="$event ? selection.toggle(i) : null" [checked]="selection.isSelected(i)">
+                        {{variedad}}
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+            </div>
+            <mat-divider [inset]="true" class="space-down"></mat-divider>
+            <h1>Sobre las plantulas:</h1>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>Adaptacion Condiciones Edafoclimaticas</mat-label>
+                    <mat-select formControlName="plantulasCondicionesEdafoclimaticas" [(ngModel)]="optAdaptacion" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Rendimiento</mat-label>
+                    <mat-select formControlName="plantulasRendimiento" [(ngModel)]="optRendimiento" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Vigor de la Planta</mat-label>
+                    <mat-select formControlName="plantulasVigorPlanta" [(ngModel)]="optVigor" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Resistencia a Enfermedades</mat-label>
+                    <mat-select formControlName="plantulasResistenciaEnfermedades" [(ngModel)]="optResistencia" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> 
         </div>
     </mat-card-content>
 </form>

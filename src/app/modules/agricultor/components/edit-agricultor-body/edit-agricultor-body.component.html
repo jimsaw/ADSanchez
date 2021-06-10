@@ -87,7 +87,7 @@
                             </mat-form-field>
                         </div>
                         <div class="column is-1 is-2-mobile">
-                            <button id="delete" *ngIf="getFormArray('celulares').length >= 1" (click)="deleteCelular(i)" mat-flat-button>
+                            <button id="delete" *ngIf="getFormArray('celulares').length > 1" (click)="deleteCelular(i)" mat-flat-button>
                                 <mat-icon>clear</mat-icon>
                             </button>
                         </div>
@@ -110,8 +110,7 @@
                 <div class="column is-8">
                     <mat-form-field appearance="outline" class="full-width">
                         <mat-label>Técnico</mat-label>
-                        <input matInput placeholder="Ex. Carlos Macias" formControlName="tecnico" name="someUnusualName" autocomplete="off">
-                        <mat-error *ngIf="form.get('tecnico').invalid">{{getErrorMessage(form.get('tecnico'))}}</mat-error>
+                        <input readonly matInput [value]="tecnicoService.loggedTecnico.nombre" name="someUnusualName" autocomplete="off">
                     </mat-form-field>
                 </div>
                 <div class="column is-4">

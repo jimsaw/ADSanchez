@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/modules/core/services/auth/auth.service';
+import { TecnicoService } from 'src/app/modules/core/services/tecnico/tecnico.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-log-in',
@@ -20,7 +22,9 @@ export class LogInComponent implements OnInit {
 
   constructor(private router: Router,
     public authService: AuthService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private tecnicoService: TecnicoService
+  ) { }
 
   ngOnInit(): void {
     const hasUser$ = this.authService.hasUser();

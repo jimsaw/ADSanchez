@@ -2,8 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Agricultor } from 'src/app/interfaces/agricultor';
+import { Tecnico } from 'src/app/interfaces/tecnico';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
 import { KeymapperService } from 'src/app/modules/core/services/keymapper/keymapper.service';
+import { TecnicoService } from 'src/app/modules/core/services/tecnico/tecnico.service';
 import { environment } from 'src/environments/environment';
 import { EditAgricultorDialogComponent } from '../edit-agricultor-dialog/edit-agricultor-dialog.component';
 
@@ -42,9 +44,11 @@ export class EditAgricultorBodyComponent implements OnInit {
     private agricultorService: AgricultorService,
     @Inject(MAT_DIALOG_DATA) public agricultorPassed: Agricultor,
     public dialogRef: MatDialogRef<EditAgricultorDialogComponent>,
+    public tecnicoService: TecnicoService
   ) { }
 
   ngOnInit() {
+    this.tecnicoService.fetch();
     this.agricultor = this.agricultorPassed;
     this.generos = environment.constantes.agricultor.genero;
     this.estadosCiviles = environment.constantes.agricultor.estadoCivil;

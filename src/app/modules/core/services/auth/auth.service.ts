@@ -27,4 +27,9 @@ export class AuthService {
   hasUser() {
     return this.firebaseAuth.authState;
   }
+
+  getUser() {
+    return this.firebaseAuth.user;
+  }
+
 }
