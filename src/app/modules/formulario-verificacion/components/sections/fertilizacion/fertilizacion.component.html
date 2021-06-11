@@ -1,0 +1,104 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="fertilizacion">
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>FERTILIZA SUS CACAOTALES</mat-label>
+                    <mat-select formControlName="fertilizaCacaotales" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>¿QUÉ TIPO DE PRODUCTO UTILIZA?</mat-label>
+                    <mat-select formControlName="tipoProductoUsado" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of productoFertilizaCacaotal" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>USA FERTILIZANTE EDÁFICO</mat-label>
+                    <mat-select formControlName="usaFertilizanteEdafico" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>CUÁNTAS VECES AL AÑO</mat-label>
+                    <mat-select formControlName="vecesUsadoAlAnioFertilizanteEdafico" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of vecesAlAnio" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>USA FERTILIZANTE FOLIAR</mat-label>
+                    <mat-select formControlName="usaFertilizanteFoliar" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>CUÁNTAS VECES AL AÑO</mat-label>
+                    <mat-select formControlName="vecesUsadoAlAnioFertilizanteFoliar" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of vecesAlAnio" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>HA RECIBIDO FERTILIZANTE / KITS GRATUITOS DE A&D SANCHEZ</mat-label>
+                    <mat-select formControlName="recibidoFertilizanteKits" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>TIPO FERTILIZANTE RECIBIDO</mat-label>
+                    <mat-select formControlName="tipoFertilizanteRecibido" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of tipoFertilizanteRecibido" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>CUÁL ES SU PERCEPCIÓN SOBRE LA EFECTIVIDAD DE DICHO FERTILIZANTE</mat-label>
+                    <mat-select formControlName="opinionEfectividadFertilizante" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of percepcionFertilizanteRecibido" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>¿REPETIRÍA LA COMPRA CON UN 20% DE DESCUENTO?</mat-label>
+                    <mat-select formControlName="repetirCompraConDescuento" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>HA DISMINUIDO USO DE PRODUCTOS QUÍMICOS POR ORGÁNICOS</mat-label>
+                    <mat-select formControlName="disminuidoProductosQuimicosPorOrganicos" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</form>

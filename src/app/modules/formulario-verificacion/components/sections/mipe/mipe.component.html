@@ -1,0 +1,30 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="MIPE">
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA PRÁCTICAS DE MIPE</mat-label>
+                <input matInput formControlName="realizaPracticasMPE" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>TIPO DE CONTROL</mat-label>
+                <input matInput formControlName="tipoControlMPE" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CON LA APLICACIÓN REALIZADA SE CORRIGIÓ LOS PROBLEMAS DE MIPE DETECTADOS</mat-label>
+                <input matInput formControlName="corrigioProblemasMPE" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>LA FINCA SE PUEDE CONSIDERAR LIBRE DE APLICACIÓN QUÍMICA</mat-label>
+                <input matInput formControlName="fincaLibreAplicacionQuimica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>SABE COMO CONTROLAR LAS RESPECTIVAS ENFERMEDADES</mat-label>
+                <input matInput formControlName="controlaEnfermedades" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>DESDE QUE APLICA CRITERIOS APRENDIDOS EN CAPACITACIÓN Y ASIST. TÉCNICA HA VISTO REDUCCIÓN EN INCIDENCIA DE PLAGAS Y ENFERMEDADES</mat-label>
+                <input matInput formControlName="reduccionIncidenciaPlagasEnfermedades" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

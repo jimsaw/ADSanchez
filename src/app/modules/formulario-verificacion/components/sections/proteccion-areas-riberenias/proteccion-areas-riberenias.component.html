@@ -1,0 +1,46 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="proteccionAreasRiberenias">
+            <mat-form-field appearance="outline">
+                <mat-label>POSEE ALGUNA FUENTE HÍDRICA</mat-label>
+                <input matInput formControlName="poseeFuenteHidrica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>NOMBRE FUENTE HIDRICA</mat-label>
+                <input matInput formControlName="nombreFuenteHidrica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>ESPECIFIQUE OTROS</mat-label>
+                <input matInput formControlName="especifiqueOtros" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>TIPO DE FUENTE HÍDRICA:</mat-label>
+                <input matInput formControlName="tipoFuenteHidrica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CÓMO SON CONSIDERADAS LAS FUENTES HÍDRICAS:</mat-label>
+                <input matInput formControlName="consideradaFuenteHidrica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>SU FINCA POSEE NACIENTES</mat-label>
+                <input matInput formControlName="poseeNacientes" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUÁNTAS:</mat-label>
+                <input matInput formControlName="cuantasNacientes" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>SE BRINDA PROTECCIÓN A FUENTES HÍDRICAS</mat-label>
+                <input matInput formControlName="brindaProteccionFuenteHidrica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CÓMO (ZONA AMORTIGU.)</mat-label>
+                <input matInput formControlName="comoBrindaProtFuentHidr" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>SE CUMPLE CON LAS DISTANCIAS REQUERIDAS</mat-label>
+                <input matInput formControlName="distanciaRequerida" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

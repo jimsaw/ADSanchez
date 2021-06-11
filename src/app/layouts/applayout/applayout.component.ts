@@ -24,7 +24,7 @@ export class AppLayoutComponent implements OnInit {
 
     ngOnInit() {
         this.sideMenuItems = environment.menuItems;
-        this.togglenavbar = this.route.snapshot.data['navbar'];
+        //this.togglenavbar = this.route.snapshot.data['navbar'];
     }
 
     ngAfterViewInit() {

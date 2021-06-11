@@ -25,7 +25,7 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
     const hasUser$ = this.authService.hasUser();
     if (hasUser$) {
-      this.router.navigate(['inicio']);
+      this.router.navigate(['inicio/home']);
     }
   }
 
@@ -38,7 +38,7 @@ export class LogInComponent implements OnInit {
       .then(() => {
         this.isSignedIn = true;
         this.toastr.success('Ingreso de sesion exitoso', '¡Bienvenido!');
-        this.router.navigate(['inicio']);
+        this.router.navigate(['inicio/home']);
       }).catch((error) => {
         this.isSignedIn = false;
         this.toastr.error(error, '¡Error!');

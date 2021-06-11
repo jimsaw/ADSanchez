@@ -1,0 +1,66 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="proteccionAreasAltoValorConservacion">
+            <mat-form-field appearance="outline">
+                <mat-label>SU SUELO PRESENTA PROBLEMAS DE EROSIÓN</mat-label>
+                <input matInput formControlName="sueloPresentaProblemaErosion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>TIPO DE PROBLEMA DE EROSIÓN QUE PRESENTA</mat-label>
+                <input matInput formControlName="tipoProblemaErosion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>SE NECESITA IMPLEMENTAR PRÁCTICAS DE MEJORA DE SUELOS</mat-label>
+                <input matInput formControlName="necesitaImplementarPracticasMejoraSuelo" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CÓMO:</mat-label>
+                <input matInput formControlName="comoQuePracticas" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>GRADO QUE PRESENTAN LAS PENDIENTES</mat-label>
+                <input matInput formControlName="gradoPresentanPendientes" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUENTA CON ÁREAS FORESTALES</mat-label>
+                <input matInput formControlName="cuentaConAreaForestales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>TIPO AREA FORESTAL</mat-label>
+                <input matInput formControlName="tipoAreaForestal" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA PLANES DE CORTE PARA EXTRACCIÓN DE MADERA</mat-label>
+                <input matInput formControlName="realizaPlanesCorteExtraccionMadera" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PRESENTA ANEXOS</mat-label>
+                <input matInput formControlName="presentaAnexosAreasAltoValor" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA PLANES DE REFORESTACIÓN</mat-label>
+                <input matInput formControlName="realizaPlanesReforestacion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CONOCE ALGUNA ESPECIE EN PELIGRO DE EXTINCIÓN, RARA O AMENAZADA EN SU FINCA</mat-label>
+                <input matInput formControlName="conoceEspeciePeligroExtincionEnFinca" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUÁLES:</mat-label>
+                <input matInput formControlName="cualesEspeciesPeligroExtincion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>ESPECIFIQUE:</mat-label>
+                <input matInput formControlName="cualesEspeciesPeligroExtincion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>LA FINCA ES CONSIDERADA DE ALTO VALOR:</mat-label>
+                <input matInput formControlName="fincaConsideradaAltoValor" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>TIPO DE ALTO VALOR</mat-label>
+                <input matInput formControlName="tipoAltoValor" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

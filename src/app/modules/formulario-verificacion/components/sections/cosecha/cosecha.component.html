@@ -1,0 +1,14 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="cosecha">
+            <mat-form-field appearance="outline">
+                <mat-label>¿COSECHA POR SEPARADO EL CACAO NACIONAL DEL CCN51?</mat-label>
+                <input matInput formControlName="cosechaSeparadoCacaoNacionalCCN51" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>LAS PLANTAS SE ENCUENTRAN CON LACERACIONES O CICATRICES POR MALA PRÁCTICA DE COSECHA</mat-label>
+                <input matInput formControlName="plantasLaceracionesCicatricesMalaPractica" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

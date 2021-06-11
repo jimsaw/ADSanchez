@@ -1,6 +1,6 @@
 import { Formulario } from "./formulario";
 
-export interface FormularioLineaBase extends Formulario {
+export interface FormularioVerificacion extends Formulario {
     fechaVisita: {
         respuesta: string
     },
@@ -217,7 +217,7 @@ export interface FormularioLineaBase extends Formulario {
                 }
             }
         },
-        MPE: {
+        MIPE: {
             preguntas: {
                 realizaPracticasMPE: {
                     respuesta: string,
@@ -583,6 +583,9 @@ export interface FormularioLineaBase extends Formulario {
                     preguntas: {
                         cualesEspeciesPeligroExtincion: {
                             respuesta: string
+                        },
+                        especifiqueCualesEspeciesPeligroExtincion: {
+                            respuesta: string
                         }
                     }
                 },
@@ -602,12 +605,7 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string
                 },
                 otraActividadDentroFincaConIngreso: {
-                    respuesta: string,
-                    preguntas: {
-                        actividadDentroFincaConIngreso: {
-                            respuesta: string
-                        }
-                    }
+                    respuesta: string
                 },
                 huertosOrganicosEnFinca: {
                     respuesta: string
@@ -616,6 +614,9 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string,
                     preguntas: {
                         actividadFueraFincaConIngreso: {
+                            respuesta: string
+                        },
+                        realizaActividadFueraFincaConIngreso: {
                             respuesta: string
                         }
                     }

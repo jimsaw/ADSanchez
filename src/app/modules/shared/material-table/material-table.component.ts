@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 
 
@@ -8,7 +8,7 @@ import { ColumnInfo } from 'src/app/interfaces/columnInfo';
   templateUrl: './material-table.component.html',
   styleUrls: ['./material-table.component.css']
 })
-export class MaterialTableComponent implements OnInit, AfterViewInit{
+export class MaterialTableComponent implements OnInit, AfterViewInit {
 
 
   @Input() columnsInfo: ColumnInfo[] = [];

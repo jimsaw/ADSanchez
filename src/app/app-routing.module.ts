@@ -5,6 +5,7 @@ import { AuthenticationLayoutComponent } from './layouts/authentication-layout/a
 import { BlankComponent } from './layouts/blank/blank.component';
 import { AuthGuard } from './modules/core/guards/auth/auth.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
@@ -14,6 +15,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { navbar: true },
     children: [
+      {
+        path: 'home',
+        component: InicioComponent
+      },
       {
         path: 'formulariosLineaBase',
         loadChildren: () => import('./modules/formulario-linea-base/formulario-linea-base.module').then(m => m.FormularioLineaBaseModule)
@@ -42,7 +47,8 @@ const routes: Routes = [
     component: AuthenticationLayoutComponent,
     loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
   },
-  { path: "**",
+  {
+    path: "**",
     component: PageNotFoundComponent,
   }
 

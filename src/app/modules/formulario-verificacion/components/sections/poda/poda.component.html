@@ -1,0 +1,38 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="poda">
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA PODA</mat-label>
+                <input matInput formControlName="realizaPoda" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿QUÉ TIPO DE PODA APLICA?</mat-label>
+                <input matInput formControlName="tipoPoda" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿LA PODA REALIZADA POR EL AGRICULTOR ES LA CORRECTA?</mat-label>
+                <input matInput formControlName="podaEsCorrecta" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>OBSERVA CORTES O LACERACIONES EN LA PLANTA POR MALA PODA</mat-label>
+                <input matInput formControlName="cortesLaceracionesPlantaMalaPoda" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>OBSERVA MAZORCAS EN ESTADO DE PUDRICIÓN</mat-label>
+                <input matInput formControlName="mazorcasEstadoPudricion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PRODUCTO DE LA MALA PODA, LA PLANTA ALBERGA PLAGAS Y ENFERMEDADES</mat-label>
+                <input matInput formControlName="malaPodaAlbergaPlagasEnfermedades" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PLAGAS</mat-label>
+                <input matInput formControlName="plagasMalaPoda" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>ENFERMEDADES</mat-label>
+                <input matInput formControlName="enfermedadesMalaPoda" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

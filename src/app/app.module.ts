@@ -18,12 +18,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ToastrModule } from 'ngx-toastr';
 import { FormularioLineaBaseModule } from './modules/formulario-linea-base/formulario-linea-base.module';
 import { FormularioVerificacionModule } from './modules/formulario-verificacion/formulario-verificacion.module';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    AuthenticationLayoutComponent
+    AuthenticationLayoutComponent,
+    InicioComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

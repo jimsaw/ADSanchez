@@ -1,0 +1,30 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="ambiental">
+            <mat-form-field appearance="outline">
+                <mat-label>PLANTAS FRUTALES</mat-label>
+                <input matInput formControlName="estadoPlantasFrutales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PLANTAS FORESTALES</mat-label>
+                <input matInput formControlName="estadoPlantasForestales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>OTROS:</mat-label>
+                <input matInput formControlName="estadoOtrosAmbiental" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PLANTAS FRUTALES</mat-label>
+                <input matInput formControlName="necesitaPlantasFrutales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>PLANTAS FORESTALES</mat-label>
+                <input matInput formControlName="necesitaPlantasForestales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>OTROS:</mat-label>
+                <input matInput formControlName="necesitaOtrosAmbiental" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

@@ -1,0 +1,30 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="saludSeguridadOcupacional">
+            <mat-form-field appearance="outline">
+                <mat-label>¿HA LLEVADO A SUS TRABAJADORES A LAS CAPACITACIONES DE SSO?</mat-label>
+                <input matInput formControlName="trabajadoresLlevadosCapacitacionesSSO" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>USO DE PICTOGRAMA</mat-label>
+                <input matInput formControlName="usoPictograma" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿HA COMUNICADO A LOS TRABAJADORES SOBRE BUENAS PRÁCTICAS EN LA FINCA?</mat-label>
+                <input matInput formControlName="buenasPracticasFincaTrabajadores" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUENTA CON BOTIQUÍN</mat-label>
+                <input matInput formControlName="botiquin" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿UTILIZA EPP ANTES DE APLICACIÓN DE PLAGUICIDA?</mat-label>
+                <input matInput formControlName="eppAntesPlaguicida" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>INSTRUCCIONES PRIMEROS AUXILIOS</mat-label>
+                <input matInput formControlName="instruccionesPrimerosAuxilios" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>
