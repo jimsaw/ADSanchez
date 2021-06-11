@@ -1,31 +1,55 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="datosFinca">
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Ha incrementado hectareaje en su finca?</mat-label>
-                <input matInput formControlName="incrementoHectareajeFinca" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Cuanto?</mat-label>
-                <input matInput formControlName="cantidadAumento" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Mes</mat-label>
-                <input matInput formControlName="mesIncrementoHectareaje" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Motivo Area Nueva</mat-label>
-                <input matInput formControlName="motivoAreaNueva" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Cual es el uso del area nueva?</mat-label>
-                <input matInput formControlName="usoAreaNueva" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>¿Incrementó fuera del tamaño de la finca?</mat-label>
-                <input matInput formControlName="incrementoFueraTamanioFinca" name="someUnusualName" autocomplete="off" >
-            </mat-form-field>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>HA INCREMENTADO HECTAREAJE EN SU FINCA</mat-label>
+                    <mat-select formControlName="incrementoHectareajeFinca" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>¿CUANTO?</mat-label>
+                    <input matInput formControlName="cantidadAumento" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+                <div style="margin-top: 1rem;">H.A.</div>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>¿INCREMENTO FUERA DE TAMAÑO DE FINCA?</mat-label>
+                    <mat-select formControlName="incrementoFueraTamanioFinca" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>MES</mat-label>
+                    <mat-select formControlName="mesIncrementoHectareaje" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of datosFincaMesIncremento" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>MOTIVO AREA NUEVA</mat-label>
+                    <mat-select formControlName="motivoAreaNueva" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of datosFincaMotivoAreaNueva" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>¿CUAL ERA EL USO DEL AREA NUEVA?</mat-label>
+                    <mat-select formControlName="usoAreaNueva" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of datosFincaUsoAreaNueva" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
     </mat-card-content>
 </form>
-

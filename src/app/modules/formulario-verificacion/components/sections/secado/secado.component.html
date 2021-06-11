@@ -1,0 +1,18 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="secado">
+            <mat-form-field appearance="outline">
+                <mat-label>CON QUÉ NIVEL DE HUMEDAD VENDE SU CACAO:</mat-label>
+                <input matInput formControlName="nivelHumedadCacaoVendido" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿CÓMO REALIZA EL SECADO?</mat-label>
+                <input matInput formControlName="maneraRealzarSecado" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿HA INCREMENTADO SUS INGRESOS DEBIDO A UN MEJOR TRATAMIENTO DE SU PRODUCTO EN EL SECADO?</mat-label>
+                <input matInput formControlName="mejoraIngresoMejorTratamientoSecadoCacao" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

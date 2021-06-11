@@ -1,0 +1,26 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="venta">
+            <mat-form-field appearance="outline">
+                <mat-label>¿A QUIÉN LE VENDE EL CACAO?</mat-label>
+                <input matInput formControlName="personaVenderCacao" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿POR QUÉ?: RAZÓN 1</mat-label>
+                <input matInput formControlName="razon1" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿POR QUÉ?: RAZÓN 2</mat-label>
+                <input matInput formControlName="razon2" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>HA RECIBIDO BONOS QUE LA EMPRESA OFRECE DEL PROGRAMA LINDT</mat-label>
+                <input matInput formControlName="recibeBonosEmpresaProgramaLINDT" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿CON QUÉ FRECUENCIA?</mat-label>
+                <input matInput formControlName="frecuenciaRecibeBono" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

@@ -1,0 +1,70 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="bodega">
+            <div class="columns-flex">
+                <mat-form-field class="column-item-full" appearance="outline">
+                    <mat-label>FINCA TIENE BODEGA PARA ALMACENAR INSECTICIDAS, FERTILIZANTES, HERRAMIENTAS</mat-label>
+                    <mat-select formControlName="poseeBodega" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>SU BODEGA ES SEGURA</mat-label>
+                    <mat-select formControlName="bodegaSegura" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>SU BODEGA ES ORDENADA</mat-label>
+                    <mat-select formControlName="bodegaOrdenada" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-3" appearance="outline">
+                    <mat-label>ESTÁ CLASIFICADA POR PRODUCTO</mat-label>
+                    <mat-select formControlName="clasificadaXProducto" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>TIENE REGISTRO DE LO QUE ALMACENA</mat-label>
+                    <mat-select formControlName="tieneRegistroAlmacena" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>CUENTA CON DUCHA DE EMERGENCIA</mat-label>
+                    <mat-select formControlName="cuentaDuchaEmergencia" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-full" appearance="outline">
+                    <mat-label>¿TIENE CONOCIMIENTO DE LA LISTA DE PRODUCTOS PERMITIDOS POR EL PROGRAMA LINDT?</mat-label>
+                    <mat-select formControlName="conocimientoProdcutosPermitidosLINDT" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</form>

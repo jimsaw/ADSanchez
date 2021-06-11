@@ -1,0 +1,38 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="registrosProductor">
+            <mat-form-field appearance="outline">
+                <mat-label>SABE UD. QUE CANTIDADES VENDE ANUALMENTE DE CACAO (EN QUINTALES)</mat-label>
+                <input matInput formControlName="ventaAnualCacaoQuintales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUÁL ES EL INGRESO POR VENTAS EN UN AÑO (EN USD)</mat-label>
+                <input matInput formControlName="ventaAnualCacaoUSD" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUÁL ES EL EGRESO POR COMPRA DE MATERIALES E INSUMOS (USD)</mat-label>
+                <input matInput formControlName="egresoCompraMateriales" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUÁL ES EL EGRESO POR MANO DE OBRA (USD)</mat-label>
+                <input matInput formControlName="egresoManoObra" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>MANEJO DEL CUADERNILLO DE REGISTROS</mat-label>
+                <input matInput formControlName="manejoCuadernilloRegistros" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>MANEJO DE COSTOS Y PLANIFICACIÓN FINANCIERA DE FINCA</mat-label>
+                <input matInput formControlName="manejoCostosPlanificacionFinanciera" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>TIENE USTED LA DISPONIBILIDAD DE AHORRAR EN UNA CUENTA</mat-label>
+                <input matInput formControlName="disponibilidadAhorrarEnCuenta" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>ESPECIFIQUE TIPO CUENTA:</mat-label>
+                <input matInput formControlName="tipoInstitucionAhorroCuenta" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

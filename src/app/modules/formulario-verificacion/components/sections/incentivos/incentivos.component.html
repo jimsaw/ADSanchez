@@ -1,0 +1,60 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="incentivos">
+            <div class="row">
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            AMBIENTAL
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-ambiental [parentForm]="incentivos"></app-ambiental>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            INSUMOS
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-insumos [parentForm]="incentivos"></app-insumos>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            MAQUINARIA AGRICOLA
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-maquinaria-agricola [parentForm]="incentivos"></app-maquinaria-agricola>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            HERRAMIENTAS
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-herramientas [parentForm]="incentivos"></app-herramientas>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            PROYECTOS DE INVERSIÓN
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-proyectos-inversion [parentForm]="incentivos"></app-proyectos-inversion>
+                </mat-expansion-panel>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            CALIDAD DE POST-COSECHA
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <app-calidad-post-cosecha [parentForm]="incentivos"></app-calidad-post-cosecha>
+                </mat-expansion-panel>
+            </div>
+            <mat-form-field appearance="outline" style="margin-top: 2rem;width: 100%;">
+                <mat-label>OTRAS NECESIDADES DETECTADAS EN LA FINCA</mat-label>
+                <input matInput formControlName="necesidadesDetectadasFinca" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

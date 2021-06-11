@@ -80,7 +80,7 @@ export class VerificacionComponent implements OnInit {
         plagasMalaPoda: new FormControl(''),
         enfermedadesMalaPoda: new FormControl('')
       }),
-      MPE: this.formBuilder.group({
+      MIPE: this.formBuilder.group({
         realizaPracticasMPE: new FormControl(''),
         tipoControlMPE: new FormControl(''),
         corrigioProblemasMPE: new FormControl(''),
@@ -176,6 +176,7 @@ export class VerificacionComponent implements OnInit {
       proteccionAreasRiberenias: this.formBuilder.group({
         poseeFuenteHidrica: new FormControl(''),
         nombreFuenteHidrica: new FormControl(''),
+        tipoFuenteHidrica: new FormControl(''),
         especifiqueOtros: new FormControl(''),
         consideradaFuenteHidrica: new FormControl(''),
         poseeNacientes: new FormControl(''),
@@ -197,13 +198,14 @@ export class VerificacionComponent implements OnInit {
         realizaPlanesReforestacion: new FormControl(''),
         conoceEspeciePeligroExtincionEnFinca: new FormControl(''),
         cualesEspeciesPeligroExtincion: new FormControl(''),
+        especifiqueCualesEspeciesPeligroExtincion: new FormControl(''),
         fincaConsideradaAltoValor: new FormControl(''),
         tipoAltoValor: new FormControl('')
       }),
       diversificacionIngresos: this.formBuilder.group({
         usoCultivoDiferenteCacao: new FormControl(''),
         otraActividadDentroFincaConIngreso: new FormControl(''),
-        actividadDentroFincaConIngreso: new FormControl(''),
+        realizaActividadFueraFincaConIngreso: new FormControl(''),
         huertosOrganicosEnFinca: new FormControl(''),
         otraActividadFueraFincaConIngreso: new FormControl(''),
         actividadFueraFincaConIngreso: new FormControl('')

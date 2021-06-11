@@ -1,14 +1,24 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="injertacion">
-            <mat-form-field appearance="outline">
-                <mat-label>Ha realizado injerto los ultimos 12 meses para rejuvenecer las plantas</mat-label>
-                <input matInput formControlName="realizoInjertosUltimos12Meses:" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿En qué mes?</mat-label>
-                <input matInput formControlName="mesRealizoInjertos" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>HA REALIZADO INJERTO LOS ULTIMOS 12 MESES PARA REJUVENECER LAS PLANTAS</mat-label>
+                    <mat-select formControlName="realizoInjertosUltimos12Meses" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline">
+                    <mat-label>¿EN QUÉ MES?</mat-label>
+                    <mat-select formControlName="mesRealizoInjertos" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let value of meses" [value]="value">
+                            {{value}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
         </div>
     </mat-card-content>
 </form>

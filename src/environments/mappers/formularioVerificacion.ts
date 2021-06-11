@@ -591,6 +591,10 @@ export const formularioVerificacion = {
         codigo: 'RIB30_ESPC',
         pregunta: 'CUALES ESPECIES EN PELIGRO DE EXTINCION'
     },
+    especifiqueCualesEspeciesPeligroExtincion: {
+        codigo: 'RIB33_ESPECPELIGEXTIN',
+        pregunta: 'ESPECIFIQUE ESPECIE PELIGO EXTINCION'
+    },
     fincaConsideradaAltoValor: {
         codigo: 'RIB31_ALTV',
         pregunta: 'LA FINCA ES CONSIDERADA DE ALTO VALOR'
@@ -607,9 +611,9 @@ export const formularioVerificacion = {
         codigo: 'FIN32_ONF',
         pregunta: 'REALIZA OTRA ACTIVIDAD DENTRO DE LA FINCA QUE GENERE INGRESOS',
     },
-    actividadDentroFincaConIngreso: {
+    realizaActividadFueraFincaConIngreso: {
         codigo: 'FIN33_ACTIVONF',
-        pregunta: 'ACTIVIDAD DENTRO FINCA CON INGRESO'
+        pregunta: 'OTRA ACTIVIDAD'
     },
     huertosOrganicosEnFinca: {
         codigo: 'BEN45_HUEROR',

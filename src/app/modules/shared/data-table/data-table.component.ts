@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
@@ -37,7 +37,7 @@ export class DataTableComponent<T> implements OnInit {
   }
 
   onItemSelected(event: any): void {
-    
+
   }
 
   onAddClicked(): void {

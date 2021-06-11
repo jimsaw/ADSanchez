@@ -1,0 +1,26 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="fermentacion">
+            <mat-form-field appearance="outline">
+                <mat-label>FERMENTA SU CACAO</mat-label>
+                <input matInput formControlName="fermetaCacao" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>RAZÓN POR LA QUE NO FERMENTA:</mat-label>
+                <input matInput formControlName="razonNoFermenta" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUANDO FERMENTA LO HACE:</mat-label>
+                <input matInput formControlName="modoFermentacion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>CUANDO FERMENTA LO HACE:</mat-label>
+                <input matInput formControlName="medidasHigieneFermentacion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>¿HA INCREMENTADO SUS INGRESOS DEBIDO A UN MEJOR TRATAMIENTO EN LA FERMENTACIÓN?</mat-label>
+                <input matInput formControlName="aumentoIngresoPorFermentacion" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>

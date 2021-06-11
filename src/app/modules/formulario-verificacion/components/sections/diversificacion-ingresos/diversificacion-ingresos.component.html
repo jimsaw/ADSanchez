@@ -1,0 +1,30 @@
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+    <mat-card-content>
+        <div class="row" formGroupName="diversificacionIngresos">
+            <mat-form-field appearance="outline">
+                <mat-label>UD DESTINA LOS CULTIVOS DIFERENTES AL CACAO A:</mat-label>
+                <input matInput formControlName="usoCultivoDiferenteCacao" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA OTRA ACTIVIDAD DENTRO DE LA FINCA QUE GENERE INGRESOS:</mat-label>
+                <input matInput formControlName="otraActividadDentroFincaConIngreso" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA ACTIVIDAD ADICIONAL FUERA DE FINCA QUE GENERE INGRESOS:</mat-label>
+                <input matInput formControlName="realizaActividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>HA IMPLEMENTADO HUERTOS ORGÁNICOS DENTRO DE SU FINCA</mat-label>
+                <input matInput formControlName="huertosOrganicosEnFinca" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>OTRA ACTIVIDAD</mat-label>
+                <input matInput formControlName="otraActividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>REALIZA ALGUNA DE ESTAS ACTIVIDADES FUERA DE FINCA:</mat-label>
+                <input matInput formControlName="actividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</form>
