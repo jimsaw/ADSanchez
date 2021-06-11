@@ -1,3 +1,4 @@
+import { SelectionModel } from '@angular/cdk/collections';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
@@ -25,6 +26,20 @@ export class CacaoNacionalNuevosClonesComponent implements OnInit {
     "801",
     "NO SABE",
     "OTRO"
+  ]
+
+  selectedVarSembrada: string;
+  selection = new SelectionModel<any>(false, []);
+  variedadesSembradasClas: string[] = ["POSITIVA", "NEGATIVA"];
+
+  optAdaptacion: string;
+  optRendimiento: string;
+  optVigor: string;
+  optResistencia: string;
+  opcionesPlantulas: string[] = [
+    "NEUTRAL",
+    "FAVORABLE",
+    "DESFAVORABLE"
   ]
 
   @Input()

@@ -10,6 +10,14 @@ export class SaludSeguridadOcupacionalComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  hayAccidente: string;
+  hayIntoxicado: string;
+  hayCentroSalud: string;
+  opciones: string[] = ["SI", "NO"];
+
+  accidente: string;
+  tiposAccidente: string[] = ["LEVES", "GRAVES", "MUY GRAVES"];
+
   constructor() { }
 
   ngOnInit(): void {

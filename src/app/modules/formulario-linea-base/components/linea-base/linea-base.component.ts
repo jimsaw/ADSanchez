@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Agricultor } from 'src/app/interfaces/agricultor';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
@@ -59,10 +59,11 @@ export class LineaBaseComponent implements OnInit {
         brotesBasales: new FormControl(''),
         arbolesElite: new FormControl(''),
         areaTotalViejoInjertado: new FormControl(''),
-        areaViejoInjertado: new FormControl(''),
-        edadViejoInjertado: new FormControl(''),
-        areaViejoInjertado2: new FormControl(''),
-        edadViejoInjertado2: new FormControl(''),
+        viejosInjertados: new FormArray([]),
+        // areaViejoInjertado: new FormControl(''),
+        // edadViejoInjertado: new FormControl(''),
+        // areaViejoInjertado2: new FormControl(''),
+        // edadViejoInjertado2: new FormControl(''),
         areaTotalNuevosClones: new FormControl(''),
         areaNuevosClones: new FormControl(''),
         edadNuevosClones: new FormControl(''),
@@ -234,6 +235,25 @@ export class LineaBaseComponent implements OnInit {
         cantidad: new FormControl('')
       })
     })
+  }
+
+  getFormArray(key: string): FormArray {
+    return this.lineaBaseForm.get(key) as FormArray;
+  }
+
+  createViejoInjertadoField(): FormGroup {
+    return new FormGroup({
+      areaViejoInjertado: new FormControl(''),
+      edadViejoInjertado: new FormControl(''),
+    });
+  }
+
+  addViejoInjertado(): void {
+    this.getFormArray("viejosInjertados").push(this.createViejoInjertadoField());
+  }
+
+  deleteViejoInjertado(index: number): void {
+    this.getFormArray("viejosInjertados").removeAt(index);
   }
 
   ngOnInit() {

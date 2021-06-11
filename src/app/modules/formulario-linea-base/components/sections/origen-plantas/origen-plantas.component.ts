@@ -10,6 +10,20 @@ export class OrigenPlantasComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  selectedEncargado: string;
+  encargadosPropagacion: string[] = [
+    "PRODUCTOR",
+    "FAMILIAR",
+    "ASESOR EXTERNO",
+    "OTRO"
+  ]
+
+  selectedConocimiento: string;
+  conocimientos: string[] = [
+    "TÉCNICO",
+    "EMPÍRICO"
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
