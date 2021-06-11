@@ -22,7 +22,7 @@ export class AgricultorService implements Database<Agricultor> {
     return this.firebase.collection('agricultores').snapshotChanges().pipe(
       map(agricultores => {
         return agricultores.map((agricultor) => {
-          return this.fromMap(agricultor.payload.doc.data());
+          return agricultor.payload.doc.data() as Agricultor;
         });
       })
     );
@@ -33,11 +33,11 @@ export class AgricultorService implements Database<Agricultor> {
     if (agricultor.id === '' || agricultor.id === undefined) {
       agricultor.id = this.firebase.createId();
     }
-    const mappedAgricultor = this.keymapperService.keyMapper(agricultor, environment.mappers.agricultorMapper);
+    console.log(agricultor);
     return this.firebase
       .collection("agricultores")
-      .doc(mappedAgricultor["id"])
-      .set(mappedAgricultor);
+      .doc(agricultor.id)
+      .set(agricultor);
   }
 
 
@@ -56,6 +56,15 @@ export class AgricultorService implements Database<Agricultor> {
         reject("Ha ocurrido un error");
       }
     });
+  }
+
+  get(id: string): Observable<Agricultor>{
+    return this.firebase.collection("agricultores").doc(id)
+      .snapshotChanges().pipe(
+        map(agricultor => {
+          return agricultor.payload.data() as Agricultor;
+        })
+      );
   }
 
   public getAll() {

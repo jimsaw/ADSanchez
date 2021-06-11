@@ -30,7 +30,7 @@ export abstract class FormularioService implements Database<Formulario> {
         transaction.set(lastCollectionRef.doc(question), {
           id: question,
           pregunta: this.keyMapperObj.getQuestionDescription(question),
-          respuesta: lastObject[question][response]
+          respuesta: lastObject[question][response] === undefined ? "" : lastObject[question][response]
         })
       } else if (response === "preguntas") {
         const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
@@ -71,23 +71,21 @@ export abstract class FormularioService implements Database<Formulario> {
     });
   }
 
-  saveFormInCollection(
-    agricultorId: string,
-    agricultorName: string,
-    formularioLineaBase: FormularioLineaBase,
-    date: String
-  ): Promise<string> {
+  saveFormInCollection(formularioLineaBase: FormularioLineaBase): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       const collRef = this.firebaseObj.firestore.collection("formulariosLineaBase");
       this.firebaseObj.firestore.runTransaction((transaction) => {
         return new Promise((resolve, reject) => {
-          const formularioId = this.firebaseObj.createId();
-          const docRef = collRef.doc(formularioId);
+          if (formularioLineaBase.id === '' || formularioLineaBase.id === undefined) {
+            formularioLineaBase.id = this.firebaseObj.createId();
+          }
+          const docRef = collRef.doc(formularioLineaBase.id);
           transaction.set(docRef, {
-            id: formularioId,
-            agricultorId: agricultorId,
-            agricultor: agricultorName,
-            fecha: date
+            id: formularioLineaBase.id,
+            agricultorId: formularioLineaBase.agricultor.id,
+            agricultor: formularioLineaBase.agricultor.nombre,
+            fechaVisita: formularioLineaBase.fechaVisita,
+            tecnico: formularioLineaBase.tecnico.nombre
           });
           const seccionesCollRef = docRef.collection("secciones");
           for (let section of Object.keys(formularioLineaBase["secciones"])) {

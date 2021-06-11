@@ -2,13 +2,34 @@
     <mat-card-content>
         <div id="contenido" formGroupName="mejorarCalidadCacao">
             <div class="columns-flex">
-                <ul class="column-item-full">
+                <!--ul class="column-item-full">
                     <li *ngFor="let proyecto of proyectos; index as i">
-                      <mat-checkbox formControlName="variedadesSembradasCalificacion">
+                      <mat-checkbox formControlName="proyectos">
                         {{proyecto}}
                       </mat-checkbox>
                     </li>
-                  </ul>
+                </ul -->
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Bandejas o cajones de Fermentacion</mat-label>
+                    <mat-select formControlName="bandejasCajonesFermentacion" [(ngModel)]="hayBandejas" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Tendales elevados por caña</mat-label>
+                    <mat-select formControlName="tendalesElevadosCania" [(ngModel)]="hayTendales" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Secadoras comunitarias</mat-label>
+                    <mat-select formControlName="secadorasComunitarias" [(ngModel)]="haySecadoras" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="column-item-2"></div>
             </div>
             <mat-divider [inset]="true" class="space-down"></mat-divider>
             <div class="columns-flex">
@@ -25,20 +46,6 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <!-- div>
-                <mat-form-field appearance="outline" >
-                    <mat-label>Bandejas o cajones de Fermentacion</mat-label>
-                    <input matInput formControlName="bandejasCajonesFermentacion" name="someUnusualName" autocomplete="off">
-                </mat-form-field>
-                <mat-form-field appearance="outline" >
-                    <mat-label>Tendales elevados por caña</mat-label>
-                    <input matInput formControlName="tendalesElevadosCania" name="someUnusualName" autocomplete="off">
-                </mat-form-field>
-                <mat-form-field appearance="outline" >
-                    <mat-label>Secadoras comunitarias</mat-label>
-                    <input matInput formControlName="secadorasComunitarias" name="someUnusualName" autocomplete="off">
-                </mat-form-field>
-            </div -->
         </div>
     </mat-card-content>
 </form>

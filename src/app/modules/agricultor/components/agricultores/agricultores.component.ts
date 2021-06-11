@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 import { Agricultor } from 'src/app/interfaces/agricultor';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
@@ -11,9 +12,19 @@ import { EditAgricultorDialogComponent } from '../edit-agricultor-dialog/edit-ag
   templateUrl: './agricultores.component.html',
   styleUrls: ['./agricultores.component.css']
 })
-export class AgricultoresComponent extends DataTableComponent<Agricultor> implements OnInit {
+export class AgricultoresComponent implements OnInit {
+
+  selectedItem: Agricultor;
+  // columnsInfo: ColumnInfo[];
+  isTableLoading: boolean = true;
+  data: Agricultor[] = [];
+  dataSubscription: Subscription = null;
 
   columnsInfo: ColumnInfo[] = [
+    {
+      name: "Código",
+      prop: "id"
+    },
     {
       name: "Cédula",
       prop: "cedula"
@@ -21,10 +32,6 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
     {
       name: "Nombre",
       prop: "nombre"
-    },
-    {
-      name: "Código",
-      prop: "codigo"
     },
     {
       name: "Acciones",
@@ -39,9 +46,23 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
     private agricultorService: AgricultorService,
     private snackBar: MatSnackBar
   ) {
-    super(snackBar);
-    super.dataService = this.agricultorService;
-    super.columnsInfo = this.columnsInfo;
+    // super(snackBar);
+    // super.dataService = this.agricultorService;
+    // super.columnsInfo = this.columnsInfo;
+  }
+
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.dataSubscription?.unsubscribe();
+    this.dataSubscription = this.agricultorService.list().subscribe(data => {
+      this.data = data;
+      console.log(this.data);
+      this.isTableLoading = false;
+      console.log(this.isTableLoading);
+    });
   }
 
   onItemSelected(event: any): void {
@@ -52,6 +73,25 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
 
   onAddClicked(): void {
     this.editAgricultorDialog.openDialog();
+  }
+
+  async onTrashCanClicked(row): Promise<void> {
+    console.log(row);
+    // const result = await this.deleteConfirmationDialog.openDialog().toPromise();
+    await this.deleteData(row);
+  }
+
+  async deleteData(item: Agricultor): Promise<void> {
+    try {
+      const message = await this.agricultorService.delete(item);
+      this.snackBar.open(message, 'Cerrar', {
+        duration: 5000,
+      });
+    } catch (e) {
+      this.snackBar.open(e, 'Cerrar', {
+        duration: 5000,
+      });
+    }
   }
 
 }

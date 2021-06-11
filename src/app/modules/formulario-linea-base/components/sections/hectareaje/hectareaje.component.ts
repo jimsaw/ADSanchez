@@ -16,6 +16,8 @@ export class HectareajeComponent implements OnInit {
   hectareajeDistanciaPlantas;
   hectareajeTipoUbicacionZona;
 
+  otroAsociado: string;
+
   constructor() { }
 
   ngOnInit(): void {

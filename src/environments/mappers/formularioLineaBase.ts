@@ -81,11 +81,11 @@ export const formularioLineaBaseMapper = {
     },
     produccionAnioAnteriorCacaoCNN: {
         codigo: 'CAC34_PRODCC',
-        pregunta: 'PRODUCCIÓN AÑO ANTERIOR'
+        pregunta: 'PRODUCCIÓN AÑO ANTERIOR CACAO CNN'
     },
     precioPromedio: {
         codigo: 'CAC36_PRECC',
-        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO'
+        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO CNN'
     },
     areaTotalNacional: {
         codigo: 'CAC09_NAREA',
@@ -157,11 +157,11 @@ export const formularioLineaBaseMapper = {
     },
     produccionAnioAnteriorCacaoNacional: {
         codigo: 'CAC33_PRODN',
-        pregunta: 'PRODUCCIÓN AÑO ANTERIOR'
+        pregunta: 'PRODUCCIÓN AÑO ANTERIOR CACAO NACIONAL'
     },
     precioPromedioXCacao: {
         codigo: 'CAC35_PREN',
-        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO'
+        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO NACIONAL'
     },
     usoAnteriorAreaNueva: {
         codigo: 'CAC16_NCUSO',
@@ -689,7 +689,7 @@ export const formularioLineaBaseMapper = {
     },
     areaLibre: {
         codigo: 'PRO03_NHA',
-        pregunta: 'CUANTO'
+        pregunta: 'CUANTO HAY DE AREA LIBRE'
     },
     necesitaRehaReinjerto: {
         codigo: 'PRO04_REHAB',
@@ -697,6 +697,6 @@ export const formularioLineaBaseMapper = {
     },
     cantidad: {
         codigo: 'PRO05_NREHB',
-        pregunta: 'CUANTO'
+        pregunta: 'CUANTO NECESITA'
     }
 }

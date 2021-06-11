@@ -1,8 +1,10 @@
+<!--mat-spinner *ngIf="isLoading"></mat-spinner-->
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>FORMULARIO LINEA BASE</mat-card-title>
       <mat-card-subtitle>AGRICULTOR</mat-card-subtitle>
     </mat-card-header>
+    <!-- button class="mat-raised-button" (click)="debugging()">DEBUG</button-->
     <form [formGroup]="lineaBaseForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" >
             <mat-label>Agricultor</mat-label>

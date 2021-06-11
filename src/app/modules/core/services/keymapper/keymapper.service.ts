@@ -3,6 +3,7 @@ import { map } from 'rxjs/operators';
 import { of, pipe } from 'rxjs';
 import { formularioLineaBaseMapper } from 'src/environments/mappers/formularioLineaBase';
 import { agricultorMapper } from 'src/environments/mappers/agricultor';
+import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 
 @Injectable({
   providedIn: 'root'
@@ -68,11 +69,20 @@ export class KeymapperService {
   }
 
   public getQuestionDescription(question: string): string {
-    const  text = formularioLineaBaseMapper[question]["pregunta"];
+    const text = formularioLineaBaseMapper[question]["pregunta"];
     if (text === "") {
       return "NO TEXT";
     }
     return text;
+  }
+
+  public getQuestion(description: string): string {
+    for (let question of Object.keys(formularioLineaBaseMapper)) {
+      if (formularioLineaBaseMapper[question]["pregunta"] === description) {
+        return question;
+      }
+    }
+    return "NO TEXT";
   }
 
 }

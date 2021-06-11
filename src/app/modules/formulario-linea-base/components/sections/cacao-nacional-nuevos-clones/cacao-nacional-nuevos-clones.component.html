@@ -26,14 +26,20 @@
                 </mat-form-field>
             </div>
             <div class="columns-flex">
-                <ul class="column-item-full">
+                <!-- ul class="column-item-full">
                     <h1>Las variedades sembradas muestran ser:</h1>
                     <li style="display: inline;" *ngFor="let variedad of variedadesSembradasClas; index as i">
-                      <mat-checkbox formControlName="variedadesSembradasCalificacion" (change)="$event ? selection.toggle(i) : null" [checked]="selection.isSelected(i)">
+                      <mat-checkbox formControlName="variedadesSembradasCalificacion" [value]="variedad" (change)="checkboxChange($event, i)" [checked]="selection.isSelected(i)">
                         {{variedad}}
                       </mat-checkbox>
                     </li>
-                  </ul>
+                </ul -->
+                <mat-form-field class="column-item-2 sp-0" appearance="outline">
+                    <mat-label>Las variedades sembradas muestran ser:</mat-label>
+                    <mat-select formControlName="variedadesSembradasCalificacion" [(ngModel)]="verSembrada" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let variedad of variedadesSembradasClas" [value]="variedad">{{variedad}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <mat-divider [inset]="true" class="space-down"></mat-divider>
             <h1>Sobre las plantulas:</h1>

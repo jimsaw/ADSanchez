@@ -18,6 +18,11 @@ export class DiversificacionIngresosComponent implements OnInit {
     "BRIGADA DE PODADORES"
   ];
 
+  hayHuertos: string;
+  hayViveres: string;
+  hayVentaFert: string;
+  hayRehab: string;
+  hayBrigada: string;
   tieneExperiencia: string;
   opciones: string[] = [
     "SI", "NO"

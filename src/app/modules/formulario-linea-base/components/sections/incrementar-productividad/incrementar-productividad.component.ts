@@ -15,6 +15,11 @@ export class IncrementarProductividadComponent implements OnInit {
     "APRENDER ELAB. PRODUCTOS NATURALES"
   ];
 
+
+  recibirPlantas: string;
+  aprenderElab: string;
+  opciones: string[] = ["SI", "NO"];
+
   constructor() { }
 
   ngOnInit(): void {
