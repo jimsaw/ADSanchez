@@ -7,7 +7,6 @@ import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
 import { TecnicoService } from 'src/app/modules/core/services/tecnico/tecnico.service';
 import { FormularioLineaBaseService } from 'src/app/modules/core/services/formularioLineaBase/formulario-linea-base.service';
-import { agricultor } from 'src/environments/config/constantes/agricultoresConstantes';
 
 @Component({
   selector: 'app-linea-base',
@@ -284,12 +283,6 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.formularioLineaBase) {
-      console.log(this.formularioLineaBase["agricultorId"]);
-      this.agricultorService.get(this.formularioLineaBase["agricultorId"]).subscribe((agricultor) => {
-        this.agricultor = agricultor;
-      });
-    }
     this.setFormulario();
   }
 
@@ -985,8 +978,8 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   async setFormDefaultValues() {
     const id = this.activatedRoute.snapshot.paramMap.get("id");
     if (!this.isFormEmpty()) {
-      console.log(this.agricultor);
-      this.lineaBaseForm.get('agricultor').setValue(this.agricultor);
+      const actualAgricultor = await this.agricultorService.get(this.formularioLineaBase["agricultorId"]);
+      this.lineaBaseForm.get('agricultor').setValue(actualAgricultor);
       this.lineaBaseForm.get('informacionFinca').get('provincia')
         .setValue(this.formularioLineaBase.secciones.informacionFinca.preguntas.provincia.respuesta);
       this.lineaBaseForm.get('informacionFinca').get('canton')

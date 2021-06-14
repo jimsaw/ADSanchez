@@ -59,14 +59,11 @@ export class AgricultoresComponent implements OnInit {
     this.dataSubscription?.unsubscribe();
     this.dataSubscription = this.agricultorService.list().subscribe(data => {
       this.data = data;
-      console.log(this.data);
       this.isTableLoading = false;
-      console.log(this.isTableLoading);
     });
   }
 
   onItemSelected(event: any): void {
-    console.log(event);
     this.editAgricultorDialog.agricultor = event;
     this.editAgricultorDialog.openDialog();
   }

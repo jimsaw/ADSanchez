@@ -58,13 +58,10 @@ export class AgricultorService implements Database<Agricultor> {
     });
   }
 
-  get(id: string): Observable<Agricultor>{
-    return this.firebase.collection("agricultores").doc(id)
-      .snapshotChanges().pipe(
-        map(agricultor => {
-          return agricultor.payload.data() as Agricultor;
-        })
-      );
+  async get(id: string): Promise<Agricultor> {
+    const docRef = this.firebase.firestore.collection("agricultores").doc(id);
+    const agricultor = (await docRef.get()).data() as Agricultor;
+    return agricultor;
   }
 
   public getAll() {
