@@ -76,6 +76,7 @@ export class KeymapperService {
     return text;
   }
 
+  /*
   public getQuestion(description: string): string {
     for (let question of Object.keys(formularioLineaBaseMapper)) {
       if (formularioLineaBaseMapper[question]["pregunta"] === description) {
@@ -84,5 +85,5 @@ export class KeymapperService {
     }
     return "NO TEXT";
   }
-
+  */
 }

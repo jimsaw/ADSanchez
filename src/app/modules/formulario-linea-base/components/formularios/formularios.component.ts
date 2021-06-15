@@ -45,7 +45,6 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
   }
 
   onItemSelected(event: any): void {
-    console.log(event);
     this.router.navigate(['inicio', 'formulariosLineaBase', 'create', event['id']]);
   }
 

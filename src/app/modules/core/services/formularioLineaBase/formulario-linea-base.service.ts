@@ -82,7 +82,7 @@ export class FormularioLineaBaseService extends FormularioService {
 
 
   private async fetchInnerQuestions(data: any, lastObject: any, lastCollectionRef: CollectionReference) {
-    const question = this.keyMapper.getQuestion(data["pregunta"]);
+    const question = data["id"];
     for (let response of Object.keys(lastObject[question])) {
       if (response === "respuesta") {
         lastObject[question][response] = data["respuesta"];

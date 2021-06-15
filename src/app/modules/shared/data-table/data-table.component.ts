@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { Database } from 'src/app/interfaces/database';
+import { MaterialTableComponent } from '../material-table/material-table.component';
+
 
 @Component({
   selector: 'app-data-table',
@@ -19,6 +21,8 @@ export class DataTableComponent<T> implements OnInit {
 
   dataService: Database<T>;
 
+  @ViewChild(MaterialTableComponent) materialTableComponent: MaterialTableComponent;
+
   constructor(
     private snackBarObj: MatSnackBar
   ) { }
@@ -30,22 +34,15 @@ export class DataTableComponent<T> implements OnInit {
   fetchData() {
     this.dataSubscription?.unsubscribe();
     this.dataSubscription = this.dataService.list().subscribe(data => {
-      this.data = data;
-      console.log(this.data);
-      this.isTableLoading = false;
+      this.materialTableComponent.setData(data, false);
     });
   }
 
-  onItemSelected(event: any): void {
+  onItemSelected(event: any): void {}
 
-  }
-
-  onAddClicked(): void {
-
-  }
+  onAddClicked(): void {}
 
   async onTrashCanClicked(row): Promise<void> {
-    console.log(row);
     // const result = await this.deleteConfirmationDialog.openDialog().toPromise();
     await this.deleteData(row);
   }

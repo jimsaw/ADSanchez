@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    const hasUser$ = this.authService.hasUser();
-    if (hasUser$) {
-      this.router.navigate(['inicio']);
-    }
+    // const hasUser$ = this.authService.hasUser();
+    // if (hasUser$) {
+      // this.router.navigate(['inicio']);
+    // }
   }
 
   async onSubmit() {

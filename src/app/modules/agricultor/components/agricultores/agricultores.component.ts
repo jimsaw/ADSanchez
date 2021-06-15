@@ -5,6 +5,7 @@ import { Agricultor } from 'src/app/interfaces/agricultor';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
 import { DataTableComponent } from 'src/app/modules/shared/data-table/data-table.component';
+import { MaterialTableComponent } from 'src/app/modules/shared/material-table/material-table.component';
 import { EditAgricultorDialogComponent } from '../edit-agricultor-dialog/edit-agricultor-dialog.component';
 
 @Component({
@@ -12,13 +13,7 @@ import { EditAgricultorDialogComponent } from '../edit-agricultor-dialog/edit-ag
   templateUrl: './agricultores.component.html',
   styleUrls: ['./agricultores.component.css']
 })
-export class AgricultoresComponent implements OnInit {
-
-  selectedItem: Agricultor;
-  // columnsInfo: ColumnInfo[];
-  isTableLoading: boolean = true;
-  data: Agricultor[] = [];
-  dataSubscription: Subscription = null;
+export class AgricultoresComponent extends DataTableComponent<Agricultor> implements OnInit {
 
   columnsInfo: ColumnInfo[] = [
     {
@@ -38,7 +33,7 @@ export class AgricultoresComponent implements OnInit {
       prop: "nombre"
     },
   ];
-  
+
   @ViewChild(EditAgricultorDialogComponent) editAgricultorDialog: EditAgricultorDialogComponent;
   // @ViewChild(DeleteConfirmationDialogComponent) deleteConfirmationDialog: DeleteConfirmationDialogComponent;
 
@@ -46,21 +41,9 @@ export class AgricultoresComponent implements OnInit {
     private agricultorService: AgricultorService,
     private snackBar: MatSnackBar
   ) {
-    // super(snackBar);
-    // super.dataService = this.agricultorService;
-    // super.columnsInfo = this.columnsInfo;
-  }
-
-  ngOnInit() {
-    this.fetchData();
-  }
-
-  fetchData() {
-    this.dataSubscription?.unsubscribe();
-    this.dataSubscription = this.agricultorService.list().subscribe(data => {
-      this.data = data;
-      this.isTableLoading = false;
-    });
+    super(snackBar);
+    super.dataService = this.agricultorService;
+    super.columnsInfo = this.columnsInfo;
   }
 
   onItemSelected(event: any): void {
@@ -70,25 +53,6 @@ export class AgricultoresComponent implements OnInit {
 
   onAddClicked(): void {
     this.editAgricultorDialog.openDialog();
-  }
-
-  async onTrashCanClicked(row): Promise<void> {
-    console.log(row);
-    // const result = await this.deleteConfirmationDialog.openDialog().toPromise();
-    await this.deleteData(row);
-  }
-
-  async deleteData(item: Agricultor): Promise<void> {
-    try {
-      const message = await this.agricultorService.delete(item);
-      this.snackBar.open(message, 'Cerrar', {
-        duration: 5000,
-      });
-    } catch (e) {
-      this.snackBar.open(e, 'Cerrar', {
-        duration: 5000,
-      });
-    }
   }
 
 }

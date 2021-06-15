@@ -1,7 +1,7 @@
-import { AfterContentInit, AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Agricultor } from 'src/app/interfaces/agricultor';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
@@ -16,7 +16,6 @@ import { FormularioLineaBaseService } from 'src/app/modules/core/services/formul
 export class LineaBaseComponent implements OnInit, AfterViewInit {
 
   formularioLineaBase: FormularioLineaBase;
-
   lineaBaseForm: FormGroup;
   agricultor: Agricultor;
   listaAgricultores: Agricultor[];
@@ -29,7 +28,9 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     private agricultorService: AgricultorService,
     private tecnicoService: TecnicoService,
     private toastr: ToastrService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private changeDetector: ChangeDetectorRef,
+    private router: Router
   ) {
     this.fetchFormulario();
     this.lineaBaseForm = this.formBuilder.group({
@@ -288,8 +289,13 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
 
   async setFormulario() {
     await this.fetchFormulario();
-    console.log(this.formularioLineaBase);
+    this.updateView();
     this.setFormDefaultValues();
+  }
+
+  updateView() {
+    this.isLoading = false;
+    this.changeDetector.detectChanges();
   }
 
   async fetchFormulario(): Promise<void> {
@@ -964,7 +970,8 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       }
       this.formularioService.saveFormInCollection(formularioLineaBaseParam).then(value => {
         this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
-        this.lineaBaseForm.reset();
+        // this.lineaBaseForm.reset();
+        this.router.navigate(['inicio','home']);
       }).catch((e) => {
         console.log(e);
         this.toastr.error(e, '¡Error!');
@@ -972,14 +979,23 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     } else {
       this.toastr.error("Debe seleccionar un agricultor", '¡Error!');
     }
-    
+  }
+
+  async setAgricultor() {
+    this.agricultor = await this.agricultorService.get(this.formularioLineaBase["agricultorId"]);
+    for (let agricultor of this.listaAgricultores) {
+      if (agricultor.id === this.agricultor.id) {
+        this.lineaBaseForm.get('agricultor').setValue(agricultor);
+        break;
+      }
+    }
   }
 
   async setFormDefaultValues() {
     const id = this.activatedRoute.snapshot.paramMap.get("id");
     if (!this.isFormEmpty()) {
-      const actualAgricultor = await this.agricultorService.get(this.formularioLineaBase["agricultorId"]);
-      this.lineaBaseForm.get('agricultor').setValue(actualAgricultor);
+      this.setAgricultor();
+      console.log(this.lineaBaseForm.get('agricultor').value);
       this.lineaBaseForm.get('informacionFinca').get('provincia')
         .setValue(this.formularioLineaBase.secciones.informacionFinca.preguntas.provincia.respuesta);
       this.lineaBaseForm.get('informacionFinca').get('canton')

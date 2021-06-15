@@ -5,6 +5,20 @@
     align-items: center;
 }
 
+.btns-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.mat-card-actions .mat-button, .mat-card-actions .mat-raised-button, .mat-card-actions .mat-stroked-button {
+    margin-bottom: 10px;
+    margin: 0 0 10px 0;
+    padding: 0%;
+}
+
 .contenedor{
     /*width: 15vw;
     height: 30vh;*/

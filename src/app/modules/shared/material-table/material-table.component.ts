@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 
@@ -8,7 +8,7 @@ import { ColumnInfo } from 'src/app/interfaces/columnInfo';
   templateUrl: './material-table.component.html',
   styleUrls: ['./material-table.component.css']
 })
-export class MaterialTableComponent implements OnInit, AfterViewInit {
+export class MaterialTableComponent implements OnInit {
 
 
   @Input() columnsInfo: ColumnInfo[] = [];
@@ -23,8 +23,10 @@ export class MaterialTableComponent implements OnInit, AfterViewInit {
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
+  constructor(
+    private changeDetector: ChangeDetectorRef
+  ) {
 
-  ngAfterViewInit(): void {
   }
 
   ngOnInit(): void {
@@ -37,6 +39,12 @@ export class MaterialTableComponent implements OnInit, AfterViewInit {
   onTrashCanClicked(event, row): void {
     event.stopPropagation();
     this.rowTrashcanClicked.emit(row);
+  }
+
+  setData(data: any[], loading: boolean) {
+    this.elementData = data;
+    this.isLoading = loading;
+    this.changeDetector.detectChanges();
   }
 
 }
