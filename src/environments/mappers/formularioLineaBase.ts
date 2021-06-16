@@ -167,6 +167,10 @@ export const formularioLineaBaseMapper = {
         codigo: 'CAC16_NCUSO',
         pregunta: 'USO ANTERIOR DEL AREA NUEVA'
     },
+    otroUsoAnteriorAreaNueva: {
+        codigo: 'CAC16_NCUSO',
+        pregunta: 'OTRO USO ANTERIOR DEL AREA NUEVA'
+    },
     tipoVariedad: {
         codigo: 'CAC17_TIPVARI',
         pregunta: 'TIPO VARIEDAD'
@@ -206,6 +210,10 @@ export const formularioLineaBaseMapper = {
     encargadoPropagacion: {
         codigo: 'CAC29_PROP',
         pregunta: 'QUIEN REALIZO LA PROPAGACION'
+    },
+    otroEncargadoPropagacion: {
+        codigo: 'CAC29_PROP',
+        pregunta: 'QUIEN OTRO REALIZO LA PROPAGACION'
     },
     tipoConocimiento: {
         codigo: 'CAC30_CONC',
@@ -550,6 +558,10 @@ export const formularioLineaBaseMapper = {
     tiposBeneficios: {
         codigo: 'ASO05_TIPBENEF',
         pregunta: 'QUÉ TIPO DE BENEFICIOS'
+    },
+    otroTiposBeneficios: {
+        codigo: 'ASO05_TIPBENEF',
+        pregunta: 'QUÉ OTRO TIPO DE BENEFICIOS'
     },
     ayudaOtraInstitucion: {
         codigo: 'ASO14_OTRI',

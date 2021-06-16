@@ -42,7 +42,7 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string,
                     preguntas: {
                         asociadoConTiene: {
-                            respuesta: string,
+                            respuesta: string[],
                             preguntas: {
                                 otrosEspecifique: {
                                     respuesta: string
@@ -154,7 +154,12 @@ export interface FormularioLineaBase extends Formulario {
         cacaoNacionalNuevosClones: {
             preguntas: {
                 usoAnteriorAreaNueva: {
-                    respuesta: string
+                    respuesta: string,
+                    preguntas: {
+                        otroUsoAnteriorAreaNueva: {
+                            respuesta: string
+                        }
+                    }
                 },
                 tipoVariedad: {
                     respuesta: string,
@@ -190,7 +195,12 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string
                 },
                 encargadoPropagacion: {
-                    respuesta: string
+                    respuesta: string,
+                    preguntas: {
+                        otroEncargadoPropagacion: {
+                            respuesta: string
+                        }
+                    }
                 },
                 tipoConocimiento: {
                     respuesta: string
@@ -356,10 +366,10 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string
                 },
                 plagasAfectanCultivo: {
-                    respuesta: string
+                    respuesta: string[]
                 },
                 enfermedadesAfectanCultivo: {
-                    respuesta: string
+                    respuesta: string[]
                 },
                 productoParaPlagas: {
                     respuesta: string
@@ -376,19 +386,19 @@ export interface FormularioLineaBase extends Formulario {
                     }
                 },
                 periodoFertilizacion: {
-                    respuesta: string
+                    respuesta: string[]
                 },
                 periodoPoda: {
-                    respuesta: string
+                    respuesta: string[]
                 },
                 periodoControlMaleza: {
-                    respuesta: string
+                    respuesta: string[]
                 },
                 periodoMIPE: {
-                    respuesta: string
+                    respuesta: string[]
                 },
                 periodoCosecha: {
-                    respuesta: string
+                    respuesta: string[]
                 }
             }
         },
@@ -470,7 +480,12 @@ export interface FormularioLineaBase extends Formulario {
                             respuesta: string
                         },
                         tiposBeneficios: {
-                            respuesta: string
+                            respuesta: string[],
+                            preguntas: {
+                                otroTiposBeneficios: {
+                                    respuesta: string
+                                }
+                            }
                         }
                     }
                 },
@@ -535,7 +550,7 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string,
                     preguntas: {
                         ubicacionDesechosAguasNegras: {
-                            respuesta: string
+                            respuesta: string[]
                         }
                     }
                 },

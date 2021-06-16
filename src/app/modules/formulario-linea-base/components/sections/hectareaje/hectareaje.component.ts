@@ -16,7 +16,7 @@ export class HectareajeComponent implements OnInit {
   hectareajeDistanciaPlantas;
   hectareajeTipoUbicacionZona;
 
-  otroAsociado: string;
+  otrosAsociados: string[] = [];
 
   constructor() { }
 
@@ -29,7 +29,13 @@ export class HectareajeComponent implements OnInit {
   }
 
   onSubmit() {
+    this.otrosAsociados.includes('OTRO');
+  }
 
+  otroSelected(): boolean {
+    if (this.otrosAsociados.length > 0) {
+      return this.otrosAsociados.includes('OTRO');
+    }
   }
 
 }

@@ -86,6 +86,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       }),
       cacaoNacionalNuevosClones: this.formBuilder.group({
         usoAnteriorAreaNueva: new FormControl(''),
+        otroUsoAnteriorAreaNueva: new FormControl(''),
         tipoVariedad: new FormControl(''),
         especifiqueOtros: new FormControl(''),
         variedadesSembradasCalificacion: new FormControl(''),
@@ -98,6 +99,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         nombreVivero: new FormControl(''),
         ubicacionVivero: new FormControl(''),
         encargadoPropagacion: new FormControl(''),
+        otroEncargadoPropagacion: new FormControl(''),
         tipoConocimiento: new FormControl(''),
         entidadDonacion: new FormControl(''),
         cantidadPlantasRecibidas: new FormControl('')
@@ -192,6 +194,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         cantidadMiembros: new FormControl(''),
         recibeBeneficios: new FormControl(''),
         tiposBeneficios: new FormControl(''),
+        otroTiposBeneficios: new FormControl(''),
         ayudaOtraInstitucion: new FormControl(''),
         nombreOtraInstitucion: new FormControl(''),
         tipoAyuda: new FormControl('')
@@ -251,10 +254,17 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   }
 
   debugging() {
-    const group = this.lineaBaseForm.get('cacaoNacionalNuevosClones') as FormGroup;
-    const controlItem = group.get('variedadesSembradasCalificacion') as FormControl;
-    const value = controlItem.value;
-    console.log(value);
+    console.log(this.lineaBaseForm.value.nivelAsociatividad.recibeBeneficios);
+    console.log(this.lineaBaseForm.value.nivelAsociatividad.tiposBeneficios);
+    console.log(this.lineaBaseForm.value.nivelAsociatividad.otroTiposBeneficios);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('perteneceAsocProgrCertif').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('nombreAsociacion').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('cantidadMiembros').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('recibeBeneficios').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('tiposBeneficios').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('otroTiposBeneficios').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('ayudaOtraInstitucion').value);
+    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('nombreOtraInstitucion').value);
   }
 
   getFormArray(key: string): FormArray {
@@ -469,7 +479,12 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         cacaoNacionalNuevosClones: {
           preguntas: {
             usoAnteriorAreaNueva: {
-              respuesta: this.lineaBaseForm.value.cacaoNacionalNuevosClones.usoAnteriorAreaNueva
+              respuesta: this.lineaBaseForm.value.cacaoNacionalNuevosClones.usoAnteriorAreaNueva,
+              preguntas: {
+                otroUsoAnteriorAreaNueva: {
+                  respuesta: this.lineaBaseForm.value.cacaoNacionalNuevosClones.otroUsoAnteriorAreaNueva,
+                }
+              }
             },
             tipoVariedad: {
               respuesta: this.lineaBaseForm.value.cacaoNacionalNuevosClones.tipoVariedad,
@@ -505,7 +520,12 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
               respuesta: this.lineaBaseForm.value.origenPlantas.ubicacionVivero
             },
             encargadoPropagacion: {
-              respuesta: this.lineaBaseForm.value.origenPlantas.encargadoPropagacion
+              respuesta: this.lineaBaseForm.value.origenPlantas.encargadoPropagacion,
+              preguntas: {
+                otroEncargadoPropagacion: {
+                  respuesta: this.lineaBaseForm.value.origenPlantas.otroEncargadoPropagacion,
+                }
+              }
             },
             tipoConocimiento: {
               respuesta: this.lineaBaseForm.value.origenPlantas.tipoConocimiento
@@ -785,7 +805,12 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
                   respuesta: this.lineaBaseForm.value.nivelAsociatividad.recibeBeneficios
                 },
                 tiposBeneficios: {
-                  respuesta: this.lineaBaseForm.value.nivelAsociatividad.tiposBeneficios
+                  respuesta: this.lineaBaseForm.value.nivelAsociatividad.tiposBeneficios,
+                  preguntas: {
+                    otroTiposBeneficios: {
+                      respuesta: this.lineaBaseForm.value.nivelAsociatividad.otroTiposBeneficios,
+                    }
+                  }
                 }
               }
             },
@@ -954,23 +979,13 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         }
       }
     }
-    // console.log(formularioLineaBaseParam);
-    /*
-    this.formularioService.saveFormularioLineaBase(this.agricultor.id, formularioLineaBaseParam, String(new Date))
-      .then(value => {
-        this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
-        this.lineaBaseForm.reset();
-      }).catch((message) => {
-        this.toastr.error(message, '¡Error!');
-      });
-      */
+    console.log(formularioLineaBaseParam);
     if (this.agricultor) {
       if (this.formularioLineaBase) {
         formularioLineaBaseParam.id = this.formularioLineaBase.id;
       }
       this.formularioService.saveFormInCollection(formularioLineaBaseParam).then(value => {
         this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
-        // this.lineaBaseForm.reset();
         this.router.navigate(['inicio','home']);
       }).catch((e) => {
         console.log(e);
@@ -992,10 +1007,10 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   }
 
   async setFormDefaultValues() {
+    console.log(this.formularioLineaBase);
     const id = this.activatedRoute.snapshot.paramMap.get("id");
     if (!this.isFormEmpty()) {
       this.setAgricultor();
-      console.log(this.lineaBaseForm.get('agricultor').value);
       this.lineaBaseForm.get('informacionFinca').get('provincia')
         .setValue(this.formularioLineaBase.secciones.informacionFinca.preguntas.provincia.respuesta);
       this.lineaBaseForm.get('informacionFinca').get('canton')
@@ -1009,7 +1024,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       this.lineaBaseForm.get('informacionFinca').get('descripcionLlegarFinca')
         .setValue(this.formularioLineaBase.secciones.informacionFinca.preguntas.descripcionLlegarFinca.respuesta);
       /****************************** */
-        this.lineaBaseForm.get('hectareaje').get('dimensionTotalFinca')
+      this.lineaBaseForm.get('hectareaje').get('dimensionTotalFinca')
         .setValue(this.formularioLineaBase.secciones.hectareaje.preguntas.dimensionTotalFinca.respuesta);
       this.lineaBaseForm.get('hectareaje').get('terreno')
         .setValue(this.formularioLineaBase.secciones.hectareaje.preguntas.terreno.respuesta);
@@ -1083,6 +1098,8 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       /********************* */
       this.lineaBaseForm.get('cacaoNacionalNuevosClones').get('usoAnteriorAreaNueva')
         .setValue(this.formularioLineaBase.secciones.cacaoNacionalNuevosClones.preguntas.usoAnteriorAreaNueva.respuesta);
+      this.lineaBaseForm.get('cacaoNacionalNuevosClones').get('otroUsoAnteriorAreaNueva')
+        .setValue(this.formularioLineaBase.secciones.cacaoNacionalNuevosClones.preguntas.usoAnteriorAreaNueva.preguntas.otroUsoAnteriorAreaNueva.respuesta);
       this.lineaBaseForm.get('cacaoNacionalNuevosClones').get('tipoVariedad')
         .setValue(this.formularioLineaBase.secciones.cacaoNacionalNuevosClones.preguntas.tipoVariedad.respuesta);
       this.lineaBaseForm.get('cacaoNacionalNuevosClones').get('especifiqueOtros')
@@ -1104,6 +1121,8 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         .setValue(this.formularioLineaBase.secciones.origenPlantas.preguntas.ubicacionVivero.respuesta);
       this.lineaBaseForm.get('origenPlantas').get('encargadoPropagacion')
         .setValue(this.formularioLineaBase.secciones.origenPlantas.preguntas.encargadoPropagacion.respuesta);
+      this.lineaBaseForm.get('origenPlantas').get('otroEncargadoPropagacion')
+        .setValue(this.formularioLineaBase.secciones.origenPlantas.preguntas.encargadoPropagacion.preguntas.otroEncargadoPropagacion.respuesta);
       this.lineaBaseForm.get('origenPlantas').get('tipoConocimiento')
         .setValue(this.formularioLineaBase.secciones.origenPlantas.preguntas.tipoConocimiento.respuesta);
       this.lineaBaseForm.get('origenPlantas').get('entidadDonacion')
@@ -1274,13 +1293,15 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.recibeBeneficios.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('tiposBeneficios')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.tiposBeneficios.respuesta);
-      this.lineaBaseForm.get('nivelAsociatividad').get('ayudaOtraInstitucion')
+      this.lineaBaseForm.get('nivelAsociatividad').get('otroTiposBeneficios')
+        .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.tiposBeneficios.preguntas.otroTiposBeneficios.respuesta);
+        this.lineaBaseForm.get('nivelAsociatividad').get('ayudaOtraInstitucion')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.ayudaOtraInstitucion.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('nombreOtraInstitucion')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.ayudaOtraInstitucion.preguntas.nombreOtraInstitucion.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('tipoAyuda')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.ayudaOtraInstitucion.preguntas.tipoAyuda.respuesta);
-      /******************************************* */
+        /******************************************* */
       this.lineaBaseForm.get('condicionesLaborales').get('contrataTrabajadores')
         .setValue(this.formularioLineaBase.secciones.condicionesLaborales.preguntas.contrataTrabajadores.respuesta);
       this.lineaBaseForm.get('condicionesLaborales').get('cantidadTrabajadores')

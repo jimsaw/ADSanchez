@@ -21,7 +21,7 @@
                 <div class="column-item"></div>
                 <mat-form-field class="column-item-6" appearance="outline" >
                     <mat-label>¿Dónde se vierten las aguas negras y los desechos líquidos?</mat-label>
-                    <mat-select formControlName="ubicacionDesechosAguasNegras" [(ngModel)]="lugarDesecho" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="ubicacionDesechosAguasNegras" [(ngModel)]="lugarDesecho" multiple>
                         <mat-option *ngFor="let lugar of lugaresDesecho" [value]="lugar">{{lugar}}</mat-option>
                     </mat-select>
                 </mat-form-field>

@@ -23,21 +23,21 @@
                 <div class="columns-flex">
                     <mat-form-field class="column-item-3" appearance="outline" >
                         <mat-label>¿Recibe beneficios?</mat-label>
-                        <mat-select formControlName="recibeBeneficios" [(ngModel)]="hayBeneficios" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="recibeBeneficios" [(ngModel)]="hayBeneficios">
                             <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div *ngIf="hayBeneficios === 'SI'" class="columns-flex">
-                    <mat-form-field class="column-item-3" appearance="outline" >
+                <div  class="columns-flex">
+                    <mat-form-field class="column-item-3" appearance="outline">
                         <mat-label>¿Que tipo de beneficios?</mat-label>
-                        <mat-select formControlName="tiposBeneficios" [(ngModel)]="beneficio" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="tiposBeneficios" [(ngModel)]="beneficio" multiple>
                             <mat-option *ngFor="let ben of tiposBeneficio" [value]="ben">{{ben}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field *ngIf="beneficio === 'OTRO'" class="column-item-6">
+                    <mat-form-field *ngIf="otroBeneficio()" class="column-item-6" appearance="outline">
                         <mat-label>Especifique:</mat-label>
-                        <input matInput formControlName="tiposBeneficios" name="someUnusualName" autocomplete="off">
+                        <input matInput formControlName="otroTiposBeneficios" name="someUnusualName" autocomplete="off">
                     </mat-form-field>
                 </div>
             </div>

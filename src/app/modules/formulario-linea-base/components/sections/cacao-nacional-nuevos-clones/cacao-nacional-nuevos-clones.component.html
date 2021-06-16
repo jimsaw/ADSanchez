@@ -8,9 +8,9 @@
                         <mat-option *ngFor="let uso of usosAnteriores" [value]="uso">{{uso}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2">
+                <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2" appearance="outline">
                     <mat-label>Especifique:</mat-label>
-                    <input matInput formControlName="usoAnteriorAreaNueva" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="otroUsoAnteriorAreaNueva" name="someUnusualName" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
@@ -26,14 +26,6 @@
                 </mat-form-field>
             </div>
             <div class="columns-flex">
-                <!-- ul class="column-item-full">
-                    <h1>Las variedades sembradas muestran ser:</h1>
-                    <li style="display: inline;" *ngFor="let variedad of variedadesSembradasClas; index as i">
-                      <mat-checkbox formControlName="variedadesSembradasCalificacion" [value]="variedad" (change)="checkboxChange($event, i)" [checked]="selection.isSelected(i)">
-                        {{variedad}}
-                      </mat-checkbox>
-                    </li>
-                </ul -->
                 <mat-form-field class="column-item-2 sp-0" appearance="outline">
                     <mat-label>Las variedades sembradas muestran ser:</mat-label>
                     <mat-select formControlName="variedadesSembradasCalificacion" [(ngModel)]="verSembrada" name="someUnusualName" autocomplete="off">

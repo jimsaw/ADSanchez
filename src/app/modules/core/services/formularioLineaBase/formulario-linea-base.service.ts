@@ -139,7 +139,7 @@ export class FormularioLineaBaseService extends FormularioService {
                   respuesta: "",
                   preguntas: {
                       asociadoConTiene: {
-                          respuesta: "",
+                          respuesta: [],
                           preguntas: {
                               otrosEspecifique: {
                                   respuesta: ""
@@ -251,7 +251,12 @@ export class FormularioLineaBaseService extends FormularioService {
       cacaoNacionalNuevosClones: {
           preguntas: {
               usoAnteriorAreaNueva: {
-                  respuesta: ""
+                  respuesta: "",
+                  preguntas: {
+                    otroUsoAnteriorAreaNueva: {
+                        respuesta: ""
+                    }
+                }
               },
               tipoVariedad: {
                   respuesta: "",
@@ -287,7 +292,12 @@ export class FormularioLineaBaseService extends FormularioService {
                   respuesta: ""
               },
               encargadoPropagacion: {
-                  respuesta: ""
+                  respuesta: "",
+                  preguntas: {
+                    otroEncargadoPropagacion: {
+                        respuesta: ""
+                    }
+                  }
               },
               tipoConocimiento: {
                   respuesta: ""
@@ -453,10 +463,10 @@ export class FormularioLineaBaseService extends FormularioService {
                   respuesta: ""
               },
               plagasAfectanCultivo: {
-                  respuesta: ""
+                  respuesta: []
               },
               enfermedadesAfectanCultivo: {
-                  respuesta: ""
+                  respuesta: []
               },
               productoParaPlagas: {
                   respuesta: ""
@@ -473,19 +483,19 @@ export class FormularioLineaBaseService extends FormularioService {
                   }
               },
               periodoFertilizacion: {
-                  respuesta: ""
+                  respuesta: []
               },
               periodoPoda: {
-                  respuesta: ""
+                  respuesta: []
               },
               periodoControlMaleza: {
-                  respuesta: ""
+                  respuesta: []
               },
               periodoMIPE: {
-                  respuesta: ""
+                  respuesta: []
               },
               periodoCosecha: {
-                  respuesta: ""
+                  respuesta: []
               }
           }
       },
@@ -567,7 +577,12 @@ export class FormularioLineaBaseService extends FormularioService {
                           respuesta: ""
                       },
                       tiposBeneficios: {
-                          respuesta: ""
+                          respuesta: [],
+                          preguntas: {
+                              otroTiposBeneficios: {
+                                  respuesta: ""
+                              }
+                          }
                       }
                   }
               },
@@ -632,7 +647,7 @@ export class FormularioLineaBaseService extends FormularioService {
                   respuesta: "",
                   preguntas: {
                       ubicacionDesechosAguasNegras: {
-                          respuesta: ""
+                          respuesta: []
                       }
                   }
               },

@@ -26,13 +26,13 @@
                 </mat-form-field>
                 <mat-form-field class="column-item-3" appearance="outline" >
                     <mat-label>Esta Asociado con/tiene:</mat-label>
-                    <mat-select formControlName="asociadoConTiene" [(ngModel)]="otroAsociado" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="asociadoConTiene" [(ngModel)]="otrosAsociados" multiple>
                         <mat-option *ngFor="let value of hectareajeAsociadoConTiene" [value]="value">
                         {{value}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="otroAsociado === 'OTRO'" class="column-item-3" appearance="outline" >
+                <mat-form-field *ngIf="otroSelected()" class="column-item-3" appearance="outline" >
                     <mat-label>Especifique:</mat-label>
                     <input matInput formControlName="otrosEspecifique" name="someUnusualName" autocomplete="off">
                 </mat-form-field>

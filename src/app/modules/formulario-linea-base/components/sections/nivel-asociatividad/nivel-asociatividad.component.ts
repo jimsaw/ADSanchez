@@ -15,7 +15,7 @@ export class NivelAsociatividadComponent implements OnInit {
   recibeAyuda: string;
   opciones: string[] = ["SI", "NO"];
 
-  beneficio: string;
+  beneficio: string[] = [];
   tiposBeneficio: string[] = ["ASISTENCIA TÉCNICA", "TRANSPORTE", "CAPACITACIÓN", "PRECIO MEJORADO", "PRECIO", "INSUMO", "OTRO"];
 
   constructor() { }
@@ -25,6 +25,10 @@ export class NivelAsociatividadComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  otroBeneficio(): boolean {
+    return this.beneficio.includes('OTRO');
   }
 
 }

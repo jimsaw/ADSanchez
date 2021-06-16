@@ -17,7 +17,7 @@ export class ConservacionRecursosManejoDesechosComponent implements OnInit {
   compraProductos: string;
   opciones: string[] = ["SI", "NO"];
 
-  lugarDesecho: string;
+  lugarDesecho: string[] = [];
   lugaresDesecho: string[] = ["SERVICIO HIGIÉNICO", "POZO SÉPTICO", "LETRINA", "NINGUNO"];
 
   constructor() { }
