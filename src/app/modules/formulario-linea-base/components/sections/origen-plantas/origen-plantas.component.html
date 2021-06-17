@@ -4,43 +4,43 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-6" appearance="outline" >
                     <mat-label>Nombre del Vivero</mat-label>
-                    <input matInput formControlName="nombreVivero" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="nombreVivero" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
                 <mat-form-field class="column-item-6" appearance="outline" >
                     <mat-label>Ubicacion del Vivero</mat-label>
-                    <input matInput formControlName="ubicacionVivero" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="ubicacionVivero" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Encargado Propagacion</mat-label>
-                    <mat-select formControlName="encargadoPropagacion" [(ngModel)]="selectedEncargado" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="encargadoPropagacion" autocomplete="off">
                         <mat-option *ngFor="let encargado of encargadosPropagacion" [value]="encargado">{{encargado}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="column-item-2" appearance="outline">
                     <mat-label>Tipo de Conocimiento</mat-label>
-                    <mat-select formControlName="tipoConocimiento" [(ngModel)]="selectedConocimiento" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="tipoConocimiento" autocomplete="off">
                         <mat-option *ngFor="let conocimiento of conocimientos" [value]="conocimiento">{{conocimiento}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div *ngIf="selectedEncargado === 'OTRO'" class="columns-flex">
-                <mat-form-field class="column-item-2">
+            <div *ngIf="otroEncargado()" class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline">
                     <mat-label>Especifique:</mat-label>
-                    <input matInput formControlName="otroEncargadoPropagacion" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="otroEncargadoPropagacion" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline">
                     <mat-label>Entidad que Donó</mat-label>
-                    <input matInput formControlName="entidadDonacion" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="entidadDonacion" autocomplete="off" >
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline">
                     <mat-label>Cantidad de Plantas Recibidas</mat-label>
-                    <input matInput formControlName="cantidadPlantasRecibidas" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="cantidadPlantasRecibidas" autocomplete="off" >
                 </mat-form-field>
             </div>
         </div>

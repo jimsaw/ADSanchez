@@ -4,11 +4,11 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Tiene area libre para sembrar</mat-label>
-                    <mat-select formControlName="tieneAreaLibreParaSembrar" [(ngModel)]="hayAreaLibre" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="tieneAreaLibreParaSembrar" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="hayAreaLibre === 'SI'" class="column-item-3" appearance="outline" >
+                <mat-form-field *ngIf="hayAreaLibre()" class="column-item-3" appearance="outline" >
                     <mat-label>Cuanto</mat-label>
                     <input matInput formControlName="areaLibre" name="someUnusualName" autocomplete="off">
                 </mat-form-field>
@@ -16,11 +16,11 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Necesita rehab./reinjerto</mat-label>
-                    <mat-select formControlName="necesitaRehaReinjerto" [(ngModel)]="necesitaRehab" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="necesitaRehaReinjerto" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="necesitaRehab === 'SI'" class="column-item-3" appearance="outline" >
+                <mat-form-field *ngIf="necesitaRehab()" class="column-item-3" appearance="outline" >
                     <mat-label>Cuanto</mat-label>
                     <input matInput formControlName="cantidad" name="someUnusualName" autocomplete="off">
                 </mat-form-field>

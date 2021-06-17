@@ -4,31 +4,31 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-3" appearance="outline">
                     <mat-label>Uso Anterior del Area Nueva</mat-label>
-                    <mat-select formControlName="usoAnteriorAreaNueva" [(ngModel)]="selectedUso" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="usoAnteriorAreaNueva" autocomplete="off">
                         <mat-option *ngFor="let uso of usosAnteriores" [value]="uso">{{uso}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="selectedUso === 'OTRO'" class="column-item-2" appearance="outline">
+                <mat-form-field *ngIf="otroUsoAnteriorAreaNueva()" class="column-item-2" appearance="outline">
                     <mat-label>Especifique:</mat-label>
-                    <input matInput formControlName="otroUsoAnteriorAreaNueva" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="otroUsoAnteriorAreaNueva" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
                 <mat-form-field class="column-item-3" appearance="outline">
                     <mat-label>Que Variedad Tiene</mat-label>
-                    <mat-select formControlName="tipoVariedad" [(ngModel)]="tipoVariedad" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="tipoVariedad" autocomplete="off">
                         <mat-option *ngFor="let variedad of variedades" [value]="variedad">{{variedad}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="tipoVariedad === 'OTRO'" class="column-item-2">
+                <mat-form-field *ngIf="otroTipoVariedad()" class="column-item-2" appearance="outline">
                     <mat-label>Especifique:</mat-label>
-                    <input matInput formControlName="tipoVariedad" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="especifiqueOtros" autocomplete="off">
                 </mat-form-field>
             </div>
             <div class="columns-flex">
                 <mat-form-field class="column-item-2 sp-0" appearance="outline">
                     <mat-label>Las variedades sembradas muestran ser:</mat-label>
-                    <mat-select formControlName="variedadesSembradasCalificacion" [(ngModel)]="verSembrada" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="variedadesSembradasCalificacion" autocomplete="off">
                         <mat-option *ngFor="let variedad of variedadesSembradasClas" [value]="variedad">{{variedad}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -38,13 +38,13 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline">
                     <mat-label>Adaptacion Condiciones Edafoclimaticas</mat-label>
-                    <mat-select formControlName="plantulasCondicionesEdafoclimaticas" [(ngModel)]="optAdaptacion" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="plantulasCondicionesEdafoclimaticas" autocomplete="off">
                         <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Rendimiento</mat-label>
-                    <mat-select formControlName="plantulasRendimiento" [(ngModel)]="optRendimiento" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="plantulasRendimiento" autocomplete="off">
                         <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -52,13 +52,13 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Vigor de la Planta</mat-label>
-                    <mat-select formControlName="plantulasVigorPlanta" [(ngModel)]="optVigor" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="plantulasVigorPlanta" autocomplete="off">
                         <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Resistencia a Enfermedades</mat-label>
-                    <mat-select formControlName="plantulasResistenciaEnfermedades" [(ngModel)]="optResistencia" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="plantulasResistenciaEnfermedades" autocomplete="off">
                         <mat-option *ngFor="let opcion of opcionesPlantulas" [value]="opcion">{{opcion}}</mat-option>
                     </mat-select>
                 </mat-form-field>

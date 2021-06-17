@@ -10,12 +10,8 @@ export class SaludSeguridadOcupacionalComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  hayAccidente: string;
-  hayIntoxicado: string;
-  hayCentroSalud: string;
   opciones: string[] = ["SI", "NO"];
 
-  accidente: string;
   tiposAccidente: string[] = ["LEVES", "GRAVES", "MUY GRAVES"];
 
   constructor() { }
@@ -25,6 +21,16 @@ export class SaludSeguridadOcupacionalComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  hayAccidente() {
+    const hayAccidente = this.parentForm.get('saludSeguridadOcupacional').get('accidentesLaboralesUltimoAnio').value;
+    return hayAccidente === 'SI';
+  }
+
+  hayIntoxicado() {
+    const hayIntoxicado = this.parentForm.get('saludSeguridadOcupacional').get('periodoIntoxicacionPresente').value;
+    return hayIntoxicado === 'SI';
   }
 
 }

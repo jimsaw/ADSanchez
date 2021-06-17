@@ -29,13 +29,11 @@ export class HectareajeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.otrosAsociados.includes('OTRO');
   }
 
   otroSelected(): boolean {
-    if (this.otrosAsociados.length > 0) {
-      return this.otrosAsociados.includes('OTRO');
-    }
+    const otrosSelected = this.parentForm.get('hectareaje').get('asociadoConTiene').value;
+    return otrosSelected.includes('OTRO');
   }
 
 }

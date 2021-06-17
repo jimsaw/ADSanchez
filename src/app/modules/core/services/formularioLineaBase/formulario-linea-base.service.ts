@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
+import { AngularFirestore, CollectionReference, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Formulario } from 'src/app/interfaces/formulario';
@@ -50,6 +50,7 @@ export class FormularioLineaBaseService extends FormularioService {
         await this.firebase.firestore.runTransaction(async transaction => {
           const collRef = this.firebase.firestore.collection("formulariosLineaBase");
           const docRef = collRef.doc(formulario["id"]);
+          await this.deleteSubCollection(docRef, transaction);
           transaction.delete(docRef);
           return Promise.resolve();
         });
@@ -58,6 +59,15 @@ export class FormularioLineaBaseService extends FormularioService {
         console.log(e);
         reject("Ha ocurrido un error");
       }
+    });
+  }
+
+  private async deleteSubCollection(lastRef: DocumentReference, transaction: any) {
+    const secciones = await lastRef.collection('secciones').get();
+    secciones.docs.forEach((seccion) => {
+        const id = seccion.data()["id"];
+        const docRef = lastRef.collection('secciones').doc(id);
+        transaction.delete(docRef);
     });
   }
 
@@ -568,7 +578,7 @@ export class FormularioLineaBaseService extends FormularioService {
                   respuesta: "",
                   preguntas: {
                       nombreAsociacion: {
-                          respueta: ""
+                          respuesta: ""
                       },
                       cantidadMiembros: {
                           respuesta: ""

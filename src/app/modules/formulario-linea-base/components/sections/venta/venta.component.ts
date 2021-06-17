@@ -10,14 +10,10 @@ export class VentaComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  propiedadTrans: string;
   propiedadesTransporte: string[] = ["PROPIO", "FLETADO"];
 
-  tipoTrans: string;
   tiposTransporte: string[] = ["CHIVA", "CAMIONETA", "MOTO", "CAMION", "OTRO"];
 
-  hayRegistro: string;
-  hayAlmacenaCacao: string;
   opciones: string[] = ["SI", "NO"];
 
   constructor() { }
@@ -27,6 +23,16 @@ export class VentaComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  hayRegistro() {
+    const hayRegistro = this.parentForm.get('venta').get('registroFinancieroFinca').value;
+    return hayRegistro === 'SI';
+  }
+
+  almacenaCacao() {
+    const almacenaCacao = this.parentForm.get('venta').get('almacenaCacaoDespSecado').value;
+    return almacenaCacao === 'SI';
   }
 
 }

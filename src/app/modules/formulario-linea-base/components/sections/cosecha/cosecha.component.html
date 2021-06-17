@@ -4,7 +4,7 @@
             <div class="columns flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Sus tumbas las realiza:</mat-label>
-                    <mat-select formControlName="periodoCadaTumba" [(ngModel)]="periodoTumba" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="periodoCadaTumba" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let periodo of periodosTumba" [value]="periodo">{{periodo}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -16,7 +16,7 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>¿Realiza Escurrido y Presecado para el CCN51?</mat-label>
-                    <mat-select formControlName="realizaEscurridoSecadoCCN51" [(ngModel)]="hayEscurrido" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="realizaEscurridoSecadoCCN51" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>

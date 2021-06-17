@@ -2,22 +2,15 @@
     <mat-card-content>
         <div id="contenido" formGroupName="mejorarCalidadCacao">
             <div class="columns-flex">
-                <!--ul class="column-item-full">
-                    <li *ngFor="let proyecto of proyectos; index as i">
-                      <mat-checkbox formControlName="proyectos">
-                        {{proyecto}}
-                      </mat-checkbox>
-                    </li>
-                </ul -->
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Bandejas o cajones de Fermentacion</mat-label>
-                    <mat-select formControlName="bandejasCajonesFermentacion" [(ngModel)]="hayBandejas" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="bandejasCajonesFermentacion">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Tendales elevados por caña</mat-label>
-                    <mat-select formControlName="tendalesElevadosCania" [(ngModel)]="hayTendales" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="tendalesElevadosCania">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -25,7 +18,7 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Secadoras comunitarias</mat-label>
-                    <mat-select formControlName="secadorasComunitarias" [(ngModel)]="haySecadoras" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="secadorasComunitarias">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -35,13 +28,13 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>¿Está dispuesto a hacerlo por su cuenta?</mat-label>
-                    <mat-select formControlName="dispuestoHacerloPropiaCuenta" [(ngModel)]="dispuesto" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="dispuestoHacerloPropiaCuenta">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>¿Cuenta con agrupacion de vecinos para trabajar en el proyecto?</mat-label>
-                    <mat-select formControlName="contarAgrupacionParaProyecto" [(ngModel)]="hayAgrupacion" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="contarAgrupacionParaProyecto">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>

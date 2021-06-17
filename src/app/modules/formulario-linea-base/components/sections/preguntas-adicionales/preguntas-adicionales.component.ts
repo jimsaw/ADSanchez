@@ -10,8 +10,6 @@ export class PreguntasAdicionalesComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  hayAreaLibre: string;
-  necesitaRehab: string;
   opciones: string[] = ["SI", "NO"];
 
   constructor() { }
@@ -22,4 +20,15 @@ export class PreguntasAdicionalesComponent implements OnInit {
   onSubmit() {
 
   }
+
+  hayAreaLibre() {
+    const hayAreaLibre = this.parentForm.get('preguntasAdicionales').get('tieneAreaLibreParaSembrar').value;
+    return hayAreaLibre === 'SI';
+  }
+
+  necesitaRehab() {
+    const necesitaRehab = this.parentForm.get('preguntasAdicionales').get('necesitaRehaReinjerto').value;
+    return necesitaRehab === 'SI';
+  }
+
 }

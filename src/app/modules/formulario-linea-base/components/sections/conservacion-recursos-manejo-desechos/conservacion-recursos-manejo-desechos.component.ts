@@ -10,11 +10,6 @@ export class ConservacionRecursosManejoDesechosComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  tieneConocimiento: string;
-  hayContaminacion: string;
-  hayArboles: string;
-  hayEspacio: string;
-  compraProductos: string;
   opciones: string[] = ["SI", "NO"];
 
   lugarDesecho: string[] = [];
@@ -28,4 +23,10 @@ export class ConservacionRecursosManejoDesechosComponent implements OnInit {
   onSubmit() {
 
   }
+
+  hayEspacio() {
+    const hayEspacio = this.parentForm.get('conservacionRecursosManejoDesechos').get('cultivaVegetalesHortalizasFrutas').value;
+    return hayEspacio === 'SI';
+  }
+
 }

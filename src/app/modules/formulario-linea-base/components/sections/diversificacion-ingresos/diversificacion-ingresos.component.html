@@ -2,22 +2,15 @@
     <mat-card-content>
         <div id="contenido" formGroupName="diversificacionIngresos">
             <div class="columns-flex">
-                <!-- ul class="column-item-full">
-                    <li *ngFor="let proyecto of proyectos; index as i">
-                      <mat-checkbox formControlName="proyectos">
-                        {{proyecto}}
-                      </mat-checkbox>
-                    </li>
-                  </ul -->
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Huertos organicos</mat-label>
-                    <mat-select formControlName="huertosOrganicos" [(ngModel)]="hayHuertos" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="huertosOrganicos" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Desarrollo de viveros</mat-label>
-                    <mat-select formControlName="desarrolloViveros" [(ngModel)]="hayViveres" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="desarrolloViveros" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -25,13 +18,13 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Desarrollo y venta de fertilizantes</mat-label>
-                    <mat-select formControlName="desarrolloVentaFertilizantes" [(ngModel)]="hayVentaFert" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="desarrolloVentaFertilizantes" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>Rehabilitacion de finca</mat-label>
-                    <mat-select formControlName="rehabilitacionFinca" [(ngModel)]="hayRehab" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="rehabilitacionFinca" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -39,7 +32,7 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item" appearance="outline" >
                     <mat-label>Brigada de podadores</mat-label>
-                    <mat-select formControlName="brigadaPodadores" [(ngModel)]="hayBrigada" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="brigadaPodadores" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
@@ -48,18 +41,15 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-2" appearance="outline" >
                     <mat-label>¿Cuenta con experiencia en poda?</mat-label>
-                    <mat-select formControlName="contarExperienciaPoda" [(ngModel)]="tieneExperiencia" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="contarExperienciaPoda" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="tieneExperiencia === 'SI'" class="column-item-3" appearance="outline" >
+                <mat-form-field *ngIf="tieneExperiencia()" class="column-item-3" appearance="outline" >
                     <mat-label>Años de experiencia</mat-label>
                     <input matInput formControlName="aniosExperiencia" name="someUnusualName" autocomplete="off">
                 </mat-form-field>
             </div>
-            <!--div>
-                
-            </div-->
         </div>
     </mat-card-content>
 </form>

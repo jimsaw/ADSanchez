@@ -4,12 +4,12 @@
             <div class="columns-flex">
                 <mat-form-field class="column-item-3" appearance="outline" >
                     <mat-label>¿Contrata trabajadores?</mat-label>
-                    <mat-select formControlName="contrataTrabajadores" [(ngModel)]="hayContratados" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="contrataTrabajadores" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div *ngIf="hayContratados === 'SI'">
+            <div *ngIf="hayContratados()">
                 <div class="columns-flex">
                     <mat-form-field class="column-item-2" appearance="outline" >
                         <mat-label>Cantidad de trabajadores</mat-label>
@@ -23,22 +23,22 @@
                 <div class="columns-flex">
                     <mat-form-field class="column-item-2" appearance="outline" >
                         <mat-label>Los trabajadores que contrata son</mat-label>
-                        <mat-select formControlName="tipoContratoTrabajo" [(ngModel)]="tipoTrabajador" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="tipoContratoTrabajo" name="someUnusualName" autocomplete="off">
                             <mat-option *ngFor="let tipo of tiposTrabajador" [value]="tipo">{{tipo}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field class="column-item-2" appearance="outline" >
                         <mat-label>¿Contrata menores de edad?</mat-label>
-                        <mat-select formControlName="contrataMenoresEdad" [(ngModel)]="hayMenores" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="contrataMenoresEdad" name="someUnusualName" autocomplete="off">
                             <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="columns-flex">
-                    <div *ngIf="hayMenores === 'SI'" class="columns-flex">
+                    <div *ngIf="contrataMenores()" class="columns-flex">
                         <mat-form-field class="column-item-2" appearance="outline" >
                             <mat-label>¿Cuenta con un permiso de trabajo para menor de edad?</mat-label>
-                            <mat-select formControlName="poseePermiso" [(ngModel)]="hayPermiso" name="someUnusualName" autocomplete="off">
+                            <mat-select formControlName="poseePermiso" name="someUnusualName" autocomplete="off">
                                 <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -48,7 +48,7 @@
                 <div class="columns-flex">
                     <mat-form-field class="column-item-full" appearance="outline" >
                         <mat-label>Cumple con la base del contrato agricola por un día para el contrato de su personal de temporada?</mat-label>
-                        <mat-select formControlName="baseContratoAgricola" [(ngModel)]="cumple" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="baseContratoAgricola" name="someUnusualName" autocomplete="off">
                             <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                         </mat-select>
                     </mat-form-field>

@@ -10,22 +10,12 @@ export class PracticasAgricolasComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  interesFertilizante: string;
-  perdidaMazorca: string;
   opciones: string[] = ["SI", "NO"];
 
-  selectedPlaga: string[] = [];
   plagas: string[] = ["COCHINILLA", "XILEBORUS", "TRIPS", "CHINCHORRO", "HORMIGA", "OROZCO", "OTROS"];
 
-  selectedEnfermedad: string[] = [];
   enfermedades: string[] = ["PHYTOPHTORA", "ESCOBA BRUJA", "MONILLA", "MAL DE MACHETE", "OTROS"];
 
-
-  fertilizacionMeses: string[] = [];
-  podaMeses: string[] = [];
-  malezaMeses: string[] = [];
-  mipeMeses: string[] = [];
-  cosechaMeses: string[] = [];
   meses: string[] = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"]
 
   constructor() { }
@@ -36,4 +26,10 @@ export class PracticasAgricolasComponent implements OnInit {
   onSubmit() {
 
   }
+
+  llevaRegistroPerdidas() {
+    const llevaRegistroPerdidas = this.parentForm.get('practicasAgricolas').get('llevaRegistroPerdidasMazorcasXMonilla').value;
+    return llevaRegistroPerdidas === 'SI';
+  }
+
 }

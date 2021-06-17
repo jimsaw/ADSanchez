@@ -10,13 +10,8 @@ export class CondicionesLaboralesComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  tipoTrabajador: string;
   tiposTrabajador: string[] = ["PERMANENTE", "OCASIONAL"];
 
-  hayContratados: string;
-  hayMenores: string;
-  hayPermiso: string;
-  cumple: string;
   opciones: string[] = ["SI", "NO"];
 
   constructor() { }
@@ -26,6 +21,16 @@ export class CondicionesLaboralesComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  hayContratados() {
+    const hayContratados = this.parentForm.get('condicionesLaborales').get('contrataTrabajadores').value;
+    return hayContratados === 'SI';
+  }
+
+  contrataMenores() {
+    const contrataMenores = this.parentForm.get('condicionesLaborales').get('contrataMenoresEdad').value;
+    return contrataMenores === 'SI';
   }
 
 }

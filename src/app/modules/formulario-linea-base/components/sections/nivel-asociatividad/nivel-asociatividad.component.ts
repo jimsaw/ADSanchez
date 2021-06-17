@@ -10,9 +10,6 @@ export class NivelAsociatividadComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  hayBeneficios: string;
-  hayAsociacion: string;
-  recibeAyuda: string;
   opciones: string[] = ["SI", "NO"];
 
   beneficio: string[] = [];
@@ -27,8 +24,19 @@ export class NivelAsociatividadComponent implements OnInit {
 
   }
 
+  hayAsociacion() {
+    const hayAsociacion = this.parentForm.get('nivelAsociatividad').get('perteneceAsocProgrCertif').value;
+    return hayAsociacion === 'SI';
+  }
+
   otroBeneficio(): boolean {
-    return this.beneficio.includes('OTRO');
+    const beneficios = this.parentForm.get('nivelAsociatividad').get('tiposBeneficios').value;
+    return beneficios.includes('OTRO');
+  }
+
+  recibeAyuda() {
+    const recibeAyuda = this.parentForm.get('nivelAsociatividad').get('ayudaOtraInstitucion').value;
+    return recibeAyuda === 'SI';
   }
 
 }

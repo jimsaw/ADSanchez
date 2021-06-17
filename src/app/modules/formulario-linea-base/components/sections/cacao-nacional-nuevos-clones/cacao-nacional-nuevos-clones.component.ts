@@ -9,7 +9,6 @@ import { FormGroup } from '@angular/forms';
 })
 export class CacaoNacionalNuevosClonesComponent implements OnInit {
 
-  selectedUso: string;
   usosAnteriores: string[] = [
     "BOSQUE",
     "PLANTACION",
@@ -17,7 +16,6 @@ export class CacaoNacionalNuevosClonesComponent implements OnInit {
     "OTRO"
   ]
 
-  tipoVariedad: string;
   variedades: string[] = [
     "103",
     "96",
@@ -28,15 +26,8 @@ export class CacaoNacionalNuevosClonesComponent implements OnInit {
     "OTRO"
   ]
 
-  selectedVarSembrada: string;
-  selection = new SelectionModel<any>(false, []);
-  verSembrada: string;
   variedadesSembradasClas: string[] = ["POSITIVA", "NEGATIVA"];
 
-  optAdaptacion: string;
-  optRendimiento: string;
-  optVigor: string;
-  optResistencia: string;
   opcionesPlantulas: string[] = [
     "NEUTRAL",
     "FAVORABLE",
@@ -55,8 +46,14 @@ export class CacaoNacionalNuevosClonesComponent implements OnInit {
 
   }
 
-  checkboxChange(checkboxValue, index) {
-    checkboxValue ? this.selection.toggle(index) : null;
+  otroUsoAnteriorAreaNueva() {
+    const uso = this.parentForm.get('cacaoNacionalNuevosClones').get('usoAnteriorAreaNueva').value;
+    return uso === 'OTRO';
+  }
+
+  otroTipoVariedad() {
+    const tipoVariedad = this.parentForm.get('cacaoNacionalNuevosClones').get('tipoVariedad').value;
+    return tipoVariedad === 'OTRO';
   }
 
 }

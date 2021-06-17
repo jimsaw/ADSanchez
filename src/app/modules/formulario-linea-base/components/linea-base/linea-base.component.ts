@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,7 +32,6 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     private changeDetector: ChangeDetectorRef,
     private router: Router
   ) {
-    this.fetchFormulario();
     this.lineaBaseForm = this.formBuilder.group({
       agricultor: new FormControl(''),
       informacionFinca: this.formBuilder.group({
@@ -254,17 +253,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   }
 
   debugging() {
-    console.log(this.lineaBaseForm.value.nivelAsociatividad.recibeBeneficios);
-    console.log(this.lineaBaseForm.value.nivelAsociatividad.tiposBeneficios);
-    console.log(this.lineaBaseForm.value.nivelAsociatividad.otroTiposBeneficios);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('perteneceAsocProgrCertif').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('nombreAsociacion').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('cantidadMiembros').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('recibeBeneficios').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('tiposBeneficios').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('otroTiposBeneficios').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('ayudaOtraInstitucion').value);
-    console.log(this.lineaBaseForm.get('nivelAsociatividad').get('nombreOtraInstitucion').value);
+    console.log(this.lineaBaseForm.value);
   }
 
   getFormArray(key: string): FormArray {
@@ -299,8 +288,8 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
 
   async setFormulario() {
     await this.fetchFormulario();
+    await this.setFormDefaultValues();
     this.updateView();
-    this.setFormDefaultValues();
   }
 
   updateView() {
@@ -796,7 +785,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
               respuesta: this.lineaBaseForm.value.nivelAsociatividad.perteneceAsocProgrCertif,
               preguntas: {
                 nombreAsociacion: {
-                  respueta: this.lineaBaseForm.value.nivelAsociatividad.nombreAsociacion
+                  respuesta: this.lineaBaseForm.value.nivelAsociatividad.nombreAsociacion
                 },
                 cantidadMiembros: {
                   respuesta: this.lineaBaseForm.value.nivelAsociatividad.cantidadMiembros
@@ -979,7 +968,6 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         }
       }
     }
-    console.log(formularioLineaBaseParam);
     if (this.agricultor) {
       if (this.formularioLineaBase) {
         formularioLineaBaseParam.id = this.formularioLineaBase.id;
@@ -996,7 +984,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     }
   }
 
-  async setAgricultor() {
+  async setAgricultor(): Promise<void> {
     this.agricultor = await this.agricultorService.get(this.formularioLineaBase["agricultorId"]);
     for (let agricultor of this.listaAgricultores) {
       if (agricultor.id === this.agricultor.id) {
@@ -1007,10 +995,8 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   }
 
   async setFormDefaultValues() {
-    console.log(this.formularioLineaBase);
-    const id = this.activatedRoute.snapshot.paramMap.get("id");
     if (!this.isFormEmpty()) {
-      this.setAgricultor();
+      await this.setAgricultor();
       this.lineaBaseForm.get('informacionFinca').get('provincia')
         .setValue(this.formularioLineaBase.secciones.informacionFinca.preguntas.provincia.respuesta);
       this.lineaBaseForm.get('informacionFinca').get('canton')
@@ -1286,10 +1272,10 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       this.lineaBaseForm.get('nivelAsociatividad').get('perteneceAsocProgrCertif')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('nombreAsociacion')
-        .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.nombreAsociacion.respueta);
+        .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.nombreAsociacion.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('cantidadMiembros')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.cantidadMiembros.respuesta);
-      this.lineaBaseForm.get('nivelAsociatividad').get('recibeBeneficios')
+        this.lineaBaseForm.get('nivelAsociatividad').get('recibeBeneficios')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.recibeBeneficios.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('tiposBeneficios')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.tiposBeneficios.respuesta);
@@ -1378,8 +1364,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         .setValue(this.formularioLineaBase.secciones.preguntasAdicionales.preguntas.necesitaRehaReinjerto.preguntas.cantidad.respuesta);
       } else {
       //
-    }
-    this.isLoading = false;
+      }
   }
 
 }

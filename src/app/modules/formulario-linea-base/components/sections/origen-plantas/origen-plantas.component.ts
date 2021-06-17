@@ -10,7 +10,6 @@ export class OrigenPlantasComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  selectedEncargado: string;
   encargadosPropagacion: string[] = [
     "PRODUCTOR",
     "FAMILIAR",
@@ -18,7 +17,6 @@ export class OrigenPlantasComponent implements OnInit {
     "OTRO"
   ]
 
-  selectedConocimiento: string;
   conocimientos: string[] = [
     "TÉCNICO",
     "EMPÍRICO"
@@ -31,6 +29,11 @@ export class OrigenPlantasComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  otroEncargado() {
+    const otroEncargado = this.parentForm.get('origenPlantas').get('encargadoPropagacion').value;
+    return otroEncargado === 'OTRO';
   }
 
 }

@@ -16,11 +16,6 @@ export class MejorarCalidadCacaoComponent implements OnInit {
     "SECADORAS COMUNITARIAS"
   ];
 
-  hayBandejas: string;
-  hayTendales: string;
-  haySecadoras: string;
-  dispuesto: string;
-  hayAgrupacion: string;
   opciones: string[] = [
     "SI", "NO"
   ]
