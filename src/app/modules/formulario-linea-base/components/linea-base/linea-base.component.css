@@ -12,7 +12,14 @@
     justify-content: space-around;
 }
 
-mat-card-actions{
-    margin-left: 1rem;
-    margin-top: 1rem;
+.wrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    height: calc(100vh - 20px);
 }
+
+.inner {
+    padding: 12px;
+}
+

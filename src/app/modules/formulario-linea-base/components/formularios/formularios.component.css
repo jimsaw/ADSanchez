@@ -3,3 +3,12 @@
     bottom: 2%;
     right: 1%;
 }
+
+.title {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.title h2 {
+    text-align: center;
+}

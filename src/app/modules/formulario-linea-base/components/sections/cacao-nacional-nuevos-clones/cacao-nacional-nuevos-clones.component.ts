@@ -30,6 +30,7 @@ export class CacaoNacionalNuevosClonesComponent implements OnInit {
 
   selectedVarSembrada: string;
   selection = new SelectionModel<any>(false, []);
+  verSembrada: string;
   variedadesSembradasClas: string[] = ["POSITIVA", "NEGATIVA"];
 
   optAdaptacion: string;
@@ -52,6 +53,10 @@ export class CacaoNacionalNuevosClonesComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  checkboxChange(checkboxValue, index) {
+    checkboxValue ? this.selection.toggle(index) : null;
   }
 
 }

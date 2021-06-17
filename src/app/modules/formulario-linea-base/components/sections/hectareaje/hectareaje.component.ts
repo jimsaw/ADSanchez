@@ -16,6 +16,8 @@ export class HectareajeComponent implements OnInit {
   hectareajeDistanciaPlantas;
   hectareajeTipoUbicacionZona;
 
+  otrosAsociados: string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -27,7 +29,13 @@ export class HectareajeComponent implements OnInit {
   }
 
   onSubmit() {
+    this.otrosAsociados.includes('OTRO');
+  }
 
+  otroSelected(): boolean {
+    if (this.otrosAsociados.length > 0) {
+      return this.otrosAsociados.includes('OTRO');
+    }
   }
 
 }

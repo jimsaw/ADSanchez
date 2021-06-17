@@ -10,6 +10,16 @@ export class IncrementarProductividadComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  proyectos: string[] = [
+    "RECIBIR PLANTAS DE CACAO NACIONAL",
+    "APRENDER ELAB. PRODUCTOS NATURALES"
+  ];
+
+
+  recibirPlantas: string;
+  aprenderElab: string;
+  opciones: string[] = ["SI", "NO"];
+
   constructor() { }
 
   ngOnInit(): void {

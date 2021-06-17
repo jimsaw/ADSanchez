@@ -28,18 +28,18 @@ export class AgricultorService implements Database<Agricultor> {
     );
   }
 
-
   set(agricultor: Agricultor): Promise<void> {
     if (agricultor.id === '' || agricultor.id === undefined) {
       agricultor.id = this.firebase.createId();
     }
-    const mappedAgricultor = this.keymapperService.keyMapper(agricultor, environment.mappers.agricultorMapper);
+    console.log(agricultor);
+    const newAgricultor = this.toMap(agricultor);
+    console.log(newAgricultor);
     return this.firebase
       .collection("agricultores")
-      .doc(mappedAgricultor["id"])
-      .set(mappedAgricultor);
+      .doc(agricultor.id)
+      .set(this.toMap(agricultor));
   }
-
 
   delete(agricultor: Agricultor): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
@@ -58,6 +58,12 @@ export class AgricultorService implements Database<Agricultor> {
     });
   }
 
+  async get(id: string): Promise<Agricultor> {
+    const docRef = this.firebase.firestore.collection("agricultores").doc(id);
+    const agricultor = (await docRef.get()).data() as Agricultor;
+    return agricultor;
+  }
+
   public getAll() {
     let docRef = this.firebase.collection('agricultores').get();
     let result = [];
@@ -74,11 +80,10 @@ export class AgricultorService implements Database<Agricultor> {
     return this.keymapperService.getAgricultorFirebaseCode(value);
   }
 
-  /*
   public toMap(agricultor: Agricultor): any {
+    console.log("PARSING TO MAP");
     return {
       id: agricultor.id,
-      codigo: agricultor.codigo,
       cedula: agricultor.cedula,
       nombre: agricultor.nombre,
       fechaNacimiento: agricultor.fechaNacimiento.toDateString(),
@@ -92,23 +97,21 @@ export class AgricultorService implements Database<Agricultor> {
       fechaVisita: agricultor.fechaVisita.toDateString(),
     }
   }
-  */
 
   private fromMap(data: any): Agricultor {
     return {
       id: data["id"],
-      codigo: data[this.firebaseCode("codigo")],
-      cedula: data[this.firebaseCode("cedula")],
-      nombre: data[this.firebaseCode("nombre")],
-      fechaNacimiento: new Date(data[this.firebaseCode("fechaNacimiento")]),
-      genero: data[this.firebaseCode("genero")],
-      estadoCivil: data[this.firebaseCode("estadoCivil")],
-      nivelEducacion: data[this.firebaseCode("nivelEducacion")],
-      celulares: data[this.firebaseCode("celulares")],
-      telefono: data[this.firebaseCode("telefono")],
-      isDiscapacitado: data[this.firebaseCode("isDiscapacitado")],
-      tecnico: data[this.firebaseCode("tecnico")],
-      fechaVisita: new Date(data[this.firebaseCode("fechaVisita")])
+      cedula: data["cedula"],
+      nombre: data["nombre"],
+      fechaNacimiento: new Date(data["fechaNacimiento"]),
+      genero: data["genero"],
+      estadoCivil: data["estadoCivil"],
+      nivelEducacion: data["nivelEducacion"],
+      celulares: data["celulares"],
+      telefono: data["telefono"],
+      isDiscapacitado: data["isDiscapacitado"],
+      tecnico: data["tecnico"],
+      fechaVisita: new Date(data["fechaVisita"])
     }
   }
 

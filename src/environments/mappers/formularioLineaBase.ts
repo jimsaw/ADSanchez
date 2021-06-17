@@ -81,11 +81,11 @@ export const formularioLineaBaseMapper = {
     },
     produccionAnioAnteriorCacaoCNN: {
         codigo: 'CAC34_PRODCC',
-        pregunta: 'PRODUCCIÓN AÑO ANTERIOR'
+        pregunta: 'PRODUCCIÓN AÑO ANTERIOR CACAO CNN'
     },
     precioPromedio: {
         codigo: 'CAC36_PRECC',
-        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO'
+        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO CNN'
     },
     areaTotalNacional: {
         codigo: 'CAC09_NAREA',
@@ -157,15 +157,19 @@ export const formularioLineaBaseMapper = {
     },
     produccionAnioAnteriorCacaoNacional: {
         codigo: 'CAC33_PRODN',
-        pregunta: 'PRODUCCIÓN AÑO ANTERIOR'
+        pregunta: 'PRODUCCIÓN AÑO ANTERIOR CACAO NACIONAL'
     },
     precioPromedioXCacao: {
         codigo: 'CAC35_PREN',
-        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO'
+        pregunta: 'CUAL ES EL PRECIO PROMEDIO QUE LE PAGAN POR EL CACAO NACIONAL'
     },
     usoAnteriorAreaNueva: {
         codigo: 'CAC16_NCUSO',
         pregunta: 'USO ANTERIOR DEL AREA NUEVA'
+    },
+    otroUsoAnteriorAreaNueva: {
+        codigo: 'CAC16_NCUSO',
+        pregunta: 'OTRO USO ANTERIOR DEL AREA NUEVA'
     },
     tipoVariedad: {
         codigo: 'CAC17_TIPVARI',
@@ -206,6 +210,10 @@ export const formularioLineaBaseMapper = {
     encargadoPropagacion: {
         codigo: 'CAC29_PROP',
         pregunta: 'QUIEN REALIZO LA PROPAGACION'
+    },
+    otroEncargadoPropagacion: {
+        codigo: 'CAC29_PROP',
+        pregunta: 'QUIEN OTRO REALIZO LA PROPAGACION'
     },
     tipoConocimiento: {
         codigo: 'CAC30_CONC',
@@ -551,6 +559,10 @@ export const formularioLineaBaseMapper = {
         codigo: 'ASO05_TIPBENEF',
         pregunta: 'QUÉ TIPO DE BENEFICIOS'
     },
+    otroTiposBeneficios: {
+        codigo: 'ASO05_TIPBENEF',
+        pregunta: 'QUÉ OTRO TIPO DE BENEFICIOS'
+    },
     ayudaOtraInstitucion: {
         codigo: 'ASO14_OTRI',
         pregunta: 'RECIBE AYUDA DE ALGUNA OTRA INSTITUCIÓN?'
@@ -689,7 +701,7 @@ export const formularioLineaBaseMapper = {
     },
     areaLibre: {
         codigo: 'PRO03_NHA',
-        pregunta: 'CUANTO'
+        pregunta: 'CUANTO HAY DE AREA LIBRE'
     },
     necesitaRehaReinjerto: {
         codigo: 'PRO04_REHAB',
@@ -697,6 +709,6 @@ export const formularioLineaBaseMapper = {
     },
     cantidad: {
         codigo: 'PRO05_NREHB',
-        pregunta: 'CUANTO'
+        pregunta: 'CUANTO NECESITA'
     }
 }

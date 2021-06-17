@@ -1,34 +1,65 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="diversificacionIngresos">
-            <mat-form-field appearance="outline" >
-                <mat-label>Huertos organicos</mat-label>
-                <input matInput formControlName="huertosOrganicos" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Desarrollo de viveros</mat-label>
-                <input matInput formControlName="desarrolloViveros" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Desarrollo y venta de fertilizantes</mat-label>
-                <input matInput formControlName="desarrolloVentaFertilizantes" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Rehabilitacion de finca</mat-label>
-                <input matInput formControlName="rehabilitacionFinca" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Brigada de podadores</mat-label>
-                <input matInput formControlName="brigadaPodadores" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Cuenta con experiencia en poda</mat-label>
-                <input matInput formControlName="contarExperienciaPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Años de experiencia en poda</mat-label>
-                <input matInput formControlName="aniosExperiencia" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div id="contenido" formGroupName="diversificacionIngresos">
+            <div class="columns-flex">
+                <!-- ul class="column-item-full">
+                    <li *ngFor="let proyecto of proyectos; index as i">
+                      <mat-checkbox formControlName="proyectos">
+                        {{proyecto}}
+                      </mat-checkbox>
+                    </li>
+                  </ul -->
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Huertos organicos</mat-label>
+                    <mat-select formControlName="huertosOrganicos" [(ngModel)]="hayHuertos" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Desarrollo de viveros</mat-label>
+                    <mat-select formControlName="desarrolloViveros" [(ngModel)]="hayViveres" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Desarrollo y venta de fertilizantes</mat-label>
+                    <mat-select formControlName="desarrolloVentaFertilizantes" [(ngModel)]="hayVentaFert" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Rehabilitacion de finca</mat-label>
+                    <mat-select formControlName="rehabilitacionFinca" [(ngModel)]="hayRehab" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="columns-flex">
+                <mat-form-field class="column-item" appearance="outline" >
+                    <mat-label>Brigada de podadores</mat-label>
+                    <mat-select formControlName="brigadaPodadores" [(ngModel)]="hayBrigada" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-divider [inset]="true" class="space-down"></mat-divider>
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>¿Cuenta con experiencia en poda?</mat-label>
+                    <mat-select formControlName="contarExperienciaPoda" [(ngModel)]="tieneExperiencia" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="tieneExperiencia === 'SI'" class="column-item-3" appearance="outline" >
+                    <mat-label>Años de experiencia</mat-label>
+                    <input matInput formControlName="aniosExperiencia" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+            </div>
+            <!--div>
+                
+            </div-->
         </div>
     </mat-card-content>
 </form>

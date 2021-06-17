@@ -1,14 +1,27 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="incrementarProductividad">
-            <mat-form-field appearance="outline" >
-                <mat-label>Recibir Plantas de Cacao Nacional</mat-label>
-                <input matInput formControlName="recibirPlantasCacaoNacional" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline" >
-                <mat-label>Aprender Elab Productos Nacionales</mat-label>
-                <input matInput formControlName="aprenderElabProductosNaturales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div id="contenido" formGroupName="incrementarProductividad">
+            <div class="columns-flex">
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Recibir Plantas de Cacao Nacional</mat-label>
+                    <mat-select formControlName="recibirPlantasCacaoNacional" [(ngModel)]="recibirPlantas" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-label>Aprender Elab Productos Nacionales</mat-label>
+                    <mat-select formControlName="aprenderElabProductosNaturales" [(ngModel)]="aprenderElab" name="someUnusualName" autocomplete="off">
+                        <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- ul class="column-item-full">
+                    <li *ngFor="let proyecto of proyectos; index as i">
+                      <mat-checkbox formControlName="proyectos">
+                        {{proyecto}}
+                      </mat-checkbox>
+                    </li>
+                  </ul -->
+            </div>
         </div>
     </mat-card-content>
 </form>

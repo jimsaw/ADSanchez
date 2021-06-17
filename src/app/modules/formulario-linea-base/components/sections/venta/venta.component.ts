@@ -10,6 +10,15 @@ export class VentaComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  propiedadTrans: string;
+  propiedadesTransporte: string[] = ["PROPIO", "FLETADO"];
+
+  tipoTrans: string;
+  tiposTransporte: string[] = ["CHIVA", "CAMIONETA", "MOTO", "CAMION", "OTRO"];
+
+  hayRegistro: string;
+  hayAlmacenaCacao: string;
+  opciones: string[] = ["SI", "NO"];
 
   constructor() { }
 

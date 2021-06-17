@@ -14,4 +14,16 @@
   </div>
 </div>
 
+<div *ngIf="!isTableLoading">
+  <h1>HOLA</h1>
+  <div *ngFor="let agricultor of data">
+    <p>{{ agricultor.nombre }}</p>
+  </div>
+</div>
+
+<div *ngFor="let agricultor of data">
+  <p>hola</p>
+  <p>{{ agricultor.nombre }}</p>
+</div>
+
 <app-edit-agricultor-dialog  [agricultor]="selectedItem"></app-edit-agricultor-dialog>

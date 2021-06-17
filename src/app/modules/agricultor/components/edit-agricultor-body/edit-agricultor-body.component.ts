@@ -36,7 +36,7 @@ export class EditAgricultorBodyComponent implements OnInit {
     celulares: new FormArray([]),
     telefono: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"), Validators.minLength(7), Validators.maxLength(7)]),
     isDiscapacitado: new FormControl('', Validators.required),
-    tecnico: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(30), Validators.pattern("^[a-zA-Z ]*$")]),
+    tecnico: new FormControl(''),
     fechaVisita: new FormControl('', Validators.required)
   });
 
@@ -61,7 +61,7 @@ export class EditAgricultorBodyComponent implements OnInit {
     this.setFormDefaultValues();    
   }
 
-  private isRecordEmpty(): boolean {
+  private isAgricultorEmpty(): boolean {
     return this.agricultor === undefined || this.agricultor === null;
   }
 
@@ -74,7 +74,7 @@ export class EditAgricultorBodyComponent implements OnInit {
   }
 
   setFormDefaultValues(): void {
-    if (!this.isRecordEmpty()) {
+    if (!this.isAgricultorEmpty()) {
       this.getFormItem('cedula').setValue(this.agricultor.cedula);
       this.getFormItem('nombre').setValue(this.agricultor.nombre);
       this.getFormItem('fechaNacimiento').setValue(this.agricultor.fechaNacimiento);
@@ -128,6 +128,8 @@ export class EditAgricultorBodyComponent implements OnInit {
       agricultor.id = this.agricultor.id;
     }
     agricultor.celulares = this.toStringArray(agricultor.celulares);
+    agricultor.tecnico = this.tecnicoService.loggedTecnico.nombre;
+    console.log(agricultor);
     this.agricultorService.set(agricultor)
       .then(() => {
         console.log("Guardado con éxito");

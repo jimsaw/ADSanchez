@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
 import { Agricultor } from 'src/app/interfaces/agricultor';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
 import { DataTableComponent } from 'src/app/modules/shared/data-table/data-table.component';
+import { MaterialTableComponent } from 'src/app/modules/shared/material-table/material-table.component';
 import { EditAgricultorDialogComponent } from '../edit-agricultor-dialog/edit-agricultor-dialog.component';
 
 @Component({
@@ -15,6 +17,10 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
 
   columnsInfo: ColumnInfo[] = [
     {
+      name: "Código",
+      prop: "id"
+    },
+    {
       name: "Cédula",
       prop: "cedula"
     },
@@ -23,15 +29,11 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
       prop: "nombre"
     },
     {
-      name: "Código",
-      prop: "codigo"
-    },
-    {
       name: "Acciones",
       prop: "nombre"
     },
   ];
-  
+
   @ViewChild(EditAgricultorDialogComponent) editAgricultorDialog: EditAgricultorDialogComponent;
   // @ViewChild(DeleteConfirmationDialogComponent) deleteConfirmationDialog: DeleteConfirmationDialogComponent;
 
@@ -45,7 +47,6 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
   }
 
   onItemSelected(event: any): void {
-    console.log(event);
     this.editAgricultorDialog.agricultor = event;
     this.editAgricultorDialog.openDialog();
   }

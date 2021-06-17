@@ -15,16 +15,16 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
 
   columnsInfo: ColumnInfo[] = [
     {
-      name: "ID",
-      prop: "id"
-    },
-    {
       name: "Agricultor",
       prop: "agricultor"
     },
     {
+      name: "Técnico",
+      prop: "tecnico"
+    },
+    {
       name: "Fecha",
-      prop: "fecha"
+      prop: "fechaVisita"
     },
     {
       name: "Acciones",
@@ -45,7 +45,7 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
   }
 
   onItemSelected(event: any): void {
-    console.log(event);
+    this.router.navigate(['inicio', 'formulariosLineaBase', 'create', event['id']]);
   }
 
   onAddClicked(): void {

@@ -1,6 +1,5 @@
 export interface Agricultor {
     id: string,
-    codigo: string,
     cedula: string,
     nombre: string,
     fechaNacimiento: Date,

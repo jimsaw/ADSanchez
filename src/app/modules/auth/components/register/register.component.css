@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.mat-card-actions .mat-button, .mat-card-actions .mat-raised-button, .mat-card-actions .mat-stroked-button {
+    margin-bottom: 10px;
+    margin: 0 0 10px 0;
+    padding: 0%;
+}

@@ -10,6 +10,14 @@ export class NivelAsociatividadComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  hayBeneficios: string;
+  hayAsociacion: string;
+  recibeAyuda: string;
+  opciones: string[] = ["SI", "NO"];
+
+  beneficio: string[] = [];
+  tiposBeneficio: string[] = ["ASISTENCIA TÉCNICA", "TRANSPORTE", "CAPACITACIÓN", "PRECIO MEJORADO", "PRECIO", "INSUMO", "OTRO"];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +25,10 @@ export class NivelAsociatividadComponent implements OnInit {
 
   onSubmit() {
 
+  }
+
+  otroBeneficio(): boolean {
+    return this.beneficio.includes('OTRO');
   }
 
 }

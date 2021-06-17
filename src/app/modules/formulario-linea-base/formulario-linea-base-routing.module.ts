@@ -9,6 +9,10 @@ const routes: Routes = [
   },
   {
     path: 'create',
+    component: LineaBaseComponent,
+  },
+  {
+    path: 'create/:id',
     component: LineaBaseComponent
   },
 ];

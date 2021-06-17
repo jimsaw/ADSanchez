@@ -10,6 +10,15 @@ export class CondicionesLaboralesComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
+  tipoTrabajador: string;
+  tiposTrabajador: string[] = ["PERMANENTE", "OCASIONAL"];
+
+  hayContratados: string;
+  hayMenores: string;
+  hayPermiso: string;
+  cumple: string;
+  opciones: string[] = ["SI", "NO"];
+
   constructor() { }
 
   ngOnInit(): void {
