@@ -4,17 +4,11 @@
   
   /* Container for flexboxes */
   .row {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
     justify-content: center;
-    gap: 1rem;
-    margin-left: 0;
-    margin-right: 0;
   }
   
   /* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 752px) {
+  /*@media screen and (max-width: 768px) {
     .row {
       flex-direction: column;
       align-content: center;
@@ -22,7 +16,7 @@
     .card{
         width: 15rem;
     }
-  }
+  }*/
 
 .container-flex {
     display: flex;
@@ -36,8 +30,11 @@
     flex-direction: column;
 }
 .card{
-    width: 15rem;
-    height: 10rem;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .material-icons{
     font-size: xxx-large;
@@ -45,4 +42,12 @@
 .card:hover{
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.text-card{
+  text-align: center;
+}
+
+.col-md-4{
+  margin-bottom: 1rem;
 }

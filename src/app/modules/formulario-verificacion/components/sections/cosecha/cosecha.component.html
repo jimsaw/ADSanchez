@@ -1,14 +1,32 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="cosecha">
-            <mat-form-field appearance="outline">
-                <mat-label>¿COSECHA POR SEPARADO EL CACAO NACIONAL DEL CCN51?</mat-label>
-                <input matInput formControlName="cosechaSeparadoCacaoNacionalCCN51" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>LAS PLANTAS SE ENCUENTRAN CON LACERACIONES O CICATRICES POR MALA PRÁCTICA DE COSECHA</mat-label>
-                <input matInput formControlName="plantasLaceracionesCicatricesMalaPractica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">¿COSECHA POR SEPARADO EL CACAO NACIONAL DEL CCN51?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="cosechaSeparadoCacaoNacionalCCN51" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">LAS PLANTAS SE ENCUENTRAN CON LACERACIONES O CICATRICES POR MALA PRÁCTICA DE COSECHA</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="plantasLaceracionesCicatricesMalaPractica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

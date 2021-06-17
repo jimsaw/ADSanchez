@@ -1,66 +1,181 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="proteccionAreasAltoValorConservacion">
-            <mat-form-field appearance="outline">
-                <mat-label>SU SUELO PRESENTA PROBLEMAS DE EROSIÓN</mat-label>
-                <input matInput formControlName="sueloPresentaProblemaErosion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TIPO DE PROBLEMA DE EROSIÓN QUE PRESENTA</mat-label>
-                <input matInput formControlName="tipoProblemaErosion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SE NECESITA IMPLEMENTAR PRÁCTICAS DE MEJORA DE SUELOS</mat-label>
-                <input matInput formControlName="necesitaImplementarPracticasMejoraSuelo" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CÓMO:</mat-label>
-                <input matInput formControlName="comoQuePracticas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>GRADO QUE PRESENTAN LAS PENDIENTES</mat-label>
-                <input matInput formControlName="gradoPresentanPendientes" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CUENTA CON ÁREAS FORESTALES</mat-label>
-                <input matInput formControlName="cuentaConAreaForestales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TIPO AREA FORESTAL</mat-label>
-                <input matInput formControlName="tipoAreaForestal" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA PLANES DE CORTE PARA EXTRACCIÓN DE MADERA</mat-label>
-                <input matInput formControlName="realizaPlanesCorteExtraccionMadera" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PRESENTA ANEXOS</mat-label>
-                <input matInput formControlName="presentaAnexosAreasAltoValor" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA PLANES DE REFORESTACIÓN</mat-label>
-                <input matInput formControlName="realizaPlanesReforestacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CONOCE ALGUNA ESPECIE EN PELIGRO DE EXTINCIÓN, RARA O AMENAZADA EN SU FINCA</mat-label>
-                <input matInput formControlName="conoceEspeciePeligroExtincionEnFinca" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CUÁLES:</mat-label>
-                <input matInput formControlName="cualesEspeciesPeligroExtincion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ESPECIFIQUE:</mat-label>
-                <input matInput formControlName="cualesEspeciesPeligroExtincion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>LA FINCA ES CONSIDERADA DE ALTO VALOR:</mat-label>
-                <input matInput formControlName="fincaConsideradaAltoValor" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TIPO DE ALTO VALOR</mat-label>
-                <input matInput formControlName="tipoAltoValor" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">SU SUELO PRESENTA PROBLEMAS DE EROSIÓN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="sueloPresentaProblemaErosion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">TIPO DE PROBLEMA DE EROSIÓN QUE PRESENTA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tipoProblemaErosion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoProblemaErosion" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">SE NECESITA IMPLEMENTAR PRÁCTICAS DE MEJORA DE SUELOS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="necesitaImplementarPracticasMejoraSuelo" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">CÓMO:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="comoQuePracticas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of comoQuePracticas" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">GRADO QUE PRESENTAN LAS PENDIENTES</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="gradoPresentanPendientes" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of gradoPresentanPendientes" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">CUENTA CON ÁREAS FORESTALES</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="cuentaConAreaForestales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">TIPO AREA FORESTAL</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tipoAreaForestal" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoAreaForestal" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">REALIZA PLANES DE CORTE PARA EXTRACCIÓN DE MADERA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="realizaPlanesCorteExtraccionMadera" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">PRESENTA ANEXOS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="presentaAnexosAreasAltoValor" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">REALIZA PLANES DE REFORESTACIÓN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="realizaPlanesReforestacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">CONOCE ALGUNA ESPECIE EN PELIGRO DE EXTINCIÓN, RARA O AMENAZADA EN SU FINCA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="conoceEspeciePeligroExtincionEnFinca" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">CUÁLES:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="cualesEspeciesPeligroExtincion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of cualesEspeciesPeligroExtincion" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">ESPECIFIQUE:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="especifiqueCualesEspeciesPeligroExtincion" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">LA FINCA ES CONSIDERADA DE ALTO VALOR:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="fincaConsideradaAltoValor" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">TIPO DE ALTO VALOR</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tipoAltoValor" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoAltoValor" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

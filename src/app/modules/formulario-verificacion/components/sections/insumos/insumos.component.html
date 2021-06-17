@@ -1,22 +1,61 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="insumos">
-            <mat-form-field appearance="outline">
-                <mat-label>FERTILIZANTE EDAFICO</mat-label>
-                <input matInput formControlName="estadoFertilizanteEdafico" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>FERTILIZANTE FOLIAR</mat-label>
-                <input matInput formControlName="estadoFertilizanteFoliar" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>FERTILIZANTE EDAFICO</mat-label>
-                <input matInput formControlName="necesitaFertilizanteEdafico" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>FERTILIZANTE FOLIAR</mat-label>
-                <input matInput formControlName="necesitaFertilizanteFoliar" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">INCENTIVOS DEL PROGRAMA LINDT</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">FERTILIZANTE EDAFICO</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoFertilizanteEdafico" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaFertilizanteEdafico" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">FERTILIZANTE FOLIAR</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoFertilizanteFoliar" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaFertilizanteFoliar" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

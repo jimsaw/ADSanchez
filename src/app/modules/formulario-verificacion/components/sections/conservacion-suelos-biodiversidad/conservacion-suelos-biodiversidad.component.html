@@ -1,46 +1,104 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="conservacionSuelosBiodiversidad">
-            <mat-form-field appearance="outline">
-                <mat-label>PRODUCTOR UTILIZA PRÁCTICAS DE CONSERVACIÓN DE SUELOS</mat-label>
-                <input matInput formControlName="practicasConservacionSuelos" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OBSERVA QUE PRODUCTOR PRACTIQUE DEFORESTACIÓN</mat-label>
-                <input matInput formControlName="practicaDeforestacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>HA PLANTADO ÁRBOLES DE SOMBRÍO RECIENTEMENTE</mat-label>
-                <input matInput formControlName="plantadoArbolesSombrioRecient" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿CUÁNTOS?</mat-label>
-                <input matInput formControlName="cuantosArbolesSombrio" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PROMEDIO DE ÁRBOLES POR HECTÁREA</mat-label>
-                <input matInput formControlName="promedioArbolesXHectarea" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿HA REFORESTADO LAS ORILLAS?</mat-label>
-                <input matInput formControlName="reforestadoOrillas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PROMEDIO DE ÁRBOLES X HA. QUE SUPERAN LOS 12 METROS DE ALTURA</mat-label>
-                <input matInput formControlName="promedioArbolXHectarea12MAltura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ESPECIES DIFERENTES DE ÁRBOLES QUE EXISTEN X HA</mat-label>
-                <input matInput formControlName="especiesDiferentesArbolesXHectarea" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿QUÉ ESPECIES DE ÁRBOLES PRESENTA EL CULTIVO?</mat-label>
-                <input matInput formControlName="especiesArbolesEnCultivo" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ESPECIFIQUE ESPECIE DE ARBOL:</mat-label>
-                <input matInput formControlName="especifiqueOtrosEspeciesArboles" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">PRODUCTOR UTILIZA PRÁCTICAS DE CONSERVACIÓN DE SUELOS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="practicasConservacionSuelos" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of practicasConservacionSuelo" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">OBSERVA QUE PRODUCTOR PRACTIQUE DEFORESTACIÓN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="practicaDeforestacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md">
+                    <p class="item-text">HA PLANTADO ÁRBOLES DE SOMBRÍO RECIENTEMENTE</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="plantadoArbolesSombrioRecient" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">¿CUÁNTOS?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="cuantosArbolesSombrio" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">PROMEDIO DE ÁRBOLES POR HECTÁREA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="promedioArbolesXHectarea" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">¿HA REFORESTADO LAS ORILLAS?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="reforestadoOrillas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">PROMEDIO DE ÁRBOLES X HA. QUE SUPERAN LOS 12 METROS DE ALTURA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="promedioArbolXHectarea12MAltura" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">ESPECIES DIFERENTES DE ÁRBOLES QUE EXISTEN X HA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="especiesDiferentesArbolesXHectarea" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">¿QUÉ ESPECIES DE ÁRBOLES PRESENTA EL CULTIVO?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="especiesArbolesEnCultivo" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of especiesArboles" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">ESPECIFIQUE ESPECIE DE ARBOL:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="especifiqueOtrosEspeciesArboles" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

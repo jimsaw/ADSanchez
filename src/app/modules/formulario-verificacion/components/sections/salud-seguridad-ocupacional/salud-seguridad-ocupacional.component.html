@@ -1,30 +1,76 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="saludSeguridadOcupacional">
-            <mat-form-field appearance="outline">
-                <mat-label>¿HA LLEVADO A SUS TRABAJADORES A LAS CAPACITACIONES DE SSO?</mat-label>
-                <input matInput formControlName="trabajadoresLlevadosCapacitacionesSSO" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>USO DE PICTOGRAMA</mat-label>
-                <input matInput formControlName="usoPictograma" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿HA COMUNICADO A LOS TRABAJADORES SOBRE BUENAS PRÁCTICAS EN LA FINCA?</mat-label>
-                <input matInput formControlName="buenasPracticasFincaTrabajadores" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CUENTA CON BOTIQUÍN</mat-label>
-                <input matInput formControlName="botiquin" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿UTILIZA EPP ANTES DE APLICACIÓN DE PLAGUICIDA?</mat-label>
-                <input matInput formControlName="eppAntesPlaguicida" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>INSTRUCCIONES PRIMEROS AUXILIOS</mat-label>
-                <input matInput formControlName="instruccionesPrimerosAuxilios" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">¿HA LLEVADO A SUS TRABAJADORES A LAS CAPACITACIONES DE SSO?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="trabajadoresLlevadosCapacitacionesSSO" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">USO DE PICTOGRAMA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="usoPictograma" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">¿HA COMUNICADO A LOS TRABAJADORES SOBRE BUENAS PRÁCTICAS EN LA FINCA?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="buenasPracticasFincaTrabajadores" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">CUENTA CON BOTIQUÍN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="botiquin" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">¿UTILIZA EPP ANTES DE APLICACIÓN DE PLAGUICIDA?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="eppAntesPlaguicida" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">INSTRUCCIONES PRIMEROS AUXILIOS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="instruccionesPrimerosAuxilios" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

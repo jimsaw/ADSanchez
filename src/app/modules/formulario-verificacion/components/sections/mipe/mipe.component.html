@@ -1,30 +1,82 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="MIPE">
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA PRÁCTICAS DE MIPE</mat-label>
-                <input matInput formControlName="realizaPracticasMPE" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TIPO DE CONTROL</mat-label>
-                <input matInput formControlName="tipoControlMPE" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CON LA APLICACIÓN REALIZADA SE CORRIGIÓ LOS PROBLEMAS DE MIPE DETECTADOS</mat-label>
-                <input matInput formControlName="corrigioProblemasMPE" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>LA FINCA SE PUEDE CONSIDERAR LIBRE DE APLICACIÓN QUÍMICA</mat-label>
-                <input matInput formControlName="fincaLibreAplicacionQuimica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SABE COMO CONTROLAR LAS RESPECTIVAS ENFERMEDADES</mat-label>
-                <input matInput formControlName="controlaEnfermedades" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>DESDE QUE APLICA CRITERIOS APRENDIDOS EN CAPACITACIÓN Y ASIST. TÉCNICA HA VISTO REDUCCIÓN EN INCIDENCIA DE PLAGAS Y ENFERMEDADES</mat-label>
-                <input matInput formControlName="reduccionIncidenciaPlagasEnfermedades" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">REALIZA PRÁCTICAS DE MIPE</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="realizaPracticasMPE" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">TIPO DE CONTROL</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tipoControlMPE" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoControl" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">CON LA APLICACIÓN REALIZADA SE CORRIGIÓ LOS PROBLEMAS DE MIPE DETECTADOS</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="corrigioProblemasMPE" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">LA FINCA SE PUEDE CONSIDERAR LIBRE DE APLICACIÓN QUÍMICA</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="fincaLibreAplicacionQuimica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">SABE COMO CONTROLAR LAS RESPECTIVAS ENFERMEDADES</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="controlaEnfermedades" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">DESDE QUE APLICA CRITERIOS APRENDIDOS EN CAPACITACIÓN Y ASIST. TÉCNICA HA VISTO REDUCCIÓN EN INCIDENCIA DE PLAGAS Y ENFERMEDADES</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="reduccionIncidenciaPlagasEnfermedades" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

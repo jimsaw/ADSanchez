@@ -1,26 +1,55 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="venta">
-            <mat-form-field appearance="outline">
-                <mat-label>¿A QUIÉN LE VENDE EL CACAO?</mat-label>
-                <input matInput formControlName="personaVenderCacao" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿POR QUÉ?: RAZÓN 1</mat-label>
-                <input matInput formControlName="razon1" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿POR QUÉ?: RAZÓN 2</mat-label>
-                <input matInput formControlName="razon2" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>HA RECIBIDO BONOS QUE LA EMPRESA OFRECE DEL PROGRAMA LINDT</mat-label>
-                <input matInput formControlName="recibeBonosEmpresaProgramaLINDT" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿CON QUÉ FRECUENCIA?</mat-label>
-                <input matInput formControlName="frecuenciaRecibeBono" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">¿A QUIÉN LE VENDE EL CACAO?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="personaVenderCacao" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">¿POR QUÉ?: RAZÓN 1</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="razon1" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">¿POR QUÉ?: RAZÓN 2</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="razon2" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">HA RECIBIDO BONOS QUE LA EMPRESA OFRECE DEL PROGRAMA LINDT</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="recibeBonosEmpresaProgramaLINDT" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">¿CON QUÉ FRECUENCIA?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="frecuenciaRecibeBono" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of frecuencia" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

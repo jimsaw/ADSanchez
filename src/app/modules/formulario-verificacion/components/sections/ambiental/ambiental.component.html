@@ -1,30 +1,86 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="ambiental">
-            <mat-form-field appearance="outline">
-                <mat-label>PLANTAS FRUTALES</mat-label>
-                <input matInput formControlName="estadoPlantasFrutales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PLANTAS FORESTALES</mat-label>
-                <input matInput formControlName="estadoPlantasForestales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="estadoOtrosAmbiental" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PLANTAS FRUTALES</mat-label>
-                <input matInput formControlName="necesitaPlantasFrutales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PLANTAS FORESTALES</mat-label>
-                <input matInput formControlName="necesitaPlantasForestales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="necesitaOtrosAmbiental" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">INCENTIVOS DEL PROGRAMA LINDT</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PLANTAS FRUTALES</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoPlantasFrutales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaPlantasFrutales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PLANTAS FORESTALES</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoPlantasForestales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaPlantasForestales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">OTROS:</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoOtrosAmbiental" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaOtrosAmbiental" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>
