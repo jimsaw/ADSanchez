@@ -1,14 +1,14 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="serviciosBasicos">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+        <div class="container" formGroupName="serviciosBasicos">
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Cuenta con energia electrica</mat-label>
                     <mat-select formControlName="energiaElectrica" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>El agua para el consumo familiar es:</mat-label>
                     <mat-select formControlName="tipoAguaConsumoFamiliar" autocomplete="off">
                         <mat-option *ngFor="let agu of tiposAgua" [value]="agu">{{agu}}</mat-option>

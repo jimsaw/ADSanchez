@@ -1,8 +1,8 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="nivelAsociatividad">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+        <div class="container" formGroupName="nivelAsociatividad">
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Pertenece a una Organización/Programa/Certificación de Cacao</mat-label>
                     <mat-select formControlName="perteneceAsocProgrCertif" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
@@ -10,51 +10,51 @@
                 </mat-form-field>
             </div>
             <div *ngIf="hayAsociacion()">
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-6" appearance="outline" >
+                <div class="row">
+                    <mat-form-field class="col-md-8" appearance="outline" >
                         <mat-label>Nombre de Organización/Programa/Certificación</mat-label>
                         <input matInput formControlName="nombreAsociacion" autocomplete="off">
                     </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
+                    <mat-form-field class="col-md-4" appearance="outline" >
                         <mat-label>Cantidad de Miembros</mat-label>
                         <input matInput formControlName="cantidadMiembros" autocomplete="off" >
                     </mat-form-field>
                 </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-3" appearance="outline" >
+                <div class="row">
+                    <mat-form-field class="col-md-6" appearance="outline" >
                         <mat-label>¿Recibe beneficios?</mat-label>
                         <mat-select formControlName="recibeBeneficios">
                             <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div  class="columns-flex">
-                    <mat-form-field class="column-item-3" appearance="outline">
+                <div class="row">
+                    <mat-form-field *ngIf="recibeBeneficio()" class="col-md-6" appearance="outline">
                         <mat-label>¿Que tipo de beneficios?</mat-label>
                         <mat-select formControlName="tiposBeneficios" multiple>
                             <mat-option *ngFor="let ben of tiposBeneficio" [value]="ben">{{ben}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field *ngIf="otroBeneficio()" class="column-item-6" appearance="outline">
+                    <mat-form-field *ngIf="otroBeneficio()" class="col-md-6" appearance="outline">
                         <mat-label>Especifique:</mat-label>
                         <input matInput formControlName="otroTiposBeneficios" autocomplete="off">
                     </mat-form-field>
                 </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>¿Recibe ayuda de otra institucion?</mat-label>
                     <mat-select formControlName="ayudaOtraInstitucion" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div *ngIf="recibeAyuda()" class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div *ngIf="recibeAyuda()" class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Nombre Institucion</mat-label>
                     <input matInput formControlName="nombreOtraInstitucion" autocomplete="off" >
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Tipo de ayuda</mat-label>
                     <input matInput formControlName="tipoAyuda" autocomplete="off" >
                 </mat-form-field>

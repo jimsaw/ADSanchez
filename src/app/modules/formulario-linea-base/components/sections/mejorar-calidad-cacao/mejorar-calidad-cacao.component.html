@@ -1,38 +1,38 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="mejorarCalidadCacao">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+        <div class="container" formGroupName="mejorarCalidadCacao">
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Bandejas o cajones de Fermentacion</mat-label>
                     <mat-select formControlName="bandejasCajonesFermentacion">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Tendales elevados por caña</mat-label>
                     <mat-select formControlName="tendalesElevadosCania">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Secadoras comunitarias</mat-label>
                     <mat-select formControlName="secadorasComunitarias">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <div class="column-item-2"></div>
+                <div class="col-md-6"></div>
             </div>
             <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>¿Está dispuesto a hacerlo por su cuenta?</mat-label>
                     <mat-select formControlName="dispuestoHacerloPropiaCuenta">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>¿Cuenta con agrupacion de vecinos para trabajar en el proyecto?</mat-label>
                     <mat-select formControlName="contarAgrupacionParaProyecto">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>

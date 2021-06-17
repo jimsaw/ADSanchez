@@ -1,14 +1,14 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="incrementarProductividad">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+        <div class="container" formGroupName="incrementarProductividad">
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Recibir Plantas de Cacao Nacional</mat-label>
                     <mat-select formControlName="recibirPlantasCacaoNacional" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Aprender Elab Productos Nacionales</mat-label>
                     <mat-select formControlName="aprenderElabProductosNaturales" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>

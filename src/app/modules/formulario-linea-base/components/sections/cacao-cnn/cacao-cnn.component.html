@@ -1,40 +1,37 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="cacaoCNN">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-3" appearance="outline" >
+        <div class="container" formGroupName="cacaoCNN">
+            <div class="row">
+                <mat-form-field class="col-md-4" appearance="outline" >
                     <mat-label>Area Total de CNN</mat-label>
-                    <input matInput formControlName="areaTotalCNN" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="areaTotalCNN" autocomplete="off">
                 </mat-form-field>
-                <mat-form-field class="column-item-3" appearance="outline" >
+                <mat-form-field class="col-md-4" appearance="outline" >
                     <mat-label>Area en Produccion</mat-label>
-                    <input matInput formControlName="areaProduccion" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="areaProduccion" autocomplete="off">
                 </mat-form-field>
-                <mat-form-field class="column-item-3" appearance="outline" >
+                <mat-form-field class="col-md-4" appearance="outline" >
                     <mat-label>Edad Cacao Productivo</mat-label>
-                    <input matInput formControlName="edadCacaoProductivo" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="edadCacaoProductivo" autocomplete="off" >
                 </mat-form-field>
-            </div>
-            <div class="columns-flex reverse">
-                <div class="column-item-3"></div>
-                <mat-form-field class="column-item-3" appearance="outline" >
+                <div class="col-md-4"></div>
+                <mat-form-field class="col-md-4" appearance="outline" >
                     <mat-label>Area Recien Sembrada</mat-label>
-                    <input matInput formControlName="areaRecienSembrada" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="areaRecienSembrada" autocomplete="off" >
                 </mat-form-field>
-                <div class="colum-item-3"></div>
-                <mat-form-field class="column-item-3" appearance="outline" >
+                <mat-form-field class="col-md-4" appearance="outline" >
                     <mat-label>Edad Cacao Reciente</mat-label>
-                    <input matInput formControlName="edadCacaoReciente" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="edadCacaoReciente" autocomplete="off" >
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Produccion Año Anterior</mat-label>
-                    <input matInput formControlName="produccionAnioAnteriorCacaoCNN" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="produccionAnioAnteriorCacaoCNN" autocomplete="off" >
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Precio Promedio Cacao</mat-label>
-                    <input matInput formControlName="precioPromedio" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="precioPromedio" autocomplete="off" >
                 </mat-form-field>
             </div>
         </div>

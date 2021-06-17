@@ -1,41 +1,38 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="conservacionRecursosManejoDesechos">
-            <div class="columns-flex">
-                <mat-form-field class="column-item" appearance="outline">
+        <div class="container" formGroupName="conservacionRecursosManejoDesechos">
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline">
                     <mat-label>¿Tiene Conocimientos sobre el manejo de desechos?</mat-label>
                     <mat-select formControlName="conocimientoManejoDesechos" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>¿El Productor contamina ecosistemas acuaticos o terrestres?</mat-label>
                     <mat-select formControlName="productoContaminaEcosistema" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <div class="column-item"></div>
-                <mat-form-field class="column-item-6" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>¿Dónde se vierten las aguas negras y los desechos líquidos?</mat-label>
                     <mat-select formControlName="ubicacionDesechosAguasNegras" multiple>
                         <mat-option *ngFor="let lugar of lugaresDesecho" [value]="lugar">{{lugar}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>¿El Productor tiene arboles de sombrio?</mat-label>
                     <mat-select formControlName="tieneArbolesSombrio" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Adicional al Cacao ¿Destina espacio para cultivar vegetales, hortalizas y frutas de consumo?</mat-label>
                     <mat-select formControlName="cultivaVegetalesHortalizasFrutas" name="someUnusualName" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
@@ -43,17 +40,15 @@
                 </mat-form-field>
             </div>
             <div *ngIf="hayEspacio()">
-                <div class="columns-flex">
-                    <mat-form-field class="column-item" appearance="outline" >
+                <div class="row">
+                    <mat-form-field class="col-md-6" appearance="outline" >
                         <mat-label>¿Compra estos productos en mercados locales?</mat-label>
                         <mat-select formControlName="compraProductosMercadoLocales" name="someUnusualName" autocomplete="off">
                             <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-6 sp-0" appearance="outline" >
-                        <mat-label>¿Cuál es el valor que gasta semanalmente en compra de estos productos?</mat-label>
+                    <mat-form-field class="col-md-6" appearance="outline" >
+                        <mat-label>¿Cuánto gasta semanalmente en compra de estos productos?</mat-label>
                         <input matInput formControlName="valorPromedioGastado" name="someUnusualName" autocomplete="off">
                     </mat-form-field>
                 </div>

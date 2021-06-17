@@ -1,36 +1,36 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="saludSeguridadOcupacional">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-6" appearance="outline" >
+        <div class="container" formGroupName="saludSeguridadOcupacional">
+            <div class="row">
+                <mat-form-field class="col-md-8" appearance="outline" >
                     <mat-label>Accidentes Laborales del Ultimo Año en Finca</mat-label>
                     <mat-select formControlName="accidentesLaboralesUltimoAnio">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field *ngIf="hayAccidente()" class="column-item-3" appearance="outline" >
+                <mat-form-field *ngIf="hayAccidente()" class="col-md-4" appearance="outline" >
                     <mat-label>Tipo Accidente</mat-label>
                     <mat-select formControlName="tipoAccidente">
                         <mat-option *ngFor="let acc of tiposAccidente" [value]="acc">{{acc}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Ha sufrido Usted, un Familiar o Trabajador algún Episodio de Intexicación?</mat-label>
                     <mat-select formControlName="periodoIntoxicacionPresente">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div *ngIf="hayIntoxicado()" class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row" *ngIf="hayIntoxicado()">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>¿Con que Producto?</mat-label>
                     <input matInput formControlName="producto" >
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>¿Hay un centro de salud cercano?</mat-label>
                     <mat-select formControlName="centroSaludCercano">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>

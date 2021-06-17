@@ -24,6 +24,11 @@ export class NivelAsociatividadComponent implements OnInit {
 
   }
 
+  recibeBeneficio() {
+    const recibeBeneficio = this.parentForm.get('nivelAsociatividad').get('recibeBeneficios').value;
+    return recibeBeneficio === 'SI';
+  }
+
   hayAsociacion() {
     const hayAsociacion = this.parentForm.get('nivelAsociatividad').get('perteneceAsocProgrCertif').value;
     return hayAsociacion === 'SI';

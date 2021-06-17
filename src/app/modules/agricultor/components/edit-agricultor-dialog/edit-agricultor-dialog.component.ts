@@ -23,7 +23,8 @@ export class EditAgricultorDialogComponent implements OnInit {
     const dialogRef = this.dialog.open(EditAgricultorBodyComponent, {
       panelClass: ['column', 'is-two-thirds'],
       data: this.agricultor,
-      height: '100%'
+      height: '100%',
+      width: '80%',
     });
 
     dialogRef.afterClosed().subscribe(result => {

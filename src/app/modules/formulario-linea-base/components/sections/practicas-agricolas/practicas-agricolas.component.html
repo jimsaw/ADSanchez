@@ -1,92 +1,92 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="practicasAgricolas">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline">
+        <div class="container" formGroupName="practicasAgricolas">
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline">
                     <mat-label>¿Le interesaría elaborar fertilizantes Organicos/Naturales?</mat-label>
                     <mat-select formControlName="interesElaborarFertilizanteNaturalOrganico" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Plagas que Afectan el Cultivo</mat-label>
                     <mat-select formControlName="plagasAfectanCultivo" multiple>
                         <mat-option *ngFor="let plaga of plagas" [value]="plaga">{{plaga}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Enfermedades que Afectan al Cultivo</mat-label>
                     <mat-select formControlName="enfermedadesAfectanCultivo" multiple>
                         <mat-option *ngFor="let enfermedad of enfermedades" [value]="enfermedad">{{enfermedad}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Producto Natural O Químico que aplicó para Plagas</mat-label>
                     <input matInput formControlName="productoParaPlagas" autocomplete="off" >
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Producto Natural o Químico que aplicó para Enfermedades</mat-label>
                     <input matInput formControlName="productoParaEnfermedades" autocomplete="off" >
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Lleva registro del número/porcentaje de Mazorca que Pierde anualmente por Monilla</mat-label>
                     <mat-select formControlName="llevaRegistroPerdidasMazorcasXMonilla" autocomplete="off">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div *ngIf="llevaRegistroPerdidas()" class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline">
+            <div *ngIf="llevaRegistroPerdidas()" class="row">
+                <mat-form-field class="col-md-6" appearance="outline">
                     <mat-label>¿Cuantas?</mat-label>
                     <input matInput formControlName="cantidadPerdidaMazorcas" autocomplete="off" >
                 </mat-form-field>
             </div>
             <mat-divider [inset]="true" class="space-down"></mat-divider>
             <h3>¿Bajo qué criterio realiza las labores agrícoles en su finca anualmente?</h3>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Periodo Fertilizacion</mat-label>
                     <mat-select formControlName="periodoFertilizacion" multiple>
                         <mat-option *ngFor="let mes of meses" [value]="mes">{{mes}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Periodo Poda</mat-label>
                     <mat-select formControlName="periodoPoda" multiple>
                         <mat-option *ngFor="let mes of meses" [value]="mes">{{mes}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Periodo Control Maleza</mat-label>
                     <mat-select formControlName="periodoControlMaleza" multiple>
                         <mat-option *ngFor="let mes of meses" [value]="mes">{{mes}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Periodo MIPE</mat-label>
                     <mat-select formControlName="periodoMIPE" multiple>
                         <mat-option *ngFor="let mes of meses" [value]="mes">{{mes}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Periodo Cosecha</mat-label>
                     <mat-select formControlName="periodoCosecha" multiple>
                         <mat-option *ngFor="let mes of meses" [value]="mes">{{mes}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <div class="column-item-2"></div>
+                <div class="col-md-6"></div>
             </div>
         </div>
     </mat-card-content>
