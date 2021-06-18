@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 
 @Component({
   selector: 'app-mejorar-calidad-cacao',
@@ -9,6 +10,8 @@ import { FormGroup } from '@angular/forms';
 export class MejorarCalidadCacaoComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
+
+  mejorarCalidadCacao: FormGroup;
 
   proyectos: string[] = [
     "BANDEJAS O CAJONES DE FERMENTACION",
@@ -20,7 +23,17 @@ export class MejorarCalidadCacaoComponent implements OnInit {
     "SI", "NO"
   ]
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.mejorarCalidadCacao = this.formBuilder.group({
+      bandejasCajonesFermentacion: new FormControl(''),
+      dispuestoHacerloPropiaCuenta: new FormControl(''),
+      tendalesElevadosCania: new FormControl(''),
+      secadorasComunitarias: new FormControl(''),
+      contarAgrupacionParaProyecto: new FormControl('')
+    });
+   }
 
   ngOnInit(): void {
   }
@@ -28,4 +41,44 @@ export class MejorarCalidadCacaoComponent implements OnInit {
   onSubmit() {
 
   }
+
+  get seccion(): any {
+    return {
+      preguntas: {
+        bandejasCajonesFermentacion: {
+          respuesta: this.mejorarCalidadCacao.value.bandejasCajonesFermentacion,
+          preguntas: {
+            dispuestoHacerloPropiaCuenta: {
+              respuesta: this.mejorarCalidadCacao.value.dispuestoHacerloPropiaCuenta
+            }
+          }
+        },
+        tendalesElevadosCania: {
+          respuesta: this.mejorarCalidadCacao.value.tendalesElevadosCania
+        },
+        secadorasComunitarias: {
+          respuesta: this.mejorarCalidadCacao.value.secadorasComunitarias,
+          preguntas: {
+            contarAgrupacionParaProyecto: {
+              respuesta: this.mejorarCalidadCacao.value.contarAgrupacionParaProyecto
+            }
+          }
+        }
+      }
+    };
+  }
+
+  setValues(formularioLineaBase: FormularioLineaBase): void {
+    this.mejorarCalidadCacao.get('bandejasCajonesFermentacion')
+      .setValue(formularioLineaBase.secciones.mejorarCalidadCacao.preguntas.bandejasCajonesFermentacion.respuesta);
+    this.mejorarCalidadCacao.get('dispuestoHacerloPropiaCuenta')
+      .setValue(formularioLineaBase.secciones.mejorarCalidadCacao.preguntas.bandejasCajonesFermentacion.preguntas.dispuestoHacerloPropiaCuenta.respuesta);
+    this.mejorarCalidadCacao.get('tendalesElevadosCania')
+      .setValue(formularioLineaBase.secciones.mejorarCalidadCacao.preguntas.tendalesElevadosCania.respuesta);
+    this.mejorarCalidadCacao.get('secadorasComunitarias')
+      .setValue(formularioLineaBase.secciones.mejorarCalidadCacao.preguntas.secadorasComunitarias.respuesta);
+    this.mejorarCalidadCacao.get('contarAgrupacionParaProyecto')
+      .setValue(formularioLineaBase.secciones.mejorarCalidadCacao.preguntas.secadorasComunitarias.preguntas.contarAgrupacionParaProyecto.respuesta);
+  }
+
 }
