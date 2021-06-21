@@ -30,7 +30,7 @@
     "ngx-toastr": "^14.0.0",
     "rxjs": "^6.6.7",
     "ti-icons": "^0.1.2",
-    "tslib": "^2.0.0",
+    "tslib": "1.10.0",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
