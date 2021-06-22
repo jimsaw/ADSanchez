@@ -167,7 +167,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       if (this.formularioLineaBase) {
         formularioLineaBaseParam.id = this.formularioLineaBase.id;
       }
-      this.formularioService.saveFormInCollection(formularioLineaBaseParam).then(value => {
+      this.formularioService.set(formularioLineaBaseParam).then(() => {
         this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
         this.router.navigate(['inicio','home']);
       }).catch((e) => {

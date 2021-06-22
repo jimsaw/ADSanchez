@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, CollectionReference } from '@angular/fire/firestore';
+import { AngularFirestore, CollectionReference, DocumentData, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Database } from 'src/app/interfaces/database';
 import { Formulario } from 'src/app/interfaces/formulario';
@@ -22,7 +22,18 @@ export abstract class FormularioService implements Database<Formulario> {
 
   abstract delete(item: Formulario): Promise<string>;
 
-  writeQuestion(question: string, lastObject: any, lastCollectionRef: CollectionReference, transaction: any) {
+  protected writeSections(docRef: DocumentReference, formulario: Formulario, transaction: any) {
+    const seccionesCollRef = docRef.collection("secciones");
+    for (let section of Object.keys(formulario["secciones"])) {
+      transaction.set(seccionesCollRef.doc(section), {id: section});
+      const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
+      for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
+        this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
+      }
+    }
+  }
+
+  private writeQuestions(question: string, lastObject: any, lastCollectionRef: CollectionReference, transaction: any) {
     for (let response of Object.keys(lastObject[question])) {
       if (response === "respuesta") {
         transaction.set(lastCollectionRef.doc(question), {
@@ -34,74 +45,71 @@ export abstract class FormularioService implements Database<Formulario> {
         const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
         const newLastObject = lastObject[question][response];
         for (let question in newLastObject) {
-          this.writeQuestion(question, newLastObject, newCollectionRef, transaction);
+          this.writeQuestions(question, newLastObject, newCollectionRef, transaction);
         }
       }
     }
   }
 
-  saveFormularioLineaBase(agriculorId: string, formularioLineaBase: FormularioLineaBase, date: string): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const agricultorDocRef = this.firebaseObj.firestore.collection("agricultores").doc(agriculorId);
-      this.firebaseObj.firestore.runTransaction((transaction) => {
-        return transaction.get(agricultorDocRef).then((agricultorDoc) => {
-          if (!agricultorDoc.exists) {
-            reject("ERROR: DOCUMENT DOESN'T EXIST");
-          }
-          const formularioCollRef = agricultorDocRef.collection("formulariosDeLineaBase");
-          const formularioId = this.firebaseObj.createId();
-          const formularioDocRef = formularioCollRef.doc(formularioId);
-          transaction.set(formularioDocRef, {id: formularioId, fecha: date});
-          const seccionesCollRef = formularioDocRef.collection("secciones");
-          for (let section of Object.keys(formularioLineaBase["secciones"])) {
-            transaction.set(seccionesCollRef.doc(section), {id: section});
-            const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
-            for (let question of Object.keys(formularioLineaBase["secciones"][section]["preguntas"])) {
-              this.writeQuestion(question, formularioLineaBase["secciones"][section]["preguntas"], questionsRef, transaction);
+  protected async fetchSections(formulario: FormularioLineaBase) {
+    const initialCollRef = this.firebaseObj.firestore.collection(`formulariosLineaBase/${formulario.id}/secciones`);
+    try {
+        const secciones = await initialCollRef.get();
+        for(const seccion of secciones.docs) {
+            const seccionData = seccion.data();
+            const preguntasCollectionRef = initialCollRef.doc(seccionData["id"]).collection("preguntas");
+            const preguntasCollection = await preguntasCollectionRef.get();
+            for (const pregunta of preguntasCollection.docs) {
+                const preguntaData = pregunta.data();
+                await this.fetchQuestions(preguntaData, formulario["secciones"][seccionData["id"]]["preguntas"],preguntasCollectionRef);
             }
-          }
-        });
-      }).then(() => {
-        resolve("OK");
-      }).catch((error) => {
-        reject(error);
-      });
-    });
+        }
+    } catch (e) {
+        console.log(e);
+        throw e;
+    }
   }
 
-  saveFormInCollection(formularioLineaBase: FormularioLineaBase): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const collRef = this.firebaseObj.firestore.collection("formulariosLineaBase");
-      this.firebaseObj.firestore.runTransaction((transaction) => {
-        return new Promise((resolve, reject) => {
-          if (formularioLineaBase.id === '' || formularioLineaBase.id === undefined) {
-            formularioLineaBase.id = this.firebaseObj.createId();
-          }
-          const docRef = collRef.doc(formularioLineaBase.id);
-          transaction.set(docRef, {
-            id: formularioLineaBase.id,
-            agricultorId: formularioLineaBase.agricultor.id,
-            agricultor: formularioLineaBase.agricultor.nombre,
-            fechaVisita: formularioLineaBase.fechaVisita,
-            tecnico: formularioLineaBase.tecnico.nombre
-          });
-          const seccionesCollRef = docRef.collection("secciones");
-          for (let section of Object.keys(formularioLineaBase["secciones"])) {
-            transaction.set(seccionesCollRef.doc(section), {id: section});
-            const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
-            for (let question of Object.keys(formularioLineaBase["secciones"][section]["preguntas"])) {
-              this.writeQuestion(question, formularioLineaBase["secciones"][section]["preguntas"], questionsRef, transaction);
+
+  private async fetchQuestions(data: any, lastObject: any, lastCollectionRef: CollectionReference) {
+    const question = data["id"];
+    for (let response of Object.keys(lastObject[question])) {
+      if (response === "respuesta") {
+        lastObject[question][response] = data["respuesta"];
+      } else if (response === "preguntas") {
+        const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
+        const newLastObject = lastObject[question][response];
+        try {
+            const preguntas = await newCollectionRef.get();
+            for (const pregunta of preguntas.docs) {
+                const preguntaData = pregunta.data();
+                await this.fetchQuestions(preguntaData, newLastObject, newCollectionRef);
             }
-          }
-          resolve("OK");
-        });
-      }).then(() => {
-        resolve("COLLECION GUARDADA");
-      }).catch((e) => {
-        console.log(e);
-        reject(e);
-      });
-    });
+        } catch (e) {
+            console.log(e);
+            throw e;
+        }
+      }
+    }
+  }
+
+  protected async deleteSections(lastRef: DocumentReference, transaction: any) {
+    const secciones = await lastRef.collection('secciones').get();
+    for (let seccion of secciones.docs) {
+      const id = seccion.data()["id"];
+      const seccionRef = lastRef.collection('secciones').doc(id);
+      transaction.delete(seccionRef);
+      const questionsRef = await seccionRef.collection("preguntas").get();
+      for (let question of questionsRef.docs) {
+        this.deleteQuestions(question, seccionRef.collection('preguntas'), transaction);
+      }
+    }
+  }
+
+  private async deleteQuestions(question: DocumentData, lastRef: CollectionReference, transaction: any) {
+    const id = question.data()["id"];
+    const questionRef = lastRef.doc(id);
+    transaction.delete(questionRef)
   }
 
 }
