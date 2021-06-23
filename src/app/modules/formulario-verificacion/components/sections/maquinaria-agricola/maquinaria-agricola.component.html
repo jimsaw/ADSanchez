@@ -1,54 +1,161 @@
 <form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="row" formGroupName="maquinariaAgricola">
-            <mat-form-field appearance="outline">
-                <mat-label>MOTOGUADAÑA</mat-label>
-                <input matInput formControlName="estadoMotoguadania" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MOTOSIERRA</mat-label>
-                <input matInput formControlName="estadoMotosierra" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PODADORA DE ALTURA</mat-label>
-                <input matInput formControlName="estadoPodadoraDeAltura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BOMBA DE RIEGO</mat-label>
-                <input matInput formControlName="estadoBombaRiego" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BOMBA A MOTOR</mat-label>
-                <input matInput formControlName="estadoBombaAMotor" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="estadoOtrosMaquinariaAgricola" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MOTOGUADAÑA</mat-label>
-                <input matInput formControlName="necesitaMotoguadania" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MOTOSIERRA</mat-label>
-                <input matInput formControlName="necesitaMotosierra" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PODADORA DE ALTURA</mat-label>
-                <input matInput formControlName="necesitaPodadoraDeAltura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BOMBA DE RIEGO</mat-label>
-                <input matInput formControlName="necesitaBombaRiego" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BOMBA A MOTOR</mat-label>
-                <input matInput formControlName="necesitaBombaAMotor" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="necesitaOtrosMaquinariaAgricola" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">INCENTIVOS DEL PROGRAMA LINDT</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">MOTOGUADAÑA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoMotoguadania" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaMotoguadania" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">MOTOSIERRA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoMotosierra" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaMotosierra" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PODADORA DE ALTURA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoPodadoraDeAltura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaPodadoraDeAltura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">BOMBA DE RIEGO</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoBombaRiego" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaBombaRiego" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">BOMBA A MOTOR</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoBombaAMotor" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaBombaAMotor" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">OTROS:</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>ESTADO</mat-label>
+                        <mat-select formControlName="estadoOtrosMaquinariaAgricola" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of estado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaOtrosMaquinariaAgricola" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

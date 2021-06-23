@@ -796,7 +796,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
               respuesta: this.lineaBaseForm.value.nivelAsociatividad.perteneceAsocProgrCertif,
               preguntas: {
                 nombreAsociacion: {
-                  respueta: this.lineaBaseForm.value.nivelAsociatividad.nombreAsociacion
+                  respuesta: this.lineaBaseForm.value.nivelAsociatividad.nombreAsociacion
                 },
                 cantidadMiembros: {
                   respuesta: this.lineaBaseForm.value.nivelAsociatividad.cantidadMiembros
@@ -986,7 +986,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       }
       this.formularioService.saveFormInCollection(formularioLineaBaseParam).then(value => {
         this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
-        this.router.navigate(['inicio','home']);
+        this.router.navigate(['inicio', 'home']);
       }).catch((e) => {
         console.log(e);
         this.toastr.error(e, '¡Error!');
@@ -1286,7 +1286,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       this.lineaBaseForm.get('nivelAsociatividad').get('perteneceAsocProgrCertif')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('nombreAsociacion')
-        .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.nombreAsociacion.respueta);
+        .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.nombreAsociacion.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('cantidadMiembros')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.cantidadMiembros.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('recibeBeneficios')
@@ -1295,13 +1295,13 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.tiposBeneficios.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('otroTiposBeneficios')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.perteneceAsocProgrCertif.preguntas.tiposBeneficios.preguntas.otroTiposBeneficios.respuesta);
-        this.lineaBaseForm.get('nivelAsociatividad').get('ayudaOtraInstitucion')
+      this.lineaBaseForm.get('nivelAsociatividad').get('ayudaOtraInstitucion')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.ayudaOtraInstitucion.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('nombreOtraInstitucion')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.ayudaOtraInstitucion.preguntas.nombreOtraInstitucion.respuesta);
       this.lineaBaseForm.get('nivelAsociatividad').get('tipoAyuda')
         .setValue(this.formularioLineaBase.secciones.nivelAsociatividad.preguntas.ayudaOtraInstitucion.preguntas.tipoAyuda.respuesta);
-        /******************************************* */
+      /******************************************* */
       this.lineaBaseForm.get('condicionesLaborales').get('contrataTrabajadores')
         .setValue(this.formularioLineaBase.secciones.condicionesLaborales.preguntas.contrataTrabajadores.respuesta);
       this.lineaBaseForm.get('condicionesLaborales').get('cantidadTrabajadores')
@@ -1376,7 +1376,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
         .setValue(this.formularioLineaBase.secciones.preguntasAdicionales.preguntas.necesitaRehaReinjerto.respuesta);
       this.lineaBaseForm.get('preguntasAdicionales').get('cantidad')
         .setValue(this.formularioLineaBase.secciones.preguntasAdicionales.preguntas.necesitaRehaReinjerto.preguntas.cantidad.respuesta);
-      } else {
+    } else {
       //
     }
     this.isLoading = false;

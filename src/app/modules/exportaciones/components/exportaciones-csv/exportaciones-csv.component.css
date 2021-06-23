@@ -30,3 +30,30 @@
     margin-left: 1rem;
     width: 98%;
 }
+
+.contenedor{
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.boton {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    width: 50%;
+}
+
+.element{
+    width: 95%;
+    margin-left: 1rem;
+}
+
+.contenedor2{
+    align-content: center;
+    justify-content: center;
+}
+
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}

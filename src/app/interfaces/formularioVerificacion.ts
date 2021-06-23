@@ -1,12 +1,12 @@
+import { Agricultor } from "./agricultor";
 import { Formulario } from "./formulario";
+import { Tecnico } from "./tecnico";
 
 export interface FormularioVerificacion extends Formulario {
-    fechaVisita: {
-        respuesta: string
-    },
-    tecnico: {
-        respuesta: string
-    }
+    id: string,
+    agricultor: Agricultor,
+    tecnico: Tecnico,
+    fechaVisita: string,
     secciones: {
         datosFinca: {
             preguntas: {

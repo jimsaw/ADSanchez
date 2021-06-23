@@ -6,6 +6,7 @@ import { BlankComponent } from './layouts/blank/blank.component';
 import { AuthGuard } from './modules/core/guards/auth/auth.guard';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { ExportacionesCSVComponent } from './modules/exportaciones/components/exportaciones-csv/exportaciones-csv.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
@@ -32,8 +33,8 @@ const routes: Routes = [
         loadChildren: () => import('./modules/agricultor/agricultor.module').then(m => m.AgricultorModule)
       },
       {
-        path: 'registroTecnicos',
-        component: BlankComponent
+        path: 'exportaciones',
+        component: ExportacionesCSVComponent
       },
       {
         path: 'logout',

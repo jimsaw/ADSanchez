@@ -471,7 +471,7 @@ export interface FormularioLineaBase extends Formulario {
                     respuesta: string,
                     preguntas: {
                         nombreAsociacion: {
-                            respueta: string
+                            respuesta: string
                         },
                         cantidadMiembros: {
                             respuesta: string

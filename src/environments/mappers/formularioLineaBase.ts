@@ -168,7 +168,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'USO ANTERIOR DEL AREA NUEVA'
     },
     otroUsoAnteriorAreaNueva: {
-        codigo: 'CAC16_NCUSO',
+        codigo: 'CAC16_NCUSOTRO',
         pregunta: 'OTRO USO ANTERIOR DEL AREA NUEVA'
     },
     tipoVariedad: {
@@ -212,7 +212,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'QUIEN REALIZO LA PROPAGACION'
     },
     otroEncargadoPropagacion: {
-        codigo: 'CAC29_PROP',
+        codigo: 'CAC29_PROPOTRO',
         pregunta: 'QUIEN OTRO REALIZO LA PROPAGACION'
     },
     tipoConocimiento: {
@@ -427,22 +427,6 @@ export const formularioLineaBaseMapper = {
         codigo: 'MIPE15_ENFERM',
         pregunta: 'ENFERMEDADES QUE AFECTAN GENERALMENTE EN EL CULTIVO'
     },
-    escobabruja: {
-        codigo: 'MIPE16_ESC',
-        pregunta: 'ESCOBA BRUJA'
-    },
-    monilla: {
-        codigo: 'MIPE17_EMO',
-        pregunta: 'MONILLA'
-    },
-    malDeMachete: {
-        codigo: 'MIPE18_EMM',
-        pregunta: 'MAL DE MACHETE'
-    },
-    otrosEnfermedades: {
-        codigo: 'MIPE19_EOTR',
-        pregunta: 'OTROS'
-    },
     productoParaPlagas: {
         codigo: 'MIPE07_PLA',
         pregunta: 'PRODUCTO QUIMICO O NATURAL QUE APLICÓ PARA LAS PLAGAS'
@@ -560,7 +544,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'QUÉ TIPO DE BENEFICIOS'
     },
     otroTiposBeneficios: {
-        codigo: 'ASO05_TIPBENEF',
+        codigo: 'ASO05_TIPBENEFOTRO',
         pregunta: 'QUÉ OTRO TIPO DE BENEFICIOS'
     },
     ayudaOtraInstitucion: {
