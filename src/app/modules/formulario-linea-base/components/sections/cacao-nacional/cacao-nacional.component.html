@@ -36,25 +36,42 @@
                     <mat-label>Area Total Viejo Injertado</mat-label>
                     <input matInput formControlName="areaTotalViejoInjertado" autocomplete="off" >
                 </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Area Viejo Injertado 1</mat-label>
-                    <input matInput formControlName="areaViejoInjertado" autocomplete="off" >
+                <div class="col-md-8" formArrayName="viejosInjertados">
+                    <div class="row">
+                        <mat-form-field [formGroupName]="0" class="col-md-6" appearance="outline" >
+                            <mat-label>Area Viejo Injertado 1</mat-label>
+                            <input matInput formControlName="areaViejoInjertado" autocomplete="off" >
+                        </mat-form-field>
+                        <mat-form-field [formGroupName]="0" class="col-md-6" appearance="outline" >
+                            <mat-label>Edad Viejo Injertado 1</mat-label>
+                            <input matInput formControlName="edadViejoInjertado" autocomplete="off" >
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="viejosInjertados" class="row justify-content-end" *ngFor="let value of getFormArray('viejosInjertados').controls; let i = index">
+                <div *ngIf="i !== 0" class="col-md-1 col-xs-1">
+                    <button id="delete" *ngIf="getFormArray('viejosInjertados').length > 1" (click)="deleteViejoInjertado(i)" mat-flat-button>
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+                <mat-form-field *ngIf="i !== 0" [formGroupName]="i" class="col-md-4" appearance="outline">
+                    <mat-label>Area Viejo Injertado {{ i + 1 }}</mat-label>
+                    <input matInput formControlName="areaViejoInjertado" autocomplete="off">
+                    <!--mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error-->
                 </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Edad Viejo Injertado 1</mat-label>
-                    <input matInput formControlName="edadViejoInjertado" autocomplete="off" >
+                <mat-form-field *ngIf="i !== 0" [formGroupName]="i" class="col-md-4" appearance="outline">
+                    <mat-label>Edad Viejo Injertado {{ i + 1 }}</mat-label>
+                    <input matInput formControlName="edadViejoInjertado" autocomplete="off">
+                    <!--mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error-->
                 </mat-form-field>
             </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Area Viejo Injertado 2</mat-label>
-                    <input matInput formControlName="areaViejoInjertado2" autocomplete="off" >
-                </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Edad Viejo Injertado 2</mat-label>
-                    <input matInput formControlName="edadViejoInjertado2" autocomplete="off" >
-                </mat-form-field>
+            <div class="row justify-content-end">
+                <div class="col-md-4 add-button">
+                    <button mat-button color="primary" (click)="addViejoInjertado()" mat-flat-button>
+                        Añadir
+                    </button>
+                </div>
             </div>
             <mat-divider [inset]="true" class="space-down"></mat-divider>
             <div class="row">
@@ -62,36 +79,42 @@
                     <mat-label>Area Total Nuevos Clones</mat-label>
                     <input matInput formControlName="areaTotalNuevosClones" autocomplete="off" >
                 </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Area Nuevos Clones 1</mat-label>
-                    <input matInput formControlName="areaNuevosClones" autocomplete="off" >
+                <div class="col-md-8" formArrayName="nuevosClones">
+                    <div class="row">
+                        <mat-form-field [formGroupName]="0" class="col-md-6" appearance="outline" >
+                            <mat-label>Area Nuevos Clones 1</mat-label>
+                            <input matInput formControlName="areaNuevosClones" autocomplete="off" >
+                        </mat-form-field>
+                        <mat-form-field [formGroupName]="0" class="col-md-6" appearance="outline" >
+                            <mat-label>Edad Nuevos Clones 1</mat-label>
+                            <input matInput formControlName="edadNuevosClones" autocomplete="off" >
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="nuevosClones" class="row justify-content-end" *ngFor="let value of getFormArray('nuevosClones').controls; let i = index">
+                <div *ngIf="i !== 0" class="col-md-1 col-xs-1">
+                    <button id="delete" *ngIf="getFormArray('nuevosClones').length > 1" (click)="deleteNuevosClones(i)" mat-flat-button>
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
+                <mat-form-field *ngIf="i !== 0" [formGroupName]="i" class="col-md-4" appearance="outline">
+                    <mat-label>Area Nuevos Clones {{ i + 1 }}</mat-label>
+                    <input matInput formControlName="areaNuevosClones" autocomplete="off">
+                    <!--mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error-->
                 </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Edad Nuevos Clones 1</mat-label>
-                    <input matInput formControlName="edadNuevosClones" autocomplete="off" >
+                <mat-form-field *ngIf="i !== 0" [formGroupName]="i" class="col-md-4" appearance="outline">
+                    <mat-label>Edad Nuevos Clones {{ i + 1 }}</mat-label>
+                    <input matInput formControlName="edadNuevosClones" autocomplete="off">
+                    <!--mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error-->
                 </mat-form-field>
             </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Area Nuevos Clones 2</mat-label>
-                    <input matInput formControlName="areaNuevosClones2" autocomplete="off" >
-                </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Edad Nuevos Clones 2</mat-label>
-                    <input matInput formControlName="edadNuevosClones2" autocomplete="off" >
-                </mat-form-field>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Area Nuevos Clones 3</mat-label>
-                    <input matInput formControlName="areaNuevosClones3" autocomplete="off" >
-                </mat-form-field>
-                <mat-form-field class="col-md-4" appearance="outline" >
-                    <mat-label>Edad Nuevos Clones 3</mat-label>
-                    <input matInput formControlName="edadNuevosClones3" autocomplete="off" >
-                </mat-form-field>
+            <div class="row justify-content-end">
+                <div class="col-md-4 add-button">
+                    <button mat-button color="primary" (click)="addNuevosClones()" mat-flat-button>
+                        Añadir
+                    </button>
+                </div>
             </div>
             <mat-divider [inset]="true" class="space-down"></mat-divider>
             <div class="row">

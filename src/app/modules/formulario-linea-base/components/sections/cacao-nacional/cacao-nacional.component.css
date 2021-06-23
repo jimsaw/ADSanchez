@@ -1,0 +1,14 @@
+.add-button {
+    margin-bottom: 1rem;
+    align-self: center;
+}
+
+#delete {
+    padding: 0;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    align-items: center;
+    min-width: 100%;
+    height: min-content;
+    width: min-content;
+}

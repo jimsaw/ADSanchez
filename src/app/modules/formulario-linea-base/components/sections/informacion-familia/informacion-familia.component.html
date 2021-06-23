@@ -1,258 +1,82 @@
 <form [formGroup]="informacionFamilia" (ngSubmit)="onSubmit()">
     <mat-card-content>
         <div class="container-fluid">
-            <div class="miembro">
-                <h1>Miembro 1</h1>
+            <div class="miembro" formArrayName="miembros" *ngFor="let value of getFormArray('miembros').controls; let i = index">
+                <div class="row justify-content-between">
+                    <h1 class="col-md-2">Miembro {{i + 1}}</h1>
+                    <div class="col-md-1 col-xs-1">
+                        <button id="delete" *ngIf="getFormArray('miembros').length > 1" (click)="deleteMiembro(i)" mat-flat-button>
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                    </div>
+                </div>
                 <div class="row">
-                    <mat-form-field class="col-md-8" appearance="outline" >
+                    <mat-form-field class="col-md-8" [formGroupName]="i" appearance="outline" >
                         <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro1ClasifiacionMiembroFamiliar">
+                        <input matInput formControlName="clasificacionMiembroFamiliar">
                     </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
+                    <mat-form-field class="col-md-4" [formGroupName]="i" appearance="outline" >
                         <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro1Edad">
+                        <input matInput formControlName="edad">
                     </mat-form-field>
                 </div>
                 <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro1Genero">
+                        <mat-select formControlName="genero">
                             <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro1SeguridadSocial">
+                        <mat-select formControlName="seguridadSocial">
                             <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro1LaboraEnFinca">
+                        <mat-select formControlName="laboraEnFinca">
                             <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro1NivelEduacion">
+                        <input matInput formControlName="nivelEduacion">
                     </mat-form-field>
                 </div>
-                <div *ngIf="m1labora()" class="row">
-                    <mat-form-field  class="col-md-8" appearance="outline" >
+                <div *ngIf="labora(i)" class="row">
+                    <mat-form-field  class="col-md-8" [formGroupName]="i" appearance="outline" >
                         <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro1LaborRealizado">
+                        <input matInput formControlName="laborRealizado">
                     </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
+                    <mat-form-field class="col-md-4" [formGroupName]="i" appearance="outline" >
                         <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro1HorasAlDiaTrabaja">
+                        <input matInput formControlName="horasAlDiaTrabaja">
                     </mat-form-field>
                 </div>
                 <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro1tieneOtraFuenteIngreso">
+                        <mat-select formControlName="tieneOtraFuenteIngreso">
                             <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro1sueldoIngresoMensual">
+                        <input matInput formControlName="sueldoIngresoMensual">
                     </mat-form-field>
+                </div>
+                <mat-divider [inset]="true" class="space-down"></mat-divider>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <button mat-button color="primary" (click)="addMiembro()" mat-flat-button>
+                        Añadir
+                    </button>
                 </div>
             </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
-            <div class="miembro">
-                <h1>Miembro 2</h1>
-                <div class="row">
-                    <mat-form-field class="col-md-8" appearance="outline" >
-                        <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro2ClasifiacionMiembroFamiliar">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
-                        <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro2Edad">
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro2Genero">
-                            <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro2SeguridadSocial">
-                            <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro2LaboraEnFinca">
-                            <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro2NivelEduacion">
-                    </mat-form-field>
-                </div>
-                <div *ngIf="m2labora()" class="row">
-                    <mat-form-field  class="col-md-8" appearance="outline" >
-                        <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro2LaborRealizado">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
-                        <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro2HorasAlDiaTrabaja">
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro2tieneOtraFuenteIngreso">
-                            <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro2sueldoIngresoMensual">
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
-            <div class="miembro">
-                <h1>Miembro 3</h1>
-                <div class="row">
-                    <mat-form-field class="col-md-8" appearance="outline" >
-                        <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro3ClasifiacionMiembroFamiliar">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
-                        <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro3Edad">
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro3Genero">
-                            <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro3SeguridadSocial">
-                            <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro3LaboraEnFinca">
-                            <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro3NivelEduacion">
-                    </mat-form-field>
-                </div>
-                <div *ngIf="m3labora()" class="row">
-                    <mat-form-field  class="col-md-8" appearance="outline" >
-                        <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro3LaborRealizado">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
-                        <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro3HorasAlDiaTrabaja">
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro3tieneOtraFuenteIngreso">
-                            <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro3sueldoIngresoMensual">
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
-            <div class="miembro">
-                <h1>Miembro 4</h1>
-                <div class="row">
-                    <mat-form-field class="col-md-8" appearance="outline" >
-                        <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro4ClasifiacionMiembroFamiliar">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
-                        <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro4Edad">
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro4Genero">
-                            <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro4SeguridadSocial">
-                            <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro4LaboraEnFinca">
-                            <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro4NivelEduacion">
-                    </mat-form-field>
-                </div>
-                <div *ngIf="m4labora()" class="row">
-                    <mat-form-field  class="col-md-8" appearance="outline" >
-                        <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro4LaborRealizado">
-                    </mat-form-field>
-                    <mat-form-field class="col-md-4" appearance="outline" >
-                        <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro4HorasAlDiaTrabaja">
-                    </mat-form-field>
-                </div>
-                <div class="row">
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro4tieneOtraFuenteIngreso">
-                            <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="col-md-6" appearance="outline" >
-                        <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro4sueldoIngresoMensual">
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
             <h1>Especificaciones:</h1>
             <div class="row">
                 <mat-form-field class="col-md-6" appearance="outline" >

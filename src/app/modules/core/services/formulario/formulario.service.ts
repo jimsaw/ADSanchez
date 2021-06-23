@@ -40,12 +40,27 @@ export abstract class FormularioService implements Database<Formulario> {
           id: question,
           pregunta: this.keyMapperObj.getQuestionDescription(question),
           respuesta: lastObject[question][response] === undefined ? "" : lastObject[question][response]
-        })
+        });
       } else if (response === "preguntas") {
         const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
         const newLastObject = lastObject[question][response];
         for (let question in newLastObject) {
           this.writeQuestions(question, newLastObject, newCollectionRef, transaction);
+        }
+      } else if (response === "arreglo") {
+        transaction.set(lastCollectionRef.doc(question), {
+          id: question,
+          arreglo: lastObject[question][response]
+        });
+        const objetosRef = lastCollectionRef.doc(question).collection("objetos");
+        const arreglo = lastObject[question][response];
+        for (let numeroPregunta of Object.keys(arreglo)) {
+          const newLastObject = arreglo[numeroPregunta];
+          transaction.set(objetosRef.doc(numeroPregunta), {id: numeroPregunta});
+          const newCollectionRef = objetosRef.doc(numeroPregunta).collection("preguntas");
+          for (let questInArray in newLastObject) {
+            this.writeQuestions(questInArray, newLastObject, newCollectionRef, transaction);
+          }
         }
       }
     }
@@ -89,6 +104,8 @@ export abstract class FormularioService implements Database<Formulario> {
             console.log(e);
             throw e;
         }
+      } else if (response === "arreglo") {
+        lastObject[question][response] = data["arreglo"]
       }
     }
   }

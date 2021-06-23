@@ -24,23 +24,26 @@ export class CacaoNacionalComponent implements OnInit {
       brotesBasales: new FormControl(''),
       arbolesElite: new FormControl(''),
       areaTotalViejoInjertado: new FormControl(''),
-      areaViejoInjertado: new FormControl(''),
-      edadViejoInjertado: new FormControl(''),
-      areaViejoInjertado2: new FormControl(''),
-      edadViejoInjertado2: new FormControl(''),
+      viejosInjertados: new FormArray([
+        new FormGroup({
+          areaViejoInjertado: new FormControl(''),
+          edadViejoInjertado: new FormControl(''),
+        }),
+      ]),
       areaTotalNuevosClones: new FormControl(''),
-      areaNuevosClones: new FormControl(''),
-      edadNuevosClones: new FormControl(''),
-      areaNuevosClones2: new FormControl(''),
-      edadNuevosClones2: new FormControl(''),
-      areaNuevosClones3: new FormControl(''),
-      edadNuevosClones3: new FormControl(''),
+      nuevosClones: new FormArray([
+        new FormGroup({
+          areaNuevosClones: new FormControl(''),
+          edadNuevosClones: new FormControl('')
+        })
+      ]),
       produccionAnioAnteriorCacaoNacional: new FormControl(''),
       precioPromedioXCacao: new FormControl('')
     });
   }
 
   ngOnInit(): void {
+
   }
 
   onSubmit() {
@@ -66,6 +69,53 @@ export class CacaoNacionalComponent implements OnInit {
     this.getFormArray("viejosInjertados").removeAt(index);
   }
 
+  viejosInjertadosToObject(): any[] {
+    const questions: any[] = [];
+    for (let value of this.getFormArray("viejosInjertados").controls) {
+      const viejoInjertado = {
+        areaViejoInjertado: {
+          respuesta: value.get("areaViejoInjertado").value
+        },
+        edadViejoInjertado: {
+          respuesta: value.get("edadViejoInjertado").value
+        }
+      }
+      questions.push(viejoInjertado);
+    }
+    return questions;
+  }
+
+  createNuevosClonesField(): FormGroup {
+    return new FormGroup({
+      areaNuevosClones: new FormControl(''),
+      edadNuevosClones: new FormControl(''),
+    });
+  }
+
+  addNuevosClones(): void {
+    this.getFormArray("nuevosClones").push(this.createNuevosClonesField());
+  }
+
+  deleteNuevosClones(index: number): void {
+    this.getFormArray("nuevosClones").removeAt(index);
+  }
+
+  nuevosClonesToObject(): any[] {
+    const questions: any[] = [];
+    for (let value of this.getFormArray("nuevosClones").controls) {
+      const nuevosClones = {
+        areaNuevosClones: {
+          respuesta: value.get("areaNuevosClones").value
+        },
+        edadNuevosClones: {
+          respuesta: value.get("edadNuevosClones").value
+        }
+      }
+      questions.push(nuevosClones);
+    }
+    return questions;
+  }
+
   get seccion(): any {
     return {
       preguntas: {
@@ -87,38 +137,14 @@ export class CacaoNacionalComponent implements OnInit {
         areaTotalViejoInjertado: {
           respuesta: this.cacaoNacional.value.areaTotalViejoInjertado
         },
-        areaViejoInjertado: {
-          respuesta: this.cacaoNacional.value.areaViejoInjertado
-        },
-        edadViejoInjertado: {
-          respuesta: this.cacaoNacional.value.edadViejoInjertado
-        },
-        areaViejoInjertado2: {
-          respuesta: this.cacaoNacional.value.areaViejoInjertado2
-        },
-        edadViejoInjertado2: {
-          respuesta: this.cacaoNacional.value.edadViejoInjertado2
+        viejosInjertados: {
+          arreglo: this.viejosInjertadosToObject()
         },
         areaTotalNuevosClones: {
           respuesta: this.cacaoNacional.value.areaTotalNuevosClones
         },
-        areaNuevosClones: {
-          respuesta: this.cacaoNacional.value.areaNuevosClones
-        },
-        edadNuevosClones: {
-          respuesta: this.cacaoNacional.value.edadNuevosClones
-        },
-        areaNuevosClones2: {
-          respuesta: this.cacaoNacional.value.areaNuevosClones2
-        },
-        edadNuevosClones2: {
-          respuesta: this.cacaoNacional.value.edadNuevosClones2
-        },
-        areaNuevosClones3: {
-          respuesta: this.cacaoNacional.value.areaNuevosClones3
-        },
-        edadNuevosClones3: {
-          respuesta: this.cacaoNacional.value.edadNuevosClones3
+        nuevosClones: {
+          arreglo: this.nuevosClonesToObject()
         },
         produccionAnioAnteriorCacaoNacional: {
           respuesta: this.cacaoNacional.value.produccionAnioAnteriorCacaoNacional
@@ -128,6 +154,28 @@ export class CacaoNacionalComponent implements OnInit {
         }
       }
     };
+  }
+
+  setViejosInjertados(formularioLineaBase: FormularioLineaBase): void {
+    formularioLineaBase.secciones.cacaoNacional.preguntas.viejosInjertados.arreglo.forEach((value, index) => {
+      if (index !== 0) {
+        this.addViejoInjertado();
+      }
+      console.log(value);
+      this.getFormArray("viejosInjertados").controls[index].get("areaViejoInjertado").setValue(value["areaViejoInjertado"]["respuesta"]);
+      this.getFormArray("viejosInjertados").controls[index].get("edadViejoInjertado").setValue(value["edadViejoInjertado"]["respuesta"]);
+    });
+  }
+
+  setNuevosClones(formularioLineaBase: FormularioLineaBase): void {
+    formularioLineaBase.secciones.cacaoNacional.preguntas.nuevosClones.arreglo.forEach((value, index) => {
+      if (index !== 0) {
+        this.addNuevosClones();
+      }
+      console.log(value);
+      this.getFormArray("nuevosClones").controls[index].get("areaNuevosClones").setValue(value["areaNuevosClones"]["respuesta"]);
+      this.getFormArray("nuevosClones").controls[index].get("edadNuevosClones").setValue(value["edadNuevosClones"]["respuesta"]);
+    });
   }
 
   setValues(formularioLineaBase: FormularioLineaBase): void {
@@ -143,28 +191,10 @@ export class CacaoNacionalComponent implements OnInit {
       .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.arbolesElite.respuesta);
     this.cacaoNacional.get('areaTotalViejoInjertado')
       .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaTotalViejoInjertado.respuesta);
-    this.cacaoNacional.get('areaViejoInjertado')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaViejoInjertado.respuesta);
-    this.cacaoNacional.get('edadViejoInjertado')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.edadViejoInjertado.respuesta);
-    this.cacaoNacional.get('areaViejoInjertado2')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaViejoInjertado2.respuesta);
-    this.cacaoNacional.get('edadViejoInjertado2')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.edadViejoInjertado2.respuesta);
+    this.setViejosInjertados(formularioLineaBase);
+    this.setNuevosClones(formularioLineaBase);
     this.cacaoNacional.get('areaTotalNuevosClones')
       .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaTotalNuevosClones.respuesta);
-    this.cacaoNacional.get('areaNuevosClones')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaNuevosClones.respuesta);
-    this.cacaoNacional.get('edadNuevosClones')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.edadNuevosClones.respuesta);
-    this.cacaoNacional.get('areaNuevosClones2')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaNuevosClones2.respuesta);
-    this.cacaoNacional.get('edadNuevosClones2')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.edadNuevosClones2.respuesta);
-    this.cacaoNacional.get('areaNuevosClones3')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.areaNuevosClones3.respuesta);
-    this.cacaoNacional.get('edadNuevosClones3')
-      .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.edadNuevosClones3.respuesta);
     this.cacaoNacional.get('produccionAnioAnteriorCacaoNacional')
       .setValue(formularioLineaBase.secciones.cacaoNacional.preguntas.produccionAnioAnteriorCacaoNacional.respuesta);
     this.cacaoNacional.get('precioPromedioXCacao')

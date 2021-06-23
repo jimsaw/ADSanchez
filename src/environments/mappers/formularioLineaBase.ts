@@ -227,6 +227,46 @@ export const formularioLineaBaseMapper = {
         codigo: 'CAC32_NPLANT',
         pregunta: 'CANTIDAD DE PLANTAS RECIBIDAS'
     },
+    clasificacionMiembroFamiliar: {
+        codigo: 'FA01_MF',
+        pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'
+    },
+    edad: {
+        codigo: 'FA02_ED',
+        pregunta: 'EDAD DEL MIEMBRO FAMILIAR'
+    },
+    genero: {
+        codigo: 'FA03_GEN',
+        pregunta: 'GÉNERO DEL MIEMBRO FAMILIAR'
+    },
+    seguridadSocial: {
+        codigo: 'FA04_SS',
+        pregunta: 'SEGURIDAD SOCIAL DEL MIEMBRO FAMILIAR'
+    },
+    nivelEduacion: {
+        codigo: 'FA05_EDU',
+        pregunta: 'NIVEL DE EDUCACIÓN'
+    },
+    laboraEnFinca: {
+        codigo: 'FA06_LAB',
+        pregunta: 'LABORA EN LA FINCA'
+    },
+    laborRealizado: {
+        codigo: 'FA07_LABR',
+        pregunta: 'LABOR QUE REALIZA'
+    },
+    horasAlDiaTrabaja: {
+        codigo: 'FA08_HOR',
+        pregunta: '¿CUÁNTAS HORAS AL DÍA LABORA?'
+    },
+    tieneOtraFuenteIngreso: {
+        codigo: 'FA09_RD',
+        pregunta: 'TIENE OTRA FUENTE DE INGRESOS'
+    },
+    sueldoIngresoMensual: {
+        codigo: 'FA10_ING',
+        pregunta: 'SUELDO O INGRESO MENSUAL'
+    },
     miembro1ClasifiacionMiembroFamiliar: {
         codigo: 'FA01_MF1',
         pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'

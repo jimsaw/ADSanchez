@@ -191,38 +191,14 @@ export class FormularioLineaBaseService extends FormularioService {
               areaTotalViejoInjertado: {
                   respuesta: ""
               },
-              areaViejoInjertado: {
-                  respuesta: ""
-              },
-              edadViejoInjertado: {
-                  respuesta: ""
-              },
-              areaViejoInjertado2: {
-                  respuesta: ""
-              },
-              edadViejoInjertado2: {
-                  respuesta: ""
+              viejosInjertados: {
+                  arreglo: []
               },
               areaTotalNuevosClones: {
                   respuesta: ""
               },
-              areaNuevosClones: {
-                  respuesta: ""
-              },
-              edadNuevosClones: {
-                  respuesta: ""
-              },
-              areaNuevosClones2: {
-                  respuesta: ""
-              },
-              edadNuevosClones2: {
-                  respuesta: ""
-              },
-              areaNuevosClones3: {
-                  respuesta: ""
-              },
-              edadNuevosClones3: {
-                  respuesta: ""
+              nuevosClones: {
+                  arreglo: []
               },
               produccionAnioAnteriorCacaoNacional: {
                   respuesta: ""
@@ -296,125 +272,8 @@ export class FormularioLineaBaseService extends FormularioService {
       },
       informacionFamilia: {
           preguntas: {
-              miembro1ClasifiacionMiembroFamiliar: {
-                  respuesta: ""
-              },
-              miembro1Edad: {
-                  respuesta: ""
-              },
-              miembro1Genero: {
-                  respuesta: ""
-              },
-              miembro1SeguridadSocial: {
-                  respuesta: ""
-              },
-              miembro1NivelEduacion: {
-                  respuesta: ""
-              },
-              miembro1LaboraEnFinca: {
-                  respuesta: ""
-              },
-              miembro1LaborRealizado: {
-                  respuesta: ""
-              },
-              miembro1HorasAlDiaTrabaja: {
-                  respuesta: ""
-              },
-              miembro1tieneOtraFuenteIngreso: {
-                  respuesta: ""
-              },
-              miembro1sueldoIngresoMensual: {
-                  respuesta: ""
-              },
-              miembro2ClasifiacionMiembroFamiliar: {
-                  respuesta: ""
-              },
-              miembro2Edad: {
-                  respuesta: ""
-              },
-              miembro2Genero: {
-                  respuesta: ""
-              },
-              miembro2SeguridadSocial: {
-                  respuesta: ""
-              },
-              miembro2NivelEduacion: {
-                  respuesta: ""
-              },
-              miembro2LaboraEnFinca: {
-                  respuesta: ""
-              },
-              miembro2LaborRealizado: {
-                  respuesta: ""
-              },
-              miembro2HorasAlDiaTrabaja: {
-                  respuesta: ""
-              },
-              miembro2tieneOtraFuenteIngreso: {
-                  respuesta: ""
-              },
-              miembro2sueldoIngresoMensual: {
-                  respuesta: ""
-              },
-              miembro3ClasifiacionMiembroFamiliar: {
-                  respuesta: ""
-              },
-              miembro3Edad: {
-                  respuesta: ""
-              },
-              miembro3Genero: {
-                  respuesta: ""
-              },
-              miembro3SeguridadSocial: {
-                  respuesta: ""
-              },
-              miembro3NivelEduacion: {
-                  respuesta: ""
-              },
-              miembro3LaboraEnFinca: {
-                  respuesta: ""
-              },
-              miembro3LaborRealizado: {
-                  respuesta: ""
-              },
-              miembro3HorasAlDiaTrabaja: {
-                  respuesta: ""
-              },
-              miembro3tieneOtraFuenteIngreso: {
-                  respuesta: ""
-              },
-              miembro3sueldoIngresoMensual: {
-                  respuesta: ""
-              },
-              miembro4ClasifiacionMiembroFamiliar: {
-                  respuesta: ""
-              },
-              miembro4Edad: {
-                  respuesta: ""
-              },
-              miembro4Genero: {
-                  respuesta: ""
-              },
-              miembro4SeguridadSocial: {
-                  respuesta: ""
-              },
-              miembro4NivelEduacion: {
-                  respuesta: ""
-              },
-              miembro4LaboraEnFinca: {
-                  respuesta: ""
-              },
-              miembro4LaborRealizado: {
-                  respuesta: ""
-              },
-              miembro4HorasAlDiaTrabaja: {
-                  respuesta: ""
-              },
-              miembro4tieneOtraFuenteIngreso: {
-                  respuesta: ""
-              },
-              miembro4sueldoIngresoMensual: {
-                  respuesta: ""
+              miembros: {
+                  arreglo: []
               },
               familiarDiscapacitado: {
                   respuesta: ""
