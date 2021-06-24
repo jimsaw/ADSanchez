@@ -46,7 +46,7 @@ export class FormularioLineaBaseService extends FormularioService {
         return new Promise(async (resolve, reject) => {
             let observable = this.list();
             let formularios = await observable.pipe(take(1)).toPromise();
-            console.log(formularios);
+            //console.log(formularios);
             let listaFormulariosLineaBase: FormularioLineaBase[] = [];
             for (let item of formularios) {
                 //console.log(item['id']);
@@ -55,7 +55,7 @@ export class FormularioLineaBaseService extends FormularioService {
                 //console.log(formularioLineaBaseElement);
                 listaFormulariosLineaBase.push(formularioLineaBaseElement);
             }
-            console.log(listaFormulariosLineaBase);
+            //console.log(listaFormulariosLineaBase);
             resolve(listaFormulariosLineaBase);
         });
     }
