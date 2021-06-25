@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 
 @Component({
   selector: 'app-practicas-agricolas',
@@ -10,25 +11,34 @@ export class PracticasAgricolasComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
 
-  interesFertilizante: string;
-  perdidaMazorca: string;
+  practicasAgricolas: FormGroup;
+
   opciones: string[] = ["SI", "NO"];
 
-  selectedPlaga: string[] = [];
   plagas: string[] = ["COCHINILLA", "XILEBORUS", "TRIPS", "CHINCHORRO", "HORMIGA", "OROZCO", "OTROS"];
 
-  selectedEnfermedad: string[] = [];
   enfermedades: string[] = ["PHYTOPHTORA", "ESCOBA BRUJA", "MONILLA", "MAL DE MACHETE", "OTROS"];
 
-
-  fertilizacionMeses: string[] = [];
-  podaMeses: string[] = [];
-  malezaMeses: string[] = [];
-  mipeMeses: string[] = [];
-  cosechaMeses: string[] = [];
   meses: string[] = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"]
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.practicasAgricolas = this.formBuilder.group({
+      interesElaborarFertilizanteNaturalOrganico: new FormControl(''),
+      plagasAfectanCultivo: new FormControl(''),
+      enfermedadesAfectanCultivo: new FormControl(''),
+      productoParaPlagas: new FormControl(''),
+      productoParaEnfermedades: new FormControl(''),
+      llevaRegistroPerdidasMazorcasXMonilla: new FormControl(''),
+      cantidadPerdidaMazorcas: new FormControl(''),
+      periodoFertilizacion: new FormControl(''),
+      periodoPoda: new FormControl(''),
+      periodoControlMaleza: new FormControl(''),
+      periodoMIPE: new FormControl(''),
+      periodoCosecha: new FormControl('')
+    });
+   }
 
   ngOnInit(): void {
   }
@@ -36,4 +46,82 @@ export class PracticasAgricolasComponent implements OnInit {
   onSubmit() {
 
   }
+
+  llevaRegistroPerdidas() {
+    const llevaRegistroPerdidas = this.practicasAgricolas.get('llevaRegistroPerdidasMazorcasXMonilla').value;
+    return llevaRegistroPerdidas === 'SI';
+  }
+
+  get seccion(): any {
+    return {
+      preguntas: {
+        interesElaborarFertilizanteNaturalOrganico: {
+          respuesta: this.practicasAgricolas.value.interesElaborarFertilizanteNaturalOrganico
+        },
+        plagasAfectanCultivo: {
+          respuesta: this.practicasAgricolas.value.plagasAfectanCultivo
+        },
+        enfermedadesAfectanCultivo: {
+          respuesta: this.practicasAgricolas.value.enfermedadesAfectanCultivo
+        },
+        productoParaPlagas: {
+          respuesta: this.practicasAgricolas.value.productoParaPlagas
+        },
+        productoParaEnfermedades: {
+          respuesta: this.practicasAgricolas.value.productoParaEnfermedades
+        },
+        llevaRegistroPerdidasMazorcasXMonilla: {
+          respuesta: this.practicasAgricolas.value.llevaRegistroPerdidasMazorcasXMonilla,
+          preguntas: {
+            cantidadPerdidaMazorcas: {
+              respuesta: this.practicasAgricolas.value.cantidadPerdidaMazorcas
+            }
+          }
+        },
+        periodoFertilizacion: {
+          respuesta: this.practicasAgricolas.value.periodoFertilizacion
+        },
+        periodoPoda: {
+          respuesta: this.practicasAgricolas.value.periodoPoda
+        },
+        periodoControlMaleza: {
+          respuesta: this.practicasAgricolas.value.periodoControlMaleza
+        },
+        periodoMIPE: {
+          respuesta: this.practicasAgricolas.value.periodoMIPE
+        },
+        periodoCosecha: {
+          respuesta: this.practicasAgricolas.value.periodoCosecha
+        }
+      }
+    };
+  }
+
+  setValues(formularioLineaBase: FormularioLineaBase): void {
+    this.practicasAgricolas.get('interesElaborarFertilizanteNaturalOrganico')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.interesElaborarFertilizanteNaturalOrganico.respuesta);
+    this.practicasAgricolas.get('plagasAfectanCultivo')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.plagasAfectanCultivo.respuesta);
+    this.practicasAgricolas.get('enfermedadesAfectanCultivo')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.enfermedadesAfectanCultivo.respuesta);
+    this.practicasAgricolas.get('productoParaPlagas')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.productoParaPlagas.respuesta);
+    this.practicasAgricolas.get('productoParaEnfermedades')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.productoParaEnfermedades.respuesta);
+    this.practicasAgricolas.get('llevaRegistroPerdidasMazorcasXMonilla')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.llevaRegistroPerdidasMazorcasXMonilla.respuesta);
+    this.practicasAgricolas.get('cantidadPerdidaMazorcas')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.llevaRegistroPerdidasMazorcasXMonilla.preguntas.cantidadPerdidaMazorcas.respuesta);
+    this.practicasAgricolas.get('periodoFertilizacion')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.periodoFertilizacion.respuesta);
+    this.practicasAgricolas.get('periodoPoda')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.periodoPoda.respuesta);
+    this.practicasAgricolas.get('periodoControlMaleza')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.periodoControlMaleza.respuesta);
+    this.practicasAgricolas.get('periodoMIPE')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.periodoMIPE.respuesta);
+    this.practicasAgricolas.get('periodoCosecha')
+      .setValue(formularioLineaBase.secciones.practicasAgricolas.preguntas.periodoCosecha.respuesta);
+  }
+
 }

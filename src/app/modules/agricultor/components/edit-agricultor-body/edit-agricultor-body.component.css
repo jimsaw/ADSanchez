@@ -1,42 +1,12 @@
-.example-card{
-    margin: 0;
-}
-
-.mat-card-title {
-    margin-left: -16px;
-}
-
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 mat-card-actions{
     margin-left: 1rem;
     margin-bottom: 0.7rem!important;
     padding-top: 0;
 }
 
-mat-form-field {
-    margin: 0;
-    padding: 0;
-}
-
-mat-form-field.full-width {
-    width: 100%;
-}
-
-.around {
-    align-items: flex-end;
-}
-
-#contenido {
-    margin: 0%;
-    padding: 0%;
-}
-
 #delete {
+    padding: 0;
+    margin-left: -1rem;
     align-items: center;
     margin-top: 20%;
     min-width: 100%;
@@ -44,12 +14,12 @@ mat-form-field.full-width {
     width: min-content;
 }
 
-.in-same-row {
-    display: flex;
+.add-button {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
 }
 
-.add-button {
-    float: right;
-    margin-top: -10%;
-    margin-right: 10%;
+
+mat-form-field {
+    width: 100%;
 }

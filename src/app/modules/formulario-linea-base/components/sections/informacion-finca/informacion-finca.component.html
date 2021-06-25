@@ -1,36 +1,36 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="informacionFinca" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="informacionFinca">
-            <div class="columns-flex">
-                <mat-form-field class="column-item" appearance="outline" >
+        <div class="container-fluid">
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Nombre Finca</mat-label>
-                    <input matInput formControlName="nombreFinca" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="nombreFinca">
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Provincia</mat-label>
-                    <input matInput formControlName="provincia" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="provincia">
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Canton</mat-label>
-                    <input matInput formControlName="canton" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="canton">
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Parroquia</mat-label>
-                    <input matInput formControlName="parroquia" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="parroquia">
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Recinto</mat-label>
-                    <input matInput formControlName="recinto" name="someUnusualName" autocomplete="off">
+                    <input matInput formControlName="recinto">
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-12" appearance="outline" >
                     <mat-label>Descripcion Para Llegar a Finca</mat-label>
-                    <textarea matInput formControlName="descripcionLlegarFinca" name="someUnusualName" autocomplete="off" ></textarea>
+                    <textarea matInput formControlName="descripcionLlegarFinca"></textarea>
                 </mat-form-field>
             </div>
         </div>

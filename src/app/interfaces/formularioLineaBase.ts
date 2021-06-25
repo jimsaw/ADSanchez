@@ -110,38 +110,14 @@ export interface FormularioLineaBase extends Formulario {
                 areaTotalViejoInjertado: {
                     respuesta: string
                 },
-                areaViejoInjertado: {
-                    respuesta: string
-                },
-                edadViejoInjertado: {
-                    respuesta: string
-                },
-                areaViejoInjertado2: {
-                    respuesta: string
-                },
-                edadViejoInjertado2: {
-                    respuesta: string
+                viejosInjertados: {
+                    arreglo: any[]
                 },
                 areaTotalNuevosClones: {
                     respuesta: string
                 },
-                areaNuevosClones: {
-                    respuesta: string
-                },
-                edadNuevosClones: {
-                    respuesta: string
-                },
-                areaNuevosClones2: {
-                    respuesta: string
-                },
-                edadNuevosClones2: {
-                    respuesta: string
-                },
-                areaNuevosClones3: {
-                    respuesta: string
-                },
-                edadNuevosClones3: {
-                    respuesta: string
+                nuevosClones: {
+                    arreglo: any[]
                 },
                 produccionAnioAnteriorCacaoNacional: {
                     respuesta: string
@@ -215,125 +191,8 @@ export interface FormularioLineaBase extends Formulario {
         },
         informacionFamilia: {
             preguntas: {
-                miembro1ClasifiacionMiembroFamiliar: {
-                    respuesta: string
-                },
-                miembro1Edad: {
-                    respuesta: string
-                },
-                miembro1Genero: {
-                    respuesta: string
-                },
-                miembro1SeguridadSocial: {
-                    respuesta: string
-                },
-                miembro1NivelEduacion: {
-                    respuesta: string
-                },
-                miembro1LaboraEnFinca: {
-                    respuesta: string
-                },
-                miembro1LaborRealizado: {
-                    respuesta: string
-                },
-                miembro1HorasAlDiaTrabaja: {
-                    respuesta: string
-                },
-                miembro1tieneOtraFuenteIngreso: {
-                    respuesta: string
-                },
-                miembro1sueldoIngresoMensual: {
-                    respuesta: string
-                },
-                miembro2ClasifiacionMiembroFamiliar: {
-                    respuesta: string
-                },
-                miembro2Edad: {
-                    respuesta: string
-                },
-                miembro2Genero: {
-                    respuesta: string
-                },
-                miembro2SeguridadSocial: {
-                    respuesta: string
-                },
-                miembro2NivelEduacion: {
-                    respuesta: string
-                },
-                miembro2LaboraEnFinca: {
-                    respuesta: string
-                },
-                miembro2LaborRealizado: {
-                    respuesta: string
-                },
-                miembro2HorasAlDiaTrabaja: {
-                    respuesta: string
-                },
-                miembro2tieneOtraFuenteIngreso: {
-                    respuesta: string
-                },
-                miembro2sueldoIngresoMensual: {
-                    respuesta: string
-                },
-                miembro3ClasifiacionMiembroFamiliar: {
-                    respuesta: string
-                },
-                miembro3Edad: {
-                    respuesta: string
-                },
-                miembro3Genero: {
-                    respuesta: string
-                },
-                miembro3SeguridadSocial: {
-                    respuesta: string
-                },
-                miembro3NivelEduacion: {
-                    respuesta: string
-                },
-                miembro3LaboraEnFinca: {
-                    respuesta: string
-                },
-                miembro3LaborRealizado: {
-                    respuesta: string
-                },
-                miembro3HorasAlDiaTrabaja: {
-                    respuesta: string
-                },
-                miembro3tieneOtraFuenteIngreso: {
-                    respuesta: string
-                },
-                miembro3sueldoIngresoMensual: {
-                    respuesta: string
-                },
-                miembro4ClasifiacionMiembroFamiliar: {
-                    respuesta: string
-                },
-                miembro4Edad: {
-                    respuesta: string
-                },
-                miembro4Genero: {
-                    respuesta: string
-                },
-                miembro4SeguridadSocial: {
-                    respuesta: string
-                },
-                miembro4NivelEduacion: {
-                    respuesta: string
-                },
-                miembro4LaboraEnFinca: {
-                    respuesta: string
-                },
-                miembro4LaborRealizado: {
-                    respuesta: string
-                },
-                miembro4HorasAlDiaTrabaja: {
-                    respuesta: string
-                },
-                miembro4tieneOtraFuenteIngreso: {
-                    respuesta: string
-                },
-                miembro4sueldoIngresoMensual: {
-                    respuesta: string
+                miembros: {
+                    arreglo: any[]
                 },
                 familiarDiscapacitado: {
                     respuesta: string

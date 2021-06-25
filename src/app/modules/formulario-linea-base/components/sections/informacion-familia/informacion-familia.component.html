@@ -1,305 +1,129 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="informacionFamilia" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div id="contenido" formGroupName="informacionFamilia">
-            <div class="miembro">
-                <h1>Miembro 1</h1>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-6" appearance="outline" >
+        <div class="container-fluid">
+            <div class="miembro" formArrayName="miembros" *ngFor="let value of getFormArray('miembros').controls; let i = index">
+                <div class="row justify-content-between">
+                    <h1 class="col-md-2">Miembro {{i + 1}}</h1>
+                    <div class="col-md-1 col-xs-1">
+                        <button id="delete" *ngIf="getFormArray('miembros').length > 1" (click)="deleteMiembro(i)" mat-flat-button>
+                            <mat-icon>clear</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <mat-form-field class="col-md-8" [formGroupName]="i" appearance="outline" >
                         <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro1ClasifiacionMiembroFamiliar" name="someUnusualName" autocomplete="off">
+                        <input matInput formControlName="clasificacionMiembroFamiliar">
                     </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
+                    <mat-form-field class="col-md-4" [formGroupName]="i" appearance="outline" >
                         <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro1Edad" name="someUnusualName" autocomplete="off">
+                        <input matInput formControlName="edad">
                     </mat-form-field>
                 </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
+                <div class="row">
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro1Genero" [(ngModel)]="m1Genero" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="genero">
                             <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro1SeguridadSocial" [(ngModel)]="m1Seguridad" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="seguridadSocial">
                             <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
+                <div class="row">
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro1LaboraEnFinca" [(ngModel)]="m1Labora" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="laboraEnFinca">
                             <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro1NivelEduacion" name="someUnusualName" autocomplete="off" >
+                        <input matInput formControlName="nivelEduacion">
                     </mat-form-field>
                 </div>
-                <div *ngIf="m1Labora === 'SI'" class="columns-flex">
-                    <mat-form-field  class="column-item-6" appearance="outline" >
+                <div *ngIf="labora(i)" class="row">
+                    <mat-form-field  class="col-md-8" [formGroupName]="i" appearance="outline" >
                         <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro1LaborRealizado" name="someUnusualName" autocomplete="off" >
+                        <input matInput formControlName="laborRealizado">
                     </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
+                    <mat-form-field class="col-md-4" [formGroupName]="i" appearance="outline" >
                         <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro1HorasAlDiaTrabaja" name="someUnusualName" autocomplete="off" >
+                        <input matInput formControlName="horasAlDiaTrabaja">
                     </mat-form-field>
                 </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
+                <div class="row">
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro1tieneOtraFuenteIngreso" [(ngModel)]="m1Ingresos" name="someUnusualName" autocomplete="off">
+                        <mat-select formControlName="tieneOtraFuenteIngreso">
                             <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
+                    <mat-form-field class="col-md-6" [formGroupName]="i" appearance="outline" >
                         <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro1sueldoIngresoMensual" name="someUnusualName" autocomplete="off" >
+                        <input matInput formControlName="sueldoIngresoMensual">
                     </mat-form-field>
+                </div>
+                <mat-divider [inset]="true" class="space-down"></mat-divider>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <button mat-button color="primary" (click)="addMiembro()" mat-flat-button>
+                        Añadir
+                    </button>
                 </div>
             </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
-            <div class="miembro">
-                <h1>Miembro 2</h1>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-6" appearance="outline" >
-                        <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro2ClasifiacionMiembroFamiliar" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
-                        <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro2Edad" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro2Genero" [(ngModel)]="m2Genero" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro2SeguridadSocial" [(ngModel)]="m2Seguridad" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro2LaboraEnFinca" [(ngModel)]="m2Labora" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro2NivelEduacion" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-                <div *ngIf="m1Labora === 'SI'" class="columns-flex">
-                    <mat-form-field  class="column-item-6" appearance="outline" >
-                        <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro2LaborRealizado" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
-                        <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro2HorasAlDiaTrabaja" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro2tieneOtraFuenteIngreso" [(ngModel)]="m2Ingresos" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro2sueldoIngresoMensual" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
-            <div class="miembro">
-                <h1>Miembro 3</h1>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-6" appearance="outline" >
-                        <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro3ClasifiacionMiembroFamiliar" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
-                        <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro3Edad" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro3Genero" [(ngModel)]="m3Genero" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro3SeguridadSocial" [(ngModel)]="m3Seguridad" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro3LaboraEnFinca" [(ngModel)]="m3Labora" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro3NivelEduacion" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-                <div *ngIf="m1Labora === 'SI'" class="columns-flex">
-                    <mat-form-field  class="column-item-6" appearance="outline" >
-                        <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro3LaborRealizado" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
-                        <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro3HorasAlDiaTrabaja" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro3tieneOtraFuenteIngreso" [(ngModel)]="m3Ingresos" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro3sueldoIngresoMensual" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
-            <div class="miembro">
-                <h1>Miembro 4</h1>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-6" appearance="outline" >
-                        <mat-label>Clasificacion del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro4ClasifiacionMiembroFamiliar" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
-                        <mat-label>Edad del Miembro Familiar</mat-label>
-                        <input matInput formControlName="miembro4Edad" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Genero del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro4Genero" [(ngModel)]="m4Genero" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let gen of generos" [value]="gen">{{gen}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Seguridad Social del Miembro Familiar</mat-label>
-                        <mat-select formControlName="miembro4SeguridadSocial" [(ngModel)]="m4Seguridad" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let seg of seguridadSocial" [value]="seg">{{seg}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Labora en la Finca</mat-label>
-                        <mat-select formControlName="miembro4LaboraEnFinca" [(ngModel)]="m4Labora" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let lab of laboraFinca" [value]="lab">{{lab}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Nivel de Educacion</mat-label>
-                        <input matInput formControlName="miembro4NivelEduacion" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-                <div *ngIf="m1Labora === 'SI'" class="columns-flex">
-                    <mat-form-field  class="column-item-6" appearance="outline" >
-                        <mat-label>Labor que Realiza</mat-label>
-                        <input matInput formControlName="miembro4LaborRealizado" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                    <mat-form-field class="column-item-3" appearance="outline" >
-                        <mat-label>¿Cuantas Horas al Dia Labora?</mat-label>
-                        <input matInput formControlName="miembro4HorasAlDiaTrabaja" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-                <div class="columns-flex">
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>¿Tiene otra fuente de Ingresos?</mat-label>
-                        <mat-select formControlName="miembro4tieneOtraFuenteIngreso" [(ngModel)]="m4Ingresos" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let ing of otrosIngresos" [value]="ing">{{ing}}</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="column-item-2" appearance="outline" >
-                        <mat-label>Sueldo o Ingreso Mensual</mat-label>
-                        <input matInput formControlName="miembro4sueldoIngresoMensual" name="someUnusualName" autocomplete="off" >
-                    </mat-form-field>
-                </div>
-            </div>
-            <mat-divider [inset]="true" class="space-down"></mat-divider>
-            <!--**********************************************************************************************************************-->
             <h1>Especificaciones:</h1>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Algun Familar presenta Discapacidad</mat-label>
-                    <mat-select formControlName="familiarDiscapacitado" [(ngModel)]="famDiscapacitado" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="familiarDiscapacitado">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>La Esposa se involucra en la Entrevista</mat-label>
-                    <mat-select formControlName="esposaInvolucradaEntrevista" [(ngModel)]="esposaInvolucrada" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="esposaInvolucradaEntrevista">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Esposo incluye Esposa en Entrevista</mat-label>
-                    <mat-select formControlName="esposoIncluyeEsposaEntrevista" [(ngModel)]="esposoIncluye" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="esposoIncluyeEsposaEntrevista">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline" >
+                <mat-form-field class="col-md-6" appearance="outline" >
                     <mat-label>Gustaria que su Conyuge tuviera Ingreso Adicional</mat-label>
-                    <mat-select formControlName="deseoIngresoAdicionalConyuge" [(ngModel)]="ingresoAdicional" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="deseoIngresoAdicionalConyuge">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline" >
+            <div class="row">
+                <mat-form-field class="column-item-full" appearance="outline">
                     <mat-label>Gustaria Trabajo de 1/2 tiempo en Proyectos Futuros del Programa</mat-label>
-                    <mat-select formControlName="deseoTrabajoMedioTiempoProyectosFuturos" [(ngModel)]="trabajoTiempo" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="deseoTrabajoMedioTiempoProyectosFuturos">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div *ngIf="trabajoTiempo === 'SI'" class="columns-flex">
-                <mat-form-field class="column-item-full">
+            <div *ngIf="deseaTrabajo()" class="row">
+                <mat-form-field class="column-item-full" appearance="outline">
                     <mat-label>¿Como cual?</mat-label>
-                    <input matInput formControlName="comoCual" name="someUnusualName" autocomplete="off" >
+                    <input matInput formControlName="comoCual">
                 </mat-form-field>
             </div>
-            <div class="columns-flex">
+            <div class="row">
                 <mat-form-field class="column-item-full" appearance="outline" >
                     <mat-label>Su Hijo estaría interesado en participar en Proyectos de Rehabilitación de Finca</mat-label>
-                    <mat-select formControlName="hijoInteresadoEnProyectosRehabilitacionFinca" [(ngModel)]="hijoInteresado" name="someUnusualName" autocomplete="off">
+                    <mat-select formControlName="hijoInteresadoEnProyectosRehabilitacionFinca">
                         <mat-option *ngFor="let op of opciones" [value]="op">{{op}}</mat-option>
                     </mat-select>
                 </mat-form-field>
