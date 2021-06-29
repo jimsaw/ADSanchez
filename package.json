@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build",
-    "heroku-postbuild": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build"
+    "postinstall": "node --max_old_space_size=4096 node_modules/@angular/cli/bin/ng build"
   },
   "private": true,
   "dependencies": {
