@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
-import { FormulariosComponent } from 'src/app/modules/formulario-linea-base/components/formularios/formularios.component';
 import { FormularioService } from '../formulario/formulario.service';
 import { KeymapperService } from '../keymapper/keymapper.service';
 

@@ -10,20 +10,47 @@ export class ExportacionesService {
 
   constructor(private formularioLineaBaseService: FormularioLineaBaseService) { }
 
-  async exportarFormularioById(formulario: string, id: string): Promise<boolean> {
-    let headersSeccion = this.getCodigoHeader();
-    let header = ['ID', 'AGRICULTOR', 'TECNICO', 'FECHA VISITA'];
-    let headerFinal = header.concat(headersSeccion);
+  mappHeader(object: Object) {
+    const header = Object.keys(object);
+    let arrayHeaders = [];
+    let formularioLineaBaseMapperBlank = formularioLineaBaseMapper;
+    for (let key of header) {
+      if (formularioLineaBaseMapperBlank[key] !== undefined) {
+        arrayHeaders.push(formularioLineaBaseMapperBlank[key].codigo);
+      } else if (key === 'id' || key === 'agricultor' || key === 'tecnico' || key === 'fechaVisita') {
+        arrayHeaders.push(key.toUpperCase());
+      } else {
+        //Usar el mapper
+        let dinamicKey = formularioLineaBaseMapperBlank[key.slice(0, -1)].codigo + key.slice(-1);
+        //let dinamicKey = this.createDinamicKey(key.slice(0, -1)) + key.slice(-1);
+        arrayHeaders.push(dinamicKey);
+      }
+    }
+    return arrayHeaders;
+  }
 
+  maxFormularioKeys(listaFormularios: any[]) {
+    let arrayCantidadKeys = []
+    for (let value of listaFormularios) {
+      arrayCantidadKeys.push(Object.keys(value).length);
+    }
+    let maxKeys = Math.max(...arrayCantidadKeys);
+    let indx = arrayCantidadKeys.indexOf(maxKeys);
+    return indx;
+  }
+
+  async exportarFormularioById(formulario: string, id: string): Promise<boolean> {
     let dataFormulario = await this.prepareOneDataRecursive(id);
+    //console.log(dataFormulario);
+    let header = this.mappHeader(dataFormulario);
     let arrayDataFormulario = [dataFormulario];
 
     const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
-    const header2 = Object.keys(dataFormulario);
+    const headerData = Object.keys(dataFormulario);
     const title = 'Formulario Individual Linea Base Exportado a CSV';
-    let csv = arrayDataFormulario.map(row => header2.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    let csv = arrayDataFormulario.map(row => headerData.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
 
-    csv.unshift(headerFinal.join(','));
+    csv.unshift(header.join(','));
     csv.unshift(title);
     let csvArray = csv.join('\r\n');
 
@@ -33,19 +60,17 @@ export class ExportacionesService {
   }
 
   async exportarAllFormularios(formulario: string): Promise<boolean> {
-    let headersSeccion = this.getCodigoHeader();
-    let header = ['ID', 'AGRICULTOR', 'TECNICO', 'FECHA VISITA'];
-    let headerFinal = header.concat(headersSeccion);
-
     let dataFormulario = await this.prepareAllDataRecursive();
     //console.log(dataFormulario);
+    let indiceMaximo = this.maxFormularioKeys(dataFormulario);
+    let header = this.mappHeader(dataFormulario[indiceMaximo]);
 
     const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
-    const header2 = Object.keys(dataFormulario[0]);
+    const headerData = Object.keys(dataFormulario[indiceMaximo]);
     const title = 'Formulario Completo Linea Base Exportado a CSV';
-    let csv = dataFormulario.map(row => header2.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+    let csv = dataFormulario.map(row => headerData.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
 
-    csv.unshift(headerFinal.join(','));
+    csv.unshift(header.join(','));
     csv.unshift(title);
     let csvArray = csv.join('\r\n');
 
@@ -79,6 +104,17 @@ export class ExportacionesService {
       if (Array.isArray(object['preguntas'][nombrePregunta]['respuesta'])) {
         let arrayString = object['preguntas'][nombrePregunta]['respuesta'].toString();
         element[nombrePregunta] = arrayString;
+      } else if (object['preguntas'][nombrePregunta]['arreglo'] !== undefined) {
+        //arreglo miembro
+        let contador = 1;
+        for (let value of object['preguntas'][nombrePregunta]['arreglo']) {
+          //Variable dentro de cada miembro
+          for (let value2 in value) {
+            //console.log(value2 + contador, value[value2]);
+            element[value2 + contador] = value[value2]['respuesta'];
+          }
+          contador++;
+        }
       } else {
         element[nombrePregunta] = object['preguntas'][nombrePregunta]['respuesta'];
       }
@@ -105,13 +141,37 @@ export class ExportacionesService {
     return dataFormulario;
   }
 
-  getCodigoHeader(): string[] {
-    let formularioLineaBaseMapperBlank = formularioLineaBaseMapper;
-    let headersSection = [];
-    Object.entries(formularioLineaBaseMapperBlank).forEach(value => {
-      headersSection.push(value[1].codigo);
-    });
-    return headersSection;
+  createDinamicKey(key: String) {
+    switch (key) {
+      case 'edadViejoInjertado':
+        return 'CAC13_ECVIN';
+      case 'areaViejoInjertado':
+        return 'CAC42_AVI1';
+      case 'areaNuevosClones':
+        return 'CAC45_ANC1';
+      case 'edadNuevosClones':
+        return 'CAC15_NCED';
+      case 'horasAlDiaTrabaja':
+        return 'FA08_HOR';
+      case 'laboraEnFinca':
+        return 'FA06_LAB';
+      case 'genero':
+        return 'FA03_GEN';
+      case 'laborRealizado':
+        return 'FA07_LABR';
+      case 'edad':
+        return 'FA02_ED';
+      case 'sueldoIngresoMensual':
+        return 'FA10_ING';
+      case 'nivelEduacion':
+        return 'FA05_EDU';
+      case 'clasificacionMiembroFamiliar':
+        return 'FA01_MF';
+      case 'seguridadSocial':
+        return 'FA04_SS';
+      case 'tieneOtraFuenteIngreso':
+        return 'FA09_RD';
+    }
   }
 
 }

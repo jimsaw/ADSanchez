@@ -25,7 +25,7 @@ export abstract class FormularioService implements Database<Formulario> {
   protected writeSections(docRef: DocumentReference, formulario: Formulario, transaction: any) {
     const seccionesCollRef = docRef.collection("secciones");
     for (let section of Object.keys(formulario["secciones"])) {
-      transaction.set(seccionesCollRef.doc(section), {id: section});
+      transaction.set(seccionesCollRef.doc(section), { id: section });
       const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
       for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
         this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
@@ -56,7 +56,7 @@ export abstract class FormularioService implements Database<Formulario> {
         const arreglo = lastObject[question][response];
         for (let numeroPregunta of Object.keys(arreglo)) {
           const newLastObject = arreglo[numeroPregunta];
-          transaction.set(objetosRef.doc(numeroPregunta), {id: numeroPregunta});
+          transaction.set(objetosRef.doc(numeroPregunta), { id: numeroPregunta });
           const newCollectionRef = objetosRef.doc(numeroPregunta).collection("preguntas");
           for (let questInArray in newLastObject) {
             this.writeQuestions(questInArray, newLastObject, newCollectionRef, transaction);
@@ -69,43 +69,45 @@ export abstract class FormularioService implements Database<Formulario> {
   protected async fetchSections(formulario: FormularioLineaBase) {
     const initialCollRef = this.firebaseObj.firestore.collection(`formulariosLineaBase/${formulario.id}/secciones`);
     try {
-        const secciones = await initialCollRef.get();
-        for(const seccion of secciones.docs) {
-            const seccionData = seccion.data();
-            const preguntasCollectionRef = initialCollRef.doc(seccionData["id"]).collection("preguntas");
-            const preguntasCollection = await preguntasCollectionRef.get();
-            for (const pregunta of preguntasCollection.docs) {
-                const preguntaData = pregunta.data();
-                await this.fetchQuestions(preguntaData, formulario["secciones"][seccionData["id"]]["preguntas"],preguntasCollectionRef);
-            }
+      const secciones = await initialCollRef.get();
+      for (const seccion of secciones.docs) {
+        const seccionData = seccion.data();
+        const preguntasCollectionRef = initialCollRef.doc(seccionData["id"]).collection("preguntas");
+        const preguntasCollection = await preguntasCollectionRef.get();
+        for (const pregunta of preguntasCollection.docs) {
+          const preguntaData = pregunta.data();
+          await this.fetchQuestions(preguntaData, formulario["secciones"][seccionData["id"]]["preguntas"], preguntasCollectionRef);
         }
+      }
     } catch (e) {
-        console.log(e);
-        throw e;
+      console.log(e);
+      throw e;
     }
   }
 
 
   private async fetchQuestions(data: any, lastObject: any, lastCollectionRef: CollectionReference) {
     const question = data["id"];
-    for (let response of Object.keys(lastObject[question])) {
-      if (response === "respuesta") {
-        lastObject[question][response] = data["respuesta"];
-      } else if (response === "preguntas") {
-        const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
-        const newLastObject = lastObject[question][response];
-        try {
+    if (lastObject[question] !== undefined) {
+      for (let response of Object.keys(lastObject[question])) {
+        if (response === "respuesta") {
+          lastObject[question][response] = data["respuesta"];
+        } else if (response === "preguntas") {
+          const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
+          const newLastObject = lastObject[question][response];
+          try {
             const preguntas = await newCollectionRef.get();
             for (const pregunta of preguntas.docs) {
-                const preguntaData = pregunta.data();
-                await this.fetchQuestions(preguntaData, newLastObject, newCollectionRef);
+              const preguntaData = pregunta.data();
+              await this.fetchQuestions(preguntaData, newLastObject, newCollectionRef);
             }
-        } catch (e) {
+          } catch (e) {
             console.log(e);
             throw e;
+          }
+        } else if (response === "arreglo") {
+          lastObject[question][response] = data["arreglo"]
         }
-      } else if (response === "arreglo") {
-        lastObject[question][response] = data["arreglo"]
       }
     }
   }
