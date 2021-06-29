@@ -29,8 +29,16 @@ export class FormularioLineaBaseService extends FormularioService {
         });
     }
 
+    async getDiccionario(id: string): Promise<FormularioLineaBase> {
+        return new Promise(async (resolve, reject) => {
+            const docRef = this.firebase.firestore.collection('/formularios/lineaBase/diccionarios').doc(id);
+            const formulario = (await docRef.get()).data()["diccionario"] as FormularioLineaBase;
+            resolve(formulario);
+        });
+    }
+
     list(): Observable<Formulario[]> {
-        return this.firebase.collection('formulariosLineaBase').snapshotChanges().pipe(
+        return this.firebase.collection('/formularios/lineaBase/estructuras').snapshotChanges().pipe(
             map(formularios => {
                 return formularios.map((formulario) => {
                     const formularioParam = formulario.payload.doc.data() as FormularioLineaBase;
@@ -61,12 +69,13 @@ export class FormularioLineaBaseService extends FormularioService {
     set(item: Formulario): Promise<void> {
         const formularioLineaBase = item as FormularioLineaBase;
         return new Promise<void>((resolve, reject) => {
-            const collRef = this.firebase.firestore.collection("formulariosLineaBase");
+            const collRef = this.firebase.firestore.collection("/formularios/lineaBase/estructuras");
             this.firebase.firestore.runTransaction((transaction) => {
                 return new Promise<void>((resolve, reject) => {
                     if (formularioLineaBase.id === '' || formularioLineaBase.id === undefined) {
                         formularioLineaBase.id = this.firebase.createId();
                     }
+                    this.setDiccionario(formularioLineaBase, transaction);
                     const docRef = collRef.doc(formularioLineaBase.id);
                     transaction.set(docRef, {
                         id: formularioLineaBase.id,
@@ -84,6 +93,15 @@ export class FormularioLineaBaseService extends FormularioService {
                 console.log(e);
                 reject(e);
             });
+        });
+    }
+
+    setDiccionario(formularioLineaBase: FormularioLineaBase, transaction: any) {
+        const collRef = this.firebase.firestore.collection("/formularios/lineaBase/diccionarios");
+        const docRef = collRef.doc(formularioLineaBase.id);
+        transaction.set(docRef, {
+            id: formularioLineaBase.id,
+            diccionario: formularioLineaBase
         });
     }
 

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormularioVerificacion } from 'src/app/interfaces/formularioVerificacion';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,13 +11,32 @@ import { environment } from 'src/environments/environment';
 export class FertilizacionComponent implements OnInit {
   @Input()
   public parentForm: FormGroup;
-  yesNoAnswer;
-  productoFertilizaCacaotal;
-  vecesAlAnio;
-  tipoFertilizanteRecibido;
-  percepcionFertilizanteRecibido;
 
-  constructor() { }
+  fertilizacion: FormGroup;
+
+  yesNoAnswer: string[];
+  productoFertilizaCacaotal: string[];
+  vecesAlAnio: string[];
+  tipoFertilizanteRecibido: string[];
+  percepcionFertilizanteRecibido: string[];
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.fertilizacion = this.formBuilder.group({
+      fertilizaCacaotales: new FormControl(''),
+      tipoProductoUsado: new FormControl(''),
+      usaFertilizanteEdafico: new FormControl(''),
+      vecesUsadoAlAnioFertilizanteEdafico: new FormControl(''),
+      usaFertilizanteFoliar: new FormControl(''),
+      vecesUsadoAlAnioFertilizanteFoliar: new FormControl(''),
+      recibidoFertilizanteKits: new FormControl(''),
+      tipoFertilizanteRecibido: new FormControl(''),
+      opinionEfectividadFertilizante: new FormControl(''),
+      repetirCompraConDescuento: new FormControl(''),
+      disminuidoProductosQuimicosPorOrganicos: new FormControl('')
+    });
+   }
 
   ngOnInit(): void {
     this.yesNoAnswer = environment.constantes.formularioVerificacion.yesNoAnswer;
@@ -29,4 +49,78 @@ export class FertilizacionComponent implements OnInit {
   onSubmit() {
 
   }
+
+  get seccion(): any {
+    return {
+      preguntas: {
+        fertilizaCacaotales: {
+          respuesta: this.fertilizacion.value.fertilizaCacaotales,
+          preguntas: {
+            tipoProductoUsado: {
+              respuesta: this.fertilizacion.value.tipoProductoUsado
+            }
+          }
+        },
+        usaFertilizanteEdafico: {
+          respuesta: this.fertilizacion.value.usaFertilizanteEdafico,
+          preguntas: {
+            vecesUsadoAlAnioFertilizanteEdafico: {
+              respuesta: this.fertilizacion.value.vecesUsadoAlAnioFertilizanteEdafico
+            }
+          }
+        },
+        usaFertilizanteFoliar: {
+          respuesta: this.fertilizacion.value.usaFertilizanteFoliar,
+          preguntas: {
+            vecesUsadoAlAnioFertilizanteFoliar: {
+              respuesta: this.fertilizacion.value.vecesUsadoAlAnioFertilizanteFoliar
+            }
+          }
+        },
+        recibidoFertilizanteKits: {
+          respuesta: this.fertilizacion.value.recibidoFertilizanteKits,
+          preguntas: {
+            tipoFertilizanteRecibido: {
+              respuesta: this.fertilizacion.value.tipoFertilizanteRecibido
+            }
+          }
+        },
+        opinionEfectividadFertilizante: {
+          respuesta: this.fertilizacion.value.opinionEfectividadFertilizante
+        },
+        repetirCompraConDescuento: {
+          respuesta: this.fertilizacion.value.repetirCompraConDescuento
+        },
+        disminuidoProductosQuimicosPorOrganicos: {
+          respuesta: this.fertilizacion.value.disminuidoProductosQuimicosPorOrganicos
+        }
+      }
+    };
+  }
+
+  setValues(formularioVerificacion: FormularioVerificacion): void {
+    this.fertilizacion.get('fertilizaCacaotales')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.fertilizaCacaotales.respuesta);
+    this.fertilizacion.get('tipoProductoUsado')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.fertilizaCacaotales.preguntas.tipoProductoUsado.respuesta);
+    this.fertilizacion.get('usaFertilizanteEdafico')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.usaFertilizanteEdafico.respuesta);
+    this.fertilizacion.get('vecesUsadoAlAnioFertilizanteEdafico')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.usaFertilizanteEdafico.preguntas.vecesUsadoAlAnioFertilizanteEdafico.respuesta);
+    this.fertilizacion.get('usaFertilizanteFoliar')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.usaFertilizanteFoliar.respuesta);
+    this.fertilizacion.get('vecesUsadoAlAnioFertilizanteFoliar')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.usaFertilizanteFoliar.preguntas.vecesUsadoAlAnioFertilizanteFoliar.respuesta);
+    this.fertilizacion.get('recibidoFertilizanteKits')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.recibidoFertilizanteKits.respuesta);
+    this.fertilizacion.get('tipoFertilizanteRecibido')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.recibidoFertilizanteKits.preguntas.tipoFertilizanteRecibido.respuesta);
+    this.fertilizacion.get('opinionEfectividadFertilizante')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.opinionEfectividadFertilizante.respuesta);
+    this.fertilizacion.get('repetirCompraConDescuento')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.repetirCompraConDescuento.respuesta);
+    this.fertilizacion.get('disminuidoProductosQuimicosPorOrganicos')
+      .setValue(formularioVerificacion.secciones.fertilizacion.preguntas.disminuidoProductosQuimicosPorOrganicos.respuesta);
+  }
+
 }

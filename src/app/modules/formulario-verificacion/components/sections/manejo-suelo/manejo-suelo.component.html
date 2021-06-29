@@ -1,6 +1,6 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="manejoSuelo" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="manejoSuelo">
+        <div class="row">
             <div class="row align-items-end">
                 <div class="col-md-12">
                     <p class="item-text">TIPO DE SUELO:</p>
@@ -87,7 +87,7 @@
                     <p class="item-text">TIPO PRODUCTO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
-                        <div *ngIf="tipoProducto=='QUIMICO'; else elseBlock">
+                        <div *ngIf="tipoProducto==='QUIMICO'; else elseBlock">
                             <mat-select formControlName="tipoProducto" name="someUnusualName" autocomplete="off">
                                 <mat-option *ngFor="let value of productoXTipoQuimico" [value]="value">
                                     {{value}}

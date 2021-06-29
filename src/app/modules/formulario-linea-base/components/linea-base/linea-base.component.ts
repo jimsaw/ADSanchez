@@ -108,14 +108,14 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   async fetchFormulario(): Promise<void> {
     const id = this.activatedRoute.snapshot.paramMap.get("id");
     if (id !== null) {
-      const formulario = await this.formularioService.get(id);
+      const formulario = await this.formularioService.getDiccionario(id);
       this.formularioLineaBase = formulario;
     }
   }
 
   async fetchAgricultor(): Promise<void> {
     if (!this.isFormEmpty()) {
-      this.agricultor = await this.agricultorService.get(this.formularioLineaBase["agricultorId"]);
+      this.agricultor = await this.agricultorService.get(this.formularioLineaBase.agricultor.id);
       for (let agricultor of this.listaAgricultores) {
         if (agricultor.id === this.agricultor.id) {
           this.lineaBaseForm.get('agricultor').setValue(agricultor);

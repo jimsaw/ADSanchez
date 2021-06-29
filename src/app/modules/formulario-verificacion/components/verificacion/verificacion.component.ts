@@ -1,8 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Agricultor } from 'src/app/interfaces/agricultor';
 import { FormularioVerificacion } from 'src/app/interfaces/formularioVerificacion';
 import { AgricultorService } from 'src/app/modules/core/services/agricultor/agricultor.service';
+import { FormularioVerificacionService } from 'src/app/modules/core/services/formularioVerificacion/formulario-verificacion.service';
 import { TecnicoService } from 'src/app/modules/core/services/tecnico/tecnico.service';
+import { SaludSeguridadOcupacionalComponent } from '../sections/salud-seguridad-ocupacional/salud-seguridad-ocupacional.component';
+import { BodegaComponent } from '../sections/bodega/bodega.component';
+import { ControlMalezasComponent } from '../sections/control-malezas/control-malezas.component';
+import { DatosFincaComponent } from '../sections/datos-finca/datos-finca.component';
+import { FertilizacionComponent } from '../sections/fertilizacion/fertilizacion.component';
+import { InjertacionComponent } from '../sections/injertacion/injertacion.component';
+import { ManejoSueloComponent } from '../sections/manejo-suelo/manejo-suelo.component';
+import { MIPEComponent } from '../sections/mipe/mipe.component';
+import { PodaComponent } from '../sections/poda/poda.component';
+import { RegistrosProductorComponent } from '../sections/registros-productor/registros-productor.component';
 
 @Component({
   selector: 'app-verificacion',
@@ -10,106 +23,34 @@ import { TecnicoService } from 'src/app/modules/core/services/tecnico/tecnico.se
   styleUrls: ['./verificacion.component.css']
 })
 export class VerificacionComponent implements OnInit {
-  public verificacionForm: FormGroup;
-  listaAgricultores;
-  agricultor;
+  
+  formularioVerificacion: FormularioVerificacion;
+  verificacionForm: FormGroup;
+  listaAgricultores: Agricultor[];
+  agricultor: Agricultor;
+  isLoading: boolean = true;
 
-  constructor(private agricultorService: AgricultorService,
+  @ViewChild(DatosFincaComponent) datosFincaComponent: DatosFincaComponent;
+  @ViewChild(InjertacionComponent) injertacionComponent: InjertacionComponent;
+  @ViewChild(ManejoSueloComponent) manejoSueloComponent: ManejoSueloComponent;
+  @ViewChild(FertilizacionComponent) fertilizacionComponent: FertilizacionComponent;
+  @ViewChild(BodegaComponent) bodegaComponent: BodegaComponent;
+  @ViewChild(ControlMalezasComponent) controlMalezasComponent: ControlMalezasComponent;
+  @ViewChild(PodaComponent) podaComponent: PodaComponent;
+  @ViewChild(MIPEComponent) mIPEComponent: MIPEComponent;
+  @ViewChild(SaludSeguridadOcupacionalComponent) saludSeguridadOcupacionalComponent: SaludSeguridadOcupacionalComponent;
+  @ViewChild(RegistrosProductorComponent) registrosProductorComponent: RegistrosProductorComponent;
+
+  constructor(
+    private agricultorService: AgricultorService,
     private formBuilder: FormBuilder,
-    private tecnicoService: TecnicoService) {
+    private formularioService: FormularioVerificacionService,
+    private tecnicoService: TecnicoService,
+    private changeDetector: ChangeDetectorRef,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.verificacionForm = this.formBuilder.group({
       agricultor: new FormControl(''),
-      datosFinca: this.formBuilder.group({
-        incrementoHectareajeFinca: new FormControl(''),
-        cantidadAumento: new FormControl(''),
-        mesIncrementoHectareaje: new FormControl(''),
-        motivoAreaNueva: new FormControl(''),
-        usoAreaNueva: new FormControl(''),
-        incrementoFueraTamanioFinca: new FormControl('')
-      }),
-      injertacion: this.formBuilder.group({
-        realizoInjertosUltimos12Meses: new FormControl(''),
-        mesRealizoInjertos: new FormControl('')
-      }),
-      manejoSuelo: this.formBuilder.group({
-        tipoSuelo: new FormControl(''),
-        capacitacionTomaMuestrasSuelo: new FormControl(''),
-        analisisSuelo: new FormControl(''),
-        sueloPH: new FormControl(''),
-        suelosNivelesAltosAcidez: new FormControl(''),
-        corregidoPHSueloFinca: new FormControl(''),
-        maneraCorregidoPHSuelo: new FormControl(''),
-        tipoProducto: new FormControl('')
-      }),
-      fertilizacion: this.formBuilder.group({
-        fertilizaCacaotales: new FormControl(''),
-        tipoProductoUsado: new FormControl(''),
-        usaFertilizanteEdafico: new FormControl(''),
-        vecesUsadoAlAnioFertilizanteEdafico: new FormControl(''),
-        usaFertilizanteFoliar: new FormControl(''),
-        vecesUsadoAlAnioFertilizanteFoliar: new FormControl(''),
-        recibidoFertilizanteKits: new FormControl(''),
-        tipoFertilizanteRecibido: new FormControl(''),
-        opinionEfectividadFertilizante: new FormControl(''),
-        repetirCompraConDescuento: new FormControl(''),
-        disminuidoProductosQuimicosPorOrganicos: new FormControl('')
-      }),
-      bodega: this.formBuilder.group({
-        poseeBodega: new FormControl(''),
-        bodegaSegura: new FormControl(''),
-        bodegaOrdenada: new FormControl(''),
-        clasificadaXProducto: new FormControl(''),
-        tieneRegistroAlmacena: new FormControl(''),
-        cuentaDuchaEmergencia: new FormControl(''),
-        conocimientoProdcutosPermitidosLINDT: new FormControl('')
-      }),
-      controlMalezas: this.formBuilder.group({
-        controlaMalezas: new FormControl(''),
-        tiposMalezaEncontrada: new FormControl(''),
-        comoControlaMaleza: new FormControl(''),
-        productoQuimicoUsado: new FormControl(''),
-        regularidadProductoQuimicoUsado: new FormControl(''),
-        recomendacionSeguidaAplicandoProductoQuimico: new FormControl(''),
-        conocimientoDisposicionMaquinariaAgricola: new FormControl(''),
-        haceUsoMisma: new FormControl(''),
-        tiempoPromedioUso: new FormControl('')
-      }),
-      poda: this.formBuilder.group({
-        realizaPoda: new FormControl(''),
-        tipoPoda: new FormControl(''),
-        podaEsCorrecta: new FormControl(''),
-        cortesLaceracionesPlantaMalaPoda: new FormControl(''),
-        mazorcasEstadoPudricion: new FormControl(''),
-        malaPodaAlbergaPlagasEnfermedades: new FormControl(''),
-        plagasMalaPoda: new FormControl(''),
-        enfermedadesMalaPoda: new FormControl('')
-      }),
-      MIPE: this.formBuilder.group({
-        realizaPracticasMPE: new FormControl(''),
-        tipoControlMPE: new FormControl(''),
-        corrigioProblemasMPE: new FormControl(''),
-        fincaLibreAplicacionQuimica: new FormControl(''),
-        controlaEnfermedades: new FormControl(''),
-        reduccionIncidenciaPlagasEnfermedades: new FormControl('')
-      }),
-      saludSeguridadOcupacional: this.formBuilder.group({
-        trabajadoresLlevadosCapacitacionesSSO: new FormControl(''),
-        usoPictograma: new FormControl(''),
-        buenasPracticasFincaTrabajadores: new FormControl(''),
-        botiquin: new FormControl(''),
-        eppAntesPlaguicida: new FormControl(''),
-        instruccionesPrimerosAuxilios: new FormControl('')
-      }),
-      registrosProductor: this.formBuilder.group({
-        ventaAnualCacaoQuintales: new FormControl(''),
-        ventaAnualCacaoUSD: new FormControl(''),
-        egresoCompraMateriales: new FormControl(''),
-        egresoManoObra: new FormControl(''),
-        manejoCuadernilloRegistros: new FormControl(''),
-        manejoCostosPlanificacionFinanciera: new FormControl(''),
-        disponibilidadAhorrarEnCuenta: new FormControl(''),
-        tipoInstitucionAhorroCuenta: new FormControl('')
-      }),
       cosecha: this.formBuilder.group({
         cosechaSeparadoCacaoNacionalCCN51: new FormControl(''),
         plantasLaceracionesCicatricesMalaPractica: new FormControl('')
@@ -351,7 +292,50 @@ export class VerificacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listaAgricultores = this.agricultorService.getAll();
+    this.agricultorService.list().subscribe(agricultores => {
+      this.listaAgricultores = agricultores;
+    });
+    this.tecnicoService.fetch();
+  }
+
+  ngAfterViewInit() {
+    this.setFormulario();
+  }
+
+  async setFormulario() {
+    await this.fetchFormulario();
+    await this.fetchAgricultor();
+    this.updateView();
+    this.setFormValues();
+  }
+
+  updateView() {
+    this.isLoading = false;
+    this.changeDetector.detectChanges();
+  }
+
+  async fetchFormulario(): Promise<void> {
+    const id = this.activatedRoute.snapshot.paramMap.get("id");
+    if (id !== null) {
+      const formulario = await this.formularioService.get(id);
+      this.formularioVerificacion = formulario;
+    }
+  }
+
+  async fetchAgricultor(): Promise<void> {
+    if (!this.isFormEmpty()) {
+      this.agricultor = await this.agricultorService.get(this.formularioVerificacion["agricultorId"]);
+      for (let agricultor of this.listaAgricultores) {
+        if (agricultor.id === this.agricultor.id) {
+          this.verificacionForm.get('agricultor').setValue(agricultor);
+          break;
+        }
+      }
+    }
+  }
+
+  isFormEmpty() {
+    return this.formularioVerificacion === undefined || this.formularioVerificacion === null;
   }
 
   onSubmit() {
@@ -363,291 +347,16 @@ export class VerificacionComponent implements OnInit {
       tecnico: this.tecnicoService.loggedTecnico,
       fechaVisita: new Date().toLocaleDateString(),
       secciones: {
-        datosFinca: {
-          preguntas: {
-            incrementoHectareajeFinca: {
-              respuesta: '',
-              preguntas: {
-                cantidadAumento: {
-                  respuesta: ''
-                },
-                mesIncrementoHectareaje: {
-                  respuesta: ''
-                },
-                motivoAreaNueva: {
-                  respuesta: ''
-                },
-                usoAreaNueva: {
-                  respuesta: ''
-                },
-                incrementoFueraTamanioFinca: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        injertacion: {
-          preguntas: {
-            realizoInjertosUltimos12Meses: {
-              respuesta: '',
-              preguntas: {
-                mesRealizoInjertos: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        manejoSuelo: {
-          preguntas: {
-            tipoSuelo: {
-              respuesta: ''
-            },
-            capacitacionTomaMuestrasSuelo: {
-              respuesta: ''
-            },
-            analisisSuelo: {
-              respuesta: '',
-              preguntas: {
-                sueloPH: {
-                  respuesta: ''
-                }
-              }
-            },
-            suelosNivelesAltosAcidez: {
-              respuesta: '',
-              preguntas: {
-                corregidoPHSueloFinca: {
-                  respuesta: ''
-                }
-              }
-            },
-            maneraCorregidoPHSuelo: {
-              respuesta: '',
-              preguntas: {
-                tipoProducto: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        fertilizacion: {
-          preguntas: {
-            fertilizaCacaotales: {
-              respuesta: '',
-              preguntas: {
-                tipoProductoUsado: {
-                  respuesta: ''
-                }
-              }
-            },
-            usaFertilizanteEdafico: {
-              respuesta: '',
-              preguntas: {
-                vecesUsadoAlAnioFertilizanteEdafico: {
-                  respuesta: ''
-                }
-              }
-            },
-            usaFertilizanteFoliar: {
-              respuesta: '',
-              preguntas: {
-                vecesUsadoAlAnioFertilizanteFoliar: {
-                  respuesta: ''
-                }
-              }
-            },
-            recibidoFertilizanteKits: {
-              respuesta: '',
-              preguntas: {
-                tipoFertilizanteRecibido: {
-                  respuesta: ''
-                }
-              }
-            },
-            opinionEfectividadFertilizante: {
-              respuesta: ''
-            },
-            repetirCompraConDescuento: {
-              respuesta: ''
-            },
-            disminuidoProductosQuimicosPorOrganicos: {
-              respuesta: ''
-            }
-          }
-        },
-        bodega: {
-          preguntas: {
-            poseeBodega: {
-              respuesta: ''
-            },
-            bodegaSegura: {
-              respuesta: ''
-            },
-            bodegaOrdenada: {
-              respuesta: ''
-            },
-            clasificadaXProducto: {
-              respuesta: ''
-            },
-            tieneRegistroAlmacena: {
-              respuesta: ''
-            },
-            cuentaDuchaEmergencia: {
-              respuesta: ''
-            },
-            conocimientoProdcutosPermitidosLINDT: {
-              respuesta: ''
-            }
-          }
-        },
-        controlMalezas: {
-          preguntas: {
-            controlaMalezas: {
-              respuesta: '',
-              preguntas: {
-                tiposMalezaEncontrada: {
-                  respuesta: ''
-                },
-                comoControlaMaleza: {
-                  respuesta: '',
-                  preguntas: {
-                    productoQuimicoUsado: {
-                      respuesta: ''
-                    },
-                    regularidadProductoQuimicoUsado: {
-                      respuesta: ''
-                    },
-                    recomendacionSeguidaAplicandoProductoQuimico: {
-                      respuesta: ''
-                    }
-                  }
-                }
-              }
-            },
-            conocimientoDisposicionMaquinariaAgricola: {
-              respuesta: '',
-              preguntas: {
-                haceUsoMisma: {
-                  respuesta: ''
-                },
-                tiempoPromedioUso: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        poda: {
-          preguntas: {
-            realizaPoda: {
-              respuesta: '',
-              preguntas: {
-                tipoPoda: {
-                  respuesta: ''
-                },
-                podaEsCorrecta: {
-                  respuesta: ''
-                }
-              }
-            },
-            cortesLaceracionesPlantaMalaPoda: {
-              respuesta: ''
-            },
-            mazorcasEstadoPudricion: {
-              respuesta: ''
-            },
-            malaPodaAlbergaPlagasEnfermedades: {
-              respuesta: '',
-              preguntas: {
-                plagasMalaPoda: {
-                  respuesta: ''
-                },
-                enfermedadesMalaPoda: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        MIPE: {
-          preguntas: {
-            realizaPracticasMPE: {
-              respuesta: '',
-              preguntas: {
-                tipoControlMPE: {
-                  respuesta: ''
-                }
-              }
-            },
-            corrigioProblemasMPE: {
-              respuesta: ''
-            },
-            fincaLibreAplicacionQuimica: {
-              respuesta: ''
-            },
-            controlaEnfermedades: {
-              respuesta: ''
-            },
-            reduccionIncidenciaPlagasEnfermedades: {
-              respuesta: ''
-            }
-          }
-        },
-        saludSeguridadOcupacional: {
-          preguntas: {
-            trabajadoresLlevadosCapacitacionesSSO: {
-              respuesta: ''
-            },
-            usoPictograma: {
-              respuesta: ''
-            },
-            buenasPracticasFincaTrabajadores: {
-              respuesta: ''
-            },
-            botiquin: {
-              respuesta: ''
-            },
-            eppAntesPlaguicida: {
-              respuesta: ''
-            },
-            instruccionesPrimerosAuxilios: {
-              respuesta: ''
-            }
-          }
-        },
-        registrosProductor: {
-          preguntas: {
-            ventaAnualCacaoQuintales: {
-              respuesta: ''
-            },
-            ventaAnualCacaoUSD: {
-              respuesta: ''
-            },
-            egresoCompraMateriales: {
-              respuesta: ''
-            },
-            egresoManoObra: {
-              respuesta: ''
-            },
-            manejoCuadernilloRegistros: {
-              respuesta: ''
-            },
-            manejoCostosPlanificacionFinanciera: {
-              respuesta: ''
-            },
-            disponibilidadAhorrarEnCuenta: {
-              respuesta: '',
-              preguntas: {
-                tipoInstitucionAhorroCuenta: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
+        datosFinca: this.datosFincaComponent.seccion,
+        injertacion: this.injertacionComponent.seccion,
+        manejoSuelo: this.manejoSueloComponent.seccion,
+        fertilizacion: this.fertilizacionComponent.seccion,
+        bodega: this.bodegaComponent.seccion,
+        controlMalezas: this.controlMalezasComponent.seccion,
+        poda: this.podaComponent.seccion,
+        MIPE: this.mIPEComponent.seccion,
+        saludSeguridadOcupacional: this.saludSeguridadOcupacionalComponent.seccion,
+        registrosProductor: this.registrosProductorComponent.seccion,
         cosecha: {
           preguntas: {
             cosechaSeparadoCacaoNacionalCCN51: {
@@ -1363,7 +1072,19 @@ export class VerificacionComponent implements OnInit {
     console.log(formularioVerificacionParam);
   }
 
-  reset() {
+  setFormValues(): void {
+    if (!this.isFormEmpty()) {
+      this.datosFincaComponent.setValues(this.formularioVerificacion);
+      this.injertacionComponent.setValues(this.formularioVerificacion);
+      this.manejoSueloComponent.setValues(this.formularioVerificacion);
+      this.fertilizacionComponent.setValues(this.formularioVerificacion);
+      this.bodegaComponent.setValues(this.formularioVerificacion);
+      this.bodegaComponent.setValues(this.formularioVerificacion);
+      this.podaComponent.setValues(this.formularioVerificacion);
+      this.mIPEComponent.setValues(this.formularioVerificacion);
+      this.saludSeguridadOcupacionalComponent.setValues(this.formularioVerificacion);
+      this.registrosProductorComponent.setValues(this.formularioVerificacion);
+    }
   }
 
 }
