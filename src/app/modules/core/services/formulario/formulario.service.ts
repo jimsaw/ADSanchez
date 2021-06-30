@@ -27,6 +27,23 @@ export abstract class FormularioService implements Database<Formulario> {
     for (let section of Object.keys(formulario["secciones"])) {
       transaction.set(seccionesCollRef.doc(section), { id: section });
       const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
+      if (formulario["secciones"][section]["preguntas"] != undefined) {
+        for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
+          this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
+        }
+      }
+      if (formulario["secciones"][section]["secciones"] != undefined) {
+        const lastObject = formulario["secciones"][section]
+        this.writeSections(seccionesCollRef.doc(section), lastObject, transaction);
+      }
+    }
+  }
+
+  protected writeSectionsTest(docRef: DocumentReference, formulario: Formulario, transaction: any) {
+    const seccionesCollRef = docRef.collection("secciones");
+    for (let section of Object.keys(formulario["secciones"])) {
+      transaction.set(seccionesCollRef.doc(section), { id: section });
+      const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
       for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
         this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
       }
@@ -38,7 +55,7 @@ export abstract class FormularioService implements Database<Formulario> {
       if (response === "respuesta") {
         transaction.set(lastCollectionRef.doc(question), {
           id: question,
-          pregunta: this.keyMapperObj.getQuestionDescription(question),
+          pregunta: question,
           respuesta: lastObject[question][response] === undefined ? "" : lastObject[question][response]
         });
       } else if (response === "preguntas") {

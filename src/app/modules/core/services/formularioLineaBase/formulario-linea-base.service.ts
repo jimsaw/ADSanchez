@@ -21,7 +21,7 @@ export class FormularioLineaBaseService extends FormularioService {
 
     async get(id: string): Promise<FormularioLineaBase> {
         return new Promise(async (resolve, reject) => {
-            const docRef = this.firebase.firestore.collection('formulariosLineaBase').doc(id);
+            const docRef = this.firebase.firestore.collection('/formularios/lineaBase/estructuras').doc(id);
             const formulario = (await docRef.get()).data() as FormularioLineaBase;
             this.initSections(formulario);
             await this.fetchSections(formulario);
@@ -109,7 +109,8 @@ export class FormularioLineaBaseService extends FormularioService {
         return new Promise<string>(async (resolve, reject) => {
             try {
                 await this.firebase.firestore.runTransaction(async transaction => {
-                    const collRef = this.firebase.firestore.collection("formulariosLineaBase");
+                    this.deleteDiccionario(formulario, transaction);
+                    const collRef = this.firebase.firestore.collection("/formularios/lineaBase/estructuras");
                     const docRef = collRef.doc(formulario["id"]);
                     await this.deleteSections(docRef, transaction);
                     transaction.delete(docRef);
@@ -121,6 +122,12 @@ export class FormularioLineaBaseService extends FormularioService {
                 reject("Ha ocurrido un error");
             }
         });
+    }
+
+    private deleteDiccionario(formularioLineaBase: FormularioLineaBase, transaction: any) {
+        const collRef = this.firebase.firestore.collection("/formularios/lineaBase/diccionarios");
+        const docRef = collRef.doc(formularioLineaBase.id);
+        transaction.delete(docRef);
     }
 
     private initSections(formulario: FormularioLineaBase) {

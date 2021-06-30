@@ -21,7 +21,7 @@ export class FormularioVerificacionService extends FormularioService {
 
   async get(id: string): Promise<FormularioVerificacion> {
     return new Promise(async (resolve, reject) => {
-        const docRef = this.firebase.firestore.collection('formulariosVerificacion').doc(id);
+        const docRef = this.firebase.firestore.collection('/formularios/verificacion/estructuras').doc(id);
         const formulario = (await docRef.get()).data() as FormularioVerificacion;
         // this.initSections(formulario);
         // await this.fetchSections(formulario);
@@ -29,8 +29,16 @@ export class FormularioVerificacionService extends FormularioService {
     });
   }
 
+  async getDiccionario(id: string): Promise<FormularioVerificacion> {
+    return new Promise(async (resolve, reject) => {
+        const docRef = this.firebase.firestore.collection('/formularios/verificacion/diccionarios').doc(id);
+        const formulario = (await docRef.get()).data()["diccionario"] as FormularioVerificacion;
+        resolve(formulario);
+    });
+}
+
   list(): Observable<Formulario[]> {
-    return this.firebase.collection('formulariosVerificacion').snapshotChanges().pipe(
+    return this.firebase.collection('/formularios/verificacion/estructuras').snapshotChanges().pipe(
       map(formularios => {
         return formularios.map((formulario) => {
           return formulario.payload.doc.data() as FormularioVerificacion;
@@ -40,14 +48,49 @@ export class FormularioVerificacionService extends FormularioService {
   }
 
   set(item: Formulario): Promise<void> {
-    throw new Error('Method not implemented.');
+    const formularioVerificacion = item as FormularioVerificacion;
+    return new Promise<void>((resolve, reject) => {
+      const collRef = this.firebase.firestore.collection("/formularios/verificacion/estructuras");
+      this.firebase.firestore.runTransaction((transaction) => {
+        return new Promise<void>((resolve, reject) => {
+          if (formularioVerificacion.id === "" || formularioVerificacion.id === undefined) {
+            formularioVerificacion.id = this.firebase.createId();
+          }
+          this.setDiccionario(formularioVerificacion, transaction);
+          const docRef = collRef.doc(formularioVerificacion.id);
+          transaction.set(docRef, {
+              id: formularioVerificacion.id,
+              agricultor: formularioVerificacion.agricultor.nombre,
+              agricultorId: formularioVerificacion.agricultor.id,
+              fechaVisita: formularioVerificacion.fechaVisita,
+              tecnico: formularioVerificacion.tecnico.nombre
+          });
+          this.writeSections(docRef, formularioVerificacion, transaction);
+          resolve();
+        });
+      }).then(() => {
+          resolve();
+      }).catch((e) => {
+          console.log(e);
+          reject(e);
+      });
+    });
+  }
+
+  private setDiccionario(formularioVerificacion: FormularioVerificacion, transaction: any) {
+    const collRef = this.firebase.firestore.collection("/formularios/verificacion/diccionarios");
+    const docRef = collRef.doc(formularioVerificacion.id);
+    transaction.set(docRef, {
+        id: formularioVerificacion.id,
+        diccionario: formularioVerificacion
+    });
   }
 
   delete(formulario: Formulario): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
       try {
         await this.firebase.firestore.runTransaction(async transaction => {
-          const collRef = this.firebase.firestore.collection("formulariosVerificacion");
+          const collRef = this.firebase.firestore.collection("/formularios/verificacion/estructuras");
           const docRef = collRef.doc(formulario["id"]);
           transaction.delete(docRef);
           return Promise.resolve();

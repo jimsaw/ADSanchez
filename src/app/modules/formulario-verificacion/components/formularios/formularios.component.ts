@@ -24,7 +24,7 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
     },
     {
       name: "Fecha",
-      prop: "fecha"
+      prop: "fechaVisita"
     },
     {
       name: "Acciones",
@@ -45,7 +45,7 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
   }
 
   onItemSelected(event: any): void {
-    console.log(event);
+    this.router.navigate(['inicio', 'formulariosVerificacion', 'create', event['id']]);
   }
 
   onAddClicked(): void {

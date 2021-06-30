@@ -305,7 +305,7 @@ export interface FormularioVerificacion extends Formulario {
         },
         fermentacion: {
             preguntas: {
-                fermetaCacao: {
+                fermentaCacao: {
                     respuesta: string,
                     preguntas: {
                         razonNoFermenta: {

@@ -24,7 +24,7 @@ export class FermentacionComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.fermentacion = this.formBuilder.group({
-      fermetaCacao: new FormControl(''),
+      fermentaCacao: new FormControl(''),
       razonNoFermenta: new FormControl(''),
       modoFermentacion: new FormControl(''),
       medidasHigieneFermentacion: new FormControl(''),
@@ -47,7 +47,7 @@ export class FermentacionComponent implements OnInit {
   get seccion(): any {
     return {
       preguntas: {
-        fermetaCacao: {
+        fermentaCacao: {
           respuesta: this.fermentacion.value.fermentaCacao,
           preguntas: {
             razonNoFermenta: {
@@ -69,16 +69,16 @@ export class FermentacionComponent implements OnInit {
   }
 
   setValues(formularioVerificacion: FormularioVerificacion): void {
-    this.fermentacion.get('fermetaCacao')
-      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermetaCacao.respuesta);
+    this.fermentacion.get('fermentaCacao')
+      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermentaCacao.respuesta);
     this.fermentacion.get('razonNoFermenta')
-      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermetaCacao.preguntas.razonNoFermenta.respuesta);
+      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermentaCacao.preguntas.razonNoFermenta.respuesta);
     this.fermentacion.get('modoFermentacion')
-      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermetaCacao.preguntas.modoFermentacion.respuesta);
+      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermentaCacao.preguntas.modoFermentacion.respuesta);
     this.fermentacion.get('medidasHigieneFermentacion')
-      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermetaCacao.preguntas.medidasHigieneFermentacion.respuesta);
+      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermentaCacao.preguntas.medidasHigieneFermentacion.respuesta);
     this.fermentacion.get('aumentoIngresoPorFermentacion')
-      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermetaCacao.preguntas.aumentoIngresoPorFermentacion.respuesta);
+      .setValue(formularioVerificacion.secciones.fermentacion.preguntas.fermentaCacao.preguntas.aumentoIngresoPorFermentacion.respuesta);
   }
 
 }

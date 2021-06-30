@@ -21,7 +21,6 @@ import { VentaComponent } from '../sections/venta/venta.component';
 import { NivelAsociatividadComponent } from '../sections/nivel-asociatividad/nivel-asociatividad.component';
 import { CondicionesLaboralesComponent } from '../sections/condiciones-laborales/condiciones-laborales.component';
 import { ServiciosBasicosComponent } from '../sections/servicios-basicos/servicios-basicos.component';
-import { ConservacionAguaManejoDesechosComponent } from 'src/app/modules/formulario-verificacion/components/sections/conservacion-agua-manejo-desechos/conservacion-agua-manejo-desechos.component';
 import { ConservacionRecursosManejoDesechosComponent } from '../sections/conservacion-recursos-manejo-desechos/conservacion-recursos-manejo-desechos.component';
 import { IncrementarProductividadComponent } from '../sections/incrementar-productividad/incrementar-productividad.component';
 import { MejorarCalidadCacaoComponent } from '../sections/mejorar-calidad-cacao/mejorar-calidad-cacao.component';
