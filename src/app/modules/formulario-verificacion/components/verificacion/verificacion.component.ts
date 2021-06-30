@@ -22,6 +22,10 @@ import { SecadoComponent } from '../sections/secado/secado.component';
 import { VentaComponent } from '../sections/venta/venta.component';
 import { CondicionesLaboralesComponent } from '../sections/condiciones-laborales/condiciones-laborales.component';
 import { ConservacionAguaManejoDesechosComponent } from '../sections/conservacion-agua-manejo-desechos/conservacion-agua-manejo-desechos.component';
+import { ConservacionSuelosBiodiversidadComponent } from '../sections/conservacion-suelos-biodiversidad/conservacion-suelos-biodiversidad.component';
+import { ProteccionAreasRibereniasComponent } from '../sections/proteccion-areas-riberenias/proteccion-areas-riberenias.component';
+import { ProteccionAreasAltoValorConservacionComponent } from '../sections/proteccion-areas-alto-valor-conservacion/proteccion-areas-alto-valor-conservacion.component';
+import { DiversificacionIngresosComponent } from '../sections/diversificacion-ingresos/diversificacion-ingresos.component';
 
 @Component({
   selector: 'app-verificacion',
@@ -52,6 +56,10 @@ export class VerificacionComponent implements OnInit {
   @ViewChild(VentaComponent) ventaComponent: VentaComponent;
   @ViewChild(CondicionesLaboralesComponent) condicionesLaboralesComponent: CondicionesLaboralesComponent;
   @ViewChild(ConservacionAguaManejoDesechosComponent) conservacionAguaManejoDesechosComponent: ConservacionAguaManejoDesechosComponent;
+  @ViewChild(ConservacionSuelosBiodiversidadComponent) conservacionSuelosBiodiversidadComponent: ConservacionSuelosBiodiversidadComponent;
+  @ViewChild(ProteccionAreasRibereniasComponent) proteccionAreasRibereniasComponent: ProteccionAreasRibereniasComponent;
+  @ViewChild(ProteccionAreasAltoValorConservacionComponent) proteccionAreasAltoValorConservacionComponent: ProteccionAreasAltoValorConservacionComponent;
+  @ViewChild(DiversificacionIngresosComponent) diversificacionIngresosComponent: DiversificacionIngresosComponent;
 
   constructor(
     private agricultorService: AgricultorService,
@@ -63,55 +71,6 @@ export class VerificacionComponent implements OnInit {
   ) {
     this.verificacionForm = this.formBuilder.group({
       agricultor: new FormControl(''),
-      conservacionSuelosBiodiversidad: this.formBuilder.group({
-        practicasConservacionSuelos: new FormControl(''),
-        practicaDeforestacion: new FormControl(''),
-        plantadoArbolesSombrioRecient: new FormControl(''),
-        cuantosArbolesSombrio: new FormControl(''),
-        promedioArbolesXHectarea: new FormControl(''),
-        reforestadoOrillas: new FormControl(''),
-        promedioArbolXHectarea12MAltura: new FormControl(''),
-        especiesDiferentesArbolesXHectarea: new FormControl(''),
-        especiesArbolesEnCultivo: new FormControl(''),
-        especifiqueOtrosEspeciesArboles: new FormControl('')
-      }),
-      proteccionAreasRiberenias: this.formBuilder.group({
-        poseeFuenteHidrica: new FormControl(''),
-        nombreFuenteHidrica: new FormControl(''),
-        tipoFuenteHidrica: new FormControl(''),
-        especifiqueOtros: new FormControl(''),
-        consideradaFuenteHidrica: new FormControl(''),
-        poseeNacientes: new FormControl(''),
-        cuantasNacientes: new FormControl(''),
-        brindaProteccionFuenteHidrica: new FormControl(''),
-        comoBrindaProtFuentHidr: new FormControl(''),
-        distanciaRequerida: new FormControl('')
-      }),
-      proteccionAreasAltoValorConservacion: this.formBuilder.group({
-        sueloPresentaProblemaErosion: new FormControl(''),
-        tipoProblemaErosion: new FormControl(''),
-        necesitaImplementarPracticasMejoraSuelo: new FormControl(''),
-        comoQuePracticas: new FormControl(''),
-        gradoPresentanPendientes: new FormControl(''),
-        cuentaConAreaForestales: new FormControl(''),
-        tipoAreaForestal: new FormControl(''),
-        realizaPlanesCorteExtraccionMadera: new FormControl(''),
-        presentaAnexosAreasAltoValor: new FormControl(''),
-        realizaPlanesReforestacion: new FormControl(''),
-        conoceEspeciePeligroExtincionEnFinca: new FormControl(''),
-        cualesEspeciesPeligroExtincion: new FormControl(''),
-        especifiqueCualesEspeciesPeligroExtincion: new FormControl(''),
-        fincaConsideradaAltoValor: new FormControl(''),
-        tipoAltoValor: new FormControl('')
-      }),
-      diversificacionIngresos: this.formBuilder.group({
-        usoCultivoDiferenteCacao: new FormControl(''),
-        otraActividadDentroFincaConIngreso: new FormControl(''),
-        realizaActividadFueraFincaConIngreso: new FormControl(''),
-        huertosOrganicosEnFinca: new FormControl(''),
-        otraActividadFueraFincaConIngreso: new FormControl(''),
-        actividadFueraFincaConIngreso: new FormControl('')
-      }),
       capacitacionesBeneficioPrograma: this.formBuilder.group({
         capacitacion: this.formBuilder.group({
           utilidadCacaoFinoAromaSostenibilidadTrazabilidad: new FormControl(''),
@@ -320,169 +279,10 @@ export class VerificacionComponent implements OnInit {
         venta: this.ventaComponent.seccion,
         condicionesLaborales: this.condicionesLaboralesComponent.seccion,
         conservacionAguaManejoDesechos: this.conservacionAguaManejoDesechosComponent.seccion,
-        conservacionSuelosBiodiversidad: {
-          preguntas: {
-            practicasConservacionSuelos: {
-              respuesta: ''
-            },
-            practicaDeforestacion: {
-              respuesta: ''
-            },
-            plantadoArbolesSombrioRecient: {
-              respuesta: '',
-              preguntas: {
-                cuantosArbolesSombrio: {
-                  respuesta: ''
-                },
-                promedioArbolesXHectarea: {
-                  respuesta: ''
-                },
-                reforestadoOrillas: {
-                  respuesta: ''
-                }
-              }
-            },
-            promedioArbolXHectarea12MAltura: {
-              respuesta: ''
-            },
-            especiesDiferentesArbolesXHectarea: {
-              respuesta: ''
-            },
-            especiesArbolesEnCultivo: {
-              respuesta: '',
-              preguntas: {
-                especifiqueOtrosEspeciesArboles: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        proteccionAreasRiberenias: {
-          preguntas: {
-            poseeFuenteHidrica: {
-              respuesta: '',
-              preguntas: {
-                nombreFuenteHidrica: {
-                  respuesta: '',
-                  preguntas: {
-                    especifiqueOtros: {
-                      respuesta: ''
-                    }
-                  }
-                },
-                consideradaFuenteHidrica: {
-                  respuesta: ''
-                },
-                tipoFuenteHidrica: {
-                  respuesta: ''
-                },
-                poseeNacientes: {
-                  respuesta: '',
-                  preguntas: {
-                    cuantasNacientes: {
-                      respuesta: ''
-                    }
-                  }
-                },
-                brindaProteccionFuenteHidrica: {
-                  respuesta: '',
-                  preguntas: {
-                    comoBrindaProtFuentHidr: {
-                      respuesta: ''
-                    }
-                  }
-                },
-                distanciaRequerida: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        proteccionAreasAltoValorConservacion: {
-          preguntas: {
-            sueloPresentaProblemaErosion: {
-              respuesta: '',
-              preguntas: {
-                tipoProblemaErosion: {
-                  respuesta: ''
-                }
-              }
-            },
-            necesitaImplementarPracticasMejoraSuelo: {
-              respuesta: '',
-              preguntas: {
-                comoQuePracticas: {
-                  respuesta: ''
-                }
-              }
-            },
-            gradoPresentanPendientes: {
-              respuesta: ''
-            },
-            cuentaConAreaForestales: {
-              respuesta: '',
-              preguntas: {
-                tipoAreaForestal: {
-                  respuesta: ''
-                }
-              }
-            },
-            realizaPlanesCorteExtraccionMadera: {
-              respuesta: ''
-            },
-            presentaAnexosAreasAltoValor: {
-              respuesta: ''
-            },
-            realizaPlanesReforestacion: {
-              respuesta: ''
-            },
-            conoceEspeciePeligroExtincionEnFinca: {
-              respuesta: '',
-              preguntas: {
-                cualesEspeciesPeligroExtincion: {
-                  respuesta: ''
-                },
-                especifiqueCualesEspeciesPeligroExtincion: {
-                  respuesta: ''
-                }
-              }
-            },
-            fincaConsideradaAltoValor: {
-              respuesta: '',
-              preguntas: {
-                tipoAltoValor: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        diversificacionIngresos: {
-          preguntas: {
-            usoCultivoDiferenteCacao: {
-              respuesta: ''
-            },
-            otraActividadDentroFincaConIngreso: {
-              respuesta: ''
-            },
-            huertosOrganicosEnFinca: {
-              respuesta: ''
-            },
-            otraActividadFueraFincaConIngreso: {
-              respuesta: '',
-              preguntas: {
-                actividadFueraFincaConIngreso: {
-                  respuesta: ''
-                },
-                realizaActividadFueraFincaConIngreso: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
+        conservacionSuelosBiodiversidad: this.conservacionSuelosBiodiversidadComponent.seccion,
+        proteccionAreasRiberenias: this.proteccionAreasRibereniasComponent.seccion,
+        proteccionAreasAltoValorConservacion: this.proteccionAreasAltoValorConservacionComponent.seccion,
+        diversificacionIngresos: this.diversificacionIngresosComponent.seccion,
         capacitacionesBeneficioPrograma: {
           secciones: {
             capacitacion: {
@@ -885,6 +685,10 @@ export class VerificacionComponent implements OnInit {
       this.ventaComponent.setValues(this.formularioVerificacion);
       this.condicionesLaboralesComponent.setValues(this.formularioVerificacion);
       this.conservacionAguaManejoDesechosComponent.setValues(this.formularioVerificacion);
+      this.conservacionSuelosBiodiversidadComponent.setValues(this.formularioVerificacion);
+      this.proteccionAreasRibereniasComponent.setValues(this.formularioVerificacion);
+      this.proteccionAreasAltoValorConservacionComponent.setValues(this.formularioVerificacion);
+      this.diversificacionIngresosComponent.setValues(this.formularioVerificacion);
     }
   }
 
