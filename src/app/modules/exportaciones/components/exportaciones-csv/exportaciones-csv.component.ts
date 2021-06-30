@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ExportacionesService } from 'src/app/modules/core/services/exportaciones/exportaciones.service';
 import { FormularioLineaBaseService } from 'src/app/modules/core/services/formularioLineaBase/formulario-linea-base.service';
+import { ImportacionesService } from 'src/app/modules/core/services/importaciones/importaciones.service';
 
 @Component({
   selector: 'app-exportaciones-csv',
@@ -15,7 +16,10 @@ export class ExportacionesCSVComponent implements OnInit {
   activador1;
   activador2;
 
-  constructor(private exportaciones: ExportacionesService, private formBuilder: FormBuilder,
+  header: boolean = false;
+  @ViewChild('fileImportInput') fileImportInput: any;
+
+  constructor(private exportaciones: ExportacionesService, private formBuilder: FormBuilder, private importaciones: ImportacionesService,
     private spinner: NgxSpinnerService, private toastr: ToastrService, private formularioLineaBaseService: FormularioLineaBaseService) {
     this.formularioExportado = this.formBuilder.group({
       idFormulario: new FormControl(''),
@@ -47,6 +51,14 @@ export class ExportacionesCSVComponent implements OnInit {
       });
     }
     this.formularioExportado.reset();
+  }
+
+  fileChangeListener($event: any): void {
+
+    const files = $event.srcElement.files;
+    this.header = (this.header as unknown as string) === 'true' || this.header === true;
+
+    this.importaciones.importarOneFormulario(files, this.header, ',');
   }
 
 }

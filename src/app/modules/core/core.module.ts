@@ -6,6 +6,7 @@ import { KeymapperService } from './services/keymapper/keymapper.service';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { FormularioLineaBaseService } from './services/formularioLineaBase/formulario-linea-base.service';
 import { ExportacionesService } from './services/exportaciones/exportaciones.service';
+import { ImportacionesService } from './services/importaciones/importaciones.service';
 
 
 
@@ -14,6 +15,6 @@ import { ExportacionesService } from './services/exportaciones/exportaciones.ser
   imports: [
     CommonModule
   ],
-  providers: [AgricultorService, AuthService, FormularioLineaBaseService, KeymapperService, AuthGuard, ExportacionesService]
+  providers: [AgricultorService, AuthService, FormularioLineaBaseService, KeymapperService, AuthGuard, ExportacionesService, ImportacionesService]
 })
 export class CoreModule { }
