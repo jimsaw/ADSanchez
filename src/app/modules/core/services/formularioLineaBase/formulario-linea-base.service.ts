@@ -96,7 +96,7 @@ export class FormularioLineaBaseService extends FormularioService {
         });
     }
 
-    setDiccionario(formularioLineaBase: FormularioLineaBase, transaction: any) {
+    private setDiccionario(formularioLineaBase: FormularioLineaBase, transaction: any) {
         const collRef = this.firebase.firestore.collection("/formularios/lineaBase/diccionarios");
         const docRef = collRef.doc(formularioLineaBase.id);
         transaction.set(docRef, {

@@ -16,6 +16,12 @@ import { ManejoSueloComponent } from '../sections/manejo-suelo/manejo-suelo.comp
 import { MIPEComponent } from '../sections/mipe/mipe.component';
 import { PodaComponent } from '../sections/poda/poda.component';
 import { RegistrosProductorComponent } from '../sections/registros-productor/registros-productor.component';
+import { CosechaComponent } from '../sections/cosecha/cosecha.component';
+import { FermentacionComponent } from '../sections/fermentacion/fermentacion.component';
+import { SecadoComponent } from '../sections/secado/secado.component';
+import { VentaComponent } from '../sections/venta/venta.component';
+import { CondicionesLaboralesComponent } from '../sections/condiciones-laborales/condiciones-laborales.component';
+import { ConservacionAguaManejoDesechosComponent } from '../sections/conservacion-agua-manejo-desechos/conservacion-agua-manejo-desechos.component';
 
 @Component({
   selector: 'app-verificacion',
@@ -40,6 +46,12 @@ export class VerificacionComponent implements OnInit {
   @ViewChild(MIPEComponent) mIPEComponent: MIPEComponent;
   @ViewChild(SaludSeguridadOcupacionalComponent) saludSeguridadOcupacionalComponent: SaludSeguridadOcupacionalComponent;
   @ViewChild(RegistrosProductorComponent) registrosProductorComponent: RegistrosProductorComponent;
+  @ViewChild(CosechaComponent) cosechaComponent: CosechaComponent;
+  @ViewChild(FermentacionComponent) fermentacionComponent: FermentacionComponent;
+  @ViewChild(SecadoComponent) secadoComponent: SecadoComponent;
+  @ViewChild(VentaComponent) ventaComponent: VentaComponent;
+  @ViewChild(CondicionesLaboralesComponent) condicionesLaboralesComponent: CondicionesLaboralesComponent;
+  @ViewChild(ConservacionAguaManejoDesechosComponent) conservacionAguaManejoDesechosComponent: ConservacionAguaManejoDesechosComponent;
 
   constructor(
     private agricultorService: AgricultorService,
@@ -51,61 +63,6 @@ export class VerificacionComponent implements OnInit {
   ) {
     this.verificacionForm = this.formBuilder.group({
       agricultor: new FormControl(''),
-      cosecha: this.formBuilder.group({
-        cosechaSeparadoCacaoNacionalCCN51: new FormControl(''),
-        plantasLaceracionesCicatricesMalaPractica: new FormControl('')
-      }),
-      fermentacion: this.formBuilder.group({
-        fermetaCacao: new FormControl(''),
-        razonNoFermenta: new FormControl(''),
-        modoFermentacion: new FormControl(''),
-        medidasHigieneFermentacion: new FormControl(''),
-        aumentoIngresoPorFermentacion: new FormControl('')
-      }),
-      secado: this.formBuilder.group({
-        nivelHumedadCacaoVendido: new FormControl(''),
-        maneraRealzarSecado: new FormControl(''),
-        mejoraIngresoMejorTratamientoSecadoCacao: new FormControl('')
-      }),
-      venta: this.formBuilder.group({
-        personaVenderCacao: new FormControl(''),
-        razon1: new FormControl(''),
-        razon2: new FormControl(''),
-        recibeBonosEmpresaProgramaLINDT: new FormControl(''),
-        frecuenciaRecibeBono: new FormControl('')
-      }),
-      condicionesLaborales: this.formBuilder.group({
-        discriminacion: new FormControl(''),
-        explotacion: new FormControl(''),
-        trabajoInfantil: new FormControl(''),
-        documentosSoporte: new FormControl(''),
-        montoAcuerdoContratoAgricola: new FormControl('')
-      }),
-      conservacionAguaManejoDesechos: this.formBuilder.group({
-        fincaConRiego: new FormControl(''),
-        disenioRiego: new FormControl(''),
-        hectareasDisenioRiego: new FormControl(''),
-        permisoExtraerAguaRiego: new FormControl(''),
-        analisisAguaRiego: new FormControl(''),
-        presentaAnexos: new FormControl(''),
-        utilizaFiltroEcologico: new FormControl(''),
-        razonUsoFiltroEcologico: new FormControl(''),
-        areaDeschPlasticos: new FormControl(''),
-        fincaLibrePlasticos: new FormControl(''),
-        clasificaBasuraDomestica: new FormControl(''),
-        criterioClasificaBasuraDomestica: new FormControl(''),
-        practicaReciclajeCompostaje: new FormControl(''),
-        tratamientoBasura: new FormControl(''),
-        conocimientoAreaRecepcioEnvasesProductosQuimicos: new FormControl(''),
-        usoServicioAreaRecepcioEnvasesProductosQuimicos: new FormControl(''),
-        frecuenciaUsoServicioAreaRecepcioEnvasesProductosQuimicos: new FormControl(''),
-        almacenaSeguridadEnvasesPrevioTraslado: new FormControl(''),
-        lugarAlmacena: new FormControl(''),
-        tratamientoAguasNegras: new FormControl(''),
-        tipoExtraccion: new FormControl(''),
-        infraestructuraRiego: new FormControl(''),
-        impactoRiego: new FormControl(''),
-      }),
       conservacionSuelosBiodiversidad: this.formBuilder.group({
         practicasConservacionSuelos: new FormControl(''),
         practicaDeforestacion: new FormControl(''),
@@ -357,173 +314,12 @@ export class VerificacionComponent implements OnInit {
         MIPE: this.mIPEComponent.seccion,
         saludSeguridadOcupacional: this.saludSeguridadOcupacionalComponent.seccion,
         registrosProductor: this.registrosProductorComponent.seccion,
-        cosecha: {
-          preguntas: {
-            cosechaSeparadoCacaoNacionalCCN51: {
-              respuesta: ''
-            },
-            plantasLaceracionesCicatricesMalaPractica: {
-              respuesta: ''
-            }
-          }
-        },
-        fermentacion: {
-          preguntas: {
-            fermetaCacao: {
-              respuesta: '',
-              preguntas: {
-                razonNoFermenta: {
-                  respuesta: ''
-                },
-                modoFermentacion: {
-                  respuesta: ''
-                },
-                medidasHigieneFermentacion: {
-                  respuesta: ''
-                },
-                aumentoIngresoPorFermentacion: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        secado: {
-          preguntas: {
-            nivelHumedadCacaoVendido: {
-              respuesta: ''
-            },
-            maneraRealzarSecado: {
-              respuesta: ''
-            },
-            mejoraIngresoMejorTratamientoSecadoCacao: {
-              respuesta: ''
-            }
-          }
-        },
-        venta: {
-          preguntas: {
-            personaVenderCacao: {
-              respuesta: '',
-              preguntas: {
-                razon1: {
-                  respuesta: ''
-                },
-                razon2: {
-                  respuesta: ''
-                }
-              }
-            },
-            recibeBonosEmpresaProgramaLINDT: {
-              respuesta: '',
-              preguntas: {
-                frecuenciaRecibeBono: {
-                  respuesta: ''
-                }
-              }
-            }
-          }
-        },
-        condicionesLaborales: {
-          preguntas: {
-            discriminacion: {
-              respuesta: ''
-            },
-            explotacion: {
-              respuesta: ''
-            },
-            trabajoInfantil: {
-              respuesta: ''
-            },
-            documentosSoporte: {
-              respuesta: ''
-            },
-            montoAcuerdoContratoAgricola: {
-              respuesta: ''
-            }
-          }
-        },
-        conservacionAguaManejoDesechos: {
-          preguntas: {
-            fincaConRiego: {
-              respuesta: ''
-            },
-            disenioRiego: {
-              respuesta: '',
-              preguntas: {
-                hectareasDisenioRiego: {
-                  respuesta: ''
-                }
-              }
-            },
-            permisoExtraerAguaRiego: {
-              respuesta: ''
-            },
-            analisisAguaRiego: {
-              respuesta: ''
-            },
-            presentaAnexos: {
-              respuesta: ''
-            },
-            utilizaFiltroEcologico: {
-              respuesta: '',
-              preguntas: {
-                razonUsoFiltroEcologico: {
-                  respuesta: ''
-                }
-              }
-            },
-            areaDeschPlasticos: {
-              respuesta: ''
-            },
-            fincaLibrePlasticos: {
-              respuesta: ''
-            },
-            clasificaBasuraDomestica: {
-              respuesta: ''
-            },
-            criterioClasificaBasuraDomestica: {
-              respuesta: ''
-            },
-            practicaReciclajeCompostaje: {
-              respuesta: ''
-            },
-            tratamientoBasura: {
-              respuesta: ''
-            },
-            conocimientoAreaRecepcioEnvasesProductosQuimicos: {
-              respuesta: '',
-              preguntas: {
-                usoServicioAreaRecepcioEnvasesProductosQuimicos: {
-                  respuesta: ''
-                },
-                frecuenciaUsoServicioAreaRecepcioEnvasesProductosQuimicos: {
-                  respuesta: ''
-                },
-                almacenaSeguridadEnvasesPrevioTraslado: {
-                  respuesta: '',
-                  preguntas: {
-                    lugarAlmacena: {
-                      respuesta: ''
-                    }
-                  }
-                }
-              }
-            },
-            tratamientoAguasNegras: {
-              respuesta: ''
-            },
-            tipoExtraccion: {
-              respuesta: ''
-            },
-            infraestructuraRiego: {
-              respuesta: ''
-            },
-            impactoRiego: {
-              respuesta: ''
-            }
-          }
-        },
+        cosecha: this.cosechaComponent.seccion,
+        fermentacion: this.fermentacionComponent.seccion,
+        secado: this.secadoComponent.seccion,
+        venta: this.ventaComponent.seccion,
+        condicionesLaborales: this.condicionesLaboralesComponent.seccion,
+        conservacionAguaManejoDesechos: this.conservacionAguaManejoDesechosComponent.seccion,
         conservacionSuelosBiodiversidad: {
           preguntas: {
             practicasConservacionSuelos: {
@@ -1084,6 +880,11 @@ export class VerificacionComponent implements OnInit {
       this.mIPEComponent.setValues(this.formularioVerificacion);
       this.saludSeguridadOcupacionalComponent.setValues(this.formularioVerificacion);
       this.registrosProductorComponent.setValues(this.formularioVerificacion);
+      this.fermentacionComponent.setValues(this.formularioVerificacion);
+      this.secadoComponent.setValues(this.formularioVerificacion);
+      this.ventaComponent.setValues(this.formularioVerificacion);
+      this.condicionesLaboralesComponent.setValues(this.formularioVerificacion);
+      this.conservacionAguaManejoDesechosComponent.setValues(this.formularioVerificacion);
     }
   }
 
