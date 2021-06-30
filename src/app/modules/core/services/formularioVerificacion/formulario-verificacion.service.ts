@@ -19,6 +19,16 @@ export class FormularioVerificacionService extends FormularioService {
     super(firebase, keyMapper);
   }
 
+  async get(id: string): Promise<FormularioVerificacion> {
+    return new Promise(async (resolve, reject) => {
+        const docRef = this.firebase.firestore.collection('formulariosVerificacion').doc(id);
+        const formulario = (await docRef.get()).data() as FormularioVerificacion;
+        // this.initSections(formulario);
+        // await this.fetchSections(formulario);
+        resolve(formulario);
+    });
+  }
+
   list(): Observable<Formulario[]> {
     return this.firebase.collection('formulariosVerificacion').snapshotChanges().pipe(
       map(formularios => {
