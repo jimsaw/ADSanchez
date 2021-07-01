@@ -66,6 +66,24 @@ export class FormularioLineaBaseService extends FormularioService {
         });
     }
 
+    getAllFormulariosDict(): Promise<FormularioLineaBase[]> {
+        return new Promise(async (resolve, reject) => {
+            let observable = this.list();
+            let formularios = await observable.pipe(take(1)).toPromise();
+            //console.log(formularios);
+            let listaFormulariosLineaBase: FormularioLineaBase[] = [];
+            for (let item of formularios) {
+                //console.log(item['id']);
+                let formularioLineaBaseElementPromise = this.getDiccionario(item['id']);
+                let formularioLineaBaseElement = await formularioLineaBaseElementPromise;
+                //console.log(formularioLineaBaseElement);
+                listaFormulariosLineaBase.push(formularioLineaBaseElement);
+            }
+            //console.log(listaFormulariosLineaBase);
+            resolve(listaFormulariosLineaBase);
+        });
+    }
+
     set(item: Formulario): Promise<void> {
         const formularioLineaBase = item as FormularioLineaBase;
         return new Promise<void>((resolve, reject) => {

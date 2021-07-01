@@ -80,13 +80,13 @@ export class ExportacionesService {
   }
 
   async prepareAllDataRecursive(): Promise<any[]> {
-    let listaFormularios = await this.formularioLineaBaseService.getAllFormularios();
+    let listaFormularios = await this.formularioLineaBaseService.getAllFormulariosDict();
     let dataFormulario = [];
     for (let formulario of listaFormularios) {
       const element = {
         id: formulario.id,
-        agricultor: formulario.agricultor,
-        tecnico: formulario.tecnico,
+        agricultor: formulario.agricultor.nombre,
+        tecnico: formulario.tecnico.nombre,
         fechaVisita: formulario.fechaVisita,
       };
       let objSeccion = formulario.secciones;
@@ -125,12 +125,13 @@ export class ExportacionesService {
   }
 
   async prepareOneDataRecursive(id: string) {
-    let formularioLineaBaseParam = await this.formularioLineaBaseService.get(id);
+    let formularioLineaBaseParam = await this.formularioLineaBaseService.getDiccionario(id);
+
     const dataFormulario =
     {
       id: formularioLineaBaseParam.id,
-      agricultor: formularioLineaBaseParam.agricultor,
-      tecnico: formularioLineaBaseParam.tecnico,
+      agricultor: formularioLineaBaseParam.agricultor.nombre,
+      tecnico: formularioLineaBaseParam.tecnico.nombre,
       fechaVisita: formularioLineaBaseParam.fechaVisita,
     };
     let objSeccion = formularioLineaBaseParam.secciones;
