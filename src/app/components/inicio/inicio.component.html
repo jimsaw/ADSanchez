@@ -1,39 +1,27 @@
-<div class="container emulated-flex-gap">
-    <div style="margin-top: 1rem;">
-        <h1>Bienvenid@</h1>
+<div class="contenido">
+    <div>
+        <h1 class="title">Bienvenid@</h1>
     </div>
-    <div class="row">
-        <div class="col-md">
-            <mat-card class="card" routerLink="/inicio/agricultores">
-                <mat-card-content class="align-middle" style="margin-top: 1rem;">
-                    <mat-card-title>
-                        <h1>AGRICULTOR</h1>
-                    </mat-card-title>
-                    <span class="material-icons">agriculture</span>
-                </mat-card-content>
-            </mat-card>
+    <div class="cards">
+        <div class="card-container" routerLink="/inicio/agricultores">
+            <div class="home-card">
+                <h1>AGRICULTOR</h1>
+                <span class="material-icons">agriculture</span>
+            </div>
         </div>
-        <div class="col-md">
-            <mat-card class="card" routerLink="/inicio/formulariosLineaBase">
-                <mat-card-content class="align-middle">
-                    <mat-card-title>
-                        <h1>FORMULARIOS DE LINEA BASE</h1>
-                    </mat-card-title>
-                    <span class="material-icons">assignment</span>
-                </mat-card-content>
-            </mat-card>
+        <div class="card-container" routerLink="/inicio/formulariosLineaBase">
+            <div class="home-card">
+                <h1>LINEA BASE</h1>
+                <span class="material-icons">assignment</span>
+            </div>
         </div>
-        <div class="col-md-4">
-            <mat-card class="card" routerLink="/inicio/formulariosVerificacion">
-                <mat-card-content class="align-middle">
-                    <mat-card-title>
-                        <h1>FORMULARIOS DE VERIFICACION</h1>
-                    </mat-card-title>
-                    <span class="material-icons">
-                        assignment_turned_in
-                    </span>
-                </mat-card-content>
-            </mat-card>
+        <div class="card-container" routerLink="/inicio/formulariosVerificacion">
+            <div class="home-card">
+                <h1>VERIFICACIÓN</h1>
+                <span class="material-icons">assignment_turned_in</span>
+            </div>
         </div>
+        <div class="placeholder"></div>
     </div>
+
 </div>
