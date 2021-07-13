@@ -58,6 +58,26 @@ export class ProteccionAreasAltoValorConservacionComponent implements OnInit {
 
   }
 
+  sueloPresentaProblemaErosion(): boolean {
+    return this.proteccionAreasAltoValorConservacion.get('sueloPresentaProblemaErosion').value === 'SI';
+  }
+
+  necesitaImplementarPracticasMejoraSuelo(): boolean {
+    return this.proteccionAreasAltoValorConservacion.get('necesitaImplementarPracticasMejoraSuelo').value === 'SI';
+  }
+
+  cuentaConAreaForestales(): boolean {
+    return this.proteccionAreasAltoValorConservacion.get('cuentaConAreaForestales').value === 'SI';
+  }
+
+  conoceEspeciePeligroExtincionEnFinca(): boolean {
+    return this.proteccionAreasAltoValorConservacion.get('conoceEspeciePeligroExtincionEnFinca').value === 'SI';
+  }
+
+  fincaConsideradaAltoValor(): boolean {
+    return this.proteccionAreasAltoValorConservacion.get('fincaConsideradaAltoValor').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

@@ -41,6 +41,10 @@ export class RegistrosProductorComponent implements OnInit {
 
   }
 
+  disponibilidadAhorrarEnCuenta(): boolean {
+    return this.registrosProductor.get('disponibilidadAhorrarEnCuenta').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

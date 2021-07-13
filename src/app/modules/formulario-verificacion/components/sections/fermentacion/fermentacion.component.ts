@@ -44,6 +44,10 @@ export class FermentacionComponent implements OnInit {
 
   }
 
+  siFermentaCacao(): boolean {
+    return this.fermentacion.get('fermentaCacao').value === 'SIEMPRE' || this.fermentacion.get('fermentaCacao').value === 'A VECES';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

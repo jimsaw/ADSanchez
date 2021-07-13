@@ -13,7 +13,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="poseeFuenteHidrica()">
                     <p class="item-text">NOMBRE FUENTE HIDRICA</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -24,7 +24,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="poseeFuenteHidrica() && otroNombreFuenteHidrica()">
                     <p class="item-text">ESPECIFIQUE OTROS</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -32,7 +32,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="poseeFuenteHidrica()">
                 <div class="col-md-6">
                     <p class="item-text">TIPO DE FUENTE HÍDRICA:</p>
                     <mat-form-field class="item" appearance="outline">
@@ -56,7 +56,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="poseeFuenteHidrica()">
                 <div class="col-md-6">
                     <p class="item-text">SU FINCA POSEE NACIENTES</p>
                     <mat-form-field class="item" appearance="outline">
@@ -68,7 +68,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="poseeNacientes()">
                     <p class="item-text">CUÁNTAS:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -76,7 +76,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="poseeFuenteHidrica()">
                 <div class="col-md-4">
                     <p class="item-text">SE BRINDA PROTECCIÓN A FUENTES HÍDRICAS</p>
                     <mat-form-field class="item" appearance="outline">
@@ -88,7 +88,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="brindaProteccionFuenteHidrica()">
                     <p class="item-text">CÓMO (ZONA AMORTIGU.)</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

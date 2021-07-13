@@ -39,7 +39,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="haRealizadoAnalisis()">
                     <p class="item-text">PH DEL SUELO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -59,7 +59,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="hayNivelesAltosAcidez()">
                     <p class="item-text">HA CORREGIDO PH DEL SUELO EN FINCA</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

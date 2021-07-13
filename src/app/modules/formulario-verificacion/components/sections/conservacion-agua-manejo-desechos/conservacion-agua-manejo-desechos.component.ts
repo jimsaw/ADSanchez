@@ -72,6 +72,22 @@ export class ConservacionAguaManejoDesechosComponent implements OnInit {
 
   }
 
+  utilizaFiltroEcologico(): boolean {
+    return this.conservacionAguaManejoDesechos.get('utilizaFiltroEcologico').value === 'SI';
+  }
+
+  conocimientoAreaRecepcioEnvasesProductosQuimicos(): boolean {
+    return this.conservacionAguaManejoDesechos.get('conocimientoAreaRecepcioEnvasesProductosQuimicos').value === 'SI';
+  }
+
+  usoServicioAreaRecepcioEnvasesProductosQuimicos(): boolean {
+    return this.conservacionAguaManejoDesechos.get('usoServicioAreaRecepcioEnvasesProductosQuimicos').value === 'SI';
+  }
+
+  almacenaSeguridadEnvasesPrevioTraslado(): boolean {
+    return this.conservacionAguaManejoDesechos.get('almacenaSeguridadEnvasesPrevioTraslado').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

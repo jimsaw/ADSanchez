@@ -69,7 +69,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="disponibilidadAhorrarEnCuenta()">
                     <p class="item-text">ESPECIFIQUE TIPO CUENTA:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

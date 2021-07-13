@@ -37,21 +37,21 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md">
+                <div class="col-md" *ngIf="plantadoArbolesSombrioRecient()">
                     <p class="item-text">¿CUÁNTOS?</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
                         <input matInput formControlName="cuantosArbolesSombrio" name="someUnusualName" autocomplete="off">
                     </mat-form-field>
                 </div>
-                <div class="col-md">
+                <div class="col-md" *ngIf="plantadoArbolesSombrioRecient()">
                     <p class="item-text">PROMEDIO DE ÁRBOLES POR HECTÁREA</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
                         <input matInput formControlName="promedioArbolesXHectarea" name="someUnusualName" autocomplete="off">
                     </mat-form-field>
                 </div>
-                <div class="col-md">
+                <div class="col-md" *ngIf="plantadoArbolesSombrioRecient()">
                     <p class="item-text">¿HA REFORESTADO LAS ORILLAS?</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -91,7 +91,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="especiesArbolesEnCultivo()">
                     <p class="item-text">ESPECIFIQUE ESPECIE DE ARBOL:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

@@ -45,6 +45,14 @@ export class PodaComponent implements OnInit {
 
   }
 
+  realizaPoda(): boolean {
+    return this.poda.get('realizaPoda').value === 'SI';
+  }
+
+  hayPlagasEnfermedades(): boolean {
+    return this.poda.get('malaPodaAlbergaPlagasEnfermedades').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

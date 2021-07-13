@@ -114,7 +114,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md">
+                <div class="col-md" *ngIf="utilizaFiltroEcologico()">
                     <p class="item-text">PARA QUÉ LO UTILIZA:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -209,7 +209,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="conocimientoAreaRecepcioEnvasesProductosQuimicos()">
                 <div class="col-md-6">
                     <p class="item-text">HA HECHO USO DE ESTE SERVICIO</p>
                     <mat-form-field class="item" appearance="outline">
@@ -221,7 +221,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="usoServicioAreaRecepcioEnvasesProductosQuimicos()">
                     <p class="item-text">FRECUENCIA:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -234,7 +234,7 @@
                 </div>
             </div>
             <div class="row align-items-end">
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="conocimientoAreaRecepcioEnvasesProductosQuimicos()">
                     <p class="item-text">ALMACENA CON SEGURIDAD LOS ENVASES PREVIO AL TRASLADO DE DESTINO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -245,7 +245,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="conocimientoAreaRecepcioEnvasesProductosQuimicos() && almacenaSeguridadEnvasesPrevioTraslado()">
                     <p class="item-text">CUÁL ES EL LUGAR DE ALMACENAMIENTO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

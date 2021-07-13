@@ -52,6 +52,22 @@ export class ProteccionAreasRibereniasComponent implements OnInit {
 
   }
 
+  poseeFuenteHidrica(): boolean {
+    return this.proteccionAreasRiberenias.get('poseeFuenteHidrica').value === 'SI';
+  }
+
+  otroNombreFuenteHidrica(): boolean {
+    return this.proteccionAreasRiberenias.get('nombreFuenteHidrica').value === 'OTRO';
+  }
+
+  poseeNacientes(): boolean {
+    return this.proteccionAreasRiberenias.get('poseeNacientes').value === 'SI';
+  }
+
+  brindaProteccionFuenteHidrica(): boolean {
+    return this.proteccionAreasRiberenias.get('brindaProteccionFuenteHidrica').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

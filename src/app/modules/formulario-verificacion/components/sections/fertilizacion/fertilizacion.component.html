@@ -13,7 +13,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="fertilizaCacaotales()">
                     <p class="item-text">¿QUÉ TIPO DE PRODUCTO UTILIZA?</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -37,7 +37,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="usaFertilizanteEdafico()">
                     <p class="item-text">CUÁNTAS VECES AL AÑO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -61,7 +61,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="usaFertilizanteFoliar()">
                     <p class="item-text">CUÁNTAS VECES AL AÑO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -85,7 +85,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="haRecibidoFertilizanteKits()">
                     <p class="item-text">TIPO FERTILIZANTE RECIBIDO</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

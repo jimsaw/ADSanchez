@@ -49,6 +49,14 @@ export class ManejoSueloComponent implements OnInit {
 
   }
 
+  haRealizadoAnalisis(): boolean {
+    return this.manejoSuelo.get('analisisSuelo').value === 'SI';
+  }
+
+  hayNivelesAltosAcidez(): boolean {
+    return this.manejoSuelo.get('suelosNivelesAltosAcidez').value === 'SI';
+  }
+
   loadTipoProdcuto(event: any) {
     this.tipoProducto = event.value;
     /*

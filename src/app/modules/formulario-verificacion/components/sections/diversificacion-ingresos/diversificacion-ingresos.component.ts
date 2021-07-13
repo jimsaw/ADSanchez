@@ -43,6 +43,10 @@ export class DiversificacionIngresosComponent implements OnInit {
 
   }
 
+  realizaActividadFueraFincaConIngreso(): boolean {
+    return this.diversificacionIngresos.get('realizaActividadFueraFincaConIngreso').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

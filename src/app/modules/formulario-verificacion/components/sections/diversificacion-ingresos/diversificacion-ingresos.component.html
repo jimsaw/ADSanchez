@@ -52,7 +52,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="realizaActividadFueraFincaConIngreso()">
                     <p class="item-text">OTRA ACTIVIDAD</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -60,7 +60,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="realizaActividadFueraFincaConIngreso()">
                 <div class="col-md-12">
                     <p class="item-text">REALIZA ALGUNA DE ESTAS ACTIVIDADES FUERA DE FINCA:</p>
                     <mat-form-field class="item-full" appearance="outline">

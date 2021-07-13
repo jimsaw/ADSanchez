@@ -45,6 +45,14 @@ export class ConservacionSuelosBiodiversidadComponent implements OnInit {
 
   }
 
+  plantadoArbolesSombrioRecient(): boolean {
+    return this.conservacionSuelosBiodiversidad.get('plantadoArbolesSombrioRecient').value === 'SI';
+  }
+
+  especiesArbolesEnCultivo(): boolean {
+    return this.conservacionSuelosBiodiversidad.get('especiesArbolesEnCultivo').value === 'OTRAS';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

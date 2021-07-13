@@ -13,14 +13,14 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="haIncrementadoHectareaje()">
                     <p class="item-text">¿CUANTO? (H.A.)</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
                         <input matInput formControlName="cantidadAumento" name="someUnusualName" autocomplete="off">
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="haIncrementadoHectareaje()">
                     <p class="item-text">¿INCREMENTO FUERA DE TAMAÑO DE FINCA?</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -32,7 +32,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="haIncrementadoHectareaje()">
                 <div class="col-md-4">
                     <p class="item-text">MES</p>
                     <mat-form-field class="item" appearance="outline">

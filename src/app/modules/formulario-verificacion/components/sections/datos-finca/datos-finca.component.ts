@@ -43,6 +43,10 @@ export class DatosFincaComponent implements OnInit {
 
   }
 
+  haIncrementadoHectareaje(): boolean {
+    return this.datosFinca.get('incrementoHectareajeFinca').value === 'SI'
+  }
+
   get seccion(): any {
     return {
       preguntas: {

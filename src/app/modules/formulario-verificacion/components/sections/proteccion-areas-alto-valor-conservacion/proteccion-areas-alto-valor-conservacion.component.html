@@ -13,7 +13,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="sueloPresentaProblemaErosion()">
                     <p class="item-text">TIPO DE PROBLEMA DE EROSIÓN QUE PRESENTA</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -37,7 +37,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="necesitaImplementarPracticasMejoraSuelo()">
                     <p class="item-text">CÓMO:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -74,7 +74,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="cuentaConAreaForestales()">
                     <p class="item-text">TIPO AREA FORESTAL</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -133,7 +133,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="conoceEspeciePeligroExtincionEnFinca()">
                     <p class="item-text">CUÁLES:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -144,7 +144,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" *ngIf="conoceEspeciePeligroExtincionEnFinca()">
                     <p class="item-text">ESPECIFIQUE:</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -164,7 +164,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="fincaConsideradaAltoValor()">
                     <p class="item-text">TIPO DE ALTO VALOR</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>

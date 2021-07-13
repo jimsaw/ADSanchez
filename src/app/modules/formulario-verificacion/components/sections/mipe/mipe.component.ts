@@ -39,6 +39,10 @@ export class MIPEComponent implements OnInit {
 
   }
 
+  realizaPracticasMPE(): boolean {
+    return this.MIPE.get('realizaPracticasMPE').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

@@ -35,6 +35,10 @@ export class InjertacionComponent implements OnInit {
 
   }
 
+  realizoInjertacion(): boolean {
+    return this.injertacion.get('realizoInjertosUltimos12Meses').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

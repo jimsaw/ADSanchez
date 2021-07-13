@@ -46,6 +46,22 @@ export class FertilizacionComponent implements OnInit {
     this.percepcionFertilizanteRecibido = environment.constantes.formularioVerificacion.fertilizacionPercepcionFertilizanteRecibido;
   }
 
+  fertilizaCacaotales(): boolean {
+    return this.fertilizacion.get('fertilizaCacaotales').value === 'SI';
+  }
+
+  usaFertilizanteEdafico(): boolean {
+    return this.fertilizacion.get('usaFertilizanteEdafico').value === 'SI';
+  }
+
+  usaFertilizanteFoliar(): boolean {
+    return this.fertilizacion.get('usaFertilizanteFoliar').value === 'SI';
+  }
+
+  haRecibidoFertilizanteKits(): boolean {
+    return this.fertilizacion.get('recibidoFertilizanteKits').value === 'SI';
+  }
+
   onSubmit() {
 
   }

@@ -48,6 +48,18 @@ export class ControlMalezasComponent implements OnInit {
 
   }
 
+  controlaMalezas(): boolean {
+    return this.controlMalezas.get('controlaMalezas').value === 'SI';
+  }
+
+  tipoControlaMaleza(): boolean {
+    return this.controlMalezas.get('comoControlaMaleza').value === 'QUIMICO';
+  }
+
+  conocimientoDisposicionMaquinariaAgricola(): boolean {
+    return this.controlMalezas.get('conocimientoDisposicionMaquinariaAgricola').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {

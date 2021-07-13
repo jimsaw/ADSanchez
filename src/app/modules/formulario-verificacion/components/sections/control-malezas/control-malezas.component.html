@@ -13,7 +13,7 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" *ngIf="controlaMalezas()">
                     <p class="item-text">TIPOS DE MALEZAS QUE SE PRESENTAN CON REGULARIDAD</p>
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
@@ -25,13 +25,46 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="controlaMalezas()">
                 <div class="col-md-12">
                     <p class="item-text">¿CÓMO CONTROLA MALEZA?</p>
                     <mat-form-field class="item-full" appearance="outline">
                         <mat-label></mat-label>
                         <mat-select formControlName="comoControlaMaleza" name="someUnusualName" autocomplete="off">
                             <mat-option *ngFor="let value of comoControlaMaleza" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="controlaMalezas() && tipoControlaMaleza()">
+                <div class="col-md-6">
+                    <p class="item-text">SI ES CONTROL QUÍMICO, QUÉ PRODUCTO APLICÓ ULTIMAMENTE</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="productoQuimicoUsado" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="controlaMalezas() && tipoControlaMaleza()">
+                    <p class="item-text">CON QUÉ REGULARIDAD APLICA ESTOS PRODUCTOS QUÍMICOS?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="regularidadProductoQuimicoUsado" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of haceUsoMisma" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="controlaMalezas() && tipoControlaMaleza()">
+                <div class="col-md-12">
+                    <p class="item-text">SE RIGE POR ALGÚN TIPO DE RECOMENDACIÓN AL MOMENTO DE REALIZAR UNA APLICACIÓN</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="recomendacionSeguidaAplicandoProductoQuimico" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoRecomendacion" [value]="value">
                                 {{value}}
                             </mat-option>
                         </mat-select>
@@ -51,7 +84,7 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row align-items-end">
+            <div class="row align-items-end" *ngIf="conocimientoDisposicionMaquinariaAgricola()">
                 <div class="col-md-6">
                     <p class="item-text">HACE USO DE LA MISMA</p>
                     <mat-form-field class="item" appearance="outline">
@@ -68,39 +101,6 @@
                     <mat-form-field class="item" appearance="outline">
                         <mat-label></mat-label>
                         <input matInput formControlName="tiempoPromedioUso" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row align-items-end">
-                <div class="col-md-6">
-                    <p class="item-text">SI ES CONTROL QUÍMICO, QUÉ PRODUCTO APLICÓ ULTIMAMENTE</p>
-                    <mat-form-field class="item" appearance="outline">
-                        <mat-label></mat-label>
-                        <input matInput formControlName="productoQuimicoUsado" name="someUnusualName" autocomplete="off">
-                    </mat-form-field>
-                </div>
-                <div class="col-md-6">
-                    <p class="item-text">CON QUÉ REGULARIDAD APLICA ESTOS PRODUCTOS QUÍMICOS?</p>
-                    <mat-form-field class="item" appearance="outline">
-                        <mat-label></mat-label>
-                        <mat-select formControlName="regularidadProductoQuimicoUsado" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let value of haceUsoMisma" [value]="value">
-                                {{value}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row align-items-end">
-                <div class="col-md-12">
-                    <p class="item-text">SE RIGE POR ALGÚN TIPO DE RECOMENDACIÓN AL MOMENTO DE REALIZAR UNA APLICACIÓN</p>
-                    <mat-form-field class="item-full" appearance="outline">
-                        <mat-label></mat-label>
-                        <mat-select formControlName="recomendacionSeguidaAplicandoProductoQuimico" name="someUnusualName" autocomplete="off">
-                            <mat-option *ngFor="let value of tipoRecomendacion" [value]="value">
-                                {{value}}
-                            </mat-option>
-                        </mat-select>
                     </mat-form-field>
                 </div>
             </div>

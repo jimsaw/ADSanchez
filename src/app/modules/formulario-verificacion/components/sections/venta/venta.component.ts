@@ -38,6 +38,10 @@ export class VentaComponent implements OnInit {
 
   }
 
+  recibeBonosEmpresaProgramaLINDT(): boolean {
+    return this.venta.get('recibeBonosEmpresaProgramaLINDT').value === 'SI';
+  }
+
   get seccion(): any {
     return {
       preguntas: {
