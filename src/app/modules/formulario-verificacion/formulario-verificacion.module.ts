@@ -4,6 +4,7 @@ import { FormulariosComponent } from './components/formularios/formularios.compo
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { VerificacionComponent } from './components/verificacion/verificacion.component';
 import { DatosFincaComponent } from './components/sections/datos-finca/datos-finca.component';
 import { InjertacionComponent } from './components/sections/injertacion/injertacion.component';
@@ -78,7 +79,8 @@ import { CalidadPostCosechaComponent } from './components/sections/calidad-post-
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ]
 })
 export class FormularioVerificacionModule { }

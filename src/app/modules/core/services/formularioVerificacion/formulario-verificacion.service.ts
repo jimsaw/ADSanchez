@@ -23,8 +23,8 @@ export class FormularioVerificacionService extends FormularioService {
     return new Promise(async (resolve, reject) => {
         const docRef = this.firebase.firestore.collection('/formularios/verificacion/estructuras').doc(id);
         const formulario = (await docRef.get()).data() as FormularioVerificacion;
-        // this.initSections(formulario);
-        // await this.fetchSections(formulario);
+        // this.initSections();
+        // this.fetchSections();
         resolve(formulario);
     });
   }
@@ -86,13 +86,12 @@ export class FormularioVerificacionService extends FormularioService {
     });
   }
 
-  delete(formulario: Formulario): Promise<string> {
+  delete(formulario: FormularioVerificacion): Promise<string> {
     return new Promise<string>(async (resolve, reject) => {
       try {
         await this.firebase.firestore.runTransaction(async transaction => {
           const collRef = this.firebase.firestore.collection("/formularios/verificacion/estructuras");
-          const docRef = collRef.doc(formulario["id"]);
-          transaction.delete(docRef);
+          transaction.delete(collRef.doc(formulario.id));
           return Promise.resolve();
         });
         resolve("Formulario de verificacion eliminado correctamente");
@@ -101,6 +100,12 @@ export class FormularioVerificacionService extends FormularioService {
         reject("Ha ocurrido un error");
       }
     });
+  }
+
+  private deleteDiccionario(formularioVerificacion: FormularioVerificacion, transaction: any) {
+    const collRef = this.firebase.firestore.collection("/formularios/verificacion/diccionarios");
+    const docRef = collRef.doc(formularioVerificacion.id);
+    transaction.delete(docRef);
   }
 
 }

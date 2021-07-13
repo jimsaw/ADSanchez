@@ -39,17 +39,6 @@ export abstract class FormularioService implements Database<Formulario> {
     }
   }
 
-  protected writeSectionsTest(docRef: DocumentReference, formulario: Formulario, transaction: any) {
-    const seccionesCollRef = docRef.collection("secciones");
-    for (let section of Object.keys(formulario["secciones"])) {
-      transaction.set(seccionesCollRef.doc(section), { id: section });
-      const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
-      for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
-        this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
-      }
-    }
-  }
-
   private writeQuestions(question: string, lastObject: any, lastCollectionRef: CollectionReference, transaction: any) {
     for (let response of Object.keys(lastObject[question])) {
       if (response === "respuesta") {
@@ -129,22 +118,27 @@ export abstract class FormularioService implements Database<Formulario> {
     }
   }
 
-  protected async deleteSections(lastRef: DocumentReference, transaction: any) {
-    const secciones = await lastRef.collection('secciones').get();
-    for (let seccion of secciones.docs) {
+  protected async deleteSections(seccionCollRef: CollectionReference, transaction: any) {
+    const secciones = (await seccionCollRef.get()).docs;
+    for (let seccion of secciones) {
       const id = seccion.data()["id"];
-      const seccionRef = lastRef.collection('secciones').doc(id);
-      transaction.delete(seccionRef);
-      const questionsRef = await seccionRef.collection("preguntas").get();
-      for (let question of questionsRef.docs) {
-        this.deleteQuestions(question, seccionRef.collection('preguntas'), transaction);
+      const seccionRef = seccionCollRef.doc(id);
+      const questions = (await seccionRef.collection("preguntas").get()).docs;
+      for (let question of questions) {
+        await this.deleteQuestions(question.data(), seccionRef.collection('preguntas'), transaction);
       }
+      await this.deleteSections(seccionRef.collection("secciones"), transaction);
+      transaction.delete(seccionRef);
     }
   }
 
-  private async deleteQuestions(question: DocumentData, lastRef: CollectionReference, transaction: any) {
-    const id = question.data()["id"];
-    const questionRef = lastRef.doc(id);
+  private async deleteQuestions(data: any, lastRef: CollectionReference, transaction: any) {
+    const question = data["id"];
+    const questionRef = lastRef.doc(question);
+    const newQuestions = (await questionRef.collection("preguntas").get()).docs;
+    for (const newQuestion of newQuestions) {
+      await this.deleteQuestions(newQuestion.data(), questionRef.collection("preguntas"), transaction);
+    }
     transaction.delete(questionRef)
   }
 

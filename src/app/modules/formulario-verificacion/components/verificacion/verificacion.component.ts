@@ -93,8 +93,8 @@ export class VerificacionComponent implements OnInit {
   async setFormulario() {
     await this.fetchFormulario();
     await this.fetchAgricultor();
-    this.updateView();
     this.setFormValues();
+    this.updateView();
   }
 
   updateView() {
@@ -180,7 +180,7 @@ export class VerificacionComponent implements OnInit {
       this.manejoSueloComponent.setValues(this.formularioVerificacion);
       this.fertilizacionComponent.setValues(this.formularioVerificacion);
       this.bodegaComponent.setValues(this.formularioVerificacion);
-      this.bodegaComponent.setValues(this.formularioVerificacion);
+      this.controlMalezasComponent.setValues(this.formularioVerificacion);
       this.podaComponent.setValues(this.formularioVerificacion);
       this.mIPEComponent.setValues(this.formularioVerificacion);
       this.saludSeguridadOcupacionalComponent.setValues(this.formularioVerificacion);

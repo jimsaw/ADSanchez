@@ -209,8 +209,8 @@ export class ConservacionAguaManejoDesechosComponent implements OnInit {
       .setValue(formularioVerificacion.secciones.conservacionAguaManejoDesechos.preguntas.conocimientoAreaRecepcioEnvasesProductosQuimicos.preguntas.frecuenciaUsoServicioAreaRecepcioEnvasesProductosQuimicos.respuesta);
     this.conservacionAguaManejoDesechos.get('almacenaSeguridadEnvasesPrevioTraslado')
       .setValue(formularioVerificacion.secciones.conservacionAguaManejoDesechos.preguntas.conocimientoAreaRecepcioEnvasesProductosQuimicos.preguntas.almacenaSeguridadEnvasesPrevioTraslado.respuesta);
-    this.conservacionAguaManejoDesechos.get('lugarAlmacena')
-      .setValue(formularioVerificacion.secciones.conservacionAguaManejoDesechos.preguntas.conocimientoAreaRecepcioEnvasesProductosQuimicos.preguntas.almacenaSeguridadEnvasesPrevioTraslado.preguntas.lugarAlmacena);
+      this.conservacionAguaManejoDesechos.get('lugarAlmacena')
+      .setValue(formularioVerificacion.secciones.conservacionAguaManejoDesechos.preguntas.conocimientoAreaRecepcioEnvasesProductosQuimicos.preguntas.almacenaSeguridadEnvasesPrevioTraslado.preguntas.lugarAlmacena.respuesta);
     this.conservacionAguaManejoDesechos.get('tratamientoAguasNegras')
       .setValue(formularioVerificacion.secciones.conservacionAguaManejoDesechos.preguntas.tratamientoAguasNegras.respuesta);
     this.conservacionAguaManejoDesechos.get('tipoExtraccion')

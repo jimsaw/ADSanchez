@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioVerificacionService } from 'src/app/modules/core/services/formularioVerificacion/formulario-verificacion.service';
@@ -38,9 +39,10 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
   constructor(
     private formularioService: FormularioVerificacionService,
     private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService,
     private router: Router
   ) {
-    super(snackBar);
+    super(snackBar, spinner);
     this.dataService = this.formularioService;
   }
 
