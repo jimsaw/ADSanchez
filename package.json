@@ -28,7 +28,7 @@
     "@swimlane/ngx-datatable": "^19.0.0",
     "bootstrap": "^5.0.1",
     "bulma": "^0.9.2",
-    "express": "^4.17.1",
+    "express": "*",
     "file-saver": "^2.0.5",
     "firebase": "^8.6.2",
     "ngx-spinner": "^11.0.2",
@@ -36,8 +36,7 @@
     "rxjs": "^6.6.7",
     "ti-icons": "^0.1.2",
     "tslib": "1.10.0",
-    "zone.js": "~0.11.3",
-    "express": "*"
+    "zone.js": "~0.11.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1101.2",
