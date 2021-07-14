@@ -1,12 +1,4 @@
 export const formularioVerificacion = {
-    fechaVisita: {
-        codigo: 'F_VISITA21',
-        pregunta: 'FECHA DE VISITA'
-    },
-    tecnico: {
-        codigo: 'TECNICO',
-        pregunta: 'TECNICO'
-    },
     incrementoHectareajeFinca: {
         codigo: 'FIN19_INCHA',
         pregunta: 'HA INCREMENTADO HECTAREAJE EN SU FINCA',

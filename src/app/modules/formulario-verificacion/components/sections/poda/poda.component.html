@@ -1,38 +1,100 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="poda" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="poda">
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA PODA</mat-label>
-                <input matInput formControlName="realizaPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿QUÉ TIPO DE PODA APLICA?</mat-label>
-                <input matInput formControlName="tipoPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿LA PODA REALIZADA POR EL AGRICULTOR ES LA CORRECTA?</mat-label>
-                <input matInput formControlName="podaEsCorrecta" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OBSERVA CORTES O LACERACIONES EN LA PLANTA POR MALA PODA</mat-label>
-                <input matInput formControlName="cortesLaceracionesPlantaMalaPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OBSERVA MAZORCAS EN ESTADO DE PUDRICIÓN</mat-label>
-                <input matInput formControlName="mazorcasEstadoPudricion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PRODUCTO DE LA MALA PODA, LA PLANTA ALBERGA PLAGAS Y ENFERMEDADES</mat-label>
-                <input matInput formControlName="malaPodaAlbergaPlagasEnfermedades" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PLAGAS</mat-label>
-                <input matInput formControlName="plagasMalaPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ENFERMEDADES</mat-label>
-                <input matInput formControlName="enfermedadesMalaPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">REALIZA PODA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="realizaPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="realizaPoda()">
+                    <p class="item-text">¿QUÉ TIPO DE PODA APLICA?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tipoPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoPodaAplica" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="realizaPoda()">
+                    <p class="item-text">¿LA PODA REALIZADA POR EL AGRICULTOR ES LA CORRECTA?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="podaEsCorrecta" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">OBSERVA CORTES O LACERACIONES EN LA PLANTA POR MALA PODA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="cortesLaceracionesPlantaMalaPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">OBSERVA MAZORCAS EN ESTADO DE PUDRICIÓN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="mazorcasEstadoPudricion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">PRODUCTO DE LA MALA PODA, LA PLANTA ALBERGA PLAGAS Y ENFERMEDADES?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="malaPodaAlbergaPlagasEnfermedades" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="hayPlagasEnfermedades()">
+                    <p class="item-text">PLAGAS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="plagasMalaPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of plagas" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="hayPlagasEnfermedades()">
+                    <p class="item-text">ENFERMEDADES</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="enfermedadesMalaPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of enfermedades" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

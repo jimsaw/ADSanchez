@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { Database } from 'src/app/interfaces/database';
@@ -24,7 +25,8 @@ export class DataTableComponent<T> implements OnInit {
   @ViewChild(MaterialTableComponent) materialTableComponent: MaterialTableComponent;
 
   constructor(
-    private snackBarObj: MatSnackBar
+    private snackBarObj: MatSnackBar,
+    private spinnerObj: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,9 @@ export class DataTableComponent<T> implements OnInit {
 
   async onTrashCanClicked(row): Promise<void> {
     // const result = await this.deleteConfirmationDialog.openDialog().toPromise();
+    this.spinnerObj.show();
     await this.deleteData(row);
+    this.spinnerObj.hide();
   }
 
   async deleteData(item: T): Promise<void> {

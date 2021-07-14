@@ -1,18 +1,45 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="secado" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="secado">
-            <mat-form-field appearance="outline">
-                <mat-label>CON QUÉ NIVEL DE HUMEDAD VENDE SU CACAO:</mat-label>
-                <input matInput formControlName="nivelHumedadCacaoVendido" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿CÓMO REALIZA EL SECADO?</mat-label>
-                <input matInput formControlName="maneraRealzarSecado" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿HA INCREMENTADO SUS INGRESOS DEBIDO A UN MEJOR TRATAMIENTO DE SU PRODUCTO EN EL SECADO?</mat-label>
-                <input matInput formControlName="mejoraIngresoMejorTratamientoSecadoCacao" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">CON QUÉ NIVEL DE HUMEDAD VENDE SU CACAO:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="nivelHumedadCacaoVendido" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of nivelHumedad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">¿CÓMO REALIZA EL SECADO?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="maneraRealzarSecado" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of comoRealizaSecado" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">¿HA INCREMENTADO SUS INGRESOS DEBIDO A UN MEJOR TRATAMIENTO DE SU PRODUCTO EN EL SECADO?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="mejoraIngresoMejorTratamientoSecadoCacao" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

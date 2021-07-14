@@ -1,69 +1,90 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="bodega" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="bodega">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline">
-                    <mat-label>FINCA TIENE BODEGA PARA ALMACENAR INSECTICIDAS, FERTILIZANTES, HERRAMIENTAS</mat-label>
-                    <mat-select formControlName="poseeBodega" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">FINCA TIENE BODEGA PARA ALMACENAR INSECTICIDAS, FERTILIZANTES, HERRAMIENTAS</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="poseeBodega" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-3" appearance="outline">
-                    <mat-label>SU BODEGA ES SEGURA</mat-label>
-                    <mat-select formControlName="bodegaSegura" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="column-item-3" appearance="outline">
-                    <mat-label>SU BODEGA ES ORDENADA</mat-label>
-                    <mat-select formControlName="bodegaOrdenada" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="column-item-3" appearance="outline">
-                    <mat-label>ESTÁ CLASIFICADA POR PRODUCTO</mat-label>
-                    <mat-select formControlName="clasificadaXProducto" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">SU BODEGA ES SEGURA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="bodegaSegura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">SU BODEGA ES ORDENADA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="bodegaOrdenada" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">ESTÁ CLASIFICADA POR PRODUCTO</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="clasificadaXProducto" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>TIENE REGISTRO DE LO QUE ALMACENA</mat-label>
-                    <mat-select formControlName="tieneRegistroAlmacena" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>CUENTA CON DUCHA DE EMERGENCIA</mat-label>
-                    <mat-select formControlName="cuentaDuchaEmergencia" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">TIENE REGISTRO DE LO QUE ALMACENA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tieneRegistroAlmacena" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">CUENTA CON DUCHA DE EMERGENCIA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="cuentaDuchaEmergencia" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline">
-                    <mat-label>¿TIENE CONOCIMIENTO DE LA LISTA DE PRODUCTOS PERMITIDOS POR EL PROGRAMA LINDT?</mat-label>
-                    <mat-select formControlName="conocimientoProdcutosPermitidosLINDT" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">¿TIENE CONOCIMIENTO DE LA LISTA DE PRODUCTOS PERMITIDOS POR EL PROGRAMA LINDT?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="conocimientoProdcutosPermitidosLINDT" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
     </mat-card-content>

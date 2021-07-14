@@ -168,7 +168,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'USO ANTERIOR DEL AREA NUEVA'
     },
     otroUsoAnteriorAreaNueva: {
-        codigo: 'CAC16_NCUSO',
+        codigo: 'CAC16_NCUSOTRO',
         pregunta: 'OTRO USO ANTERIOR DEL AREA NUEVA'
     },
     tipoVariedad: {
@@ -212,7 +212,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'QUIEN REALIZO LA PROPAGACION'
     },
     otroEncargadoPropagacion: {
-        codigo: 'CAC29_PROP',
+        codigo: 'CAC29_PROPOTRO',
         pregunta: 'QUIEN OTRO REALIZO LA PROPAGACION'
     },
     tipoConocimiento: {
@@ -226,6 +226,46 @@ export const formularioLineaBaseMapper = {
     cantidadPlantasRecibidas: {
         codigo: 'CAC32_NPLANT',
         pregunta: 'CANTIDAD DE PLANTAS RECIBIDAS'
+    },
+    clasificacionMiembroFamiliar: {
+        codigo: 'FA01_MF',
+        pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'
+    },
+    edad: {
+        codigo: 'FA02_ED',
+        pregunta: 'EDAD DEL MIEMBRO FAMILIAR'
+    },
+    genero: {
+        codigo: 'FA03_GEN',
+        pregunta: 'GÉNERO DEL MIEMBRO FAMILIAR'
+    },
+    seguridadSocial: {
+        codigo: 'FA04_SS',
+        pregunta: 'SEGURIDAD SOCIAL DEL MIEMBRO FAMILIAR'
+    },
+    nivelEduacion: {
+        codigo: 'FA05_EDU',
+        pregunta: 'NIVEL DE EDUCACIÓN'
+    },
+    laboraEnFinca: {
+        codigo: 'FA06_LAB',
+        pregunta: 'LABORA EN LA FINCA'
+    },
+    laborRealizado: {
+        codigo: 'FA07_LABR',
+        pregunta: 'LABOR QUE REALIZA'
+    },
+    horasAlDiaTrabaja: {
+        codigo: 'FA08_HOR',
+        pregunta: '¿CUÁNTAS HORAS AL DÍA LABORA?'
+    },
+    tieneOtraFuenteIngreso: {
+        codigo: 'FA09_RD',
+        pregunta: 'TIENE OTRA FUENTE DE INGRESOS'
+    },
+    sueldoIngresoMensual: {
+        codigo: 'FA10_ING',
+        pregunta: 'SUELDO O INGRESO MENSUAL'
     },
     miembro1ClasifiacionMiembroFamiliar: {
         codigo: 'FA01_MF1',
@@ -427,22 +467,6 @@ export const formularioLineaBaseMapper = {
         codigo: 'MIPE15_ENFERM',
         pregunta: 'ENFERMEDADES QUE AFECTAN GENERALMENTE EN EL CULTIVO'
     },
-    escobabruja: {
-        codigo: 'MIPE16_ESC',
-        pregunta: 'ESCOBA BRUJA'
-    },
-    monilla: {
-        codigo: 'MIPE17_EMO',
-        pregunta: 'MONILLA'
-    },
-    malDeMachete: {
-        codigo: 'MIPE18_EMM',
-        pregunta: 'MAL DE MACHETE'
-    },
-    otrosEnfermedades: {
-        codigo: 'MIPE19_EOTR',
-        pregunta: 'OTROS'
-    },
     productoParaPlagas: {
         codigo: 'MIPE07_PLA',
         pregunta: 'PRODUCTO QUIMICO O NATURAL QUE APLICÓ PARA LAS PLAGAS'
@@ -560,7 +584,7 @@ export const formularioLineaBaseMapper = {
         pregunta: 'QUÉ TIPO DE BENEFICIOS'
     },
     otroTiposBeneficios: {
-        codigo: 'ASO05_TIPBENEF',
+        codigo: 'ASO05_TIPBENEFOTRO',
         pregunta: 'QUÉ OTRO TIPO DE BENEFICIOS'
     },
     ayudaOtraInstitucion: {

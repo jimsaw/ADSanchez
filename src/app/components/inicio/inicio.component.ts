@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ExportacionesService } from 'src/app/modules/core/services/exportaciones/exportaciones.service';
 
 @Component({
   selector: 'app-inicio',

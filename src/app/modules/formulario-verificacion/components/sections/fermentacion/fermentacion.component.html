@@ -1,26 +1,69 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="fermentacion" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="fermentacion">
-            <mat-form-field appearance="outline">
-                <mat-label>FERMENTA SU CACAO</mat-label>
-                <input matInput formControlName="fermetaCacao" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>RAZÓN POR LA QUE NO FERMENTA:</mat-label>
-                <input matInput formControlName="razonNoFermenta" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CUANDO FERMENTA LO HACE:</mat-label>
-                <input matInput formControlName="modoFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CUANDO FERMENTA LO HACE:</mat-label>
-                <input matInput formControlName="medidasHigieneFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>¿HA INCREMENTADO SUS INGRESOS DEBIDO A UN MEJOR TRATAMIENTO EN LA FERMENTACIÓN?</mat-label>
-                <input matInput formControlName="aumentoIngresoPorFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">FERMENTA SU CACAO</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="fermentaCacao" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of fermentaCacao" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="siFermentaCacao()">
+                    <p class="item-text">RAZÓN POR LA QUE NO FERMENTA:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="razonNoFermenta" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of razonNoFermenta" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="siFermentaCacao()">
+                <div class="col-md-12">
+                    <p class="item-text">CUANDO FERMENTA LO HACE:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="modoFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of comoLoHace1" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="siFermentaCacao()">
+                <div class="col-md-12">
+                    <p class="item-text">CUANDO FERMENTA LO HACE:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="medidasHigieneFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of comoLoHace2" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="siFermentaCacao()">
+                <div class="col-md-12">
+                    <p class="item-text">¿HA INCREMENTADO SUS INGRESOS DEBIDO A UN MEJOR TRATAMIENTO EN LA FERMENTACIÓN?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="aumentoIngresoPorFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

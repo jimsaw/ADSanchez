@@ -1,0 +1,59 @@
+.mat-expansion-panel{
+    width: 100%;
+}
+
+.col-md-4{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.item{
+    margin-left: 1rem;
+    width: 95%;
+}
+
+.item-text{
+    margin-left: 1rem;
+}
+
+.col-md-6{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.col-md-12{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.item-full{
+    margin-left: 1rem;
+    width: 98%;
+}
+
+.contenedor{
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.boton {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    width: 50%;
+}
+
+.element{
+    width: 95%;
+    margin-left: 1rem;
+}
+
+.contenedor2{
+    align-content: center;
+    justify-content: center;
+}
+
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}

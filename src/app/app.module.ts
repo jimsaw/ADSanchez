@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormularioLineaBaseModule } from './modules/formulario-linea-base/formulario-linea-base.module';
 import { FormularioVerificacionModule } from './modules/formulario-verificacion/formulario-verificacion.module';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { ExportacionesModule } from './modules/exportaciones/exportaciones.module';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     InicioComponent
   ],
   imports: [
+    NgxSpinnerModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserModule,
@@ -36,6 +39,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     AgricultorModule,
     FormularioLineaBaseModule,
     FormularioVerificacionModule,
+    ExportacionesModule,
     BrowserAnimationsModule,
     MaterialModule,
     CoreModule,
@@ -44,6 +48,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     ToastrModule.forRoot()
   ],
   exports: [
+    NgxSpinnerModule,
     MaterialModule,
     AuthModule,
     AgricultorModule,
@@ -52,6 +57,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

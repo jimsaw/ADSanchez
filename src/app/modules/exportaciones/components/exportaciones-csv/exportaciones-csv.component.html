@@ -1,0 +1,23 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-atom" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+<div class="row contenedor">
+    <form [formGroup]="formularioExportado" (ngSubmit)="onSubmit()">
+        <div class="row contenedor2">
+            <div class="col-md-4">
+                <mat-form-field class="element" appearance="outline">
+                    <mat-label>INGRESE ID DEL FORMULARIO:</mat-label>
+                    <input matInput formControlName="idFormulario" name="someUnusualName" autocomplete="off">
+                </mat-form-field>
+            </div>
+            <div class="col-md-4" style="text-align: center;">
+                <button mat-raised-button class="boton" mat-raised-button color="primary" type="onSubmit" [disabled]="!formularioExportado.valid">Exportar</button>
+            </div>
+        </div>
+    </form>
+    <div class="row contenedor2">
+        <div class="col-md-4" style="text-align: center;">
+            <button class="boton" mat-raised-button color="primary" (click)="exportAll()">Exportar Todos</button>
+        </div>
+    </div>
+</div>

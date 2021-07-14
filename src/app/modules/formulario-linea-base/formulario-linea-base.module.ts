@@ -4,6 +4,7 @@ import { FormularioLineaBaseRoutingModule } from './formulario-linea-base-routin
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { LineaBaseComponent } from './components/linea-base/linea-base.component';
 import { InformacionFincaComponent } from './components/sections/informacion-finca/informacion-finca.component';
 import { HectareajeComponent } from './components/sections/hectareaje/hectareaje.component';
@@ -58,7 +59,8 @@ import { FormulariosComponent } from './components/formularios/formularios.compo
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    NgxSpinnerModule
   ]
 })
 export class FormularioLineaBaseModule { }
