@@ -1,81 +1,108 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="controlMalezas" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="controlMalezas">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>CONTROLA MALEZAS</mat-label>
-                    <mat-select formControlName="controlaMalezas" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>TIPOS DE MALEZAS QUE SE PRESENTAN CON REGULARIDAD</mat-label>
-                    <mat-select formControlName="tiposMalezaEncontrada" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of tipoMaleza" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">CONTROLA MALEZAS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="controlaMalezas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="controlaMalezas()">
+                    <p class="item-text">TIPOS DE MALEZAS QUE SE PRESENTAN CON REGULARIDAD</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tiposMalezaEncontrada" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoMaleza" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline">
-                    <mat-label>¿CÓMO CONTROLA MALEZA?</mat-label>
-                    <mat-select formControlName="comoControlaMaleza" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of comoControlaMaleza" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end" *ngIf="controlaMalezas()">
+                <div class="col-md-12">
+                    <p class="item-text">¿CÓMO CONTROLA MALEZA?</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="comoControlaMaleza" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of comoControlaMaleza" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline">
-                    <mat-label>CONTROL MECÁNICO: SABE UD. QUE TENEMOS A DISPOSICIÓN MAQUINARIAS DE USO AGRÍCOLA</mat-label>
-                    <mat-select formControlName="conocimientoDisposicionMaquinariaAgricola" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end" *ngIf="controlaMalezas() && tipoControlaMaleza()">
+                <div class="col-md-6">
+                    <p class="item-text">SI ES CONTROL QUÍMICO, QUÉ PRODUCTO APLICÓ ULTIMAMENTE</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="productoQuimicoUsado" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="controlaMalezas() && tipoControlaMaleza()">
+                    <p class="item-text">CON QUÉ REGULARIDAD APLICA ESTOS PRODUCTOS QUÍMICOS?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="regularidadProductoQuimicoUsado" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of haceUsoMisma" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>HACE USO DE LA MISMA</mat-label>
-                    <mat-select formControlName="haceUsoMisma" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of haceUsoMisma" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>TIEMPO PROMEDIO DE USO (EN DÍAS):</mat-label>
-                    <input matInput formControlName="tiempoPromedioUso" name="someUnusualName" autocomplete="off">
-                </mat-form-field>
+            <div class="row align-items-end" *ngIf="controlaMalezas() && tipoControlaMaleza()">
+                <div class="col-md-12">
+                    <p class="item-text">SE RIGE POR ALGÚN TIPO DE RECOMENDACIÓN AL MOMENTO DE REALIZAR UNA APLICACIÓN</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="recomendacionSeguidaAplicandoProductoQuimico" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoRecomendacion" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>SI ES CONTROL QUÍMICO, QUÉ PRODUCTO APLICÓ ULTIMAMENTE</mat-label>
-                    <input matInput formControlName="productoQuimicoUsado" name="someUnusualName" autocomplete="off">
-                </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>CON QUÉ REGULARIDAD APLICA ESTOS PRODUCTOS QUÍMICOS?</mat-label>
-                    <mat-select formControlName="regularidadProductoQuimicoUsado" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of haceUsoMisma" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">CONTROL MECÁNICO: SABE UD. QUE TENEMOS A DISPOSICIÓN MAQUINARIAS DE USO AGRÍCOLA</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="conocimientoDisposicionMaquinariaAgricola" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
-            <div class="columns-flex">
-                <mat-form-field class="column-item-full" appearance="outline">
-                    <mat-label>SE RIGE POR ALGÚN TIPO DE RECOMENDACIÓN AL MOMENTO DE REALIZAR UNA APLICACIÓN</mat-label>
-                    <mat-select formControlName="recomendacionSeguidaAplicandoProductoQuimico" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of tipoRecomendacion" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div class="row align-items-end" *ngIf="conocimientoDisposicionMaquinariaAgricola()">
+                <div class="col-md-6">
+                    <p class="item-text">HACE USO DE LA MISMA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="haceUsoMisma" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of haceUsoMisma" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">TIEMPO PROMEDIO DE USO (EN DÍAS):</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="tiempoPromedioUso" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
             </div>
         </div>
     </mat-card-content>

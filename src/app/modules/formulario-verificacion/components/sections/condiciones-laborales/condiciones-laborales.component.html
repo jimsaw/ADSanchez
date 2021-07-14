@@ -1,26 +1,63 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="condicionesLaborales" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="condicionesLaborales">
-            <mat-form-field appearance="outline">
-                <mat-label>DISCRIMINACIÓN</mat-label>
-                <input matInput formControlName="discriminacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>EXPLOTACIÓN</mat-label>
-                <input matInput formControlName="explotacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TRABAJO INFANTIL</mat-label>
-                <input matInput formControlName="trabajoInfantil" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>DOCUMENTOS DE SOPORTE</mat-label>
-                <input matInput formControlName="documentosSoporte" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MONTO DE ACUERDO AL CONTRATO AGRÍCOLA</mat-label>
-                <input matInput formControlName="montoAcuerdoContratoAgricola" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md">
+                    <p class="item-text">DISCRIMINACIÓN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="discriminacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">EXPLOTACIÓN</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="explotacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">TRABAJO INFANTIL</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="trabajoInfantil" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">DOCUMENTOS DE SOPORTE</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="documentosSoporte" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <p class="item-text">MONTO DE ACUERDO AL CONTRATO AGRÍCOLA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="montoAcuerdoContratoAgricola" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

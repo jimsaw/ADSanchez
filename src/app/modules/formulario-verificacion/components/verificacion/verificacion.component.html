@@ -7,7 +7,7 @@
         <mat-form-field appearance="outline">
             <mat-label>Agricultor</mat-label>
             <mat-select formControlName="agricultor" name="someUnusualName" autocomplete="off">
-                <mat-option *ngFor="let value of listaAgricultores" [value]="value.id">
+                <mat-option *ngFor="let value of listaAgricultores" [value]="value">
                     {{value.nombre}}
                 </mat-option>
             </mat-select>

@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div formArrayName="viejosInjertados" class="row justify-content-end" *ngFor="let value of getFormArray('viejosInjertados').controls; let i = index">
-                <div *ngIf="i !== 0" class="col-md-1 col-xs-1">
+                <div *ngIf="i !== 0" class="col-md-1 col-xs-1 display-fr">
                     <button id="delete" *ngIf="getFormArray('viejosInjertados').length > 1" (click)="deleteViejoInjertado(i)" mat-flat-button>
                         <mat-icon>clear</mat-icon>
                     </button>
@@ -65,6 +65,11 @@
                     <input matInput formControlName="edadViejoInjertado" autocomplete="off">
                     <!--mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error-->
                 </mat-form-field>
+                <div *ngIf="i !== 0" class="col-md-1 col-xs-1 display-bck">
+                    <button id="delete" *ngIf="getFormArray('viejosInjertados').length > 1" (click)="deleteViejoInjertado(i)" mat-flat-button>
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
             </div>
             <div class="row justify-content-end">
                 <div class="col-md-4 add-button">
@@ -93,7 +98,7 @@
                 </div>
             </div>
             <div formArrayName="nuevosClones" class="row justify-content-end" *ngFor="let value of getFormArray('nuevosClones').controls; let i = index">
-                <div *ngIf="i !== 0" class="col-md-1 col-xs-1">
+                <div *ngIf="i !== 0" class="col-md-1 col-xs-1 display-fr">
                     <button id="delete" *ngIf="getFormArray('nuevosClones').length > 1" (click)="deleteNuevosClones(i)" mat-flat-button>
                         <mat-icon>clear</mat-icon>
                     </button>
@@ -108,6 +113,11 @@
                     <input matInput formControlName="edadNuevosClones" autocomplete="off">
                     <!--mat-error *ngIf="celular.get('celular').invalid">{{getErrorMessage(celular.get('celular'))}}</mat-error-->
                 </mat-form-field>
+                <div *ngIf="i !== 0" class="col-md-1 col-xs-1 display-bck">
+                    <button id="delete" *ngIf="getFormArray('nuevosClones').length > 1" (click)="deleteNuevosClones(i)" mat-flat-button>
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                </div>
             </div>
             <div class="row justify-content-end">
                 <div class="col-md-4 add-button">

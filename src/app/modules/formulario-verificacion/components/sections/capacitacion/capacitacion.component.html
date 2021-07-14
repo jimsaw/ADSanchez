@@ -1,114 +1,345 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="capacitacion" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="capacitacion">
-            <mat-form-field appearance="outline">
-                <mat-label>CACAO FINO DE AROMA, SOSTENIBILIDAD Y TRAZABILIDAD</mat-label>
-                <input matInput formControlName="utilidadCacaoFinoAromaSostenibilidadTrazabilidad" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CACAO FINO DE AROMA, SOSTENIBILIDAD Y TRAZABILIDAD</mat-label>
-                <input matInput formControlName="aplicaCacaoFinoAromaSostenibilidadTrazabilidad" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BUENAS PRÁCTICAS AGRÍCOLAS</mat-label>
-                <input matInput formControlName="utilidadBuenasPracticasAgricolas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BUENAS PRÁCTICAS AGRÍCOLAS</mat-label>
-                <input matInput formControlName="aplicaBuenasPracticasAgricolas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PARÁMETROS DE CALIDAD</mat-label>
-                <input matInput formControlName="utilidadParametrosCalidad" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PARÁMETROS DE CALIDAD</mat-label>
-                <input matInput formControlName="aplicaParametrosCalidad" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BUENAS PRÁCTICAS SOCIALES</mat-label>
-                <input matInput formControlName="utilidadBuenasPracticasSociales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BUENAS PRÁCTICAS SOCIALES</mat-label>
-                <input matInput formControlName="aplicaBuenasPracticasSociales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BUENAS PRÁCTICAS AMBIENTALES</mat-label>
-                <input matInput formControlName="utilidadBuenasPracticasAmbientales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>BUENAS PRÁCTICAS AMBIENTALES</mat-label>
-                <input matInput formControlName="aplicaBuenasPracticasAmbientales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ELABORACIÓN DE PRODUCTOS ORGÁNICOS</mat-label>
-                <input matInput formControlName="utilidadElaboracionProductosOrganicos" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ELABORACIÓN DE PRODUCTOS ORGÁNICOS</mat-label>
-                <input matInput formControlName="aplicaElaboracionProductosOrganicos" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REPRODUCCIÓN VEGETATIVA</mat-label>
-                <input matInput formControlName="utilidadReproduccionVegetativa" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REPRODUCCIÓN VEGETATIVA</mat-label>
-                <input matInput formControlName="aplicaReproduccionVegetativa" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PODA</mat-label>
-                <input matInput formControlName="utilidadPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PODA</mat-label>
-                <input matInput formControlName="aplicaPoda" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>APICULTURA</mat-label>
-                <input matInput formControlName="utilidadApicultura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>APICULTURA</mat-label>
-                <input matInput formControlName="aplicaApicultura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PORCICULTURA</mat-label>
-                <input matInput formControlName="utilidadPorcicultura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PORCICULTURA</mat-label>
-                <input matInput formControlName="aplicaPorcicultura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PISCICULTURA</mat-label>
-                <input matInput formControlName="utilidadPiscicultura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>PISCICULTURA</mat-label>
-                <input matInput formControlName="aplicaPiscicultura" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>RIEGO</mat-label>
-                <input matInput formControlName="utilidadRiego" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>RIEGO</mat-label>
-                <input matInput formControlName="aplicaRiego" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>AGROFORESTERÍA DINÁMICA</mat-label>
-                <input matInput formControlName="utilidadAgroforesteriaDinamica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>AGROFORESTERÍA DINÁMICA</mat-label>
-                <input matInput formControlName="aplicaAgroforesteriaDinamica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>QUÉ TEMAS ADICIONALES LE GUSTARÍA APRENDER EN PRÓXIMAS CAPACITACIONES:</mat-label>
-                <input matInput formControlName="temasAdicionalesGustariaAprender" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">TEMAS DE CAPACITACIÓN</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">CACAO FINO DE AROMA, SOSTENIBILIDAD Y TRAZABILIDAD</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadCacaoFinoAromaSostenibilidadTrazabilidad" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaCacaoFinoAromaSostenibilidadTrazabilidad" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">BUENAS PRÁCTICAS AGRÍCOLAS</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadBuenasPracticasAgricolas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaBuenasPracticasAgricolas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PARÁMETROS DE CALIDAD</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadParametrosCalidad" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaParametrosCalidad" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">BUENAS PRÁCTICAS SOCIALES</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadBuenasPracticasSociales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaBuenasPracticasSociales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">BUENAS PRÁCTICAS AMBIENTALES</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadBuenasPracticasAmbientales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaBuenasPracticasAmbientales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">ELABORACIÓN DE PRODUCTOS ORGÁNICOS</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadElaboracionProductosOrganicos" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaElaboracionProductosOrganicos" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">REPRODUCCIÓN VEGETATIVA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadReproduccionVegetativa" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaReproduccionVegetativa" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PODA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaPoda" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">APICULTURA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadApicultura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaApicultura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PORCICULTURA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadPorcicultura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaPorcicultura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">PISCICULTURA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadPiscicultura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaPiscicultura" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">RIEGO</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadRiego" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaRiego" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="item-text" style="margin-top: 1rem;">AGROFORESTERÍA DINÁMICA</p>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>UTILIDAD</mat-label>
+                        <mat-select formControlName="utilidadAgroforesteriaDinamica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of utilidad" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label>LO APLICA?</mat-label>
+                        <mat-select formControlName="aplicaAgroforesteriaDinamica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">QUÉ TEMAS ADICIONALES LE GUSTARÍA APRENDER EN PRÓXIMAS CAPACITACIONES:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="temasAdicionalesGustariaAprender" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

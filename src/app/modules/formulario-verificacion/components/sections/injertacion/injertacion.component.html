@@ -1,23 +1,29 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="injertacion" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="injertacion">
-            <div class="columns-flex">
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>HA REALIZADO INJERTO LOS ULTIMOS 12 MESES PARA REJUVENECER LAS PLANTAS</mat-label>
-                    <mat-select formControlName="realizoInjertosUltimos12Meses" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field class="column-item-2" appearance="outline">
-                    <mat-label>¿EN QUÉ MES?</mat-label>
-                    <mat-select formControlName="mesRealizoInjertos" name="someUnusualName" autocomplete="off">
-                        <mat-option *ngFor="let value of meses" [value]="value">
-                            {{value}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">HA REALIZADO INJERTO LOS ULTIMOS 12 MESES PARA REJUVENECER LAS PLANTAS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="realizoInjertosUltimos12Meses" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="realizoInjertacion()">
+                    <p class="item-text">¿EN QUÉ MES?</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="mesRealizoInjertos" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of meses" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
     </mat-card-content>

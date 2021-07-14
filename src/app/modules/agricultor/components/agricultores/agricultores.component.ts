@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { Agricultor } from 'src/app/interfaces/agricultor';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
@@ -39,9 +40,10 @@ export class AgricultoresComponent extends DataTableComponent<Agricultor> implem
 
   constructor(
     private agricultorService: AgricultorService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService
   ) {
-    super(snackBar);
+    super(snackBar, spinner);
     super.dataService = this.agricultorService;
     super.columnsInfo = this.columnsInfo;
   }

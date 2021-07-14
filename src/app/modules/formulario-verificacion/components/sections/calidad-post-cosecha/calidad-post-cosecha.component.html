@@ -1,86 +1,246 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="calidadPostCosecha" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="calidadPostCosecha">
-            <mat-form-field appearance="outline">
-                <mat-label>CAJON FERMENTACION</mat-label>
-                <input matInput formControlName="necesitaCajonFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MARQUESINAS</mat-label>
-                <input matInput formControlName="necesitaMarquesinas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TENDALES</mat-label>
-                <input matInput formControlName="necesitaTendales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SECADORAS</mat-label>
-                <input matInput formControlName="necesitaSecadoras" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="necesitaOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CAJON FERMENTACION</mat-label>
-                <input matInput formControlName="disponibilidadInvertirCajonFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MARQUESINAS</mat-label>
-                <input matInput formControlName="disponibilidadInvertirMarquesinas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TENDALES</mat-label>
-                <input matInput formControlName="disponibilidadInvertirTendales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SECADORAS</mat-label>
-                <input matInput formControlName="disponibilidadInvertirSecadoras" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="disponibilidadInvertirOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CAJON FERMENTACION</mat-label>
-                <input matInput formControlName="condAdecuadasFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MARQUESINAS</mat-label>
-                <input matInput formControlName="condAdecuadasMarquesinas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TENDALES</mat-label>
-                <input matInput formControlName="condAdecuadasTendales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SECADORAS</mat-label>
-                <input matInput formControlName="condAdecuadasSecadoras" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="condAdecuadasOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CAJON FERMENTACION</mat-label>
-                <input matInput formControlName="condEconomicasFermentacion" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>MARQUESINAS</mat-label>
-                <input matInput formControlName="condEconomicasMarquesinas" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TENDALES</mat-label>
-                <input matInput formControlName="condEconomicasTendales" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SECADORAS</mat-label>
-                <input matInput formControlName="condEconomicasSecadoras" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTROS:</mat-label>
-                <input matInput formControlName="condEconomicasOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">INCENTIVOS DEL PROGRAMA LINDT</p>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">CAJON FERMENTACION</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaCajonFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>DISPONIBILIDAD A INVERTIR</mat-label>
+                        <mat-select formControlName="disponibilidadInvertirCajonFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ADECUADAS</mat-label>
+                        <mat-select formControlName="condAdecuadasFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ECONOMICAS</mat-label>
+                        <mat-select formControlName="condEconomicasFermentacion" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">MARQUESINAS</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaMarquesinas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>DISPONIBILIDAD A INVERTIR</mat-label>
+                        <mat-select formControlName="disponibilidadInvertirMarquesinas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ADECUADAS</mat-label>
+                        <mat-select formControlName="condAdecuadasMarquesinas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ECONOMICAS</mat-label>
+                        <mat-select formControlName="condEconomicasMarquesinas" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">TENDALES</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaTendales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>DISPONIBILIDAD A INVERTIR</mat-label>
+                        <mat-select formControlName="disponibilidadInvertirTendales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ADECUADAS</mat-label>
+                        <mat-select formControlName="condAdecuadasTendales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ECONOMICAS</mat-label>
+                        <mat-select formControlName="condEconomicasTendales" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">SECADORAS</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaSecadoras" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>DISPONIBILIDAD A INVERTIR</mat-label>
+                        <mat-select formControlName="disponibilidadInvertirSecadoras" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ADECUADAS</mat-label>
+                        <mat-select formControlName="condAdecuadasSecadoras" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ECONOMICAS</mat-label>
+                        <mat-select formControlName="condEconomicasSecadoras" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col">
+                    <p class="item-text" style="text-align: center;margin-bottom: 1.5rem;">OTROS:</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>NECESITA</mat-label>
+                        <mat-select formControlName="necesitaOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>DISPONIBILIDAD A INVERTIR</mat-label>
+                        <mat-select formControlName="disponibilidadInvertirOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ADECUADAS</mat-label>
+                        <mat-select formControlName="condAdecuadasOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="item" class="item" appearance="outline">
+                        <mat-label>COND. ECONOMICAS</mat-label>
+                        <mat-select formControlName="condEconomicasOtrosCalidadPostCosecha" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

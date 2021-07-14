@@ -1,5 +1,18 @@
-.row{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.col-md-4{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.item{
+    margin-left: 1rem;
+    width: 95%;
+}
+
+.item-text{
+    margin-left: 1rem;
+}
+
+.col-md-6{
+    padding-left: 0;
+    padding-right: 0;
 }

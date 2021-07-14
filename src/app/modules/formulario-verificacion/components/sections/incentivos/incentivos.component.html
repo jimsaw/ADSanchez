@@ -1,6 +1,6 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="incentivos" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="incentivos">
+        <div class="row">
             <div class="row">
                 <mat-expansion-panel hideToggle>
                     <mat-expansion-panel-header>
@@ -51,10 +51,15 @@
                     <app-calidad-post-cosecha [parentForm]="incentivos"></app-calidad-post-cosecha>
                 </mat-expansion-panel>
             </div>
-            <mat-form-field appearance="outline" style="margin-top: 2rem;width: 100%;">
-                <mat-label>OTRAS NECESIDADES DETECTADAS EN LA FINCA</mat-label>
-                <input matInput formControlName="necesidadesDetectadasFinca" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+            <div class="row" style="margin-top: 2rem;">
+                <div class="col-md-12">
+                    <p class="item-text">OTRAS NECESIDADES DETECTADAS EN LA FINCA</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="necesidadesDetectadasFinca" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

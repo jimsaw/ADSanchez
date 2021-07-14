@@ -77,6 +77,6 @@ export class CacaoCNNComponent implements OnInit {
       .setValue(formularioLineaBase.secciones.cacaoCNN.preguntas.produccionAnioAnteriorCacaoCNN.respuesta);
     this.cacaoCNN.get('precioPromedio')
       .setValue(formularioLineaBase.secciones.cacaoCNN.preguntas.precioPromedio.respuesta);
-}
+  }
 
 }

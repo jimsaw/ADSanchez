@@ -1,46 +1,116 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="proteccionAreasRiberenias" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="proteccionAreasRiberenias">
-            <mat-form-field appearance="outline">
-                <mat-label>POSEE ALGUNA FUENTE HÍDRICA</mat-label>
-                <input matInput formControlName="poseeFuenteHidrica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>NOMBRE FUENTE HIDRICA</mat-label>
-                <input matInput formControlName="nombreFuenteHidrica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>ESPECIFIQUE OTROS</mat-label>
-                <input matInput formControlName="especifiqueOtros" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>TIPO DE FUENTE HÍDRICA:</mat-label>
-                <input matInput formControlName="tipoFuenteHidrica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CÓMO SON CONSIDERADAS LAS FUENTES HÍDRICAS:</mat-label>
-                <input matInput formControlName="consideradaFuenteHidrica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SU FINCA POSEE NACIENTES</mat-label>
-                <input matInput formControlName="poseeNacientes" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CUÁNTAS:</mat-label>
-                <input matInput formControlName="cuantasNacientes" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SE BRINDA PROTECCIÓN A FUENTES HÍDRICAS</mat-label>
-                <input matInput formControlName="brindaProteccionFuenteHidrica" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>CÓMO (ZONA AMORTIGU.)</mat-label>
-                <input matInput formControlName="comoBrindaProtFuentHidr" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>SE CUMPLE CON LAS DISTANCIAS REQUERIDAS</mat-label>
-                <input matInput formControlName="distanciaRequerida" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-4">
+                    <p class="item-text">POSEE ALGUNA FUENTE HÍDRICA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="poseeFuenteHidrica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="poseeFuenteHidrica()">
+                    <p class="item-text">NOMBRE FUENTE HIDRICA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="nombreFuenteHidrica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of nombreFuenteHidrica" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="poseeFuenteHidrica() && otroNombreFuenteHidrica()">
+                    <p class="item-text">ESPECIFIQUE OTROS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="especifiqueOtros" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="poseeFuenteHidrica()">
+                <div class="col-md-6">
+                    <p class="item-text">TIPO DE FUENTE HÍDRICA:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="tipoFuenteHidrica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of tipoFuenteHidrica" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <p class="item-text">CÓMO SON CONSIDERADAS LAS FUENTES HÍDRICAS:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="consideradaFuenteHidrica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of consideradaFuenteHidrica" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="poseeFuenteHidrica()">
+                <div class="col-md-6">
+                    <p class="item-text">SU FINCA POSEE NACIENTES</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="poseeNacientes" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="poseeNacientes()">
+                    <p class="item-text">CUÁNTAS:</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="cuantasNacientes" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="poseeFuenteHidrica()">
+                <div class="col-md-4">
+                    <p class="item-text">SE BRINDA PROTECCIÓN A FUENTES HÍDRICAS</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="brindaProteccionFuenteHidrica" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4" *ngIf="brindaProteccionFuenteHidrica()">
+                    <p class="item-text">CÓMO (ZONA AMORTIGU.)</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="comoBrindaProtFuentHidr" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of comoBrindaProtFuentHidr" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                    <p class="item-text">SE CUMPLE CON LAS DISTANCIAS REQUERIDA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="distanciaRequerida" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of distanciaRequerida" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

@@ -1,30 +1,78 @@
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="diversificacionIngresos" (ngSubmit)="onSubmit()">
     <mat-card-content>
-        <div class="row" formGroupName="diversificacionIngresos">
-            <mat-form-field appearance="outline">
-                <mat-label>UD DESTINA LOS CULTIVOS DIFERENTES AL CACAO A:</mat-label>
-                <input matInput formControlName="usoCultivoDiferenteCacao" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA OTRA ACTIVIDAD DENTRO DE LA FINCA QUE GENERE INGRESOS:</mat-label>
-                <input matInput formControlName="otraActividadDentroFincaConIngreso" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA ACTIVIDAD ADICIONAL FUERA DE FINCA QUE GENERE INGRESOS:</mat-label>
-                <input matInput formControlName="realizaActividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>HA IMPLEMENTADO HUERTOS ORGÁNICOS DENTRO DE SU FINCA</mat-label>
-                <input matInput formControlName="huertosOrganicosEnFinca" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>OTRA ACTIVIDAD</mat-label>
-                <input matInput formControlName="otraActividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>REALIZA ALGUNA DE ESTAS ACTIVIDADES FUERA DE FINCA:</mat-label>
-                <input matInput formControlName="actividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
-            </mat-form-field>
+        <div class="row">
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">UD DESTINA LOS CULTIVOS DIFERENTES AL CACAO A:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="usoCultivoDiferenteCacao" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of usoCultivoDiferenteCacao" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">REALIZA OTRA ACTIVIDAD DENTRO DE LA FINCA QUE GENERE INGRESOS:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="otraActividadDentroFincaConIngreso" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of otraActividadDentroFincaConIngreso" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <p class="item-text">REALIZA ACTIVIDAD ADICIONAL FUERA DE FINCA QUE GENERE INGRESOS:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="realizaActividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="col-md-6">
+                    <p class="item-text">HA IMPLEMENTADO HUERTOS ORGÁNICOS DENTRO DE SU FINCA</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="huertosOrganicosEnFinca" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of yesNoAnswer" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6" *ngIf="realizaActividadFueraFincaConIngreso()">
+                    <p class="item-text">OTRA ACTIVIDAD</p>
+                    <mat-form-field class="item" appearance="outline">
+                        <mat-label></mat-label>
+                        <input matInput formControlName="otraActividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row align-items-end" *ngIf="realizaActividadFueraFincaConIngreso()">
+                <div class="col-md-12">
+                    <p class="item-text">REALIZA ALGUNA DE ESTAS ACTIVIDADES FUERA DE FINCA:</p>
+                    <mat-form-field class="item-full" appearance="outline">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="actividadFueraFincaConIngreso" name="someUnusualName" autocomplete="off">
+                            <mat-option *ngFor="let value of actividadFueraFincaConIngreso" [value]="value">
+                                {{value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
         </div>
     </mat-card-content>
 </form>

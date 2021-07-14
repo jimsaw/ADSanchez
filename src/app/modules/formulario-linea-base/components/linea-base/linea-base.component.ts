@@ -21,7 +21,6 @@ import { VentaComponent } from '../sections/venta/venta.component';
 import { NivelAsociatividadComponent } from '../sections/nivel-asociatividad/nivel-asociatividad.component';
 import { CondicionesLaboralesComponent } from '../sections/condiciones-laborales/condiciones-laborales.component';
 import { ServiciosBasicosComponent } from '../sections/servicios-basicos/servicios-basicos.component';
-import { ConservacionAguaManejoDesechosComponent } from 'src/app/modules/formulario-verificacion/components/sections/conservacion-agua-manejo-desechos/conservacion-agua-manejo-desechos.component';
 import { ConservacionRecursosManejoDesechosComponent } from '../sections/conservacion-recursos-manejo-desechos/conservacion-recursos-manejo-desechos.component';
 import { IncrementarProductividadComponent } from '../sections/incrementar-productividad/incrementar-productividad.component';
 import { MejorarCalidadCacaoComponent } from '../sections/mejorar-calidad-cacao/mejorar-calidad-cacao.component';
@@ -108,14 +107,14 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   async fetchFormulario(): Promise<void> {
     const id = this.activatedRoute.snapshot.paramMap.get("id");
     if (id !== null) {
-      const formulario = await this.formularioService.get(id);
+      const formulario = await this.formularioService.getDiccionario(id);
       this.formularioLineaBase = formulario;
     }
   }
 
   async fetchAgricultor(): Promise<void> {
     if (!this.isFormEmpty()) {
-      this.agricultor = await this.agricultorService.get(this.formularioLineaBase["agricultorId"]);
+      this.agricultor = await this.agricultorService.get(this.formularioLineaBase.agricultor.id);
       for (let agricultor of this.listaAgricultores) {
         if (agricultor.id === this.agricultor.id) {
           this.lineaBaseForm.get('agricultor').setValue(agricultor);
@@ -169,7 +168,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
       }
       this.formularioService.set(formularioLineaBaseParam).then(() => {
         this.toastr.success('Formulario de Linea Base Creado', '¡Completado!');
-        this.router.navigate(['inicio','home']);
+        this.router.navigate(['inicio', 'home']);
       }).catch((e) => {
         console.log(e);
         this.toastr.error(e, '¡Error!');

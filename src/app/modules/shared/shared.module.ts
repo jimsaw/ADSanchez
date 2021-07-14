@@ -15,7 +15,7 @@ import { DataTableComponent } from './data-table/data-table.component';
   imports: [
     CommonModule,
     MaterialModule,
-    NgxDatatableModule,
+    NgxDatatableModule
   ],
   exports: [
     MaterialTableComponent,

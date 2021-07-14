@@ -161,7 +161,6 @@ export class CacaoNacionalComponent implements OnInit {
       if (index !== 0) {
         this.addViejoInjertado();
       }
-      console.log(value);
       this.getFormArray("viejosInjertados").controls[index].get("areaViejoInjertado").setValue(value["areaViejoInjertado"]["respuesta"]);
       this.getFormArray("viejosInjertados").controls[index].get("edadViejoInjertado").setValue(value["edadViejoInjertado"]["respuesta"]);
     });
@@ -172,7 +171,6 @@ export class CacaoNacionalComponent implements OnInit {
       if (index !== 0) {
         this.addNuevosClones();
       }
-      console.log(value);
       this.getFormArray("nuevosClones").controls[index].get("areaNuevosClones").setValue(value["areaNuevosClones"]["respuesta"]);
       this.getFormArray("nuevosClones").controls[index].get("edadNuevosClones").setValue(value["edadNuevosClones"]["respuesta"]);
     });
