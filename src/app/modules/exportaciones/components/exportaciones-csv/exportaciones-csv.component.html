@@ -20,4 +20,9 @@
             <button class="boton" mat-raised-button color="primary" (click)="exportAll()">Exportar Todos</button>
         </div>
     </div>
+    <div class="row contenedor2">
+        <div class="col-md-4" style="margin-top: 2rem;">
+            <input type="file" #fileImportInput name="File Upload" id="csvFileUpload" (change)="fileChangeListener($event)" accept=".csv" />
+        </div>
+    </div>
 </div>

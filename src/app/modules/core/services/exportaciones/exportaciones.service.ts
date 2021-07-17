@@ -80,13 +80,13 @@ export class ExportacionesService {
   }
 
   async prepareAllDataRecursive(): Promise<any[]> {
-    let listaFormularios = await this.formularioLineaBaseService.getAllFormularios();
+    let listaFormularios = await this.formularioLineaBaseService.getAllFormulariosDict();
     let dataFormulario = [];
     for (let formulario of listaFormularios) {
       const element = {
         id: formulario.id,
-        agricultor: formulario.agricultor,
-        tecnico: formulario.tecnico,
+        agricultor: formulario.agricultor.nombre,
+        tecnico: formulario.tecnico.nombre,
         fechaVisita: formulario.fechaVisita,
       };
       let objSeccion = formulario.secciones;
@@ -107,11 +107,11 @@ export class ExportacionesService {
       } else if (object['preguntas'][nombrePregunta]['arreglo'] !== undefined) {
         //arreglo miembro
         let contador = 1;
-        for (let value of object['preguntas'][nombrePregunta]['arreglo']) {
+        for (let objDinamico of object['preguntas'][nombrePregunta]['arreglo']) {
           //Variable dentro de cada miembro
-          for (let value2 in value) {
+          for (let keyObjetoDinamico in objDinamico) {
             //console.log(value2 + contador, value[value2]);
-            element[value2 + contador] = value[value2]['respuesta'];
+            element[keyObjetoDinamico + contador] = objDinamico[keyObjetoDinamico]['respuesta'];
           }
           contador++;
         }
@@ -125,12 +125,13 @@ export class ExportacionesService {
   }
 
   async prepareOneDataRecursive(id: string) {
-    let formularioLineaBaseParam = await this.formularioLineaBaseService.get(id);
+    let formularioLineaBaseParam = await this.formularioLineaBaseService.getDiccionario(id);
+
     const dataFormulario =
     {
       id: formularioLineaBaseParam.id,
-      agricultor: formularioLineaBaseParam.agricultor,
-      tecnico: formularioLineaBaseParam.tecnico,
+      agricultor: formularioLineaBaseParam.agricultor.nombre,
+      tecnico: formularioLineaBaseParam.tecnico.nombre,
       fechaVisita: formularioLineaBaseParam.fechaVisita,
     };
     let objSeccion = formularioLineaBaseParam.secciones;
@@ -139,39 +140,6 @@ export class ExportacionesService {
     }
     //console.log(dataFormulario);
     return dataFormulario;
-  }
-
-  createDinamicKey(key: String) {
-    switch (key) {
-      case 'edadViejoInjertado':
-        return 'CAC13_ECVIN';
-      case 'areaViejoInjertado':
-        return 'CAC42_AVI1';
-      case 'areaNuevosClones':
-        return 'CAC45_ANC1';
-      case 'edadNuevosClones':
-        return 'CAC15_NCED';
-      case 'horasAlDiaTrabaja':
-        return 'FA08_HOR';
-      case 'laboraEnFinca':
-        return 'FA06_LAB';
-      case 'genero':
-        return 'FA03_GEN';
-      case 'laborRealizado':
-        return 'FA07_LABR';
-      case 'edad':
-        return 'FA02_ED';
-      case 'sueldoIngresoMensual':
-        return 'FA10_ING';
-      case 'nivelEduacion':
-        return 'FA05_EDU';
-      case 'clasificacionMiembroFamiliar':
-        return 'FA01_MF';
-      case 'seguridadSocial':
-        return 'FA04_SS';
-      case 'tieneOtraFuenteIngreso':
-        return 'FA09_RD';
-    }
   }
 
 }
