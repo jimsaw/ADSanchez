@@ -7,10 +7,12 @@
 <div class="table-container">
     <app-material-table
       [isLoading]="isTableLoading"
+      [canBeExported]="false"
       [elementData]="data"
       [columnsInfo]="columnsInfo"
       (rowClicked)="onItemSelected($event)"
       (rowTrashcanClicked)="onTrashCanClicked($event)"
+      (rowExportClicked)="onExportClicked($event)"
     >
     </app-material-table>
     <div class="button-container">

@@ -17,8 +17,11 @@ export class MaterialTableComponent implements OnInit {
 
   @Input() isLoading: boolean;
 
+  @Input() canBeExported: boolean;
+
   @Output() rowTrashcanClicked: EventEmitter<any> = new EventEmitter<any>();
   @Output() rowClicked: EventEmitter<any> = new EventEmitter<any>();
+  @Output() rowExportClicked: EventEmitter<any> = new EventEmitter<any>();
 
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
@@ -39,6 +42,11 @@ export class MaterialTableComponent implements OnInit {
   onTrashCanClicked(event, row): void {
     event.stopPropagation();
     this.rowTrashcanClicked.emit(row);
+  }
+
+  onExportClicked(event, row): void {
+    event.stopPropagation();
+    this.rowExportClicked.emit(row);
   }
 
   setData(data: any[], loading: boolean) {

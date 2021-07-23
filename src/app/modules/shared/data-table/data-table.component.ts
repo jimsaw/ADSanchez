@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { Database } from 'src/app/interfaces/database';
+import { ExportacionesService } from '../../core/services/exportaciones/exportaciones.service';
 import { MaterialTableComponent } from '../material-table/material-table.component';
 
 
@@ -26,7 +27,8 @@ export class DataTableComponent<T> implements OnInit {
 
   constructor(
     private snackBarObj: MatSnackBar,
-    private spinnerObj: NgxSpinnerService
+    private spinnerObj: NgxSpinnerService,
+    private exportacionServiceObj: ExportacionesService
   ) { }
 
   ngOnInit(): void {
@@ -46,9 +48,11 @@ export class DataTableComponent<T> implements OnInit {
 
   async onTrashCanClicked(row): Promise<void> {
     // const result = await this.deleteConfirmationDialog.openDialog().toPromise();
-    this.spinnerObj.show();
     await this.deleteData(row);
-    this.spinnerObj.hide();
+  }
+
+  async onExportClicked(row): Promise<void> {
+    await this.exportData(row);
   }
 
   async deleteData(item: T): Promise<void> {
@@ -64,4 +68,18 @@ export class DataTableComponent<T> implements OnInit {
     }
   }
 
+  async exportData(item: T): Promise<void> {
+    try {
+      const result = await this.exportacionServiceObj.exportarFormularioById('formularioLineaBase', item["id"]);
+      this.snackBarObj.open('Formulario exportado con éxito', 'Cerrar', {
+        duration: 5000,
+      });
+    } catch (e) {
+      this.snackBarObj.open(e, 'Cerrar', {
+        duration: 5000,
+      });
+    }
+  }
+
+  protected canBeExported() {}
 }

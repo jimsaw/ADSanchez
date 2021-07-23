@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
 import { Formulario } from 'src/app/interfaces/formulario';
+import { ExportacionesService } from 'src/app/modules/core/services/exportaciones/exportaciones.service';
 import { FormularioLineaBaseService } from 'src/app/modules/core/services/formularioLineaBase/formulario-linea-base.service';
 import { DataTableComponent } from 'src/app/modules/shared/data-table/data-table.component';
 
@@ -44,9 +45,10 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
     private formularioService: FormularioLineaBaseService,
     private snackBar: MatSnackBar,
     private spinner: NgxSpinnerService,
+    private exportacionService: ExportacionesService,
     private router: Router
   ) {
-    super(snackBar, spinner);
+    super(snackBar, spinner, exportacionService);
     this.dataService = this.formularioService;
   }
 
