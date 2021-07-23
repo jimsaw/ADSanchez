@@ -4,13 +4,15 @@ import { MaterialModule } from '../material/material.module';
 import { MaterialTableComponent } from './material-table/material-table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DataTableComponent } from './data-table/data-table.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 
 @NgModule({
   declarations: [
     MaterialTableComponent,
-    DataTableComponent
+    DataTableComponent,
+    HighlightDirective
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { DataTableComponent } from './data-table/data-table.component';
   ],
   exports: [
     MaterialTableComponent,
-    DataTableComponent
+    DataTableComponent,
+    HighlightDirective
   ]
 })
 export class SharedModule { }
