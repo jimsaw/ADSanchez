@@ -28,6 +28,7 @@ import { ProteccionAreasAltoValorConservacionComponent } from '../sections/prote
 import { DiversificacionIngresosComponent } from '../sections/diversificacion-ingresos/diversificacion-ingresos.component';
 import { CapacitacionesBeneficioProgramaComponent } from '../sections/capacitaciones-beneficio-programa/capacitaciones-beneficio-programa.component';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-verificacion',
@@ -72,7 +73,8 @@ export class VerificacionComponent implements OnInit {
     private changeDetector: ChangeDetectorRef,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {
     this.verificacionForm = this.formBuilder.group({
       agricultor: new FormControl(''),
@@ -80,6 +82,7 @@ export class VerificacionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.agricultorService.list().subscribe(agricultores => {
       this.listaAgricultores = agricultores;
     });
@@ -95,6 +98,7 @@ export class VerificacionComponent implements OnInit {
     await this.fetchAgricultor();
     this.setFormValues();
     this.updateView();
+    this.spinner.hide();
   }
 
   updateView() {
@@ -127,6 +131,7 @@ export class VerificacionComponent implements OnInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     this.agricultor = this.verificacionForm.value.agricultor;
     let formularioVerificacionParam: FormularioVerificacion = {
       id: "",
@@ -171,6 +176,7 @@ export class VerificacionComponent implements OnInit {
     } else {
       this.toastr.error("Debe seleccionar un agricultor", '¡Error!');
     }
+    this.spinner.hide();
   }
 
   setFormValues(): void {

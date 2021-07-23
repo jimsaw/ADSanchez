@@ -51,7 +51,7 @@ export class DatosFincaComponent implements OnInit {
     return {
       preguntas: {
         incrementoHectareajeFinca: {
-          respuesta: this.datosFinca.value.incrementoFueraTamanioFinca,
+          respuesta: this.datosFinca.value.incrementoHectareajeFinca,
           preguntas: {
             cantidadAumento: {
               respuesta: this.datosFinca.value.cantidadAumento

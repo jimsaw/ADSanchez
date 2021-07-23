@@ -26,6 +26,7 @@ import { IncrementarProductividadComponent } from '../sections/incrementar-produ
 import { MejorarCalidadCacaoComponent } from '../sections/mejorar-calidad-cacao/mejorar-calidad-cacao.component';
 import { DiversificacionIngresosComponent } from '../sections/diversificacion-ingresos/diversificacion-ingresos.component';
 import { PreguntasAdicionalesComponent } from '../sections/preguntas-adicionales/preguntas-adicionales.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-linea-base',
@@ -38,7 +39,6 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   lineaBaseForm: FormGroup;
   agricultor: Agricultor;
   listaAgricultores: Agricultor[];
-  isLoading: boolean = true;
 
   @ViewChild(InformacionFincaComponent) informacionFincaComponent: InformacionFincaComponent;
   @ViewChild(HectareajeComponent) hectareajeComponent: HectareajeComponent;
@@ -68,20 +68,16 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) {
     this.lineaBaseForm = this.formBuilder.group({
       agricultor: new FormControl(''),
     });
   }
 
-  /*
-  debugging() {
-    // console.log(this.informacionFincaComponent.formularioLineaBase);
-  }
-  */
-
   ngOnInit() {
+    this.spinner.show();
     this.agricultorService.list().subscribe(agricultores => {
       this.listaAgricultores = agricultores;
     });
@@ -97,10 +93,10 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     await this.fetchAgricultor();
     this.updateView();
     this.setFormValues();
+    this.spinner.hide();
   }
 
   updateView() {
-    this.isLoading = false;
     this.changeDetector.detectChanges();
   }
 
@@ -133,6 +129,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
+    this.spinner.show();
     this.agricultor = this.lineaBaseForm.value.agricultor;
     delete this.lineaBaseForm.value.agricultor;
     let formularioLineaBaseParam: FormularioLineaBase = {
@@ -176,6 +173,7 @@ export class LineaBaseComponent implements OnInit, AfterViewInit {
     } else {
       this.toastr.error("Debe seleccionar un agricultor", '¡Error!');
     }
+    this.spinner.hide();
   }
 
   setFormValues(): void {
