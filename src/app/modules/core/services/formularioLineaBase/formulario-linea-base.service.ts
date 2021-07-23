@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
+import { ExportacionesService } from '../exportaciones/exportaciones.service';
 import { FormularioService } from '../formulario/formulario.service';
 import { KeymapperService } from '../keymapper/keymapper.service';
 
@@ -11,7 +12,7 @@ import { KeymapperService } from '../keymapper/keymapper.service';
     providedIn: 'root'
 })
 export class FormularioLineaBaseService extends FormularioService {
-
+    
     constructor(
         private firebase: AngularFirestore,
         private keyMapper: KeymapperService
@@ -19,6 +20,7 @@ export class FormularioLineaBaseService extends FormularioService {
         super(firebase, keyMapper);
     }
 
+    // NO ESTA EN USO
     async get(id: string): Promise<FormularioLineaBase> {
         return new Promise(async (resolve, reject) => {
             const docRef = this.firebase.firestore.collection('/formularios/lineaBase/estructuras').doc(id);
@@ -37,7 +39,7 @@ export class FormularioLineaBaseService extends FormularioService {
         });
     }
 
-    list(): Observable<Formulario[]> {
+    list(): Observable<FormularioLineaBase[]> {
         return this.firebase.collection('/formularios/lineaBase/estructuras').snapshotChanges().pipe(
             map(formularios => {
                 return formularios.map((formulario) => {
@@ -139,10 +141,15 @@ export class FormularioLineaBaseService extends FormularioService {
         });
     }
 
+    // NO ESTA EN USO
     private deleteDiccionario(formularioLineaBase: FormularioLineaBase, transaction: any) {
         const collRef = this.firebase.firestore.collection("/formularios/lineaBase/diccionarios");
         const docRef = collRef.doc(formularioLineaBase.id);
         transaction.delete(docRef);
+    }
+
+    export(id: string): Promise<void> {
+        throw new Error('Method not implemented.');
     }
 
 }

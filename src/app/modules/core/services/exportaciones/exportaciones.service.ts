@@ -8,9 +8,11 @@ import { saveAs } from "file-saver";
 })
 export class ExportacionesService {
 
-  constructor(private formularioLineaBaseService: FormularioLineaBaseService) { }
+  constructor(
+    private formularioLineaBaseService: FormularioLineaBaseService
+  ) { }
 
-  mappHeader(object: Object) {
+  mapHeader(object: Object) {
     const header = Object.keys(object);
     let arrayHeaders = [];
     let formularioLineaBaseMapperBlank = formularioLineaBaseMapper;
@@ -39,10 +41,10 @@ export class ExportacionesService {
     return indx;
   }
 
-  async exportarFormularioById(formulario: string, id: string): Promise<boolean> {
+  async exportarFormularioById(id: string): Promise<boolean> {
     let dataFormulario = await this.prepareOneDataRecursive(id);
     //console.log(dataFormulario);
-    let header = this.mappHeader(dataFormulario);
+    let header = this.mapHeader(dataFormulario);
     let arrayDataFormulario = [dataFormulario];
 
     const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
@@ -63,7 +65,7 @@ export class ExportacionesService {
     let dataFormulario = await this.prepareAllDataRecursive();
     //console.log(dataFormulario);
     let indiceMaximo = this.maxFormularioKeys(dataFormulario);
-    let header = this.mappHeader(dataFormulario[indiceMaximo]);
+    let header = this.mapHeader(dataFormulario[indiceMaximo]);
 
     const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
     const headerData = Object.keys(dataFormulario[indiceMaximo]);
@@ -126,9 +128,7 @@ export class ExportacionesService {
 
   async prepareOneDataRecursive(id: string) {
     let formularioLineaBaseParam = await this.formularioLineaBaseService.getDiccionario(id);
-
-    const dataFormulario =
-    {
+    const dataFormulario = {
       id: formularioLineaBaseParam.id,
       agricultor: formularioLineaBaseParam.agricultor.nombre,
       tecnico: formularioLineaBaseParam.tecnico.nombre,

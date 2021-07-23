@@ -31,7 +31,7 @@ export class ExportacionesCSVComponent implements OnInit {
 
   async onSubmit() {
     this.spinner.show();
-    this.activador1 = this.exportaciones.exportarFormularioById('formulariosLineaBase', this.formularioExportado.value.idFormulario);
+    this.activador1 = this.exportaciones.exportarFormularioById(this.formularioExportado.value.idFormulario);
     if (await this.activador1) {
       this.spinner.hide();
       this.toastr.success('Archivo Exportado Exitosamente', 'Exportación Completa', {

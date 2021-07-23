@@ -3,21 +3,20 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Agricultor } from 'src/app/interfaces/agricultor';
-import { Database } from 'src/app/interfaces/database';
+import { IDatabase } from 'src/app/interfaces/database';
 import { environment } from 'src/environments/environment';
 import { KeymapperService } from '../keymapper/keymapper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AgricultorService implements Database<Agricultor> {
+export class AgricultorService implements IDatabase<Agricultor> {
 
   constructor(
     private firebase: AngularFirestore,
     private keymapperService: KeymapperService
   ) { }
-
-
+  
   list(): Observable<Agricultor[]> {
     return this.firebase.collection('agricultores').snapshotChanges().pipe(
       map(agricultores => {

@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
-import { Database } from 'src/app/interfaces/database';
+import { IDatabase } from 'src/app/interfaces/database';
 import { ExportacionesService } from '../../core/services/exportaciones/exportaciones.service';
 import { MaterialTableComponent } from '../material-table/material-table.component';
 
@@ -21,7 +21,7 @@ export class DataTableComponent<T> implements OnInit {
   data: T[] = [];
   dataSubscription: Subscription = null;
 
-  dataService: Database<T>;
+  dataService;
 
   @ViewChild(MaterialTableComponent) materialTableComponent: MaterialTableComponent;
 
@@ -70,7 +70,7 @@ export class DataTableComponent<T> implements OnInit {
 
   async exportData(item: T): Promise<void> {
     try {
-      const result = await this.exportacionServiceObj.exportarFormularioById('formularioLineaBase', item["id"]);
+      const result = await this.dataService.export(item["id"]);
       this.snackBarObj.open('Formulario exportado con éxito', 'Cerrar', {
         duration: 5000,
       });

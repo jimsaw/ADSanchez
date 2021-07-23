@@ -9,6 +9,7 @@ export class HighlightDirective {
     private elementRef: ElementRef
   ) { }
 
+  /*
   @HostListener('mouseenter') onMouseEnter() {
     this.highlight('0px 0px 4px 6px rgba(68,138,255,0.54)', '10px');
   }
@@ -22,5 +23,6 @@ export class HighlightDirective {
     this.elementRef.nativeElement.style.marginTop = my;
     this.elementRef.nativeElement.style.marginBottom = my;
   }
+  */
 
 }

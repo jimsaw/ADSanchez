@@ -6,12 +6,13 @@ import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioService } from '../formulario/formulario.service';
 import { KeymapperService } from '../keymapper/keymapper.service';
 import { FormularioVerificacion } from '../../../../interfaces/formularioVerificacion';
+import { ExportacionesService } from '../exportaciones/exportaciones.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormularioVerificacionService extends FormularioService {
-
+  
   constructor(
     private firebase: AngularFirestore,
     private keyMapper: KeymapperService
@@ -37,7 +38,7 @@ export class FormularioVerificacionService extends FormularioService {
     });
 }
 
-  list(): Observable<Formulario[]> {
+  list(): Observable<FormularioVerificacion[]> {
     return this.firebase.collection('/formularios/verificacion/estructuras').snapshotChanges().pipe(
       map(formularios => {
         return formularios.map((formulario) => {
@@ -106,6 +107,10 @@ export class FormularioVerificacionService extends FormularioService {
     const collRef = this.firebase.firestore.collection("/formularios/verificacion/diccionarios");
     const docRef = collRef.doc(formularioVerificacion.id);
     transaction.delete(docRef);
+  }
+
+  export(id: string): Promise<void> {
+    throw new Error('Method not implemented.');
   }
 
 }

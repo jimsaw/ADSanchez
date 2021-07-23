@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, CollectionReference, DocumentData, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Database } from 'src/app/interfaces/database';
+import { IDatabase, IsExportable } from 'src/app/interfaces/database';
 import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
+import { ExportacionesService } from '../exportaciones/exportaciones.service';
 import { KeymapperService } from '../keymapper/keymapper.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class FormularioService implements Database<Formulario> {
+export abstract class FormularioService implements IDatabase<Formulario>, IsExportable {
 
   constructor(
     private firebaseObj: AngularFirestore,
@@ -21,6 +22,8 @@ export abstract class FormularioService implements Database<Formulario> {
   abstract set(item: Formulario): Promise<void>;
 
   abstract delete(item: Formulario): Promise<string>;
+
+  abstract export(id: string): Promise<void>;
 
   protected writeSections(docRef: DocumentReference, formulario: Formulario, transaction: any) {
     const seccionesCollRef = docRef.collection("secciones");
@@ -72,6 +75,7 @@ export abstract class FormularioService implements Database<Formulario> {
     }
   }
 
+  // NO ESTA EN USO
   protected async fetchSections(formulario: FormularioLineaBase) {
     const initialCollRef = this.firebaseObj.firestore.collection(`formulariosLineaBase/${formulario.id}/secciones`);
     try {
@@ -91,7 +95,7 @@ export abstract class FormularioService implements Database<Formulario> {
     }
   }
 
-
+  // NO ESTA EN USO
   private async fetchQuestions(data: any, lastObject: any, lastCollectionRef: CollectionReference) {
     const question = data["id"];
     if (lastObject[question] !== undefined) {

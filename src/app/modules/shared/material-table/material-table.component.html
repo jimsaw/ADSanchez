@@ -17,10 +17,10 @@
         <ng-template let-value="value" let-row="row"  ngx-datatable-cell-template>
           <div class="btns-container">
             <span>
-              <button mat-flat-button (click)='onTrashCanClicked($event, row)'><mat-icon>delete_forever</mat-icon></button>
+              <button *ngIf="canBeExported" mat-flat-button (click)='onExportClicked($event, row)'><mat-icon>file_download</mat-icon></button>
             </span>
             <span>
-              <button *ngIf="canBeExported" mat-flat-button (click)='onExportClicked($event, row)'><mat-icon>file_download</mat-icon></button>
+              <button mat-flat-button (click)='onTrashCanClicked($event, row)'><mat-icon>delete_forever</mat-icon></button>
             </span>
           </div>
         </ng-template>
