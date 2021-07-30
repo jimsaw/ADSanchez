@@ -142,9 +142,5 @@ export class FormularioVerificacionService extends FormularioService {
     const result = await this.exportacionService.exportarAllFormularios(formularios, FormularioType.formularioVerificacion);
   }
 
-  import(doc: any): Promise<FormularioVerificacion> {
-    throw new Error('Method not implemented.');
-  }
-
 }
 

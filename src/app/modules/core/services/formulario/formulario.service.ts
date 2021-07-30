@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, CollectionReference, DocumentData, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IDatabase, IsExportable, IsImportable } from 'src/app/interfaces/database';
+import { IDatabase, IsExportable } from 'src/app/interfaces/database';
 import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { ExportacionesService } from '../exportaciones/exportaciones.service';
@@ -10,7 +10,7 @@ import { KeymapperService } from '../keymapper/keymapper.service';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class FormularioService implements IDatabase<Formulario>, IsExportable, IsImportable {
+export abstract class FormularioService implements IDatabase<Formulario>, IsExportable {
 
   constructor(
     private firebaseObj: AngularFirestore,
@@ -27,8 +27,6 @@ export abstract class FormularioService implements IDatabase<Formulario>, IsExpo
   abstract export(id: string): Promise<void>;
 
   abstract exportAll(): Promise<void>;
-
-  abstract import(doc: any): Promise<Formulario>;
 
   protected writeSections(docRef: DocumentReference, formulario: Formulario, transaction: any) {
     try {

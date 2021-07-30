@@ -10,7 +10,3 @@ export interface IsExportable {
     export(id: string): Promise<void>;
     exportAll(): Promise<void>;
 }
-
-export interface IsImportable {
-    import(doc: any): Promise<Object>;
-}
