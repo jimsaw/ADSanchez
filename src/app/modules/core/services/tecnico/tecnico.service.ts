@@ -31,6 +31,12 @@ export class TecnicoService {
     });
   }
 
+  async get(id: string): Promise<Tecnico> {
+    const docRef = this.firebase.firestore.collection("tecnicos").doc(id);
+    const tecnico = (await docRef.get()).data() as Tecnico;
+    return tecnico;
+  }
+
   getTecnicoById(id: string): Observable<Tecnico> {
     return this.firebase.collection("tecnicos").doc(id)
       .snapshotChanges().pipe(

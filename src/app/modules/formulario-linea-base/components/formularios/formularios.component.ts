@@ -3,9 +3,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ColumnInfo } from 'src/app/interfaces/columnInfo';
-import { Formulario } from 'src/app/interfaces/formulario';
+import { Formulario, FormularioType } from 'src/app/interfaces/formulario';
 import { ExportacionesService } from 'src/app/modules/core/services/exportaciones/exportaciones.service';
 import { FormularioLineaBaseService } from 'src/app/modules/core/services/formularioLineaBase/formulario-linea-base.service';
+import { ImportacionesService } from 'src/app/modules/core/services/importaciones/importaciones.service';
 import { DataTableComponent } from 'src/app/modules/shared/data-table/data-table.component';
 
 @Component({
@@ -46,6 +47,7 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
     private snackBar: MatSnackBar,
     private spinner: NgxSpinnerService,
     private exportacionService: ExportacionesService,
+    private importacionService: ImportacionesService,
     private router: Router
   ) {
     super(snackBar, spinner, exportacionService);
@@ -58,6 +60,31 @@ export class FormulariosComponent extends DataTableComponent<Formulario> impleme
 
   onAddClicked(): void {
     this.router.navigate(['inicio', 'formulariosLineaBase', 'create']);
+  }
+
+  exportAll(): void {
+    this.formularioService.exportAll();
+  }
+
+  onImportClicked(event: any): void {
+    const inputEvent = document.getElementById('csvFileUpload').click();
+  }
+
+  async import(event: any): Promise<void> {
+    try {
+      this.spinner.show();
+      let header: boolean = false;
+      const files = event.srcElement.files;
+      await this.importacionService.importFormulario(files, header, ',', FormularioType.formularioLineaBase);
+      this.spinner.hide();
+      this.snackBar.open('Formulario de Linea Base importado', 'Cerrar', {
+        duration: 5000,
+      });
+    } catch (e) {
+      this.snackBar.open(e, 'Cerrar', {
+        duration: 5000,
+      });
+    }
   }
 
 }

@@ -1,50 +1,19 @@
 import { Injectable } from '@angular/core';
-import { FormularioLineaBaseService } from '../formularioLineaBase/formulario-linea-base.service';
 import { formularioLineaBaseMapper } from 'src/environments/mappers/formularioLineaBase';
 import { saveAs } from "file-saver";
+import { Formulario, FormularioType } from 'src/app/interfaces/formulario';
+import { formularioVerificacionMapper } from 'src/environments/mappers/formularioVerificacion';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExportacionesService {
 
-  constructor(
-    private formularioLineaBaseService: FormularioLineaBaseService
-  ) { }
+  constructor() { }
 
-  mapHeader(object: Object) {
-    const header = Object.keys(object);
-    let arrayHeaders = [];
-    let formularioLineaBaseMapperBlank = formularioLineaBaseMapper;
-    for (let key of header) {
-      if (formularioLineaBaseMapperBlank[key] !== undefined) {
-        arrayHeaders.push(formularioLineaBaseMapperBlank[key].codigo);
-      } else if (key === 'id' || key === 'agricultor' || key === 'tecnico' || key === 'fechaVisita') {
-        arrayHeaders.push(key.toUpperCase());
-      } else {
-        //Usar el mapper
-        let dinamicKey = formularioLineaBaseMapperBlank[key.slice(0, -1)].codigo + key.slice(-1);
-        //let dinamicKey = this.createDinamicKey(key.slice(0, -1)) + key.slice(-1);
-        arrayHeaders.push(dinamicKey);
-      }
-    }
-    return arrayHeaders;
-  }
-
-  maxFormularioKeys(listaFormularios: any[]) {
-    let arrayCantidadKeys = []
-    for (let value of listaFormularios) {
-      arrayCantidadKeys.push(Object.keys(value).length);
-    }
-    let maxKeys = Math.max(...arrayCantidadKeys);
-    let indx = arrayCantidadKeys.indexOf(maxKeys);
-    return indx;
-  }
-
-  async exportarFormularioById(id: string): Promise<boolean> {
-    let dataFormulario = await this.prepareOneDataRecursive(id);
-    //console.log(dataFormulario);
-    let header = this.mapHeader(dataFormulario);
+  async exportFormulario(formulario: Formulario, formularioType: FormularioType): Promise<boolean> {
+    let dataFormulario = await this.prepareOneDataRecursive(formulario);
+    let header = this.mapHeader(dataFormulario, formularioType);
     let arrayDataFormulario = [dataFormulario];
 
     const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
@@ -57,15 +26,15 @@ export class ExportacionesService {
     let csvArray = csv.join('\r\n');
 
     var blob = new Blob([csvArray], { type: 'text/csv' })
-    saveAs(blob, "archivoExportadoOne.csv");
+    saveAs(blob, `${formularioType}_${formulario["id"]}.csv`);
     return true;
   }
 
-  async exportarAllFormularios(formulario: string): Promise<boolean> {
-    let dataFormulario = await this.prepareAllDataRecursive();
+  async exportarAllFormularios(formularios: Formulario[], formularioType: FormularioType): Promise<boolean> {
+    let dataFormulario = await this.prepareAllDataRecursive(formularios);
     //console.log(dataFormulario);
     let indiceMaximo = this.maxFormularioKeys(dataFormulario);
-    let header = this.mapHeader(dataFormulario[indiceMaximo]);
+    let header = this.mapHeader(dataFormulario[indiceMaximo], formularioType);
 
     const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
     const headerData = Object.keys(dataFormulario[indiceMaximo]);
@@ -77,31 +46,75 @@ export class ExportacionesService {
     let csvArray = csv.join('\r\n');
 
     var blob = new Blob([csvArray], { type: 'text/csv' })
-    saveAs(blob, "archivoExportadoComplete.csv");
+    saveAs(blob, `${formularioType}_TODOS.csv`);
     return true;
   }
 
-  async prepareAllDataRecursive(): Promise<any[]> {
-    let listaFormularios = await this.formularioLineaBaseService.getAllFormulariosDict();
+  private mapHeader(object: Object, formularioType: FormularioType) {
+    const formularioMapperBlank = this.pickMapper(formularioType)
+    const header = Object.keys(object);
+    let arrayHeaders = [];
+    for (let key of header) {
+      if (formularioMapperBlank[key] !== undefined) {
+        arrayHeaders.push(formularioMapperBlank[key].codigo);
+      } else if (key === 'id' || key === 'agricultor' || key === 'agricultorId' || key === 'tecnicoId' || key === 'tecnico' || key === 'fechaVisita') {
+        arrayHeaders.push(key.toUpperCase());
+      } else {
+        //Usar el mapper
+        let dinamicKey = formularioMapperBlank[key.slice(0, -1)].codigo + key.slice(-1);
+        //let dinamicKey = this.createDinamicKey(key.slice(0, -1)) + key.slice(-1);
+        arrayHeaders.push(dinamicKey);
+      }
+    }
+    return arrayHeaders;
+  }
+
+  private pickMapper(formularioType: FormularioType): any {
+    let formularioMapperBlank: any;
+    switch (formularioType) {
+      case FormularioType.formularioLineaBase:
+          formularioMapperBlank = formularioLineaBaseMapper;
+          break;
+      case FormularioType.formularioVerificacion:
+          formularioMapperBlank = formularioVerificacionMapper;
+          break;
+      default:
+          break;
+    }
+    return formularioMapperBlank;
+  }
+
+  private maxFormularioKeys(listaFormularios: any[]) {
+    let arrayCantidadKeys = []
+    for (let value of listaFormularios) {
+      arrayCantidadKeys.push(Object.keys(value).length);
+    }
+    let maxKeys = Math.max(...arrayCantidadKeys);
+    let indx = arrayCantidadKeys.indexOf(maxKeys);
+    return indx;
+  }
+
+  private async prepareAllDataRecursive(formularios: Formulario[]): Promise<any[]> {
     let dataFormulario = [];
-    for (let formulario of listaFormularios) {
+    for (let formulario of formularios) {
       const element = {
-        id: formulario.id,
-        agricultor: formulario.agricultor.nombre,
-        tecnico: formulario.tecnico.nombre,
-        fechaVisita: formulario.fechaVisita,
-      };
-      let objSeccion = formulario.secciones;
+        id: formulario["id"],
+        agricultorId: formulario["agricultor"]["id"],
+        agricultor: formulario["agricultor"]["nombre"],
+        tecnicoId: formulario["tecnico"]["id"],
+        tecnico: formulario["tecnico"]["nombre"],
+        fechaVisita: formulario["fechaVisita"],
+        };
+      let objSeccion = formulario["secciones"];
       for (let nombreSeccion in objSeccion) {
         this.planObjectRecursive(objSeccion[nombreSeccion], element);
       }
       dataFormulario.push(element);
     }
-    //console.log(dataFormulario);
     return dataFormulario
   }
 
-  planObjectRecursive(object: Object, element: Object) {
+  private planObjectRecursive(object: Object, element: Object) {
     for (let nombrePregunta in object['preguntas']) {
       if (Array.isArray(object['preguntas'][nombrePregunta]['respuesta'])) {
         let arrayString = object['preguntas'][nombrePregunta]['respuesta'].toString();
@@ -124,21 +137,25 @@ export class ExportacionesService {
         this.planObjectRecursive(object['preguntas'][nombrePregunta], element);
       }
     }
+    for (let nombreSeccion in object['secciones']) {
+      let newSeccionObj = object['secciones'][nombreSeccion];
+      this.planObjectRecursive(newSeccionObj, element);
+    }
   }
 
-  async prepareOneDataRecursive(id: string) {
-    let formularioLineaBaseParam = await this.formularioLineaBaseService.getDiccionario(id);
+  private async prepareOneDataRecursive(formulario: Formulario) {
     const dataFormulario = {
-      id: formularioLineaBaseParam.id,
-      agricultor: formularioLineaBaseParam.agricultor.nombre,
-      tecnico: formularioLineaBaseParam.tecnico.nombre,
-      fechaVisita: formularioLineaBaseParam.fechaVisita,
+      id: formulario["id"],
+      agricultorId: formulario["agricultor"]["id"],
+      agricultor: formulario["agricultor"]["nombre"],
+      tecnicoId: formulario["tecnico"]["id"],
+      tecnico: formulario["tecnico"]["nombre"],
+      fechaVisita: formulario["fechaVisita"],
     };
-    let objSeccion = formularioLineaBaseParam.secciones;
+    let objSeccion = formulario["secciones"];
     for (let nombreSeccion in objSeccion) {
       this.planObjectRecursive(objSeccion[nombreSeccion], dataFormulario);
     }
-    //console.log(dataFormulario);
     return dataFormulario;
   }
 

@@ -1,4 +1,4 @@
-export const formularioVerificacion = {
+export const formularioVerificacionMapper = {
     incrementoHectareajeFinca: {
         codigo: 'FIN19_INCHA',
         pregunta: 'HA INCREMENTADO HECTAREAJE EN SU FINCA',
@@ -291,7 +291,7 @@ export const formularioVerificacion = {
         codigo: 'COS04_LAC',
         pregunta: 'LAS PLANTAS SE ENCUENTRAN CON LACERACIONES O CICATRICES POR MALA PRÁCTICA DE COSECHA'
     },
-    fermetaCacao: {
+    fermentaCacao: {
         codigo: 'FEM02_FERM',
         pregunta: 'FERMENTA SU CACAO'
     },
@@ -815,7 +815,7 @@ export const formularioVerificacion = {
         codigo: 'INC21-BOMBMOT',
         pregunta: 'NECESITA BOMBA A MOTOR'
     },
-    necesitaOtros: {
+    necesitaOtrosMaquinariaAgricola: {
         codigo: 'INC22-OTROSMAQAGRI',
         pregunta: 'NECESITA OTROS MAQUINARIA AGRICOLA'
     },

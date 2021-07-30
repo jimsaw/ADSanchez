@@ -112,48 +112,24 @@ export const formularioLineaBaseMapper = {
         pregunta: 'HA. TOTAL VIEJO INJERTADO'
     },
     areaViejoInjertado: {
-        codigo: 'CAC42_AVI1',
+        codigo: 'CAC42_AVI',
         pregunta: 'AREA VIEJO INJERTADO (1)'
     },
     edadViejoInjertado: {
         codigo: 'CAC13_ECVIN',
         pregunta: 'EDAD VIEJO INJERTADO (1)'
     },
-    areaViejoInjertado2: {
-        codigo: 'CAC43_AVI2',
-        pregunta: 'AREA VIEJO INJERTADO (2)'
-    },
-    edadViejoInjertado2: {
-        codigo: 'CAC44_EVI2',
-        pregunta: 'EDAD VIEJO INJERTADO (2)'
-    },
     areaTotalNuevosClones: {
         codigo: 'CAC14_NCAR',
         pregunta: 'HA. TOTAL NUEVOS CLONES'
     },
     areaNuevosClones: {
-        codigo: 'CAC45_ANC1',
+        codigo: 'CAC45_ANC',
         pregunta: 'AREA NUEVOS CLONES (1)'
     },
     edadNuevosClones: {
         codigo: 'CAC15_NCED',
         pregunta: 'EDAD NUEVOS CLONES (1)'
-    },
-    areaNuevosClones2: {
-        codigo: 'CAC46_ANC2',
-        pregunta: 'AREA NUEVOS CLONES (2)'
-    },
-    edadNuevosClones2: {
-        codigo: 'CAC47_ENC2',
-        pregunta: 'EDAD NUEVOS CLONES (2)'
-    },
-    areaNuevosClones3: {
-        codigo: 'CAC48_ANC3',
-        pregunta: 'AREA NUEVOS CLONES (3)'
-    },
-    edadNuevosClones3: {
-        codigo: 'CAC49_ENC3',
-        pregunta: 'EDAD NUEVOS CLONES (3)'
     },
     produccionAnioAnteriorCacaoNacional: {
         codigo: 'CAC33_PRODN',
@@ -265,166 +241,6 @@ export const formularioLineaBaseMapper = {
     },
     sueldoIngresoMensual: {
         codigo: 'FA10_ING',
-        pregunta: 'SUELDO O INGRESO MENSUAL'
-    },
-    miembro1ClasifiacionMiembroFamiliar: {
-        codigo: 'FA01_MF1',
-        pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'
-    },
-    miembro1Edad: {
-        codigo: 'FA02_ED1',
-        pregunta: 'EDAD DEL MIEMBRO FAMILIAR'
-    },
-    miembro1Genero: {
-        codigo: 'FA03_GEN1',
-        pregunta: 'GÉNERO DEL MIEMBRO FAMILIAR'
-    },
-    miembro1SeguridadSocial: {
-        codigo: 'FA04_SS1',
-        pregunta: 'SEGURIDAD SOCIAL DEL MIEMBRO FAMILIAR'
-    },
-    miembro1NivelEduacion: {
-        codigo: 'FA05_EDU1',
-        pregunta: 'NIVEL DE EDUCACIÓN'
-    },
-    miembro1LaboraEnFinca: {
-        codigo: 'FA06_LAB1',
-        pregunta: 'LABORA EN LA FINCA'
-    },
-    miembro1LaborRealizado: {
-        codigo: 'FA07_LABR1',
-        pregunta: 'LABOR QUE REALIZA'
-    },
-    miembro1HorasAlDiaTrabaja: {
-        codigo: 'FA08_HOR1',
-        pregunta: '¿CUÁNTAS HORAS AL DÍA LABORA?'
-    },
-    miembro1tieneOtraFuenteIngreso: {
-        codigo: 'FA09_RD1',
-        pregunta: 'TIENE OTRA FUENTE DE INGRESOS'
-    },
-    miembro1sueldoIngresoMensual: {
-        codigo: 'FA10_ING1',
-        pregunta: 'SUELDO O INGRESO MENSUAL'
-    },
-    miembro2ClasifiacionMiembroFamiliar: {
-        codigo: 'FA11_MF2',
-        pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'
-    },
-    miembro2Edad: {
-        codigo: 'FA12_ED2',
-        pregunta: 'EDAD DEL MIEMBRO FAMILIAR'
-    },
-    miembro2Genero: {
-        codigo: 'FA13_GEN2',
-        pregunta: 'GÉNERO DEL MIEMBRO FAMILIAR'
-    },
-    miembro2SeguridadSocial: {
-        codigo: 'FA14_SS2',
-        pregunta: 'SEGURIDAD SOCIAL DEL MIEMBRO FAMILIAR'
-    },
-    miembro2NivelEduacion: {
-        codigo: 'FA15_EDU2',
-        pregunta: 'NIVEL DE EDUCACIÓN'
-    },
-    miembro2LaboraEnFinca: {
-        codigo: 'FA16_LAB2',
-        pregunta: 'LABORA EN LA FINCA'
-    },
-    miembro2LaborRealizado: {
-        codigo: 'FA17_LABR2',
-        pregunta: 'LABOR QUE REALIZA'
-    },
-    miembro2HorasAlDiaTrabaja: {
-        codigo: 'FA18_HOR2',
-        pregunta: '¿CUÁNTAS HORAS AL DÍA LABORA?'
-    },
-    miembro2tieneOtraFuenteIngreso: {
-        codigo: 'FA19_RD2',
-        pregunta: 'TIENE OTRA FUENTE DE INGRESOS'
-    },
-    miembro2sueldoIngresoMensual: {
-        codigo: 'FA20_ING2',
-        pregunta: 'SUELDO O INGRESO MENSUAL'
-    },
-    miembro3ClasifiacionMiembroFamiliar: {
-        codigo: 'FA21_MF3',
-        pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'
-    },
-    miembro3Edad: {
-        codigo: 'FA22_ED3',
-        pregunta: 'EDAD DEL MIEMBRO FAMILIAR'
-    },
-    miembro3Genero: {
-        codigo: 'FA23_GEN3',
-        pregunta: 'GÉNERO DEL MIEMBRO FAMILIAR'
-    },
-    miembro3SeguridadSocial: {
-        codigo: 'FA24_SS3',
-        pregunta: 'SEGURIDAD SOCIAL DEL MIEMBRO FAMILIAR'
-    },
-    miembro3NivelEduacion: {
-        codigo: 'FA25_EDU3',
-        pregunta: 'NIVEL DE EDUCACIÓN'
-    },
-    miembro3LaboraEnFinca: {
-        codigo: 'FA26_LAB3',
-        pregunta: 'LABORA EN LA FINCA'
-    },
-    miembro3LaborRealizado: {
-        codigo: 'FA27_LABR3',
-        pregunta: 'LABOR QUE REALIZA'
-    },
-    miembro3HorasAlDiaTrabaja: {
-        codigo: 'FA28_HOR3',
-        pregunta: '¿CUÁNTAS HORAS AL DÍA LABORA?'
-    },
-    miembro3tieneOtraFuenteIngreso: {
-        codigo: 'FA29_RD3',
-        pregunta: 'TIENE OTRA FUENTE DE INGRESOS'
-    },
-    miembro3sueldoIngresoMensual: {
-        codigo: 'FA30_ING3',
-        pregunta: 'SUELDO O INGRESO MENSUAL'
-    },
-    miembro4ClasifiacionMiembroFamiliar: {
-        codigo: 'FA31_MF4',
-        pregunta: 'CLASIFICACIÓN DEL MIEMBRO FAMILIAR'
-    },
-    miembro4Edad: {
-        codigo: 'FA32_ED4',
-        pregunta: 'EDAD DEL MIEMBRO FAMILIAR'
-    },
-    miembro4Genero: {
-        codigo: 'FA33_GEN4',
-        pregunta: 'GÉNERO DEL MIEMBRO FAMILIAR'
-    },
-    miembro4SeguridadSocial: {
-        codigo: 'FA34_SS4',
-        pregunta: 'SEGURIDAD SOCIAL DEL MIEMBRO FAMILIAR'
-    },
-    miembro4NivelEduacion: {
-        codigo: 'FA35_EDU4',
-        pregunta: 'NIVEL DE EDUCACIÓN'
-    },
-    miembro4LaboraEnFinca: {
-        codigo: 'FA36_LAB4',
-        pregunta: 'LABORA EN LA FINCA'
-    },
-    miembro4LaborRealizado: {
-        codigo: 'FA37_LABR4',
-        pregunta: 'LABOR QUE REALIZA'
-    },
-    miembro4HorasAlDiaTrabaja: {
-        codigo: 'FA38_HOR4',
-        pregunta: '¿CUÁNTAS HORAS AL DÍA LABORA?'
-    },
-    miembro4tieneOtraFuenteIngreso: {
-        codigo: 'FA39_RD4',
-        pregunta: 'TIENE OTRA FUENTE DE INGRESOS'
-    },
-    miembro4sueldoIngresoMensual: {
-        codigo: 'FA40_ING4',
         pregunta: 'SUELDO O INGRESO MENSUAL'
     },
     familiarDiscapacitado: {

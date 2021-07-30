@@ -12,3 +12,10 @@
 .title h2 {
     text-align: center;
 }
+
+#csvFileUpload {
+    display: block;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}

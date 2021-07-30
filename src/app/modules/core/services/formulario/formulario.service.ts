@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, CollectionReference, DocumentData, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { IDatabase, IsExportable } from 'src/app/interfaces/database';
+import { IDatabase, IsExportable, IsImportable } from 'src/app/interfaces/database';
 import { Formulario } from 'src/app/interfaces/formulario';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 import { ExportacionesService } from '../exportaciones/exportaciones.service';
@@ -10,11 +10,12 @@ import { KeymapperService } from '../keymapper/keymapper.service';
 @Injectable({
   providedIn: 'root'
 })
-export abstract class FormularioService implements IDatabase<Formulario>, IsExportable {
+export abstract class FormularioService implements IDatabase<Formulario>, IsExportable, IsImportable {
 
   constructor(
     private firebaseObj: AngularFirestore,
-    private keyMapperObj: KeymapperService
+    private keyMapperObj: KeymapperService,
+    private exportacionServiceObj: ExportacionesService
   ) { }
 
   abstract list(): Observable<Formulario[]>;
@@ -25,31 +26,45 @@ export abstract class FormularioService implements IDatabase<Formulario>, IsExpo
 
   abstract export(id: string): Promise<void>;
 
+  abstract exportAll(): Promise<void>;
+
+  abstract import(doc: any): Promise<Formulario>;
+
   protected writeSections(docRef: DocumentReference, formulario: Formulario, transaction: any) {
-    const seccionesCollRef = docRef.collection("secciones");
-    for (let section of Object.keys(formulario["secciones"])) {
-      transaction.set(seccionesCollRef.doc(section), { id: section });
-      const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
-      if (formulario["secciones"][section]["preguntas"] != undefined) {
-        for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
-          this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
+    try {
+      const seccionesCollRef = docRef.collection("secciones");
+      for (let section of Object.keys(formulario["secciones"])) {
+        transaction.set(seccionesCollRef.doc(section), { id: section });
+        const questionsRef = seccionesCollRef.doc(section).collection("preguntas");
+        if (formulario["secciones"][section]["preguntas"] != undefined) {
+          for (let question of Object.keys(formulario["secciones"][section]["preguntas"])) {
+            this.writeQuestions(question, formulario["secciones"][section]["preguntas"], questionsRef, transaction);
+          }
+        }
+        if (formulario["secciones"][section]["secciones"] != undefined) {
+          const lastObject = formulario["secciones"][section]
+          this.writeSections(seccionesCollRef.doc(section), lastObject, transaction);
         }
       }
-      if (formulario["secciones"][section]["secciones"] != undefined) {
-        const lastObject = formulario["secciones"][section]
-        this.writeSections(seccionesCollRef.doc(section), lastObject, transaction);
-      }
+    } catch(e) {
+      console.log(e);
+      throw(e);
     }
   }
 
   private writeQuestions(question: string, lastObject: any, lastCollectionRef: CollectionReference, transaction: any) {
     for (let response of Object.keys(lastObject[question])) {
       if (response === "respuesta") {
-        transaction.set(lastCollectionRef.doc(question), {
-          id: question,
-          pregunta: question,
-          respuesta: lastObject[question][response] === undefined ? "" : lastObject[question][response]
-        });
+        try {
+          transaction.set(lastCollectionRef.doc(question), {
+            id: question,
+            pregunta: question,
+            respuesta: lastObject[question][response] === undefined ? "" : lastObject[question][response]
+          });
+        } catch(e) {
+          console.log(e);
+          throw(e);
+        }
       } else if (response === "preguntas") {
         const newCollectionRef = lastCollectionRef.doc(question).collection("preguntas");
         const newLastObject = lastObject[question][response];
@@ -57,10 +72,15 @@ export abstract class FormularioService implements IDatabase<Formulario>, IsExpo
           this.writeQuestions(question, newLastObject, newCollectionRef, transaction);
         }
       } else if (response === "arreglo") {
-        transaction.set(lastCollectionRef.doc(question), {
-          id: question,
-          arreglo: lastObject[question][response]
-        });
+        try {
+          transaction.set(lastCollectionRef.doc(question), {
+            id: question,
+            arreglo: lastObject[question][response]
+          });
+        } catch(e) {
+          console.log(e);
+          throw(e);
+        }
         const objetosRef = lastCollectionRef.doc(question).collection("objetos");
         const arreglo = lastObject[question][response];
         for (let numeroPregunta of Object.keys(arreglo)) {

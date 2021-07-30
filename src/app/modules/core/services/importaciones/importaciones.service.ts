@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
+import { FormularioType } from 'src/app/interfaces/formulario';
+import { ImportacionLineaBaseService } from './importacion-linea-base.service';
+import { ImportacionVerificacionService } from './importacion-verificacion.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +9,23 @@ import { NgxCsvParser, NgxCSVParserError } from 'ngx-csv-parser';
 export class ImportacionesService {
   csvRecords: any[] = [];
 
-  constructor(private ngxCsvParser: NgxCsvParser) { }
+  constructor(
+    private importacionLineaBaseService: ImportacionLineaBaseService,
+    private importacionVerificacionService: ImportacionVerificacionService
+  ) { }
 
-  importarOneFormulario(file: any, header: boolean, delimeter: string) {
-    this.ngxCsvParser.parse(file[0], { header: header, delimiter: delimeter })
-      .pipe().subscribe((result: Array<any>) => {
-        console.log('Result', result);
-        //Funcion para inicializar el objeto formularioLineaBase con valores vacios
-        //Funcion para llenar los valores del objeto formularioLineaBase
-        this.csvRecords = result;
-      }, (error: NgxCSVParserError) => {
-        console.log('Error', error);
-      });
+  async importFormulario(file: any, header: boolean, delimeter: string, formularioType: FormularioType): Promise<void> {
+    switch (formularioType) {
+      case FormularioType.formularioLineaBase:
+        await this.importacionLineaBaseService.importAllFormularios(file, header, delimeter);
+        break;
+      case FormularioType.formularioVerificacion:
+        await this.importacionVerificacionService.importAllFormularios(file, header, delimeter);
+        break;
+      default:
+        console.log("NO EXISTE TIPO");
+        break;
+    }
   }
+
 }

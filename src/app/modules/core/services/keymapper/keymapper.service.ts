@@ -2,6 +2,7 @@ import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { of, pipe } from 'rxjs';
 import { formularioLineaBaseMapper } from 'src/environments/mappers/formularioLineaBase';
+import { formularioVerificacionMapper } from 'src/environments/mappers/formularioVerificacion';
 import { agricultorMapper } from 'src/environments/mappers/agricultor';
 import { FormularioLineaBase } from 'src/app/interfaces/formularioLineaBase';
 

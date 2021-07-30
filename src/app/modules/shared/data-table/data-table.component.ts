@@ -21,7 +21,7 @@ export class DataTableComponent<T> implements OnInit {
   data: T[] = [];
   dataSubscription: Subscription = null;
 
-  dataService;
+  dataService: any;
 
   @ViewChild(MaterialTableComponent) materialTableComponent: MaterialTableComponent;
 
@@ -46,12 +46,12 @@ export class DataTableComponent<T> implements OnInit {
 
   onAddClicked(): void {}
 
-  async onTrashCanClicked(row): Promise<void> {
+  async onTrashCanClicked(row: any): Promise<void> {
     // const result = await this.deleteConfirmationDialog.openDialog().toPromise();
     await this.deleteData(row);
   }
 
-  async onExportClicked(row): Promise<void> {
+  async onExportClicked(row: any): Promise<void> {
     await this.exportData(row);
   }
 
@@ -70,16 +70,12 @@ export class DataTableComponent<T> implements OnInit {
 
   async exportData(item: T): Promise<void> {
     try {
-      const result = await this.dataService.export(item["id"]);
-      this.snackBarObj.open('Formulario exportado con éxito', 'Cerrar', {
-        duration: 5000,
-      });
+      await this.dataService.export(item["id"]);
     } catch (e) {
       this.snackBarObj.open(e, 'Cerrar', {
         duration: 5000,
       });
     }
   }
-
-  protected canBeExported() {}
+  
 }
